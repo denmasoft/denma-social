@@ -1,0 +1,108 @@
+{% extends 'ProyectoBundle::usuario.html.twig' %}
+{% block title %}{{'proyecto.title.my_account'|trans}}{% endblock %}
+{% block menu %} 
+    {% include 'ProyectoBundle:Templates:user_menu_home.html.twig' %}
+{% endblock %}
+{% block content%}
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+    <div id="page-top" class="row-fluid">
+        <div class="main-title">{{'proyecto.title.user_settings'|trans}}</div>
+    </div>
+    <div class="globe">
+        <form autocomplete="off" method="post" {{ form_enctype(form) }}>  
+            <div class="config-row">
+                <div class="row-fluid">
+                    <div class="span5 seccion-title">
+                        {{'proyecto.label.company_name'|trans}}
+                    </div>
+                    <div class="span7">
+                        {{form_widget(form.compania)}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="config-row">
+                <div class="row-fluid">
+                    <div class="span5 seccion-title">
+                        {{'proyecto.label.contact_name'|trans}}
+                    </div>
+                    <div class="span7">
+                        {{form_widget(form.nombre)}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="config-row">
+                <div class="row-fluid">
+                    <div class="span5 seccion-title">
+                        {{'proyecto.label.login_mail'|trans}}
+                    </div>
+                    <div class="span7">
+                        {{form_widget(form.email)}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="config-row">
+                <div class="row-fluid">
+                    <div class="span5 seccion-title">
+                        {{'proyecto.label.contact_phone'|trans}}
+                    </div>
+                    <div class="span7">
+                        {{form_widget(form.telefono)}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="config-row">
+                <div class="row-fluid">
+                    <div class="span5">
+                        <div class="seccion-title">{{'proyecto.label.login_pass'|trans}}</div>
+                    </div>
+                    <div class="span7">
+                        <div class="info">********</div>
+                        <div style="padding-bottom: 10px; display: none;" class="info-edit">
+                            <div>
+                                <div class="seccion-title">{{'proyecto.label.login_pass'|trans}}</div>
+                                {{form_widget(form.password.first)}}
+                            </div>
+                            <div>
+                                <div class="seccion-title">{{'proyecto.label.register_repeat'|trans}}</div>
+                                {{form_widget(form.password.second)}}
+                            </div>
+                        </div>
+                        <div class="btn-edit-wrapper">
+                            <a href="javascript:;" type="button" class="user-edit-pass"><i class="icon icon-pencil"></i> {{'proyecto.label.edit_pass'|trans}}</a>
+                        </div>
+                        <div class="btn-cancel-wrapper" style="display: none;">
+                            <button type="button" class="btn user-cancel-pass"><i class="icon icon-remove"></i> {{'proyecto.label.cancel'|trans}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+            
+            <div class="config-row">
+                <div class="row-fluid">
+                    <div class="span5 seccion-title">
+                        {{'proyecto.label.logo'|trans}}
+                    </div>
+                    <div class="span7">
+                        {{ ewz_include_uploader() }} 
+                        {% form_theme form 'EWZUploaderBundle:Form:ewz_uploader_widget.html.twig' %}    
+                        {{ form_widget(form.logo_imagen, {'attr' : {'full' : true} }) }}
+                    </div>
+                </div>
+            </div> 
+                
+            <div class="buttons-row">
+                <button type="submit" class="btn btn-orange"><i class="icon icon-ok-sign icon-white"></i> {{'proyecto.label.save_config'|trans}}</div>
+            </div>    
+            {{form_widget(form._token)}}   
+        </form>
+    </div>
+{% endblock %}
+{% block javascripts %}  
+    {{ parent() }}
+    <script src="{{ asset('bundles/proyecto/js/config.js') }}" type="text/javascript"></script>
+{% endblock %} 

@@ -1,0 +1,100 @@
+{% extends 'FrontendBundle::frontend.html.twig' %}
+
+{% block header %} <div class="container header-2"><img src="{{asset('images/logo.png')}}" alt="ConversationQuest" /></div> {% endblock %}
+
+{% block content %}
+<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+<script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+<section id="setup" class="page-block">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1 col-lg-1">
+                <div class="setup-step img-circle bg-2"><i class="glyphicon glyphicon-ok"></i></div>
+            </div>
+            <div class="col-md-11 col-lg-11">
+                <div class="size-2 color-1">Crea tu Cuenta. <i>Hecho</i></div>
+            </div>
+        </div>
+            
+        <div class="clr-separator"></div>
+        
+        <div class="row">
+            <div class="col-md-1 col-lg-1">
+                <div class="setup-step img-circle bg-1">2</div>
+            </div>
+            <div class="col-md-11 col-lg-11">
+                <form method="post">
+                    <div class="size-2 color-2 space-1">Agrega tus redes sociales</div>
+                    <div class="color-1">ConversationQuest te permite agregar múltiples redes sociales para ver, publicar y programar mensajes.</div>
+                    <div class="add-redes space-2">
+                        <div class="space-1" style="font-weight: bold;">Seleccione las redes que agregará</div>
+                        <div class="col-md-3 space-f"><button type="button" class="btn btn-success btn-red" style="width: 100%" onclick="openAuth('twitter',1,this,false)"><span class="glyphicon1-twitter"></span> Twitter</button></div>
+                        <div class="col-md-3 space-0"><button type="button" class="btn btn-primary btn-red" style="width: 100%" onclick="facebook(true)"><span class="glyphicon1-facebook"></span> Facebook</button></div>
+                        <div class="col-md-3 space-l"><button type="button" class="btn btn-danger btn-red" style="width: 100%" onclick="openAuth('google',3,this,false)"><span class="glyphicon1-googleplus"></span> Google</button></div>
+                        <div class="col-md-3 space-l"><button type="button" class="btn btn-default btn-red" style="width: 100%" onclick="openAuth('linkedin',4,this,false)"><span class="glyphicon1-linkedin"></span> LinkedIn</button></div>
+                        <div class="col-md-2 space-l"><button type="button" class="btn btn-default btn-red wordpress" style="width: 100%" onclick="openAuth('wordpress',5,this,false)"><span class="glyphicon1-wordpress"></span> wordpress</button></div>
+                        <div class="col-md-2 space-l"><button type="button" class="btn btn-default btn-red instagram" style="width: 100%" onclick="openAuth('instagram',6,this,false)"><span class="glyphicon1-instagram"></span>Instagram</button></div>
+                        <div class="col-md-2 space-l"><button type="button" class="btn btn-default btn-red pinterest" style="width: 100%" onclick="openAuth('pinterest',7,this,false)"><span class="glyphicon1-pinterest"></span>Pinterest</button></div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="redes-selected space-2">
+                        {% for p in entity.profiles %}
+                            {{ include('FrontendBundle:Autorize:red_agregada.html.twig', {'profile':p}) }}
+                        {% endfor %}
+                    </div>
+                    <div class="space-1"><button type="submit" class="btn btn-normal {{entity.profiles | length ? '' : 'disabled '}}btn-next"><i class="glyphicon glyphicon-forward"></i> Continuar</button></div>
+                </form>
+            </div>
+        </div>
+            
+        <div class="clr-separator"></div>    
+            
+        <div class="row">
+            <div class="col-md-1 col-lg-1">
+                <div class="setup-step img-circle bg-2">3</div>
+            </div>
+            <div class="col-md-11 col-lg-11">
+                <div class="size-2 color-1">Comienza a utilizar ConversationQuest</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <div class="modal fade" id="facebookLogin-modal-groups" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" data-dismiss="modal">×</button>
+                    <h3>Importar desde Facebook</h3>
+                </div>
+                <div class="modal-body"></div>
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-primary btn-sm" id="facebook-groups-imported">Importación Finalizada</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="linkedinLogin-modal-groups" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" data-dismiss="modal">×</button>
+                    <h3>Importar desde Linkedin</h3>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-primary btn-sm" data-dismiss="modal">Importación Finalizada</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block footer %}{% endblock %}
+{% block javascripts %}
+    {{parent()}}
+    <script src="{{ asset('bundles/frontend/js/setup.js') }}"></script>
+{% endblock %}

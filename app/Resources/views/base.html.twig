@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html ng-app="CqApp">
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}ConversationQuest{% endblock %}</title>
+        <meta name="description" content="ConversationQuest" />
+        <meta name="keywords" content="" />
+        <meta name="author" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        {% block stylesheets %}
+            <link href="{{ asset('css/bootstrap/bootstrap.min.css') }}" rel="stylesheet" media="screen">
+            <link rel='stylesheet' id='woocommerce-css'  href="{{ asset('azoomtheme/css/woocommerce.css') }}" type='text/css' media='all' />
+            <link rel='stylesheet' id='rockthemes-mobile-menu-css'  href="{{ asset('azoomtheme/css/jquery.mmenu.all.css') }}" type='text/css' media='all' />
+            <link rel='stylesheet' id='foundation-normalize-css'  href="{{ asset('azoomtheme/css/normalize.css') }}" type='text/css' media='all' />
+            <link rel='stylesheet' id='wp-core-css'  href="{{ asset('azoomtheme/css/wp-core.css') }}" type='text/css' media='all' />
+            <link rel='stylesheet' id='foundation-css'  href="{{ asset('azoomtheme/css/foundation.css') }}" type='text/css' media='all' />
+            <link rel='stylesheet' id='foundation-extra-css'  href="{{ asset('azoomtheme/css/foundation-extra.css') }}" type='text/css' media='all' />
+            <link rel='stylesheet' id='animate-css-css'  href="{{ asset('azoomtheme/css/animate.css') }}" type='text/css' media='all' />
+            <link rel='stylesheet' id='prettyPhoto-css'  href="{{ asset('azoomtheme/css/prettyPhoto.css') }}" type='text/css' media='all' />
+            <link rel='stylesheet' id='azoom-buttons-css'  href="{{ asset('azoomtheme/css/buttons.css') }}" type='text/css' media='all' />
+            <link rel='stylesheet' id='swiper-css-css'  href="{{ asset('azoomtheme/css/idangerous.swiper-2.css') }}" type='text/css' media='all' />
+            <link rel='stylesheet' id='rockthemes-mega-menu-css'  href="{{ asset('azoomtheme/menu-ltr.css') }}" type='text/css' media='all' />
+            <link rel='stylesheet' id='rockthemes-curvy-slider-style-css'  href="{{ asset('azoomtheme/rock-options/curvy-slider/css/curvy-slider-style.css') }}" type='text/css' media='all' />
+            <link rel='stylesheet' id='azoom-style-css'  href="{{ asset('azoomtheme/style.css') }}" type='text/css' media='all' />
+            <link rel='stylesheet' id='custom-style-css'  href="{{ asset('azoomtheme/custom.css') }}" type='text/css' media='all' />
+            <link rel='stylesheet' id='azoom-media-queries-css'  href="{{ asset('azoomtheme/media-queries.css') }}" type='text/css' media='all' />
+            <link href="{{ asset('css/glyphicons/style.css') }}" rel="stylesheet" type="text/css">
+            <link href="{{ asset('css/frontend.css') }}" rel="stylesheet" type="text/css"/>
+            <link href="{{ asset('css/color-default.css') }}" rel="stylesheet" type="text/css"/>
+            <link href="{{ asset('css/jquery/jquery-ui-1.10.3.custom.min.css') }}" rel="stylesheet" type="text/css">
+            <link href="{{ asset('css/animate.css') }}" rel="stylesheet" media="screen">
+
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.2.3/css/simple-line-icons.css">
+    </head>
+    <body>
+        {% block body %}
+        <div id="main-container" class="main-container">
+            {% block header %} {% endblock %}
+            {% block slider %} {% endblock %}
+            {% block content %}{% endblock %}
+            {% block footer %}{% endblock %}
+            <!--Scroll To Top Button-->
+            {% block scroll %} {% endblock %}
+        </div>
+        {% endblock %}
+        {% block javascripts %}
+            <script type='text/javascript' src="{{ asset('azoomtheme/js/jquery/jquery.js') }}"></script>
+            <script type='text/javascript' src="{{ asset('azoomtheme/js/jquery/jquery-migrate.min.js') }}"></script>
+            <script type='text/javascript' src="{{ asset('azoomtheme/js/modernizr.js') }}"></script>
+            <script type='text/javascript' src="{{ asset('azoomtheme/js/webfont.js') }}"></script>
+            <script type='text/javascript'>
+                /* <![CDATA[ */
+                var rockthemes = {"ajaxurl":"","colors":{"main_color":"#56ccc8"},"ajax_nonce":"78acb63b84","f_way":"azoomtheme","nonces":{"portfolio":"9476b24c1f","asearch":"943e16362f","achievement":"da7002990a","love":"0ce3aa3015"},"home_url":"http:\/\/","gif_loader":"<img src=\"{{ asset('azoomtheme/images/ajax-loader.gif')}}\" class=\"gif-loader\" alt=\"Loading\" \/>","frontend_options":{"activate_smooth_scroll":"true","nicescroll_style_enabled":"false","is_admin_bar_showing":false,"display_inline_nav":"true","header_location":"top_navigation"},"hover_details":{"hover_width_min_large":"250","hover_height_min_large":"225","hover_width_min_medium":"160","hover_height_min_medium":"125"},"fonts":{"use_icomoon":"true","icomoon_url":"{{ asset('azoomtheme/icons/css/icomoon.css')}}","menu_font_family":"font-family: \"Titillium Web\", sans-serif;","activate_font_loading":"true","font_families":["Titillium Web:400,200,200italic,300,300italic,400italic,600,700"]},"is_rtl":"ltr","mobile_menu":{"main_title":"Menu","back_text":"Back"},"menu":{"regular_height":98,"sticky_height":50,"enable_menu_hash_navigation":"false","main_menu_model":""},"resposivity":"true","grid":{"block":{"medium":"800","small":"540"}},"woocommerce":{"auto_display_cart_after_refresh":true}};
+                /* ]]> */
+            </script>
+            <script type='text/javascript' src="{{ asset('azoomtheme/js/rockthemes_font_load.js') }}"></script>
+            <script type='text/javascript' src="{{ asset('azoomtheme/js/imagesloaded.pkgd.min.js') }}"></script>
+            <script type='text/javascript' src="{{ asset('azoomtheme/js/jquery.smartresize.js') }}"></script>
+            <script type='text/javascript' src="{{ asset('azoomtheme/js/jquery.prettyPhoto.js') }}"></script>
+            <script type='text/javascript' src="{{ asset('azoomtheme/js/jquery.nicescroll.min.js') }}"></script>
+            <script type='text/javascript' src="{{ asset('azoomtheme/js/isInViewport.min.js') }}"></script>
+            <script type='text/javascript' src="{{ asset('azoomtheme/js/jquery.appear.js') }}"></script>
+            <script type='text/javascript'>
+                /* <![CDATA[ */
+                var rockthemes = {"ajaxurl":"","colors":{"main_color":"#56ccc8"},"ajax_nonce":"78acb63b84","f_way":"azoomtheme","nonces":{"portfolio":"9476b24c1f","asearch":"943e16362f","achievement":"da7002990a","love":"0ce3aa3015"},"home_url":"http:\/\/","gif_loader":"<img src=\"{{ asset('azoomtheme/images/ajax-loader.gif')}}\" class=\"gif-loader\" alt=\"Loading\" \/>","frontend_options":{"activate_smooth_scroll":"true","nicescroll_style_enabled":"false","is_admin_bar_showing":false,"display_inline_nav":"true","header_location":"top_navigation"},"hover_details":{"hover_width_min_large":"250","hover_height_min_large":"225","hover_width_min_medium":"160","hover_height_min_medium":"125"},"fonts":{"use_icomoon":"true","icomoon_url":"{{ asset('azoomtheme/icons/css/icomoon.css')}}","menu_font_family":"font-family: \"Titillium Web\", sans-serif;","activate_font_loading":"true","font_families":["Titillium Web:400,200,200italic,300,300italic,400italic,600,700"]},"is_rtl":"ltr","mobile_menu":{"main_title":"Menu","back_text":"Back"},"menu":{"regular_height":98,"sticky_height":50,"enable_menu_hash_navigation":"false","main_menu_model":""},"resposivity":"true","grid":{"block":{"medium":"800","small":"540"}},"woocommerce":{"auto_display_cart_after_refresh":true}};
+                /* ]]> */
+            </script>
+            <script type='text/javascript' src="{{ asset('azoomtheme/js/azoom.jquery.js') }}"></script>
+            <script type='text/javascript' src="{{ asset('azoomtheme/rock-widgets/mega-menu/js/megamenu.js') }}"></script>
+            <script type='text/javascript' src="{{ asset('azoomtheme/js/jquery.mmenu.min.all.js') }}"></script>
+            <script type='text/javascript' src="{{ asset('azoomtheme/js/jquery/jquery.color.min.js') }}"></script>
+            <script type='text/javascript' src="{{ asset('azoomtheme/js/jquery/ui/effect.min.js') }}"></script>
+            <script type='text/javascript' src="{{ asset('azoomtheme/js/underscore.min.js') }}"></script>
+            <script type='text/javascript' src="{{ asset('azoomtheme/js/wp-embed.min.js') }}"></script>
+            <script type='text/javascript' src="{{ asset('azoomtheme/rock-options/curvy-slider/js/caat.min.js') }}"></script>
+            <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js'></script>
+            <script type='text/javascript' src="{{ asset('azoomtheme/rock-options/curvy-slider/frontend/js/curvy-slider-frontend.min.js') }}"></script>
+            <script type='text/javascript' src="{{ asset('azoomtheme/js/imagesloaded.min.js') }}"></script>
+            <script type='text/javascript' src="{{ asset('azoomtheme/js/masonry.min.js') }}"></script>
+            <script type='text/javascript' src="{{ asset('azoomtheme/js/jquery/jquery.masonry.min.js') }}"></script>
+            <script type='text/javascript' src="{{ asset('azoomtheme/js/idangerous.swiper-2.7.js') }}"></script>
+            <script type='text/javascript' src="{{ asset('azoomtheme/js/countUp.min.js') }}"></script>
+            <script src="{{ asset('bundles/frontend/js/style-switcher.js') }}"></script>
+            <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+            <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+            <script src="{{ asset('bundles/frontend/js/setup.js') }}"></script>
+            <script src="{{ asset('js/angular/angular.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('js/angular/angular-route.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('js/angular/angular-resource.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('js/angular/sortable.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('js/angular/angularjs-geolocation.min.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('js/angular/angular-sanitize.min.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('js/angular/dialogs.min.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('js/angular/angular-translate.min.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('js/bootstrap/ui-bootstrap.min.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('js/angular/angular-notify.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('js/angular/ng-labs-infiniteScroll.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('js/angular/ng-file-upload-shim.min.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('js/angular/ng-file-upload.min.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('js/angular/angular-recaptcha.min.js') }}" type="text/javascript"></script>
+            <script src='https://www.google.com/recaptcha/api.js?onload=vcRecaptchaApiLoaded&render=explicit' async defer></script>
+            <script src="{{ asset('bundles/frontend/js/app.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('bundles/frontend/js/user.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('bundles/frontend/js/contact.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('bundles/frontend/js/Services/users.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('bundles/frontend/js/Services/contacts.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('bundles/frontend/js/Controllers/userCtrl.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('bundles/frontend/js/Controllers/recoverPassCtrl.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('bundles/frontend/js/Directives/ngCompare.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('bundles/frontend/js/Controllers/contactCtrl.js') }}" type="text/javascript"></script>
+            <script type="text/javascript">
+                jQuery(document).ready(function() {
+                    StyleSwitcher.initStyleSwitcher();
+                    jQuery.curvySlider("15","curvy-slider-main-container-0", "curvy-canvas-0", "true", "nav_regular",
+                            {"id":"15","fonts":["Titillium Web"],"animationName":"Curvy Slider 15","sliderDBName":"curvy_slider_15","scenes":[{"actorElems":[
+                                {"coordsArray":[{"x":991,"y":420,"z":0},{"x":963,"y":420,"z":0},{"x":940,"y":420,"z":0}],"delayTime":650,"motionTime":10000,"objType":"image","objText":"New Text","fontStyle":"","objSrc":"{{ asset('azoomtheme/images/curvyslider6-home.jpg') }}","linkActive":false,"objLink":"","objBorderColor":"","objColor":"#3e3e3e","objFontSize":"40px","objFont":"sans","elemID":"elem-0","autoRotate":false,"auto_rotation_mode":"","hideBeginning":false,"easingName":"Linear","startAlpha":1,"endAlpha":1,"outOfSceneTime":650,"waitOnSceneTime":3000,"outOfSceneMotion":"noMotion","scaleStart":1.1,"scaleEnd":1.1},{"coordsArray":[{"x":319,"y":979,"z":0},{"x":322,"y":369,"z":0},{"x":451,"y":587,"z":0}],"delayTime":650,"motionTime":2600,"objType":"image","objText":"New Text","fontStyle":"","objSrc":"{{ asset('azoomtheme/images/15px-phone.png') }}","linkActive":false,"objLink":"","objBorderColor":"","objColor":"#3e3e3e","objFontSize":"40px","objFont":"sans","elemID":"elem-1","autoRotate":false,"auto_rotation_mode":"","hideBeginning":true,"easingName":"Linear","startAlpha":1,"endAlpha":1,"outOfSceneTime":650,"waitOnSceneTime":3000,"outOfSceneMotion":"noMotion","scaleStart":1,"scaleEnd":1},{"coordsArray":[{"x":85,"y":381,"z":0},{"x":419,"y":689,"z":0},{"x":1094,"y":605,"z":0}],"delayTime":2000,"motionTime":5000,"objType":"image","objText":"New Text","fontStyle":"","objSrc":"{{ asset('azoomtheme/images/paper-plane-curvy.png') }}","linkActive":false,"objLink":"","objBorderColor":"","objColor":"#3e3e3e","objFontSize":"40px","objFont":"sans","elemID":"elem-2","autoRotate":true,"auto_rotation_mode":"LEFT_TO_RIGHT","hideBeginning":true,"easingName":"ExpoOut","startAlpha":1,"endAlpha":1,"outOfSceneTime":650,"waitOnSceneTime":3000,"outOfSceneMotion":"noMotion","scaleStart":0.7,"scaleEnd":0.8},{"coordsArray":[{"x":504,"y":976,"z":0},{"x":496,"y":374,"z":0},{"x":644,"y":565,"z":0}],"delayTime":650,"motionTime":1800,"objType":"image","objText":"New Text","fontStyle":"","objSrc":"{{ asset('azoomtheme/images/10px-phone.png') }}","linkActive":false,"objLink":"","objBorderColor":"","objColor":"#3e3e3e","objFontSize":"40px","objFont":"sans","elemID":"elem-3","autoRotate":false,"auto_rotation_mode":"","hideBeginning":true,"easingName":"Linear","startAlpha":1,"endAlpha":1,"outOfSceneTime":650,"waitOnSceneTime":3000,"outOfSceneMotion":"noMotion","scaleStart":1,"scaleEnd":1},{"coordsArray":[{"x":658,"y":919,"z":0},{"x":662,"y":349,"z":0},{"x":792,"y":553,"z":0}],"delayTime":650,"motionTime":1000,"objType":"image","objText":"New Text","fontStyle":"","objSrc":"{{ asset('azoomtheme/images/5px-phone1.png') }}","linkActive":false,"objLink":"","objBorderColor":"","objColor":"#3e3e3e","objFontSize":"40px","objFont":"sans","elemID":"elem-4","autoRotate":false,"auto_rotation_mode":"","hideBeginning":true,"easingName":"Linear","startAlpha":1,"endAlpha":1,"outOfSceneTime":650,"waitOnSceneTime":3000,"outOfSceneMotion":"noMotion","scaleStart":1,"scaleEnd":1},
+                                {"coordsArray":[{"x":1424,"y":280,"z":0},{"x":1198,"y":280,"z":0},{"x":1037,"y":280,"z":0}],"delayTime":1600,"motionTime":1000,"objType":"singleText","objText":"CURVE THE ANIMATION","enable_shadow":false,"fontStyle":"bold","objSrc":"","linkActive":false,"objLink":"","objBorderColor":"","objColor":"#3e3e3e","objFontSize":"48px","objFont":"Titillium Web","elemID":"elem-5","autoRotate":false,"hideBeginning":true,"easingName":"ExpoOut","startAlpha":0,"endAlpha":1,"outOfSceneTime":650,"waitOnSceneTime":3000,"outOfSceneMotion":"noMotion","scaleStart":1,"scaleEnd":1},
+                                {"coordsArray":[{"x":1424,"y":357,"z":0},{"x":1198,"y":357,"z":0},{"x":1037,"y":357,"z":0}],"delayTime":1950,"motionTime":1000,"objType":"singleText","objText":"New design for sliders start with Curvy Slider","enable_shadow":false,"fontStyle":"normal","objSrc":"","linkActive":false,"objLink":"","objBorderColor":"","objColor":"#3e3e3e","objFontSize":"24px","objFont":"Titillium Web","elemID":"elem-6","autoRotate":false,"hideBeginning":true,"easingName":"ExpoOut","startAlpha":0,"endAlpha":1,"outOfSceneTime":650,"waitOnSceneTime":3000,"outOfSceneMotion":"noMotion","scaleStart":1,"scaleEnd":1},
+                                {"coordsArray":[{"x":1037,"y":610,"z":0},{"x":1037,"y":480,"z":0},{"x":1037,"y":440,"z":0}],"delayTime":2350,"motionTime":1000,"objType":"singleBoxedText","objText":"TRY NOW","enable_shadow":false,"fontStyle":"bold","objSrc":"","linkActive":true,"objLink":"","objBorderColor":"","objBGColor":"#56ccc8","objBGHoverColor":"#4cb5ae","paddingH":40,"paddingV":30,"bgRadius":5,"objColor":"#f9f9f9","objFontSize":"24px","objFont":"Titillium Web","elemID":"elem-7","autoRotate":false,"hideBeginning":true,"easingName":"ExpoInOut","startAlpha":0,"endAlpha":1,"outOfSceneTime":650,"waitOnSceneTime":3000,"outOfSceneMotion":"noMotion","scaleStart":1,"scaleEnd":1}],"bg":{"bgType":"transparent","bgURL":"","bgColor":"#FFFFFF","bgVideoURL":"","bgColorAlpha":1},"sceneDetails":{"sceneTime":0.65,"sceneDelay":8,"incomingMotion":0,"incomingAnchor":1,"incomingEasing":"easeOut","fallbackURL":""},"imageArray":[{"url":"{{ asset('azoomtheme/images/curvyslider6-home.jpg') }}","id":"elem-0"},{"url":"{{ asset('azoomtheme/images/15px-phone.png') }}","id":"elem-1"},{"url":"{{ asset('azoomtheme/images/paper-plane-curvy.png') }}","id":"elem-2"},{"url":"{{ asset('azoomtheme/images/10px-phone.png') }}","id":"elem-3"},{"url":"{{ asset('azoomtheme/images/5px-phone1.png') }}","id":"elem-4"}]},{"actorElems":[{"coordsArray":[{"x":954,"y":983,"z":0},{"x":944,"y":510,"z":0},{"x":1410,"y":381,"z":0}],"delayTime":650,"motionTime":8000,"objType":"image","objText":"New Text","fontStyle":"","objSrc":"{{ asset('azoomtheme/images/grey-balloon.png') }}","linkActive":false,"objLink":"","objBorderColor":"","objColor":"#3e3e3e","objFontSize":"40px","objFont":"sans","elemID":"elem-8","autoRotate":false,"auto_rotation_mode":"LEFT_TO_RIGHT","hideBeginning":true,"easingName":"Linear","startAlpha":0.8,"endAlpha":0.8,"outOfSceneTime":650,"waitOnSceneTime":3000,"outOfSceneMotion":"noMotion","scaleStart":0.7,"scaleEnd":0.7},
+                                {"coordsArray":[{"x":1318,"y":966,"z":0},{"x":970,"y":625,"z":0},{"x":1298,"y":315,"z":0}],"delayTime":650,"motionTime":8000,"objType":"image","objText":"New Text","fontStyle":"","objSrc":"{{ asset('azoomtheme/images/green-balloon.png') }}","linkActive":false,"objLink":"","objBorderColor":"","objColor":"#3e3e3e","objFontSize":"40px","objFont":"sans","elemID":"elem-9","autoRotate":false,"auto_rotation_mode":"","hideBeginning":true,"easingName":"Linear","startAlpha":0.9,"endAlpha":0.9,"outOfSceneTime":650,"waitOnSceneTime":3000,"outOfSceneMotion":"noMotion","scaleStart":0.9,"scaleEnd":0.9},
+                                {"coordsArray":[{"x":725,"y":300,"z":0},{"x":583,"y":300,"z":0},{"x":326,"y":300,"z":0}],"delayTime":650,"motionTime":1000,"objType":"singleText","objText":"WORK WITH FUN","enable_shadow":false,"fontStyle":"bold","objSrc":"","linkActive":false,"objLink":"","objBorderColor":"","objColor":"#f9f9f9","objFontSize":"48px","objFont":"Titillium Web","elemID":"elem-10","autoRotate":false,"hideBeginning":true,"easingName":"ExpoOut","startAlpha":0,"endAlpha":1,"outOfSceneTime":650,"waitOnSceneTime":3000,"outOfSceneMotion":"noMotion","scaleStart":1,"scaleEnd":1},
+                                {"coordsArray":[{"x":767,"y":377,"z":0},{"x":607,"y":377,"z":0},{"x":330,"y":377,"z":0}],"delayTime":950,"motionTime":1000,"objType":"singleText","objText":"Building your website  should be easy","enable_shadow":false,"fontStyle":"normal","objSrc":"","linkActive":false,"objLink":"","objBorderColor":"","objColor":"#f9f9f9","objFontSize":"24px","objFont":"Titillium Web","elemID":"elem-11","autoRotate":false,"hideBeginning":true,"easingName":"ExpoInOut","startAlpha":0,"endAlpha":1,"outOfSceneTime":650,"waitOnSceneTime":3000,"outOfSceneMotion":"noMotion","scaleStart":1,"scaleEnd":1},
+                                {"coordsArray":[{"x":767,"y":414,"z":0},{"x":607,"y":414,"z":0},{"x":330,"y":414,"z":0}],"delayTime":1300,"motionTime":1000,"objType":"singleText","objText":"Your office should be fun.","enable_shadow":false,"fontStyle":"normal","objSrc":"","linkActive":false,"objLink":"","objBorderColor":"","objColor":"#f9f9f9","objFontSize":"24px","objFont":"Titillium Web","elemID":"elem-12","autoRotate":false,"hideBeginning":true,"easingName":"ExpoInOut","startAlpha":0,"endAlpha":1,"outOfSceneTime":650,"waitOnSceneTime":3000,"outOfSceneMotion":"noMotion","scaleStart":1,"scaleEnd":1}],"bg":{"bgType":"image","bgURL":"{{ asset('azoomtheme/images/curvyslider5-home.jpg') }}","bgColor":"#FFFFFF","bgVideoURL":"","bgColorAlpha":1},"sceneDetails":{"sceneTime":0.65,"sceneDelay":8,"incomingMotion":0,"incomingAnchor":2,"incomingEasing":"easeOut","fallbackURL":""},"imageArray":[{"url":"{{ asset('azoomtheme/images/curvyslider5-home.jpg') }}","id":"background-image-id-scene-1"},{"url":"{{ asset('azoomtheme/images/grey-balloon.png') }}","id":"elem-8"},{"url":"{{ asset('azoomtheme/images/green-balloon.png') }}","id":"elem-9"}]},{"actorElems":[{"coordsArray":[{"x":960,"y":214,"z":0},{"x":960,"y":255,"z":0},{"x":960,"y":294,"z":0}],"delayTime":650,"motionTime":1250,"objType":"image","objText":"New Text","fontStyle":"","objSrc":"{{ asset('azoomtheme/images/azoomlogo-curvy.png') }}","linkActive":false,"objLink":"","objBorderColor":"","objColor":"#3e3e3e","objFontSize":"40px","objFont":"sans","elemID":"elem-13","autoRotate":false,"auto_rotation_mode":"","hideBeginning":true,"easingName":"BounceOut","startAlpha":1,"endAlpha":1,"outOfSceneTime":650,"waitOnSceneTime":3000,"outOfSceneMotion":"noMotion","scaleStart":1,"scaleEnd":1},{"coordsArray":[{"x":859,"y":379,"z":0},{"x":859,"y":379,"z":0},{"x":859,"y":379,"z":0}],"delayTime":650,"motionTime":1000,"objType":"singleBoxedText","objText":"AZOOM","enable_shadow":false,"fontStyle":"bold","objSrc":"","linkActive":false,"objLink":"","objBorderColor":"","objBGColor":"#56ccc8","objBGHoverColor":"#333333","paddingH":40,"paddingV":24,"bgRadius":0,"objColor":"#f0f0f0","objFontSize":"48px","objFont":"Titillium Web","elemID":"elem-14","autoRotate":false,"hideBeginning":true,"easingName":"Linear","startAlpha":0,"endAlpha":1,"outOfSceneTime":650,"waitOnSceneTime":3000,"outOfSceneMotion":"noMotion","scaleStart":1,"scaleEnd":1},{"coordsArray":[{"x":1229,"y":559,"z":0},{"x":1129,"y":445,"z":0},{"x":830,"y":472,"z":0}],"delayTime":1300,"motionTime":1000,"objType":"singleText","objText":"Fresh Look On Wordpress","enable_shadow":false,"fontStyle":"normal","objSrc":"","linkActive":false,"objLink":"","objBorderColor":"","objColor":"#f9f9f9","objFontSize":"24px","objFont":"Titillium Web","elemID":"elem-15","autoRotate":false,"hideBeginning":true,"easingName":"ExpoOut","startAlpha":0,"endAlpha":1,"outOfSceneTime":650,"waitOnSceneTime":3000,"outOfSceneMotion":"noMotion","scaleStart":1,"scaleEnd":1},{"coordsArray":[{"x":682,"y":596,"z":0},{"x":732,"y":500,"z":0},{"x":863,"y":511,"z":0}],"delayTime":1600,"motionTime":1000,"objType":"singleText","objText":"Change The Game?","enable_shadow":false,"fontStyle":"normal","objSrc":"","linkActive":false,"objLink":"","objBorderColor":"","objColor":"#f9f9f9","objFontSize":"24px","objFont":"Titillium Web","elemID":"elem-16","autoRotate":false,"hideBeginning":true,"easingName":"ExpoInOut","startAlpha":0,"endAlpha":1,"outOfSceneTime":650,"waitOnSceneTime":3000,"outOfSceneMotion":"noMotion","scaleStart":1,"scaleEnd":1}],"bg":{"bgType":"image","bgURL":"{{ asset('azoomtheme/images/curvyslider4-home.jpg') }}","bgColor":"#FFFFFF","bgVideoURL":"","bgColorAlpha":1},"sceneDetails":{"sceneTime":0.65,"sceneDelay":4.95,"incomingMotion":0,"incomingAnchor":1,"incomingEasing":"easeOut","fallbackURL":""},"imageArray":[{"url":"{{ asset('azoomtheme/images/curvyslider4-home.jpg') }}","id":"background-image-id-scene-2"},{"url":"{{ asset('azoomtheme/images/azoomlogo-curvy.png') }}","id":"elem-13"}]}],"slider_width":"1440","slider_height":"540","slider_size_mode":"responsive"});
+
+                });
+
+            </script>
+        {% endblock %}
+    </body>
+</html>

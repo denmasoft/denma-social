@@ -1,0 +1,58 @@
+usuario_request_pass:
+    pattern:  /request-password
+    defaults: { _controller: "DashboardBundle:Usuario:requestPass" }  
+    
+usuario_change_pass:
+    pattern:  /change-password/{token}
+    defaults: { _controller: "DashboardBundle:Usuario:changePass" }    
+    
+usuario_create:
+    pattern:  /register/{plan}
+    defaults: { _controller: "DashboardBundle:Usuario:createUser", plan: null }
+
+usuario_new:
+    pattern:  /new/user/{plan}
+    defaults: { _controller: "DashboardBundle:Usuario:newUser",_locale: "es"}
+    options:
+       expose: true
+usuario_recover_pass:
+    pattern:  /recover/password
+    defaults: { _controller: "DashboardBundle:Usuario:recoverPass",_locale: "es"}
+    options:
+       expose: true
+    
+usuario_setup:
+    pattern:  /setup/{id}
+    defaults: { _controller: "DashboardBundle:Usuario:setup",_locale: "es" }
+    options:
+       expose: true
+usuario_new_password:
+    pattern:  /new/password/{id}/{token}
+    defaults: { _controller: "DashboardBundle:Usuario:newPassForm",_locale: "es" }
+    options:
+       expose: true
+usuario_create_new_password:
+    pattern:  /create/password
+    defaults: { _controller: "DashboardBundle:Usuario:newPass",_locale: "es" }
+    options:
+       expose: true
+
+usuarios_data_profile:
+    pattern:  /user-profile
+    defaults: { _controller: DashboardBundle:Usuario:userProfile, _locale: "es" }
+    requirements: { _method: post }
+    options: 
+        expose: true
+        
+adjustments:
+    pattern:  /adjustments
+    defaults: { _controller: DashboardBundle:Dashboard:adjustment, _locale: "es" }
+    requirements: { _method: post }
+    options: 
+        expose: true
+    
+usuario_login_check:
+    pattern:  /dashboard/login_check
+    
+usuario_logout:
+    pattern: /dashboard/logout    

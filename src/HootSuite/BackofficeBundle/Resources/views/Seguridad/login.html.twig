@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<!-- Apple devices fullscreen -->
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<!-- Apple devices fullscreen -->
+	<meta names="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+	<title>ConversationQuest Admin - Login</title>
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="{{asset('bundles/Backend/css/bootstrap.min.css')}}">
+	<!-- icheck -->
+	<link rel="stylesheet" href="{{asset('bundles/Backend/css/plugins/icheck/all.css')}}">
+	<!-- Theme CSS -->
+	<link rel="stylesheet" href="{{asset('bundles/Backend/css/style.css')}}">
+	<!-- Color CSS -->
+	<link rel="stylesheet" href="{{asset('bundles/Backend/css/themes.css')}}">
+
+
+	<!-- jQuery -->
+	<script src="{{asset('bundles/Backend/js/jquery.min.js')}}"></script>
+
+	<!-- Nice Scroll -->
+	<script src="{{asset('bundles/Backend/js/plugins/nicescroll/jquery.nicescroll.min.js')}}"></script>
+	<!-- Validation -->
+	<script src="{{asset('bundles/Backend/js/plugins/validation/jquery.validate.min.js')}}"></script>
+	<script src="{{asset('bundles/Backend/js/plugins/validation/additional-methods.min.js')}}"></script>
+	<!-- icheck -->
+	<script src="{{asset('bundles/Backend/js/plugins/icheck/jquery.icheck.min.js')}}"></script>
+	<!-- Bootstrap -->
+	<script src="{{asset('bundles/Backend/js/bootstrap.min.js')}}"></script>
+	<script src="{{asset('bundles/Backend/js/eakroko.js')}}"></script>
+
+	<!--[if lte IE 9]>
+		<script src="js/plugins/placeholder/jquery.placeholder.min.js"></script>
+		<script>
+			$(document).ready(function() {
+				$('input, textarea').placeholder();
+			});
+		</script>
+	<![endif]-->
+
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="img/favicon.ico" />
+	<!-- Apple devices Homescreen icon -->
+	<link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-precomposed.png" />
+
+</head>
+
+<body class='login'>
+	<div class="wrapper">
+		<h1>
+			<a href="">ConversationQuest Admin</a>
+		</h1>
+		<div class="login-body">
+			<h2>ENTRAR</h2>
+			<form action="{{ path('admin_login_check') }}" method='post' class='form-validate' id="test">
+				<div class="form-group">
+					<div class="email controls">
+                                            <input type="text" name='_username' placeholder="Direccción de correo" class='form-control' data-rule-required="true" data-rule-email="true" value="{{ last_username }}">
+					</div>
+				</div>
+				<div class="form-group">
+                                    <div class="pw controls">
+                                        <input type="password" name="_password" placeholder="Contraseña" class='form-control' data-rule-required="true">
+                                    </div>
+				</div>
+				<div class="submit">
+                                    <div class="remember">
+                                        <input type="checkbox" name="remember" class='icheck-me' data-skin="square" data-color="blue" id="remember">
+                                        <label for="remember">Remember me</label>
+                                    </div>
+                                    <input type="submit" value="Entrar" class='btn btn-primary'>
+				</div>
+			</form>			
+		</div>
+	</div>
+	<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-38620714-4']);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script');
+		ga.type = 'text/javascript';
+		ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0];
+		s.parentNode.insertBefore(ga, s);
+	})();
+	</script>
+</body>
+</html>

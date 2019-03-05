@@ -1,0 +1,98 @@
+<span ng-init="col.more_options_filter=true; col.more_options_empty=true;"></span>
+<div class="column-body-item column-body-filtering" ng-show="col.filtering">
+    <div class="input-group">
+        <div class="input-group-btn input-group-select-first">
+            <select class="col-filter-selection" tooltip="Filtrar por" tooltip-append-to-body="true">
+                <option>Palabra clave</option>
+            </select>
+        </div>    
+        <input type="text" ng-model="filtro" class="form-control" />
+        <span class="input-group-btn">
+            <button class="btn btn-primary btn-sm" ng-click="col.filtering=false; filtro=''"><i class="glyphicon glyphicon-remove"></i></button>
+        </span>
+    </div>    
+</div>
+<div ng-if="col.data.length" ng-repeat="row in col.data  | filter:filtro" class="column-body-item column-body-has-options">
+    <div class="body-item-content">
+        <div class="item-avatar">
+            <div class="avatar-more-menu">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="width: 100%;">
+                    <div style="position: absolute; top: 5px; right: 5px; left: 5px;">
+                        <img style="width: 100%;" ng-src="[[row.user.profile_image_url]]" />
+                    </div>
+                    <br/>
+                    <span style="margin-top: 20px;" class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="javascript:;" ng-click="userProfile(row.user.screen_name,col.profile)"><span class="glyphicon glyphicon1-user"></span> Ver perfil</a></li>
+                    <li><a href="javascript:;" ng-if="!row.user.following" ng-click="follow(col.profile, row.user.id_str, 1)"><span class="glyphicon glyphicon1-user-add"></span> Seguir</a></li>
+                    <li><a href="javascript:;" ng-if="row.user.following" ng-click="follow(col.profile, row.user.id_str, 0)"><span class="glyphicon glyphicon1-erase"></span> Dejar de seguir</a></li>
+                    <li><a href="javascript:;" ng-click="addToList(row.user,col.profile)"><span class="glyphicon glyphicon-list"></span> Añadir a la lista</a></li>
+                    <li><a href="javascript:;" ng-click="spammer(col.profile, row.user.id_str)"><span class="glyphicon glyphicon1-spam"></span> Denunciar spammer</a></li>
+                </ul>
+            </div>
+            <img style="width: 100%" ng-src="[[row.user.profile_image_url]]" />
+        </div>
+        <div class="item-username"><a class="username" href="javascript:;" ng-click="userProfile(row.user.screen_name,col.profile)">[[row.user.screen_name]]</a></div>
+        <div class="item-created"><span unsafe><a target="_blank" href="http://twitter.com/[[row.user.screen_name]]/status/[[row.id_str]]">[[row.created_at | toDate | date:'MMM d, h:mma']]</a></span> vía: <span ng-bind-html="row.source | unsafe"></span></div>
+        <div class="item-text" compile-data  template="<div>[[row.text | linkify | linkusers:col.profile]]</div>"></div>
+        <div class="item-retwits" ng-if="row.retweet_count && !row.retweeted_status">
+            <a href="javascript:;" ng-click="getRetuits(row, col.profile)"
+                custom-popover
+                popover-placement="right"
+                popover-title="<div>
+                    Retweeteado [[row.retweet_count]] [[row.retweet_count==1 ? 'vez' : 'veces']]
+                    <i style='cursor:pointer; float:right;' class='glyphicon glyphicon-remove popover-close'></i></div>"
+                popover-html="<div class='column-retuit-users'>
+                                  <div ng-show='!row.retuits_data' style='text-align: center; padding: 30px 0;'>
+                                      <span class='glyphicon glyphicon-refresh-gif-black'></span> Cargando
+                                  </div>
+                                  <div style='margin-bottom:2px' ng-repeat='st in row.retuits_data'>
+                                      <a href='javascript:;' ng-click='userProfile(st.user.screen_name,col.profile)'>
+                                          <imagen src='st.user.profile_image_url'></imagen> @<span ng-bind='st.user.screen_name'></span>
+                                      </a>
+                                  </div>
+                              </div>">
+                <i class="glyphicon glyphicon-retweet"></i> &nbsp;[[row.retweet_count]] Retuits
+            </a>
+        </div>
+        <div class="item-conversation" ng-if="row.in_reply_to_status_id_str">
+            <div ng-show="row.conversation_loading" style="text-align: center;">
+                <span class="glyphicon glyphicon-refresh-gif-black"></span> Cargando
+            </div>
+            <a ng-show="!row.conversation_loading" href="javascript:;" ng-click="showConversation(row, col.profile)">
+                <span ng-bind="row.conversation_shown ? 'Ocultar conversación' : 'Mostrar conversación'"></span>
+            </a>
+            <div class="item-conversation-all" ng-show="row.conversation && row.conversation_shown">
+                <div ng-repeat="conv in row.conversation" class="column-body-item" ng-class="{'column-body-item-own' : conv.id_str==row.id_str}">
+                    <div class="item-avatar"><img style="width: 100%" ng-src="[[conv.user.profile_image_url]]" /></div>
+                    <div class="body-item-content">
+                        <div class="item-username"><a class="username" href="javascript:;" ng-click="userProfile(conv.user.screen_name,col.profile)">[[conv.user.screen_name]]</a></div>
+                        <div class="item-text" compile-data  template="<div>[[conv.text | linkify | linkusers:col.profile]]</div>"></div>
+                        <div class="item-created">[[conv.created_at | toDate | date:'MMM d, h:mma']] <span ng-bind-html="conv.source | unsafe"></span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-row-options">
+        <ul>
+            <span no-propage ng-click="fbLikes(col.profile, row, 1)" ng-if="!row.user_likes" class="glyphicon glyphicon-fb-like btn-option" tooltip="Me gusta" tooltip-append-to-body="true"></span>
+            <span no-propage ng-click="fbLikes(col.profile, row, 0)" ng-if="row.user_likes" class="glyphicon glyphicon-fb-unlike btn-option" tooltip="No me gusta" tooltip-append-to-body="true"></span>
+            <span class="dropdown btn-option">
+                <span class="dropdown-toggle" on-toggle="toggled(open)" tooltip="Más opciones" tooltip-append-to-body="true">
+                    <i class="caret"></i>
+                </span>
+                <ul class="dropdown-menu pull-right" role="menu">
+                    <li><a href="javascript:;" ng-click="sendToEmail(row.text)"><span class="glyphicon glyphicon-envelope"></span> Enviar a email</a></li>
+                </ul>
+            </span>
+        </ul>
+    </div>    
+</div>
+<div class="column-body-item column-body-scrolling" ng-show="col.scrolling">
+    <span class="glyphicon glyphicon-refresh-gif-black"></span> Cargando...
+</div>
+<div ng-if="col.data.length==0" class="column-no-results column-body-item">
+    No se han encontrado resultados
+</div>

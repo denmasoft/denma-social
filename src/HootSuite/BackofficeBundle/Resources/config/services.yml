@@ -1,0 +1,7 @@
+parameters:
+#    backoffice.example.class: HootSuite\BackofficeBundle\Example
+
+services:
+#    backoffice.example:
+#        class: %backoffice.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

@@ -1,0 +1,42 @@
+load_tabs:
+    pattern:  /load
+    defaults: { _controller: ApiBundle:Tabs:load }
+    
+add_tab:
+    pattern:  /add
+    defaults: { _controller: ApiBundle:Tabs:add }
+    requirements: { _method: post }
+    
+del_tab:
+    pattern:  /del
+    defaults: { _controller: ApiBundle:Tabs:del }
+    requirements: { _method: post|delete }
+    
+rename_tab:
+    pattern:  /rename
+    defaults: { _controller: ApiBundle:Tabs:rename }
+    requirements: { _method: post }
+    
+columns_tab:
+    pattern:  /columns/{id}
+    defaults: { _controller: ApiBundle:Tabs:columns }
+    
+automatic_update:
+    pattern:  /update
+    defaults: { _controller: ApiBundle:Tabs:automaticUpdate }
+    requirements: { _method: post }    
+    
+activate_tab:
+    pattern:  /activate
+    defaults: { _controller: ApiBundle:Tabs:activate }
+    requirements: { _method: post }    
+    
+visible_tab:
+    pattern:  /visible
+    defaults: { _controller: ApiBundle:Tabs:visible }
+    requirements: { _method: post }
+    
+order_tab:
+    pattern:  /order
+    defaults: { _controller: ApiBundle:Tabs:order }
+    requirements: { _method: post }

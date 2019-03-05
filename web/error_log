@@ -1,0 +1,1 @@
+[22-Jul-2015 13:05:33 America/Chicago] PHP Fatal error:  Call to undefined method stdClass::get() in /home/oriol78/public_html/networks/src/HootSuite/FrontendBundle/Controller/AutorizeController.php on line 57

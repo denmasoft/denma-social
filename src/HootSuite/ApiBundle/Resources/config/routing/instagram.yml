@@ -1,0 +1,27 @@
+instagram_add_comment:
+    pattern:  /add-comment
+    defaults: { _controller: ApiBundle:Instagram:addComment }
+    requirements: { _method: post }
+    
+instagram_likes:
+    pattern:  /likes
+    defaults: { _controller: ApiBundle:Instagram:likes }
+    requirements: { _method: post }
+instagram_follows:
+    pattern:  /follows
+    defaults: { _controller: ApiBundle:Instagram:follows }
+    requirements: { _method: post }
+instagram_user_feed:
+    pattern:  /instagram-user-feed
+    defaults: { _controller: ApiBundle:Instagram:userFeed }
+    requirements: { _method: post }
+
+instagram_search-terms:
+    pattern:  /instagram-search-terms
+    defaults: { _controller: ApiBundle:Instagram:searchTerms }
+    requirements: { _method: post }
+
+instagram_search-users:
+    pattern:  /instagram-search-users
+    defaults: { _controller: ApiBundle:Instagram:searchUsers }
+    requirements: { _method: post }

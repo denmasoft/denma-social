@@ -1,0 +1,352 @@
+<?php
+
+namespace HootSuite\BackofficeBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
+
+/**
+ * @ORM\Table(name="automatic_program")
+ * @ORM\Entity()
+ */
+class AutomaticProgram
+{
+  /**
+   * @var integer $id
+   * @ORM\Column(name="id", type="integer")
+   * @ORM\Id
+   * @ORM\GeneratedValue(strategy="AUTO")
+   */
+  private $id;
+    
+  /**
+    * @ORM\OneToOne(targetEntity="Usuario", inversedBy="automatic_program" )
+    */
+  private $usuario;
+  
+  /** 
+    * @var integer $message_by_day
+    * @ORM\Column(type="integer", length=10)
+    */
+  protected $message_by_day;
+  
+  /** 
+    * @var time $since
+    * @ORM\Column(type="time")
+    */
+  protected $since;
+  
+  /** 
+    * @var time $to
+    * @ORM\Column(type="time")
+    */
+  protected $to;
+  
+  /** 
+    * @var boolean $sun
+    * @ORM\Column(type="boolean")
+    */
+  protected $sun;
+  
+  /** 
+    * @var boolean $mon
+    * @ORM\Column(type="boolean", nullable=true)
+    */
+  protected $mon;
+  
+  /** 
+    * @var boolean $tue
+    * @ORM\Column(type="boolean", nullable=true)
+    */
+  protected $tue;
+  
+  /** 
+    * @var boolean $wed
+    * @ORM\Column(type="boolean", nullable=true)
+    */
+  protected $wed;
+  
+  /** 
+    * @var boolean $thu
+    * @ORM\Column(type="boolean", nullable=true)
+    */
+  protected $thu;
+  
+  /** 
+    * @var boolean $fri
+    * @ORM\Column(type="boolean", nullable=true)
+    */
+  protected $fri;
+  
+  /** 
+    * @var boolean $sat
+    * @ORM\Column(type="boolean", nullable=true)
+    */
+  protected $sat;
+  
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set message_by_day
+     *
+     * @param integer $messageByDay
+     * @return AutomaticProgram
+     */
+    public function setMessageByDay($messageByDay)
+    {
+        $this->message_by_day = $messageByDay;
+
+        return $this;
+    }
+
+    /**
+     * Get message_by_day
+     *
+     * @return integer 
+     */
+    public function getMessageByDay()
+    {
+        return $this->message_by_day;
+    }
+
+    /**
+     * Set since
+     *
+     * @param \DateTime $since
+     * @return AutomaticProgram
+     */
+    public function setSince($since)
+    {
+        $this->since = $since;
+
+        return $this;
+    }
+
+    /**
+     * Get since
+     *
+     * @return \DateTime 
+     */
+    public function getSince()
+    {
+        return $this->since;
+    }
+
+    /**
+     * Set to
+     *
+     * @param \DateTime $to
+     * @return AutomaticProgram
+     */
+    public function setTo($to)
+    {
+        $this->to = $to;
+
+        return $this;
+    }
+
+    /**
+     * Get to
+     *
+     * @return \DateTime 
+     */
+    public function getTo()
+    {
+        return $this->to;
+    }
+
+    /**
+     * Set sun
+     *
+     * @param boolean $sun
+     * @return AutomaticProgram
+     */
+    public function setSun($sun)
+    {
+        $this->sun = $sun;
+
+        return $this;
+    }
+
+    /**
+     * Get sun
+     *
+     * @return boolean 
+     */
+    public function getSun()
+    {
+        return $this->sun;
+    }
+
+    /**
+     * Set mon
+     *
+     * @param boolean $mon
+     * @return AutomaticProgram
+     */
+    public function setMon($mon)
+    {
+        $this->mon = $mon;
+
+        return $this;
+    }
+
+    /**
+     * Get mon
+     *
+     * @return boolean 
+     */
+    public function getMon()
+    {
+        return $this->mon;
+    }
+
+    /**
+     * Set tue
+     *
+     * @param boolean $tue
+     * @return AutomaticProgram
+     */
+    public function setTue($tue)
+    {
+        $this->tue = $tue;
+
+        return $this;
+    }
+
+    /**
+     * Get tue
+     *
+     * @return boolean 
+     */
+    public function getTue()
+    {
+        return $this->tue;
+    }
+
+    /**
+     * Set wed
+     *
+     * @param boolean $wed
+     * @return AutomaticProgram
+     */
+    public function setWed($wed)
+    {
+        $this->wed = $wed;
+
+        return $this;
+    }
+
+    /**
+     * Get wed
+     *
+     * @return boolean 
+     */
+    public function getWed()
+    {
+        return $this->wed;
+    }
+
+    /**
+     * Set thu
+     *
+     * @param boolean $thu
+     * @return AutomaticProgram
+     */
+    public function setThu($thu)
+    {
+        $this->thu = $thu;
+
+        return $this;
+    }
+
+    /**
+     * Get thu
+     *
+     * @return boolean 
+     */
+    public function getThu()
+    {
+        return $this->thu;
+    }
+
+    /**
+     * Set fri
+     *
+     * @param boolean $fri
+     * @return AutomaticProgram
+     */
+    public function setFri($fri)
+    {
+        $this->fri = $fri;
+
+        return $this;
+    }
+
+    /**
+     * Get fri
+     *
+     * @return boolean 
+     */
+    public function getFri()
+    {
+        return $this->fri;
+    }
+
+    /**
+     * Set sat
+     *
+     * @param boolean $sat
+     * @return AutomaticProgram
+     */
+    public function setSat($sat)
+    {
+        $this->sat = $sat;
+
+        return $this;
+    }
+
+    /**
+     * Get sat
+     *
+     * @return boolean 
+     */
+    public function getSat()
+    {
+        return $this->sat;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param \HootSuite\BackofficeBundle\Entity\Usuario $usuario
+     * @return AutomaticProgram
+     */
+    public function setUsuario(\HootSuite\BackofficeBundle\Entity\Usuario $usuario = null)
+    {
+        $this->usuario = $usuario;
+
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return \HootSuite\BackofficeBundle\Entity\Usuario 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+}

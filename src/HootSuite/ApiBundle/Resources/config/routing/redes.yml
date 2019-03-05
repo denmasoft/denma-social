@@ -1,0 +1,4 @@
+load_redes:
+    pattern:  /load
+    defaults: { _controller: ApiBundle:Redes:load }
+    

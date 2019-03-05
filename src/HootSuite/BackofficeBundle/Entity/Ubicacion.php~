@@ -1,0 +1,328 @@
+<?php
+
+
+namespace Social\ProyectoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
+
+/**
+ * @ORM\Table(name="ubicacion")
+ * @ORM\Entity(repositoryClass="UbicacionRepository")
+ */
+class Ubicacion
+{
+  /**
+   * @var integer $id
+   * @ORM\Column(name="id", type="integer")
+   * @ORM\Id
+   * @ORM\GeneratedValue(strategy="AUTO")
+   */
+  private $id;
+  
+  /**
+    * @ORM\ManyToOne(targetEntity="Campanna", inversedBy="ubicaciones"))
+    * @ORM\JoinColumn(name="campanna_id", referencedColumnName="id")
+    */
+  private $campanna;
+  
+    
+  /**
+    * @ORM\OneToMany(targetEntity="Twit", mappedBy="ubicacion", cascade={"persist","remove"})
+    */
+  private $twitts;
+  
+  /**
+   * @var string $nombre
+   * @ORM\Column(type="string", length=255, nullable=true)
+   */
+  protected $nombre;
+  
+  /**
+    * @ORM\ManyToOne(targetEntity="Estado", inversedBy="ubicaciones")
+    * @ORM\JoinColumn(name="estado_id", referencedColumnName="id")
+    */
+  protected $estado;
+  
+  /**
+    * @ORM\ManyToOne(targetEntity="Pais", inversedBy="ubicaciones")
+    * @ORM\JoinColumn(name="pais_id", referencedColumnName="id")
+    */
+  protected $pais;
+  
+    /**
+   * @var string $radio
+   * @ORM\Column(type="integer", nullable=true)
+   */
+  protected $radio;
+  
+    /**
+   * @var string $latitud
+   * @ORM\Column(type="string", length=100, nullable=true)
+   * @Assert\NotBlank()
+   */
+  protected $latitud;
+  
+    /**
+   * @var string $longitud
+   * @ORM\Column(type="string", length=100, nullable=true)
+   * @Assert\NotBlank()
+   */
+  protected $longitud;
+  
+  /**
+   * @var string $twitter_max_id
+   * @ORM\Column(type="string", length=255, nullable=true)
+   */
+  protected $twitter_max_id;
+  
+  /**
+   * @var string $twitter_min_id
+   * @ORM\Column(type="string", length=255, nullable=true)
+   */
+  protected $twitter_min_id;
+  
+ 
+  public function __toString()
+  {
+      return (string)$this->nombre;
+  }  
+   
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     * @return Ubicacion
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+    
+        return $this;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string 
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * Set radio
+     *
+     * @param integer $radio
+     * @return Ubicacion
+     */
+    public function setRadio($radio)
+    {
+        $this->radio = $radio;
+    
+        return $this;
+    }
+
+    /**
+     * Get radio
+     *
+     * @return integer 
+     */
+    public function getRadio()
+    {
+        return $this->radio;
+    }
+
+    /**
+     * Set estado
+     *
+     * @param \Social\ProyectoBundle\Entity\Estado $estado
+     * @return Ubicacion
+     */
+    public function setEstado(\Social\ProyectoBundle\Entity\Estado $estado = null)
+    {
+        $this->estado = $estado;
+    
+        return $this;
+    }
+
+    /**
+     * Get estado
+     *
+     * @return \Social\ProyectoBundle\Entity\Estado 
+     */
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+
+    /**
+     * Set latitud
+     *
+     * @param string $latitud
+     * @return Ubicacion
+     */
+    public function setLatitud($latitud)
+    {
+        $this->latitud = $latitud;
+    
+        return $this;
+    }
+
+    /**
+     * Get latitud
+     *
+     * @return string 
+     */
+    public function getLatitud()
+    {
+        return $this->latitud;
+    }
+
+    /**
+     * Set longitud
+     *
+     * @param string $longitud
+     * @return Ubicacion
+     */
+    public function setLongitud($longitud)
+    {
+        $this->longitud = $longitud;
+    
+        return $this;
+    }
+
+    /**
+     * Get longitud
+     *
+     * @return string 
+     */
+    public function getLongitud()
+    {
+        return $this->longitud;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->twitts = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add twitts
+     *
+     * @param \Social\ProyectoBundle\Entity\Twit $twitts
+     * @return Ubicacion
+     */
+    public function addTwitt(\Social\ProyectoBundle\Entity\Twit $twitts)
+    {
+        $this->twitts[] = $twitts;
+    
+        return $this;
+    }
+
+    /**
+     * Remove twitts
+     *
+     * @param \Social\ProyectoBundle\Entity\Twit $twitts
+     */
+    public function removeTwitt(\Social\ProyectoBundle\Entity\Twit $twitts)
+    {
+        $this->twitts->removeElement($twitts);
+    }
+
+    /**
+     * Get twitts
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTwitts()
+    {
+        return $this->twitts;
+    }
+
+    /**
+     * Set twitter_max_id
+     *
+     * @param string $twitterMaxId
+     * @return Ubicacion
+     */
+    public function setTwitterMaxId($twitterMaxId)
+    {
+        $this->twitter_max_id = $twitterMaxId;
+    
+        return $this;
+    }
+
+    /**
+     * Get twitter_max_id
+     *
+     * @return string 
+     */
+    public function getTwitterMaxId()
+    {
+        return $this->twitter_max_id;
+    }
+
+    /**
+     * Set twitter_min_id
+     *
+     * @param string $twitterMinId
+     * @return Ubicacion
+     */
+    public function setTwitterMinId($twitterMinId)
+    {
+        $this->twitter_min_id = $twitterMinId;
+    
+        return $this;
+    }
+
+    /**
+     * Get twitter_min_id
+     *
+     * @return string 
+     */
+    public function getTwitterMinId()
+    {
+        return $this->twitter_min_id;
+    }
+
+    /**
+     * Set pais
+     *
+     * @param \Social\ProyectoBundle\Entity\Pais $pais
+     * @return Ubicacion
+     */
+    public function setPais(\Social\ProyectoBundle\Entity\Pais $pais = null)
+    {
+        $this->pais = $pais;
+    
+        return $this;
+    }
+
+    /**
+     * Get pais
+     *
+     * @return \Social\ProyectoBundle\Entity\Pais 
+     */
+    public function getPais()
+    {
+        return $this->pais;
+    }
+}

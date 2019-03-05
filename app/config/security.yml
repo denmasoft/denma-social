@@ -1,0 +1,52 @@
+security:
+    providers:
+        usuarios:
+            entity: { class: HootSuite\BackofficeBundle\Entity\Usuario, property: email }
+        users:
+            entity: { class: HootSuite\BackofficeBundle\Entity\Usuario, property: name }
+            
+    encoders:
+        HootSuite\BackofficeBundle\Entity\Usuario: {algorithm: sha512, iterations: 10}
+
+    firewalls:
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        users:
+            pattern:    ^/(es|en)/dashboard
+            anonymous:  ~
+            provider:   usuarios
+            form_login:
+                login_path: usuario_login
+                check_path: usuario_login_check
+                always_use_default_target_path: true
+                default_target_path: dashboard
+            remember_me:
+                key: "%secret%"
+                lifetime: 86400
+            logout:
+                path:   usuario_logout
+                target: homepage
+        administrators:
+            pattern:    ^/admin
+            anonymous:  ~
+            provider:   users
+            form_login:
+                login_path: admin_login
+                check_path: admin_login_check
+                always_use_default_target_path: true
+                default_target_path: backoffice_homepage
+            remember_me:
+                key: "%secret%"
+                lifetime: 86400
+            logout:
+                path:   admin_logout
+                target: admin_home
+
+    access_control:       
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/(es|en)/usuario/registro, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/(es|en)/dashboard/*, roles: ROLE_USUARIO }    
+        - { path: ^/admin/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/*, roles: ROLE_ADMIN }

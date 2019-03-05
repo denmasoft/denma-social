@@ -1,0 +1,5 @@
+organization_new:
+    pattern:  /new
+    defaults: { _controller: "DashboardBundle:Organization:createOrganization",_locale: "es"}
+    options:
+       expose: true

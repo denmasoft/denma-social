@@ -1,0 +1,139 @@
+<div id="tab-container">
+    <tabset ng-show="tabs.length">
+        <tab ng-repeat="tab in tabs" ng-dblclick="renameTab(tab)" ng-click="clickedTab(tab)" select="selectTab(tab)" active="tab.active">
+                <tab-heading>
+                    <span ng-hide="tab.editing" class="tab-head-text">[[tab.name]] <span no-propage class="glyphicon glyphicon-remove" ng-click="delTab(tab.id)"></span></span>
+                    <input ng-show="tab.editing" type="text" ng-init="tab.rename=tab.name" ng-model="tab.rename" ng-value="tab.name" ng-blur="saveTabName(tab)" ng-keyup="renamekeyPress($event, tab)" auto-focus />
+                </tab-heading>
+                <div class="tab-content">
+                    <div class="tab-btns">
+                        <div class="btn-group">
+                            <button class="btn btn-sm btn-default" ng-show="update_all_cols"><span class="glyphicon glyphicon-refresh-gif-black"></span></button>
+                            <button class="btn btn-sm btn-default" ng-hide="update_all_cols" ng-click="updateColumns()"><span class="glyphicon glyphicon-refresh"></span></button>
+                            <button tabindex="-1" data-toggle="dropdown" class="btn btn-default btn-sm dropdown-toggle" type="button">
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu columns-update-time" role="menu">
+                                <li style="padding-left: 8px; padding-right: 8px;">Actualizaciones&nbsp;Automáticas</li>
+                                <li class="divider"></li>
+                                <li>
+                                    <span ng-if="tab.interval == '2'" class="glyphicon glyphicon-ok update-time-selected"></span>
+                                    <a ng-click="automaticUpdateCall(tab,2)">Cada 2 minutos</a></li>
+                                <li>
+                                <li>
+                                    <span ng-if="tab.interval == '5'" class="glyphicon glyphicon-ok update-time-selected"></span>
+                                    <a ng-click="automaticUpdateCall(tab,5)">Cada 5 minutos</a></li>
+                                <li>
+                                    <span style="position: absolute; top: 5px; left: 2px;" ng-if="tab.interval == '10'" class="glyphicon glyphicon-ok"></span>
+                                    <a ng-click="automaticUpdateCall(tab,10)">Cada 10 minutos</a></li>
+                                <li>
+                                    <span style="position: absolute; top: 5px; left: 2px;" ng-if="tab.interval == '15'" class="glyphicon glyphicon-ok"></span>
+                                    <a ng-click="automaticUpdateCall(tab,15)">Cada 15 minutos</a></li>
+                                <li>
+                                    <span style="position: absolute; top: 5px; left: 2px;" ng-if="tab.interval == '20'" class="glyphicon glyphicon-ok"></span>
+                                    <a ng-click="automaticUpdateCall(tab,20)">Cada 20 minutos</a></li>
+                            </ul>
+                        </div>
+                        <button class="btn btn-sm btn-default" ng-click="selectColumnProfile()">
+                            <span class="glyphicon glyphicon-plus"></span> Añadir Columna
+                        </button>
+                        <button class="btn btn-sm btn-default" ng-click="addProfile()">
+                            <span class="glyphicon glyphicon-plus"></span> Añadir Red Social
+                        </button>
+                        
+                        <div id="workspace-cols-numbers">                            
+                            <span class="label">Columnas visibles:</span>
+                            <select required="true" 
+                                    ng-change="changeWorkspaceCols(tab)"
+                                    ng-options="cl.value as cl.name for cl in num_columns" 
+                                    ng-model="tab.visible" >
+                            </select>
+                        </div>
+                    </div>
+                    <div class="tab-colums-stream">
+                        <div class="columns-streams-control" ng-style="{width: winWidth/tab.visible*tab.columns.length+tab.columns.length+(panelActive ? winWidth/tab.visible : 0)+5+'px'}">
+                            <div class="tab-columns-reorders" ui-sortable="sortableOptions" ng-model="tab.columns">
+                                <div class="column-item" ng-class="{'column-loading' : col.updating}" ng-repeat="col in tab.columns" ng-style="{'width': winWidth/tab.visible+'px'}">
+                                    <div class="column-header">
+                                        <span class="column-red-avatar"><span ng-class="col.glyphicon"></span></span>
+                                        <span class="column-name truncate">[[col.name]]</span>
+                                        <span class="column-profile-name truncate">[[col.prof_name]]</span>
+                                        <div class="column-buttons-right">
+                                            <span class="dropdown btn-column" ng-show="col.more_options_filter || col.more_options_empty || col.more_options_pref || col.more_options_archive || col.more_options_share">
+                                                <span class="dropdown-toggle" on-toggle="toggled(open)">
+                                                    <i class="caret"></i>
+                                                </span>
+                                                <ul class="dropdown-menu pull-right" role="menu">
+                                                    <li ng-if="col.more_options_archive"><a href="javascript:;" ng-click="col.filtering=true"><span class="glyphicon glyphicon1-download2"></span> Archivar mensajes</a></li>
+                                                    <li ng-if="col.more_options_pref"><a href="javascript:;" ng-click="col.filtering=true"><span class="glyphicon glyphicon-cog"></span> Preferencias</a></li>
+                                                    <li ng-if="col.more_options_filter"><a href="javascript:;" ng-click="col.filtering=true"><span class="glyphicon glyphicon-filter"></span> Filtrar por...</a></li>
+                                                    <li ng-if="col.more_options_empty"><a href="javascript:;"><span class="glyphicon glyphicon-ban-circle"></span> Vaciar columna</a></li>
+                                                    <li ng-if="col.more_options_share"><a href="javascript:;"><span class="glyphicon glyphicon-users"></span> Compartir columna con equipo</a></li>
+                                                </ul>
+                                            </span>
+                                            <a class="btn-column" ng-show="col.updating">
+                                                <span class="glyphicon glyphicon-refresh-gif"></span>
+                                            </a>
+                                            <a class="btn-column" ng-click="updateColumn(col)" ng-hide="col.updating"><span class="glyphicon glyphicon-refresh"></span></a>
+                                            <a class="btn-column" ng-click="delColumn(col.id)">
+                                                <span class="glyphicon glyphicon-remove"></span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="column-body" 
+                                         infinite-scroll="loadColData(col, 'min')" 
+                                         infinite-scroll-distance='2'
+                                         infinite-scroll-disabled='col.scrolling || col.min_id==0'>
+                                        <div class="body-rows-container" compile-data template="[[col.html]]"></div>
+                                    </div>
+                                    <div class="drag-icon"><span class="glyphicon glyphicon1-switch2"></span></div>
+                                </div>
+                            </div>
+                            <div class="tab-colums-stream-last">
+                                <div class="column-item" ng-style="{width: winWidth/tab.visible}">
+                                    <div class="column-header">
+                                        <div class="column-buttons-left">
+                                            <i class="glyphicon glyphicon-plus"></i>
+                                        </div>
+                                        Añadir una columna
+                                        <div class="column-buttons-right" ng-click="panelActive=false; hideShowPanel(1);">
+                                            <i class="glyphicon glyphicon-minus"></i>
+                                        </div>
+                                    </div>
+                                    <div class="column-body">
+                                        <ul class="nav nav-tabs normal-tab" data-tabs="tabs">
+                                            <li class="active"><a data-target="#perfiles-wrapper-[[tab.id]]" data-toggle="tab">Redes</a></li>
+                                            <li><a data-target="#apps-wrapper-[[tab.id]]" data-toggle="tab">Apps</a></li>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="perfiles-wrapper-[[tab.id]]">
+                                                <select-profile profiles="profiles" redes="redes_copia"></select-profile>
+                                            </div>
+                                            <div class="tab-pane" id="apps-wrapper-[[tab.id]]">
+                                                Aplicaciones
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-column-panel-show" ng-click="panelActive=true; hideShowPanel(0);">
+                    <i class="glyphicon glyphicon-plus"></i>
+                </div>
+        </tab>
+        
+        <li ng-click="addTab()" class="add-tab-btn" tooltip="Añadir tab" tooltip-append-to-body="true">
+            <a><span class="glyphicon glyphicon-plus"></span></a>
+        </li>
+    </tabset>
+    <div class="no_tabs" ng-show="!tabs.length">
+        <div class="noContentMessage _noContentMessage">
+            <div class="title">Aún no has añadido ninguna pestaña</div>
+            <div class="description">Crea tantas pestañas como quieras para agrupar columnas por red social.</div>
+            <a ng-click="addTab()" class="btn btn-sm btn-success">Crea tu primera pestaña</a>
+        </div>
+    </div>
+</div>

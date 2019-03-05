@@ -1,0 +1,205 @@
+<div class="profile-columns-wrapper" ng-init="prof_selected=$root.getProfile(profiles[0].id)">
+    <div ng-hide="show_search_panel || show_list_panel || show_pages_panel || show_hashtag_panel">
+        <div class="btn-group select-profile-widget" ng-if="profiles.length">
+            <div class="dropdown-toggle profile-selected" data-toggle="dropdown">
+                <img ng-src="[[prof_selected.avatar]]" />
+                <div class="profile-details">
+                    <div class="profile-username truncate">[[prof_selected.name]]</div>
+                    <div class="profile-red-name">[[prof_selected.red]] [[prof_selected.group ? '( Grupo )' : '']]</div>
+                    <span class="caret"></span>
+                </div>
+            </div>
+            <ul class="dropdown-menu dropdown-menu-right list-of-profiles" role="menu">
+                <input no-propage type="text" ng-model="profile_filter" class="form-control list-profiles-filter" placeholder="Buscar perfil..."/>
+                <li ng-repeat="profile in profiles | filter:profile_filter">
+                    <a class="select-profile-column-btn" prof="[[profile.id]]">
+                        <img ng-src="[[profile.avatar]]" />
+                        <div class="list-profiles-details">
+                            <div class="truncate">[[profile.name]]</div>
+                            <div>[[profile.red]] [[profile.group ? '( Grupo )' : '']]</div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div ng-if="profiles.length" ng-show="red.id==prof_selected.redid" ng-repeat="red in redes" class="profile-column-option">
+            <div ng-if="!prof_selected.group">    
+                <div ng-if="!option.group" ng-repeat="option in red.columns" red="[[red.uniquename]]"
+                     class="red-option-item" 
+                     ng-class="{'red-option-hashtag' : option.type=='HASHTAG','red-option-search' : option.type=='SEARCH','red-option-pages' : option.type=='PAGE', 'red-option-list' : option.type=='LIST', 'red-option-clickable': option.type!='SEARCH' && option.type!='LIST' && option.type!='PAGE'&& option.type!='HASHTAG'}"
+                     col="[[option.id]]" typ="[[option.type]]">
+                    <span class="glyphicon glyphicon-plus option-item-hover"></span>
+                    <span class="glyphicon option-item-image [[option.glyphicon]]"></span>
+                    <span class="option-item-name">[[option.name]]</span>
+                </div>
+            </div>
+            <!-- para grupos de facebook -->
+            <div ng-if="prof_selected.group">
+                <div ng-if="option.group" ng-repeat="option in red.columns" red="[[red.uniquename]]"
+                     class="red-option-item" 
+                     ng-class="{'red-option-search' : option.type=='GROUP_SEARCH', 'red-option-clickable': option.type!='GROUP_SEARCH'}"
+                     col="[[option.id]]" typ="[[option.type]]">
+                    <span class="glyphicon glyphicon-plus option-item-hover"></span>
+                    <span class="glyphicon option-item-image [[option.glyphicon]]"></span>
+                    <span class="option-item-name">[[option.name]]</span>
+                </div>
+            </div>
+            
+        </div>
+        <div ng-if="profiles.length == 0" class="box-search-content">
+            No tienen ningún perfil asociado aun.
+        </div>
+    </div>
+    <div class="profile-column-aux" ng-show="show_pages_panel">
+        <div class="box-pages-title box-aux-row">
+            Búsqueda de paginas en [[prof_selected.red]]
+            <span class="glyphicon glyphicon-remove close-pages" tooltip="Cerrar" tooltip-append-to-body="true"></span>
+        </div>
+        <div class="box-pages-terms box-aux-row">
+            
+            <div class="input-group">
+                <input type="text" class="form-control" ng-model="new_page" />
+                <span class="btn input-group-addon glyphicon glyphicon-search gly-add-col-page" value="[[new_search]]"></span>
+            </div>
+        </div>
+        <div class="box-pages-content">
+            <div ng-repeat="page in prof_selected.pages" class="box-pages-result">
+                <div class="col-lg-10 col-md-10" style="padding: 0">[[page.name]]</div>
+                <div class="col-lg-2 col-md-2" style="text-align: right;">
+                    <span 
+                        style="cursor: pointer;" 
+                        tooltip-append-to-body="true"
+                        tooltip="Agregar Columna"
+                        terms="[[page.query]]"
+                        class="glyphicon glyphicon-plus-sign gly-add-col-pages1"></span>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="box-pages-loading" ng-show="prof_selected.searching">
+                <span class="glyphicon glyphicon-refresh-gif-black"></span> cargando
+            </div>
+        </div>
+    </div>
+    
+    <div class="profile-column-aux" ng-show="show_hashtag_panel">
+        <div class="box-pages-title box-aux-row">
+            Búsqueda de etiquetas en [[prof_selected.red]]
+            <span class="glyphicon glyphicon-remove close-hashtag" tooltip="Cerrar" tooltip-append-to-body="true"></span>
+        </div>
+        <div class="box-hashtag-terms box-aux-row">
+            
+            <div class="input-group">
+                <input type="text" class="form-control input-hashtag" ng-model="new_hashtag" />                
+            </div>
+        </div>
+        <div class="box-hashtag-content">
+            <div ng-repeat="hash in prof_selected.hashtag" class="box-pages-result">
+                <div class="col-lg-10 col-md-10" style="padding: 0">[[hash.name]]</div>
+                <div class="col-lg-2 col-md-2" style="text-align: right;">
+                    <span 
+                        style="cursor: pointer;" 
+                        tooltip-append-to-body="true"
+                        tooltip="Agregar Columna"
+                        terms="[[hashtag.query]]"
+                        class="glyphicon glyphicon-plus-sign gly-add-col-hashtag"></span>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="box-pages-loading" ng-show="prof_selected.searching">
+                <span class="glyphicon glyphicon-refresh-gif-black"></span> cargando
+            </div>
+        </div>
+    </div>
+    <div class="profile-column-aux" ng-show="show_search_panel">
+        <div class="box-search-title box-aux-row">
+            Búsqueda en [[prof_selected.red]]
+            <span class="glyphicon glyphicon-remove close-search" tooltip="Cerrar" tooltip-append-to-body="true"></span>
+        </div>
+        <div class="box-search-terms box-aux-row">
+            <select ng-if="prof_selected.redid==4" class="form-control" id="li-search-types" style="margin-bottom: 5px;">
+                <option value="job">Trabajos</option>
+                <option value="people">Personas</option>
+                <option value="company">Empresas</option>
+            </select>
+            <div class="input-group">
+                <input type="text" class="form-control" ng-model="new_search" />
+                <span class="btn input-group-addon glyphicon glyphicon-search gly-add-col-search" value="[[new_search]]"></span>
+            </div>
+        </div>
+        <div class="box-search-content">
+            <div ng-repeat="search in prof_selected.search" class="box-search-result">
+                <div class="col-lg-10 col-md-10" style="padding: 0">[[search.name]]</div>
+                <div class="col-lg-2 col-md-2" style="text-align: right;">
+                    <span 
+                        style="cursor: pointer;" 
+                        tooltip-append-to-body="true"
+                        tooltip="Agregar Columna"
+                        terms="[[search.query]]"
+                        class="glyphicon glyphicon-plus-sign gly-add-col-search1"></span>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="box-search-loading" ng-show="prof_selected.searching">
+                <span class="glyphicon glyphicon-refresh-gif-black"></span> Cargando
+            </div>
+        </div>
+    </div>
+    
+    <div class="profile-column-aux" ng-show="show_list_panel">
+        <div class="box-list-title box-aux-row">
+            Listas de [[prof_selected.red]]
+            <span class="glyphicon glyphicon-remove close-search" tooltip="Cerrar" tooltip-append-to-body="true"></span>
+        </div>
+        <div class="box-list-content">
+            <div ng-show="!prof_selected.new_list">
+                <div ng-repeat="list in prof_selected.lists" class="box-list-result">
+                    <div class="col-lg-10 col-md-10" style="padding: 0">
+                        [[list.name]]
+                        <div style="font-size: 12px; color: gray;">
+                            Miembros: [[list.member_count]] &nbsp;<span class="glyphicon glyphicon1-lock" ng-if="list.mode=='private'"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2" style="text-align: right;">
+                        <span 
+                            style="cursor: pointer;" 
+                            tooltip-append-to-body="true"
+                            tooltip="Agregar Columna"
+                            terms="[[list.id_str]]"
+                            class="glyphicon glyphicon-plus-sign gly-add-col-list"></span>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="box-search-loading" ng-show="prof_selected.searching">
+                    <span class="glyphicon glyphicon-refresh-gif-black"></span> Cargando
+                </div>
+            </div>
+            <div ng-show="prof_selected.new_list">
+                <p>
+                Nombre<br/>
+                <input type="text" ng-model="prof_selected.new_list.name" class="input-auto"/>
+                </p>
+                <p>
+                Descripción<br/>
+                <input type="text" ng-model="prof_selected.new_list.description" class="input-auto"/>
+                <span class="text-help">Máximo 100 caracteres [opcional]</span>
+                </p>
+                <p>
+                Privacidad<br/>
+                <label><input type="radio" ng-model="prof_selected.new_list.mode" value="public" />Pública <span class="text-help">(cualquiera puede seguir esta lista)</span></label><br/>
+                <label><input type="radio" ng-model="prof_selected.new_list.mode" value="private" />Privada <span class="text-help">(solo tú puedes acceder a esta lista)</span></label><br/>
+                </p>
+                <hr/>
+                <button class="btn btn-sm btn-primary btn-create-list"
+                        ng-show="!prof_selected.new_list.creating"><i class="glyphicon glyphicon-plus"></i> Crear lista</button>
+                <button class="btn btn-sm btn-danger" 
+                        ng-click="prof_selected.new_list=false"
+                        ng-show="!prof_selected.new_list.creating"><i class="glyphicon glyphicon-remove"></i> Cancelar</button>
+                <button ng-show="prof_selected.new_list.creating" class="btn btn-sm btn-default">Procesando <span class="glyphicon glyphicon-btn-loading"></span></button>        
+            </div>    
+            
+        </div>
+        <div class="box-list-add-btn" ng-show="!prof_selected.new_list">
+            <button class="btn btn-default btn-sm" ng-click="prof_selected.new_list={}"><i class="glyphicon glyphicon-plus"></i> Nueva lista</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,140 @@
+parameters:
+    twitter.conf:
+        consumer_key: uzhoI1IaIl7AJc7hlGKDXjTVX
+        consumer_secret: E14o1o44JEjacp7nig3p4wfkNelGiSuneMNNZXDRrl1GjhwSQw
+        callback_url: http://dev.conversationquest.com/twitter_success
+    linkedin.conf:
+        application_name: ConversationQuest
+        app_id: 7716ifzzspviai
+        app_secret: iA4dZrGt7cKBHMdd
+        scope:
+        redirect_uri: http://dev.conversationquest.com/linkedin_success
+    wordpress.conf:
+        api_name: ConversationQuest
+        api_username: yalint86
+        api_secret: LbtH2s0zSeWJyzVD0IjY77HelOpOOi6sMRy8kkoSxwN9GOSk8c8k1FACNVTnU6YE
+        api_redirect_uri: http://dev.conversationquest.com/wordpress_success
+        api_client_id: 45821
+    facebook.conf:
+        app_id: 1551478785080522
+        app_secret: df64044ec82df5040768ef49a9fb6845
+        default_graph_version: v2.5
+        api_redirect_uri: http://dev.conversationquest.com/facebook_success
+    instagram.conf:
+        apiKey: ee211912b9fd485e9f92f8b90160925e
+        apiSecret: 759e5fd5e65841feb3e7e57a3e8fe686
+        apiCallback: http://dev.conversationquest.com/instagram_success
+
+    pinterest.conf:
+        apiKey: 4825256216705909277
+        apiSecret: f19de21b4ff755c6919c5da4d665606afd8f4ea9fb1fea30cdf1e8607442c41e
+        apiCallback: http://dev.conversationquest.com/pinterest_success
+    google.conf:
+        client_id: 601132566450-qmusl0uqt79f512n6ltjgi4s0kj4ss11.apps.googleusercontent.com
+        client_secret: zV7iMyT7IZtskPnIIfGedssO
+        redirectUri: http://dev.conversationquest.com/app_dev.php/google_success
+
+    bitly.conf:
+        accesstoken: 6f1757d45ad910bc982450b338478d4fe8f733b8
+
+    adfly.conf:
+        accesstoken: 46db8fe2cb0ae359f48a216a1eeca4d3
+        uid: 12248585
+    tiny.conf:
+        accesstoken: 46db8fe2cb0ae359f48a216a1eeca4d3
+        uid: 12248585
+    vgd.conf:
+        accesstoken: 46db8fe2cb0ae359f48a216a1eeca4d3
+        uid: 12248585
+
+    #twitter.conf:
+       # consumer_key: 5NV1EYgyMM9ghgrvRQew4m0Ks
+       # consumer_secret: 9CJ5LZrHXidjvcPY99bg0zBgwvlmfKiVl8Ro9O31ZeBnPm8r0k
+       # callback_url: http://hootsuite.denmasoft.com/app_dev.php/twitter_success
+    #google.conf:
+      #  client_id: 290246878806-divv9ah1a888j0g7r1t8e5b25cdo7voj.apps.googleusercontent.com
+       # client_secret: rurCynf6tOJfU7a3r6EsESUn
+       # redirectUri: http://hootsuite.denmasoft.com/app_dev.php/google_success
+   # linkedin.conf:
+       # application_name: Denma
+       # app_id: 775x4dfkbcofds
+       # app_secret: yA1tr9dTFt8AxMAO
+       # scope:
+       # redirect_uri: http://hootsuite.denmasoft.com/app_dev.php/linkedin_success
+   # wordpress.conf:
+        #api_name: hootsuite
+       # api_username: denmasoft
+       # api_secret: 0eqG6WKUv5PI1noEHkaYQ20aRPk4Xw4nLi6gMPKXIYQA3iE9luffJ47qaH5PWCYo
+       # api_redirect_uri: http://hootsuite.denmasoft.com/app_dev.php/es/wordpress_success
+       # api_client_id: 41816
+
+    #facebook.conf:
+      #  app_id: 1505084269741122
+      #  app_secret: 51b48346fa1386c566416b24cfc8f0b1
+      #  default_graph_version: v2.3
+
+    #instagram.conf:
+       # apiKey: ef3089a88d07423da664119f98d11dea
+       # apiSecret: 3282fb7fb9a3496dac6b32298c867fb7
+       # apiCallback: http://hootsuite.denmasoft.com/app_dev.php/es/instagram_success
+
+    #pinterest.conf:
+       # apiKey: 4813685878845096887
+       # apiSecret: a0517923a91921929b320c8b793283c2381981e05a778c4402e66bf0975f6b34
+       # apiCallback: http://hootsuite.denmasoft.com/app_dev.php/es/pinterest_success
+
+    #bitly.conf:
+       # accesstoken: 6f1757d45ad910bc982450b338478d4fe8f733b8
+
+   # adfly.conf:
+       # accesstoken: 46db8fe2cb0ae359f48a216a1eeca4d3
+       # uid: 12248585
+
+services:
+    twig.extension.text:
+        class: Twig_Extensions_Extension_Text
+        tags:
+           - { name: twig.extension }
+                
+   # twig.extension.debug:
+    #    class: Twig_Extensions_Extension_Debug
+    #    tags:
+     #       - { name: twig.extension }
+                
+    linkedin:
+        class: HootSuite\DashboardBundle\Services\LinkedInService
+        arguments: [ %linkedin.conf% ]
+    twitter:
+        class: HootSuite\DashboardBundle\Services\TwitterService
+        arguments: [ %twitter.conf%,@session ]
+
+    google:
+        class: HootSuite\DashboardBundle\Services\GoogleService
+        arguments: [ %google.conf%]
+                
+    wordpress:
+        class: HootSuite\DashboardBundle\Services\WordpressService
+        arguments: [ %wordpress.conf% ]
+        
+    facebookv2:
+        class: HootSuite\DashboardBundle\Services\FacebookService
+        arguments: [ %facebook.conf% ]
+    instagram:
+        class: HootSuite\DashboardBundle\Services\InstagramService
+        arguments: [ %instagram.conf% ]
+    pinterest:
+        class: HootSuite\DashboardBundle\Services\PinterestService
+        arguments: [ %pinterest.conf% ]
+    bitly:
+        class: HootSuite\DashboardBundle\Services\BitlyService
+        arguments: [ %bitly.conf% ]
+    adfly:
+        class: HootSuite\DashboardBundle\Services\AdfService
+        arguments: [ %adfly.conf% ]
+    tiny:
+        class: HootSuite\DashboardBundle\Services\TinyService
+        arguments: [ %tiny.conf% ]
+
+    vgd:
+        class: HootSuite\DashboardBundle\Services\VgdService
+        arguments: [ %vgd.conf% ]

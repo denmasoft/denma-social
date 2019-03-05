@@ -1,0 +1,15 @@
+tag_new:
+    pattern:  /new
+    defaults: { _controller: "DashboardBundle:Tag:createTag",_locale: "es"}
+    options:
+       expose: true
+load_tags:
+    pattern:  /load
+    defaults: { _controller: DashboardBundle:Tag:load,_locale: "es" }
+    options:
+       expose: true
+tag_remove:
+    pattern:  /remove
+    defaults: { _controller: "DashboardBundle:Tag:remove",_locale: "es"}
+    options:
+       expose: true

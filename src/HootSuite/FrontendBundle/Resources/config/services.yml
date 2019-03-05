@@ -1,0 +1,9 @@
+parameters:
+#    frontend.example.class: HootSuite\FrontendBundle\Example
+
+services:
+    login_listener:
+        class: HootSuite\FrontendBundle\Listener\LoginListener
+        arguments: [ @doctrine, @session ]
+        tags:
+            - { name: kernel.event_listener, event: security.interactive_login }

@@ -1,0 +1,32 @@
+{% extends 'FrontendBundle::frontend.html.twig' %}
+
+{% block slider %}
+    {% include 'FrontendBundle:Templates:slider.html.twig' %}
+{% endblock %} 
+
+{% block content %}
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+    <!--Reasons-->
+    <section class="page-block" id="hootsuite">
+        <div class="container">
+            <div class="row page-header">
+                <h2>CopyRight ConversationQuest</h2>
+                <span>ConversationQuest, software líder en la gestión y medición de tus redes sociales.</span>
+            </div>
+            <div class="row reasons">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <p>Con un conjunto de herramientas diseñadas para mejorar la conexión con tu audiencia -como
+                        borradores, programación en lote, columnas de búsqueda y asignación de mensajes- puedes
+                        optimizar tu alcance social y optimizar la visibilidad de tu marca en medios sociales.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/frontend/js/components.js') }}"></script>
+    <script src="{{ asset('bundles/frontend/js/setup.js') }}"></script>
+{% endblock %}

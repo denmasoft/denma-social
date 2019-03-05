@@ -1,0 +1,470 @@
+<div id="top-menu">
+    <div class="message-box-window" 
+         click-outside
+         ng-class="{expanded: model.message_writting}"  
+         ng-controller="MessagesController" 
+         ng-mouseover="startWriteMessage();" 
+         ng-mouseleave="stopWriteMessage()"
+         ng-blur="stopWriteMessage()">
+        <form>
+            <div class="message-box-left">
+                <div class="message-user-profiles">
+                    <div class="message-selected-list">
+                        <div class="selected-list-box">
+                            <span class="item-filter">
+                                <span ng-hide="model.message_writting" class="send-to-text">Enviar a...</span>
+                                <span class="glyphicon glyphicon-search ng-hide" style="margin-left: 10px; padding-top: 8px;" ng-show="model.message_writting"></span>
+                                <input 
+                                    ng-model="redName" 
+                                    ng-show="model.message_writting" 
+                                    type="text" 
+                                    class="profiles-filter ng-hide" 
+                                    placeholder="Buscar perfil..."/>
+                            </span>
+                        </div>
+                        <div class="tools-list-box">
+                            <span class="item-box selected-count" ng-bind="model.profiles_selections.length"></span>
+                            <span
+                                class="item-box-btn ng-hide"
+                                ng-show="model.profiles_selections.length" 
+                                ng-click="removeAllProfiles()">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </span>
+                            <span class="item-box-btn dropdown-toggle" data-toggle="dropdown" tabindex="-1">
+                                <span class="caret"></span>
+                            </span>
+                            <ul role="menu" class="dropdown-menu">
+                                <li><a ng-click="selectAllProfiles()">Marcar Todos</a></li>
+                                <li><a ng-click="removeAllProfiles()">Quitar todos</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="message-profiles-selection ng-hide" ng-show="model.message_writting">
+                    <div class="profile-picker">
+                        <ul style="list-style: none; margin: 0; padding: 0">
+                            <li 
+                                ng-repeat="profile in profiles | filter:redName"
+                                ng-class="{profile_selected: isProfileSelected(profile)}"
+                                itemid="[[profile.id]]">
+                                <div class="profile-icon" ng-click="selectProfile(profile)" >
+                                    <img ng-src="[[profile.avatar]]" />
+                                    <span class="truncate">[[profile.name]]</span>
+                                </div>
+                                <div class="profile-controls">
+                                    <span ng-show="isProfileDefault(profile)" tooltip="Quitar selección"
+                                          tooltip-append-to-body="true"
+                                          class="glyphicon glyphicon-pushpin rotate"
+                                          ng-click="unselectProfileDefault(profile)"></span>
+                                    <span ng-show="!isProfileDefault(profile)" tooltip="Seleccionar Siempre"
+                                          tooltip-append-to-body="true"
+                                          class="glyphicon glyphicon-pushpin"
+                                          ng-click="selectProfileDefault(profile)"></span>
+                                </div>
+                            </li>
+                            <li ng-click="addProfile()">
+                                <div class="profile-icon profile-add glyphicon glyphicon-plus"></div>
+                                <a class="profile-add">Agregar red social</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>    
+            </div>
+            <div class="message-box-right">
+                <div class="message-box-container">
+                    <div class="composer-box">
+                        <textarea 
+                            id="message-box-input"
+                            class="message-box-message"
+                            placeholder="Escribir mensaje..."
+                            ng-model="enter_text" 
+                            autocomplete="off"></textarea>
+                    </div>
+                    <div class="message-tools-bottom gradient1">
+                        <div class="input-group add-link-group">
+                            <span class="input-group-addon glyphicon glyphicon-link"></span>
+                            <input type="text" placeholder="Añadir un enlace" ng-init="input_width=160" ng-model="message_link"
+                                   ng-style="{'width' : input_width+'px'}" 
+                                   ng-click="input_width=190">
+                            <span ng-show="input_width == 190 || model.link_editing" class="input-group-addon input-addon-last" 
+                                  ng-click="message_link ? agregarVinculo() : cancelarVinculo()" 
+                                  style="cursor: pointer;" 
+                                  ng-bind="message_link ? 'Agregar' : 'Cancelar'"></span>
+                            <span ng-show="input_width == 190 || model.link_editing"
+                                  class="glyphicon glyphicon-cog link-short-opts input-addon-last"
+                                  tooltip="Acortar vínculo"
+                                  ng-click="showAcortarVinculo()"></span>
+                            
+                        </div>
+                        <div class="controls">
+                            <button class="btn btn-sm btn-default" ng-class="{btn_active: model.extra_attachment}" 
+                                    tooltip="Añadir imagen o archivo" 
+                                    ng-click="model.extra_attachment=1; model.extra_editing='att'">
+                                <span class="glyphicon glyphicon-paperclip"></span>
+                            </button>
+                            <button class="btn btn-sm btn-default" ng-class="{btn_active: model.extra_programacion}"  
+                                    tooltip="Programar" 
+                                    ng-click="model.extra_programacion=1; model.extra_editing='pro'">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </button>
+                            <button class="btn btn-sm btn-default" ng-class="{btn_active: model.extra_ubicacion}"  
+                                    tooltip="Añadir Ubicación" 
+                                    ng-click="agregarUbicacion()">
+                                <span class="glyphicon glyphicon-map-marker"></span>
+                            </button>
+                            <button class="btn btn-sm btn-default" ng-class="{btn_active: model.extra_segmentacion}"  
+                                    tooltip="Opciones de segmentación" 
+                                    ng-click="agregarSegmentation()">
+                                <span class="glyphicon glyphicon-globe"></span>
+                            </button>
+                            <button class="btn btn-sm btn-default" ng-class="{btn_active: model.extra_privacidad}"  
+                                    tooltip="Opciones de privacidad" 
+                                    ng-click="agregarPrivacidad()">
+                                <span class="glyphicon glyphicon-lock"></span>
+                            </button>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="message-extras-box ng-hide" ng-show="model.message_writting">
+                    <div class="extra-url ng-hide" ng-show="model.extra_editing=='url'">
+                        <div class="shorten_container">
+                            <label>
+                                <span class="title">Acortador de URL</span>
+                                <select id="shorten_item" name="shorten">
+                                    <option value="adf.ly">adf.ly</option>
+                                    <option value="bit.ly">bit.ly</option>
+                                    <option value="tinyurl.com">tinyurl.com</option>
+                                </select>
+                            </label>
+                            <button class="btn btn-sm btn-default short-cancel" tooltip="Cancelar" ng-click="model.extra_url=0;model.extra_editing=''">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                            <hr>
+                        </div>
+                    </div>
+
+                    <div class="extra-upload-file _extra_item ng-hide" ng-show="model.extra_editing=='att'">
+                        <div class="extra-editing-section">
+                            <div class="drag-upload-file">
+                                <input type="file" ngf-select ng-model="photos" name="Photos" accept="image/*" ngf-max-size="25MB" ngf-multiple="true"/>
+                            </div>   
+                        </div>
+                        <button class="btn btn-sm btn-default btn-extra-close" tooltip="Cancelar" ng-click="model.extra_attachment=0;model.extra_editing=''">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </button>    
+                    </div>
+
+                    <div class="extra-programacion _extra_item ng-hide" ng-show="model.extra_editing=='pro'">
+                        <div class="extra-editing-section" ng-controller="DatetimeController">
+                            <div class="automatic-prog extra-inner-resalted">
+                                <div class="text-head">
+                                    Opciones de programacion automática
+                                </div>
+                                <div class="text-mini">Texto descriptivo</div>
+                            </div>
+                            <div class="inline-datepicker">
+                                <datepicker  
+                                    min-date="minDate" 
+                                    ng-model="datet" 
+                                    show-weeks="false" 
+                                    class="well well-sm">
+                                </datepicker>
+                            </div>
+                            <div class="inlile-datepicker-result extra-inner-resalted">
+                                <input class="form-control" type="text" value="[[datet | date:'yyyy/MM/dd']]">
+                                <timepicker ng-model="mytime" ng-change="timeChanged()"></timepicker>
+
+                                <label class="text-mini">
+                                    <input type="checkbox"> Recibir un correo al ser enviado</label>
+                            </div>
+                            <input id="prodate" type="hidden" ng-model="model.prodate" ng-value="datet | date:'yyyy/MM/dd'">
+                            <input id="prohrs" type="hidden" ng-model="model.prohrs" ng-value="mytime | date:'H:mm:s'">
+                            <input id="extra_pro" type="hidden" ng-value="model.extra_programacion">
+                            <div class="text-xmini align-right margin-t10">Ahorra tiempo, prueba la <a>subida por lotes</a></div>
+                            <div class="clearfix"></div>
+                            <button class="btn btn-sm btn-default btn-extra-close" tooltip="Eliminar" ng-click="model.extra_programacion=0;model.extra_editing=''">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                        </div>
+                        
+                    </div>
+                    <div class="extra-location ng-hide" ng-show="model.showLocation=='loc'">
+                        <div class="shorten_container">
+                            <label class="adr">
+                                <span class="glyphicon glyphicon-map-marker" style=""></span>[[model.address]]</label>
+                            <button class="btn btn-sm btn-default short-cancel" tooltip="Cancelar" ng-click="model.showLocation=''">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="extra-segmentacion _extra_item ng-hide" ng-show="model.extra_editing=='seg'">
+                        <div class="shorten_container">
+                            <select chosen multiple options="countries" ng-model="model.countries" ng-options="country.code as country.name for country in countries"></select>
+                            <button class="btn btn-sm btn-default" tooltip="Cancelar" ng-click="model.extra_segmentacion=0;model.extra_editing=''">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="extra-privacidad _extra_item ng-hide" ng-show="model.extra_editing=='pri'">
+                        <div class="shorten_container priv" ng-show="model.extra_noprivacy==true">
+                            <p><strong>Opciones de Privacidad:</strong>
+                                <button class="btn btn-sm btn-default short-cancel" tooltip="Cancelar" ng-click="model.extra_segmentacion=0;model.extra_editing=''">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                </button>
+                            </p>
+                            <div class="privacy">
+                                <span>
+                                    Por favor, seleccione una red social soportada(Facebook, Google+ Page, LinkedIn)
+                                </span>
+                            </div>
+                            <hr>
+                        </div>
+
+                        <div class="shorten_container priv" ng-show="model.extra_fprivacy==true">
+                            <p><strong>Opciones de Privacidad:</strong>
+                                <button class="btn btn-sm btn-default short-cancel" tooltip="Cancelar" ng-click="model.extra_segmentacion=0;model.extra_editing=''">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                </button>
+                            </p>
+                            <div class="privacy">
+                                <span>
+                                    Por favor, seleccione una red social soportada(Facebook, Google+ Page, LinkedIn)
+                                </span>
+                            </div>
+                            <hr>
+                        </div>
+
+                        <div class="shorten_container priv" ng-show="model.extra_noprivacy==true">
+                            <p><strong>Opciones de Privacidad:</strong>
+                                <button class="btn btn-sm btn-default short-cancel" tooltip="Cancelar" ng-click="model.extra_segmentacion=0;model.extra_editing=''">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                </button>
+                            </p>
+                            <div class="privacy">
+                                <span>
+                                    Por favor, seleccione una red social soportada(Facebook, Google+ Page, LinkedIn)
+                                </span>
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+                <div class="message-attachments-box ng-hide" ng-show="model.extra_ubicacion && model.message_writting">
+                    <div class="attachment-box _extra_attached">
+                        <div><reverse-geocode lat="[[model.lat]]" lng="[[model.lng]]" /></div>
+                        <button class="btn btn-sm btn-default btn-extra-close" tooltip="Eliminar" ng-click="model.extra_ubicacion=0">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="message-send-box">
+                    <div class="chars-count">
+                        <span class="badge"><span class="glyphicon glyphicon1-twitter"></span> [[140-enter_text.length>=0 ? 140-enter_text.length : 0]]</span>
+                    </div>
+
+                    <div class="controls">
+                        <div class="draft-box">
+                            <a class="dropdown-toggle btn btn-sm btn-default btn-form" data-toggle="dropdown" tabindex="-1">
+                                <span>Salvar <i class="icon-arrow-down"> </i></span>
+                            </a>
+                            <ul role="menu" class="dropdown-menu">
+                                <li><a ng-click="draftMessage()">Como borrador</a></li>
+                                <li><a ng-click="active_route='/editor'">Ver borradores</a></li>
+                            </ul>
+                        </div>
+                        <button ng-click="sendMessage()" ng-show="!sending_msg && !model.extra_programacion" class="btn btn-sm btn-default btn-form">Enviar ahora</button>
+                        <button ng-click="scheduleMessage()" ng-show="!sending_msg && model.extra_programacion" class="btn btn-sm btn-default btn-form">Programar</button>
+                        <button ng-show="sending_msg" class="btn btn-sm btn-default btn-form"><span class="glyphicon glyphicon-btn-loading"></span></button>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>  
+                    
+                <div class="message-tools" id="message-tools" ng-hide="model.message_writting">
+                    <div class="controls">
+                        <span ng-class="{btn_active: model.extra_attachment}">
+                            <span class="glyphicon glyphicon-paperclip"></span>
+                        </span>
+                        <span ng-class="{btn_active: model.extra_programacion}">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                        <span ng-class="{btn_active: model.extra_ubicacion}">
+                            <span class="glyphicon glyphicon-map-marker"></span>
+                        </span>    
+                        <span ng-class="{btn_active: model.extra_segmentacion}">
+                            <span class="glyphicon glyphicon-globe"></span>
+                        </span>    
+                        <span ng-class="{btn_active: model.extra_privacidad}">
+                            <span class="glyphicon glyphicon-lock"></span>
+                        </span>    
+                    </div>
+                </div>    
+            </div>
+            <div class="clearfix"></div>    
+        </form>
+        
+    </div>
+    <div class="top-actions">
+        <button ng-click="showQuickSearch()" class="btn btn-sm btn-default" ><span class="glyphicon glyphicon-search"></span></button>
+        <div id="topSearch" class="ts-panel" ng-if="quicksearch==true">
+            <div class="ts-panel-pointer"></div>
+            <div class="ts-panel-header _header">
+                <div class="actions">
+                    <span class="_back btn-lite-sta btn-dark btn-icon-19" style="display:none">
+                      <span class="icon-co-19 return"></span>
+                    </span>&nbsp;
+                </div>
+                <h2>Búsqueda rápida</h2>
+                <div class="controls">
+                </div>
+            </div>
+            <style>
+                .searcher {
+                    background-color: #f5f5f5;
+                }
+                .searcher .searchBox {
+                    padding: 5px;
+                }
+                .searcher .inputBox {
+                    padding: 0 3px;
+                    position: relative;
+                }
+                .ui-input, input, select, textarea, select.clean:focus {
+                    background-color: #fff;
+                    border: 1px solid #ccc;
+                    border-radius: 1px;
+                    box-shadow: 0 1px 1px #efefef inset;
+                    color: #222;
+                    font-family: Arial,Helvetica,sans-serif;
+                    font-size: 14px;
+                }
+                .ui-icon, .icon-13, .icon-static-13, .icon-sn-13, .icon-16, .icon-static-16, .icon-sn-16, .favicon-16, .icon-oi-16, .icon-19, .icon-global-nav-19, .icon-static-19, .icon-sn-19, .icon-30, .icon-static-30, .icon-sn-30, .icon-66, .icon-qs, .icon-fb-list, .icon-co-13, .icon-co-16, .icon-co-19, .icon-co-90 {
+                    display: inline-block;
+                    outline: 0 none;
+                    overflow: hidden;
+                    text-align: left;
+                    text-decoration: none;
+                    text-indent: -999em;
+                    vertical-align: middle;
+                }
+                .icon-16, .icon-static-16, .icon-sn-16, .icon-co-16 {
+                    height: 16px;
+                    width: 16px;
+                }
+                .icon-sn-13, .icon-sn-16, .icon-sn-19, .icon-sn-30 {
+                    background-image: url("/images/icons-sn.53168a42.png");
+                }
+                .icon-sn-16.twitter {
+                    background-position: -13px -16px;
+                }
+                .icon-sn-16.instagram {
+                    background-position: -13px -272px;
+                }
+                .ui-icon, .icon-13, .icon-static-13, .icon-16, .icon-static-16, .icon-19, .icon-static-19, .icon-30, .icon-static-30 {
+                    background-image: url("/images/icons.323d9c57.png");
+                }
+                .ui-icon, .icon-13, .icon-static-13, .icon-sn-13, .icon-co-13 {
+                    height: 13px;
+                    width: 13px;
+                }
+                .icon-13.less {
+                    background-position: 0 -104px;
+                }
+                #quickSearchContainer .searchContainer input[type="text"] {
+                    padding-left: 0;
+                    width: 230px;
+                }
+                .icon-19.geo {
+                    background-position: -32px -228px;
+                }
+                .icon-19, .icon-global-nav-19, .icon-static-19, .icon-sn-19, .icon-co-19 {
+                    height: 19px;
+                    width: 19px;
+                }
+                #quickSearchContainer .inputBox .geo {
+                    cursor: pointer;
+                    position: absolute;
+                    right: 5px;
+                    top: 6px;
+                }
+                #topSearch .searchContainer input[type="text"] {
+                    background-color: transparent;
+                    border-color: transparent;
+                    padding-left: 0;
+                    width: 230px;
+                }
+            </style>
+            <div class="searchContainer">
+                <div class="searcher collapsed">
+                    <div class="searchBox">
+                        <div class="inputBox ui-input">
+                            <span class="searchDropdown btn-icon" uib-dropdown on-toggle="toggled(open)" id="simple-dropdown" uib-dropdown-toggle>
+                              <span ng-class="boxclass" class="icon-sn-16 twitter"></span>
+                              <span class="icon-13 less"></span>
+                                <ul class="dropdown-menu" uib-dropdown-menu aria-labelledby="simple-dropdown">
+                                <li >
+                                    <a  ng-click="searchTwitter()">Buscar en Twitter</a>
+                                </li>
+                                <li >
+                                    <a ng-click="findTwitterUsers()" class="title">Encontrar usuarios de Twitter</a>
+                                </li>
+                                <li >
+                                    <a ng-click="searchInstagram()" class="title">Buscar en Instagram</a>
+                                </li>
+                              </ul>
+                            </span>
+                            <input ng-model="search.term" ng-value="geocode" class="clean" maxlength="500" type="text">
+                            <span ng-click="getCurrentLocation()" ng-if="search_twitter" class="icon-19 geo" title="Use your location to find local search results"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="conversationMessageBox">
+                <div class="messageSection collapsed">
+                    <div class="messageBox _messageContainer">
+                        <div class="_uiElementBox composerBox ui-input">
+                            <span class="_searchTypeDropdown btn-icon _hsddbtn">
+                              <span class="_searchTypeIcon glyphicon1-twitter2"></span>
+                              <span class="caret"></span>
+                            </span>
+                            <input type="text" class="_searchTerm _uiElementInput messageBoxMessage clean" maxlength="500">
+                            <span class="_geosearch _jsTooltip icon-19 geo" title="Utiliza tu ubicación para encontrar resultados de búsqueda locales"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>-->
+            <div class="ts-panel-content">
+                <div class="twitterSearchWarning _twitterSearchWarning">
+                    <p>Debido a cambios recientes en Twitter, necesitas una cuenta de Twitter para poder usar columnas de búsqueda. Las columnas de búsqueda ya existentes se guardarán y actualizarán una vez que la cuenta de Twitter se autentique. <br><a href="" target="new">Más información</a></p>
+                    <span class="btn-lite-sta btn-icon _addSocialNetworkWarningBtn" ng-click="addProfile()">
+                      <span class="icon-sn-13 twitter"></span>
+                      Agregar cuenta Twitter
+                    </span>
+                </div>
+                <div class="twitterSearchWarning _instagramSearchWarning" style="display:none;">
+                    <p>Necesitas una cuenta de Instagram para usar la búsqueda de Instagram.</p>
+                    <span class="btn-lite-sta btn-icon _addSocialNetworkWarningBtn">
+                      <span class="icon-sn-13 instagram"></span>&nbsp;
+                      Conectar una cuenta de Instagram.
+                    </span>
+                </div>
+                <div class="twitterResults" style="display:none">
+                </div>
+                <div class="twitterUserResults" style="display:none">
+                </div>
+                <div class="facebookResults" style="display:none">
+                </div>
+                <div class="instagramResults" style="display:none">
+                </div>
+            </div>
+            <div class="ts-panel-footer">
+                <div class="controls">
+
+                </div>
+            </div>
+        </div>
+    </div>     
+</div>
+    

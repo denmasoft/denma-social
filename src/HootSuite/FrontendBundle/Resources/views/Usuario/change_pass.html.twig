@@ -1,0 +1,36 @@
+{% extends 'ProyectoBundle::frontend.html.twig' %}
+{% block title %}{{'proyecto.title.request_pass'|trans}}{% endblock %}
+
+{% block content %}
+    <h1 style="text-align: center; margin-top: 40px;">{{'proyecto.title.change_pass' |trans}}</h1>
+    
+    <div id="login-container" style="margin: 0 auto; width: 400px; padding: 10px 50px 0 50px; margin-bottom: 50px; border-bottom: 1px solid #bababa; ">
+        {% if invalid is defined and invalid %}
+            <div class="alert alert-error">
+                <div>{{'proyecto.text.change_pass_invalid'|trans}}</div>
+            </div>
+        {% else %}
+            <form id="form-login" class="form-horizontal row-fluid" method="POST" action="{{path('usuario_change_pass', {'token' : token})}}" style="margin-top: 40px;">                 
+                <div class="control-group">
+                    <label class="control-label" style="width: 140px;">{{'proyecto.label.login_pass' |trans}}</label>
+                    <div class="controls" style="margin-left: 150px">
+                        {{ form_widget(form.password.first, {'attr' : {'full':true} }) }}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" style="width: 140px;">{{'proyecto.label.register_repeat' |trans}}</label>
+                    <div class="controls" style="margin-left: 150px">
+                        {{ form_widget(form.password.second, {'attr' : {'full':true} }) }}
+                    </div>
+                </div>
+                {{ form_errors(form.password.first) }}
+                <div class="control-group center">
+                    <div class="controls" style="float: right;">
+                        <button class="btn btn-orange" type="submit"><i class="icon icon-ok icon-white"></i> {{'proyecto.label.change_pass' |trans}}</button>
+                    </div>
+                </div>
+                {{form_widget(form._token)}}    
+            </form>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,43 @@
+<div class="tabs-left-side"> <!-- required for floating -->
+    <div class="tabs-left-header gradient1 shadow1">Ajustes</div>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs tabs-left">
+        <li ng-class="{active: template=='cuenta'}"><a href="#ajustes/cuenta" data-target="#ajustes-cuenta" ng-click="template='cuenta'" data-toggle="tab">Cuenta</a></li>
+        <li ng-class="{active: template=='preferencias'}"><a href="#ajustes/preferencias" data-target="#ajustes-preferencias" ng-click="template='preferencias'" data-toggle="tab">Preferencias</a></li>
+        <li ng-class="{active: template=='archivos'}"><a href="#ajustes/archivos" data-target="#ajustes-archivos" ng-click="template='archivos'" data-toggle="tab">Archivos</a></li>
+        <li ng-class="{active: template=='rss'}"><a href="#ajustes/rss" data-target="#ajustes-rss" ng-click="template='rss'" data-toggle="tab">RSS/Atom</a></li>
+        <li ng-class="{active: template=='urls'}"><a href="#ajustes/urls" data-target="#ajustes-urls" ng-click="template='urls'" data-toggle="tab">Urls Personalizadas</a></li>
+        <li ng-class="{active: template=='notificaciones'}"><a href="#ajustes/notificaciones" data-target="#ajustes-notificaciones" ng-click="template='notificaciones'" data-toggle="tab">Notificaciones</a></li>
+        <li ng-class="{active: template=='programacion'}"><a href="#ajustes/programacion" data-target="#ajustes-programacion" ng-click="template='programacion'" data-toggle="tab">Programación automática</a></li>
+    </ul>
+</div>
+
+<div class="tabs-right-side">
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div class="tab-pane tabs-right-content" ng-class="{active: template=='cuenta'}" id="ajustes-cuenta">
+            <ng-include ng-if="template=='cuenta'" src="'../../bundles/dashboard/subviews/ajustes/cuenta.html'"></ng-include>
+        </div>
+        <div class="tab-pane tabs-right-content" ng-class="{active: template=='preferencias'}" id="ajustes-preferencias">
+            <ng-include ng-if="template=='preferencias'" src="'../../bundles/dashboard/subviews/ajustes/preferencias.html'"></ng-include>
+        </div>
+        <div class="tab-pane tabs-right-content" ng-class="{active: template=='archivos'}" id="ajustes-archivos">
+            <ng-include ng-if="template=='archivos'" src="'../../bundles/dashboard/subviews/ajustes/archivos.html'"></ng-include>
+        </div>
+        <div class="tab-pane tabs-right-content" ng-class="{active: template=='rss'}" id="ajustes-rss">
+            <ng-include ng-if="template=='rss'" src="'../../bundles/dashboard/subviews/ajustes/rss.html'"></ng-include>
+        </div>
+        <div class="tab-pane tabs-right-content" ng-class="{active: template=='urls'}" id="ajustes-urls">
+            <ng-include ng-if="template=='urls'" src="'../../bundles/dashboard/subviews/ajustes/urls.html'"></ng-include>
+        </div>
+        <div class="tab-pane tabs-right-content" ng-class="{active: template=='notificaciones'}" id="ajustes-notificaciones">
+            <ng-include ng-if="template=='notificaciones'" src="'../../bundles/dashboard/subviews/ajustes/notificaciones.html'"></ng-include>
+        </div>
+        <div class="tab-pane tabs-right-content" ng-class="{active: template=='programacion'}" id="ajustes-programacion">
+            <ng-include ng-if="template=='programacion'" src="'../../bundles/dashboard/subviews/ajustes/programacion.html'"></ng-include>
+        </div>
+    </div>
+    
+    
+</div> 
+<div class="clearfix"></div> 

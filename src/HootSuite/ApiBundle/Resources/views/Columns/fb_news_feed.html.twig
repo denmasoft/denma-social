@@ -1,0 +1,149 @@
+<span ng-init="col.more_options_filter=true; col.more_options_empty=true;"></span>
+<div class="column-body-item column-body-filtering" ng-show="col.filtering">
+    <div class="input-group">
+        <div class="input-group-btn input-group-select-first">
+            <select class="col-filter-selection" tooltip="Filtrar por" tooltip-append-to-body="true">
+                <option>Palabra clave</option>
+            </select>
+        </div>    
+        <input type="text" ng-model="filtro" class="form-control" />
+        <span class="input-group-btn">
+            <button class="btn btn-primary btn-sm" ng-click="col.filtering=false"><i class="glyphicon glyphicon-remove"></i></button>
+        </span>
+    </div>    
+</div>
+<div ng-if="col.data.length" ng-repeat="row in col.data  | filter:filtro" class="column-body-item column-body-has-options">
+    <div class="body-item-content" ng-init="row.liked_it=fbLikedIt(row)">
+        <div class="item-avatar">
+            <div class="avatar-more-menu">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="width: 100%;">
+                    <div style="position: absolute; top: 5px; right: 5px; left: 5px;">
+                        <img style="width: 100%;" ng-src="https://graph.facebook.com/[[row.from.id]]/picture?type=square" />
+                    </div>
+                    <br/>
+                    <span style="margin-top: 20px;" class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="javascript:;" ng-click="userProfile(row.from.id,col.profile,row.from.name)"><span class="glyphicon glyphicon1-user"></span> Ver perfil</a></li>
+                </ul>
+            </div>
+            <img style="width: 100%" ng-src="https://graph.facebook.com/[[row.from.id]]/picture?type=square" />
+        </div>
+        <div class="item-username"><a class="username" href="javascript:;" ng-click="userProfile(row.from.id,col.profile, row.from.name)">[[row.from.name]]</a></div>
+        <div class="item-created"><span unsafe><a target="_blank" href="[[row.link]]">[[row.created_time.date | facebookDate | date:'MMM d, h:mm a' ]]</a></span></div>
+        
+        <div class="item-text" compile-data template="
+             <div>
+                <div ng-if='row.message'>[[row.message | linkify | linkusers:col.profile]]</div>
+                <div ng-if='row.story'>[[row.story | linkify | linkusers:col.profile]]</div>
+                <div class='item-row-link' ng-if='row.source || row.link || row.picture || row.caption || row.description'>
+                    <a ng-click='fbShowMediaPreview(row)' 
+                        ng-if='row.source' 
+                        ng-show='!row.source_object'
+                        href='javascript:;'
+                        class='item-link-photo'>
+                        <img ng-src='[[row.picture]]'/>
+                    </a>
+                    <a ng-click='fbShowPhotoPreview(row)' 
+                        ng-if='row.link && row.picture && !row.source' 
+                        href='[[row.type!='photo' ? row.link : 'javascript:;']]'
+                        class='item-link-photo'>
+                        <img ng-src='[[row.picture]]'/>
+                    </a>
+                        
+                    <div ng-if='row.link && row.name' class='item-link-name'>
+                        <a class='username' target='_blank' ng-href='[[row.link]]'>[[row.name]]</a>
+                    </div>
+                    <div ng-if='row.caption' class='item-link-caption'>[[row.caption | linkify | linkusers:col.profile]]</div>
+                    
+                    <div ng-if='row.source' ng-show='row.source_object' class='item-link-media'>
+                        [[row.source_object]]
+                        <button 
+                            ng-if='row.source' 
+                            ng-show='row.source_object' 
+                            ng-click='row.source_object=false'
+                            class='btn btn-normal btn-sm'>
+                            <i class='glyphicon glyphicon-remove'></i>
+                        </button>
+                    </div>
+                    
+                    <div ng-if='row.description && !row.source' class='item-link-description'>[[row.description]]</div>
+                    <div class='clearfix'></div>
+                </div>
+             </div>">
+        </div>
+        <div class="item-likes-comments">
+            <a href="javascript:;" ng-show="!row.likes.length" class="item-likes"><i class="glyphicon glyphicon-fb-like"></i> 0 Me gusta</a>
+            <a href="javascript:;" class="item-likes" ng-show="row.likes.length"
+                custom-popover
+                popover-placement="right"
+                popover-html="<div class='column-retuit-users'>
+                                  <div style='margin-bottom:2px' ng-repeat='us in row.likes'>
+                                      <a href='javascript:;' ng-click='userProfile(us.id,col.profile,us.name)'>
+                                          <imagen-fb src='us.id'></imagen-fb></imagen> <span ng-bind='us.name'></span>
+                                      </a>
+                                  </div>
+                              </div>">
+                <i class="glyphicon glyphicon-fb-like"></i> [[row.likes.length]] Me gusta
+            </a>
+            <a href="javascript:;" class="item-comment" ng-click="fbShowComments(row, col.profile)"><i class="glyphicon glyphicon-comment"></i> [[row.comments.length ? row.comments.length : 0]] Comentarios</a>
+        </div>
+        <div class="item-conversation item-conversation-fb" ng-show="row.comments.data.length>5">
+            <div class="item-conversation-all">
+                <div ng-repeat="conv in row.comments | limitTo:3" class="column-body-item">
+                    <div class="item-avatar">
+                        <a href="javascript:;" ng-click="userProfile(conv.from.id,col.profile,conv.from.name)">
+                            <img style="width: 100%" ng-src="https://graph.facebook.com/[[conv.from.id]]/picture?type=square" />
+                        </a>
+                    </div>
+                    <div class="body-item-content">
+                        <div class="item-username">
+                            <a class="username" href="javascript:;" ng-click="userProfile(conv.from.name,col.profile,conv.from.name)">[[conv.from.name]]</a> 
+                            <span compile-data template="<span>[[conv.message | linkify | linkusers:col.profile]]</span>"></span>
+                        </div>
+                        <div class="item-created"></div>
+                    </div>
+                </div>
+                <div class="column-body-item">
+                    <div class="item-comment-add" blur ng-init="row.comments.fb_writing_comment=false;">
+                        <textarea ng-click="row.comments.fb_writing_comment=true" 
+                                  ng-model="row.comments.fb_comment_text"
+                                  alt="Pulsa 'Intro' para enviar." 
+                                  title="Pulsa 'Intro' para enviar." 
+                                  ng-blur="row.comments.fb_writing_comment=false"
+                                  ng-class="{'inactive' : !row.comments.fb_writing_comment}"
+                                  ng-enter="fbAddComment(col.profile, row)"
+                                  placeholder="Escribe un comentario..."></textarea>
+                            <div class="text-help">
+                                <span style="font-size: 11px;" ng-show="row.comments.fb_writing_comment && !row.comments.adding_comment">Pulsa "Intro" para enviar.</span>
+                                <div ng-show="row.comments.adding_comment"><span class="glyphicon glyphicon-refresh-gif-black"></span> Enviando...</div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-row-options">
+        <ul>
+            <span no-propage ng-click="fbLikes(col.profile, row, 1)" ng-if="!row.user_likes" class="glyphicon glyphicon-fb-like btn-option" tooltip="Me gusta" tooltip-append-to-body="true"></span>
+            <span no-propage ng-click="fbLikes(col.profile, row, 0)" ng-if="row.user_likes" class="glyphicon glyphicon-fb-unlike btn-option" tooltip="No me gusta" tooltip-append-to-body="true"></span>
+            <span class="dropdown btn-option">
+                <span class="dropdown-toggle" on-toggle="toggled(open)" tooltip="Más opciones" tooltip-append-to-body="true">
+                    <i class="caret"></i>
+                </span>
+                <ul class="dropdown-menu pull-right" role="menu">
+                    <li><a href="javascript:;" no-propage ng-click="addColumn('',col.profile, 'COMMENTS', {'q':col.id})"><span class="glyphicon glyphicon1-profile"></span> Crear columna de comentarios</a></li>
+                    <li><a href="javascript:;" ng-click="sendToEmail(row.description)"><span class="glyphicon glyphicon-envelope"></span> Enviar a email</a></li>
+                    <li><a href="javascript:;"><span class="glyphicon glyphicon1-shuffle2"></span> Asignar a...</a></li>
+                    <li><a href="javascript:;"><span class="glyphicon glyphicon1-bubble"></span> Enviar a conversación</a></li>
+                </ul>
+            </span>
+        </ul>
+    </div>    
+</div>
+<div class="column-body-item column-body-scrolling" ng-show="col.scrolling">
+    <span class="glyphicon glyphicon-refresh-gif-black"></span> Cargando...
+</div>
+<div ng-if="col.data.length==0" class="column-no-results column-body-item">
+    No se han encontrado resultados
+</div>

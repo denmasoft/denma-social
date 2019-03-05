@@ -1,0 +1,69 @@
+<div class="tab-pane-resalted">
+    <div class="tab-pane principal-tab active">
+        <div class="tabbable">
+            <ul class="nav nav-tabs normal-tab nav-justified">
+                <li class="active">
+                    <a data-target="#user-profile-home" data-toggle="tab" data-toggle="tab" tooltip="Biografía" tooltip-append-to-body="true">
+                        <i class="glyphicon glyphicon-user"></i>
+                    </a>
+                </li>
+                <li>
+                    <a data-target="#user-profile-updates" data-toggle="tab" tooltip="Actualizaciones" tooltip-append-to-body="true" ng-click="userFeed(user, user.profile_id)">
+                        <i class="glyphicon glyphicon1-home"></i>
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content modal-max-height">
+                <div class="tab-pane active modal-inner-body" id="user-profile-home">
+                    <div class="user-profile-top">
+                        <div class="col-lg-4 col-md-4" style="padding-left: 0">
+                            <img src="[[user.profile.profile_url]]" ng-src="[[user.profile.profile_url]]" style="width: 100%" />
+                        </div>
+                        <div class="col-lg-8 col-md-8">
+                            <table class="table">
+                                <tr>
+                                    <th style="width: 30%">Seguidores</th>
+                                    <td><span class="badge ng-binding">[[user.profile.counts.followed_by]]</span></td>
+                                </tr>
+                                <tr>
+                                    <th style="width: 30%">Siguiendo</th>
+                                    <td><span class="badge ng-binding">[[user.profile.counts.follows]]</span></td>
+                                </tr>
+                                <tr>
+                                    <th style="width: 30%">Actualizaciones</th>
+                                    <td><span class="badge ng-binding">[[user.profile.counts.media]]</span></td>
+                                </tr>                                
+                            </table>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="clearfix">
+                        <table class="table">
+                            <tr ng-if="user.profile.bio">
+                                <th style="width: 20%">Bio</th>
+                                <td>[[user.profile.bio]]</td>
+                            </tr>
+                            <tr ng-if="user.profile.website">
+                                <th style="width: 20%">Sitio Web</th>
+                                <td>[[user.profile.website]]</td>
+                            </tr>                            
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane modal-inner-body" id="user-profile-updates">
+                    <div ng-show="!user.feed" style="text-align: center; padding: 20px 0;">
+                        <span class="glyphicon glyphicon-refresh-gif-black"></span> Cargando
+                    </div>
+                    <div ng-show="user.feed_html" compile-data template="[[user.feed_html]]">
+
+                    </div>    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-btns" style="text-align: center;">
+    <button class="btn btn-sm btn-default btn-form" ng-click="/*follow(col, user)()*/">Seguir</button>
+    <button class="btn btn-sm btn-default btn-form" ng-click="/*unFollow(user, user.profile_id)*/">Dejar de Seguir</button>
+    <button class="btn btn-sm btn-default btn-form" ng-click="cancel()">Cerrar</button>
+</div>

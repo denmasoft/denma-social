@@ -1,0 +1,181 @@
+<div class="tab-pane-resalted">
+    <div class="tab-pane principal-tab active">
+        <div class="tabbable">
+            <ul class="nav nav-tabs normal-tab nav-justified">
+                <li class="active">
+                    <a data-target="#user-profile-home" data-toggle="tab" data-toggle="tab" tooltip="Perfíl" tooltip-append-to-body="true">
+                        Perfíl
+                    </a>
+                </li>
+                <li>
+                    <a data-target="#user-profile-authentication" data-toggle="tab" tooltip="Autenticación" tooltip-append-to-body="true">
+                        Autenticación
+                    </a>
+                </li>
+                <li>
+                    <a data-target="#user-profile-security" data-toggle="tab" tooltip="Seguridad" tooltip-append-to-body="true">
+                        Seguridad
+                    </a>
+                </li>
+                <li>
+                    <a data-target="#user-profile-billing" data-toggle="tab" tooltip="Pago" tooltip-append-to-body="true">
+                        Pago
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content modal-max-height">
+                <div class="account-info tab-pane active modal-inner-body" id="user-profile-home">
+                    <div class="user-profile-top">
+                        
+                        <div class="col-lg-8 col-md-8">
+
+                            <form  name="userForm" id="form-login" class="ca form-horizontal" role="form" ng-submit="updateMember(miembro.id)">
+                                <div class='form-group' ng-class="{ 'has-error' : userForm.fullName.$invalid && (userForm.fullName.$dirty || submitted)}">
+                                    <div class="col-sm-12">
+                                        <label class="clearfix">
+                                            <span class="block input-icon input-icon-right">
+                                                <input type="text" placeholder="nombre..." class="form-control" name="fullName" ng-model="user.fullName" ng-value="miembro.name" ng-required="true" id="fullName">
+                                                <p ng-show="userForm.fullName.$error.required && (userForm.fullName.$dirty || submitted)" class="help-block">Debe introducir su nombre.</p>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class='form-group' ng-class="{ 'has-error' : userForm.telephone.$invalid && (userForm.telephone.$dirty || submitted)}">
+                                    <div class="col-sm-12">
+                                        <label class="clearfix">
+                                            <span class="block input-icon input-icon-right">
+                                                <input type="tel" placeholder="Teléfono..." class="form-control" name="telephone" ng-model="user.telephone" ng-value="miembro.telephone" id="telephone">
+                                                <p ng-show="userForm.telephone.$error.tel && (userForm.telephone.$dirty || submitted)" class="help-block">por favor, introduzca un teléfono válido.</p>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class='form-group' ng-class="{ 'has-error' : userForm.userEmail.$invalid && (userForm.userEmail.$dirty || submitted)}">
+                                    <div class="col-sm-12">
+                                        <label class="clearfix">
+                                            <span class="block input-icon input-icon-right">
+                                                <input type="email" placeholder="correo electrónico..." class="form-control" name="userEmail" ng-model="user.userEmail" ng-value="miembro.email" ng-required="true" id="userEmail">
+                                                <p ng-show="userForm.userEmail.$error.required && (userForm.userEmail.$dirty || submitted)" class="help-block">el correo electrónico es requerido.</p>
+                                                <p ng-show="userForm.userEmail.$error.email && (userForm.userEmail.$dirty || submitted)" class="help-block">por favor, introduzca un correo electrónico válido.</p>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class='form-group' ng-class="{ 'has-error' : userForm.password.$invalid && (userForm.password.$dirty || submitted)}">
+                                    <div class="col-sm-12">
+                                        <label class="clearfix">
+                                            <span class="block input-icon input-icon-right">
+                                                <input type="password" placeholder="contraseña..." class="form-control" name="password" ng-model="user.password" id="password">
+                                                <p ng-show="(userForm.password.$dirty || submitted)" class="help-block">La contraseña es requerida.</p>
+
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class='form-group'>
+                                    <div class="col-sm-12">
+                                        <label class="clearfix">
+                                            <span class="block input-icon input-icon-right">
+                                                <input type="password" placeholder="descripción..." class="form-control" name="desc" ng-model="user.desc" id="desc">
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <input type="hidden" id="user_create_token" name="user_create_token" ng-model="userForm.token" class="">
+                                <div class="form-group">
+                                    <a class="btn btn-primary" ng-click="updateMember(miembro.id)"><i class="glyphicon glyphicon-ok"></i> Continuar</a>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>                    
+                </div>
+                <div class="account-info tab-pane modal-inner-body" id="user-profile-authentication">
+                    <div class="col-lg-12 col-md-12">
+                        <h1>Método de autenticación</h1>
+                        <label class="title">Métodos de autenticación actuales:</label>
+                        <div id="authMethods" class="list-scroll">
+                            <div class="listItem memberProfile" ng-repeat="profile in profiles">
+                                <span class="glyphicon1-[[profile.red | lowercase]]"></span>
+                                <span class="authMethodName">
+                                  <strong>[[profile.red]]</strong>
+                                </span>
+                                <div class="authToken">
+                                  <span title="[[profile.userid]]">[[profile.userid]]</span>
+                                </div>
+                                <div class="email">
+                                    <strong>([[profile.name]])</strong>
+                                </div>
+                                <div class="controls">
+                                    <a class="icon-13 delete _deleteAuth"></a>
+                                </div>
+                          </div>
+                         </div>
+                    </div>  
+                </div>
+                <div class="account-info tab-pane modal-inner-body" id="user-profile-security">
+                    <div class="ga-security-header">
+                        <h1>Seguridad</h1>
+                        <br>
+                        <p>
+                            La verificación en 2 pasos utiliza tu dispositivo móvil para proporcionar una capa extra de seguridad a tu cuenta de Hootsuite. Impulsado por Google Authenticator.
+                            <a href="https://help.hootsuite.com/entries/22527304-Managing-Google-Authenticator" target="_blank">Descubra más.</a>
+                        </p>
+                    </div>
+                    <div>
+                        <div class="_noGaSecret" style="">
+                            <div class="ga-get-started btn-sta-med _generateGaSecret">
+                                <span class="icon-sn-30 googleauth"></span>
+                                <a class="btn btn-primary">Empieza ahora mismo</a>
+                            </div>
+                        </div>
+                        <div class="_gaInProgress" style="display:none">
+                            <div class="ga-info-panel">
+                                <div class="ga-bullet-point">
+                                    <p>1</p>
+                                </div>
+                                <p class="ga-instruction-point">
+                                    Instalar la app de Google Authenticator para tu dispositivo móvil.<a href="https://support.google.com/accounts/answer/1066447" target="_blank"> Descubra más</a>
+                                </p>
+                                <br>
+                                <div class="ga-bullet-point">
+                                    <p>2</p>
+                                </div>
+                                <p class="ga-instruction-point"> Escanea el código QR a la izquierda o introduce manualmente tu código secreto en la app de Google Authenticator.</p>
+                                <br>
+                                <div class="ga-bullet-point">
+                                    <p>3</p>
+                                </div>
+                                <p class="ga-instruction-point"> Introduce el código de 6 dígitos que la app de Google Authenticator incluye abajo:</p>
+                                <br>
+                                <input class="ga-code-confirm" type="text" id="gaCodeConfirmCheck" placeholder="Code">
+                                <span class="btn-cta btn-type1 _checkGaCode">Enviar</span>
+                            </div>
+                        </div>
+                        <div class="ga-info-panel _gaSecurityOptions _hasGaSecret" style="display: none">
+                            <input type="radio" class="_useOnLoginCb" name="gaSettings" value="always" id="gaAlwaysRadio">
+                            <label for="gaAlwaysRadio">Utilizar el método de verificación en 2 pasos cada vez que inicie sesión.</label>
+                            <br>
+                            <br>
+                            <input type="radio" class="_useOnLoginCb" name="gaSettings" value="locationChange" id="gaLocRadio">
+                            <label for="gaLocRadio"> Usar la verificación en dos pasos solo cuando mi ubicación cambie.</label>
+                            <a href="https://help.hootsuite.com/entries/22179549-Location-Verification-System" target="_blank">Descubra más</a><br>
+                        </div>
+                    </div>
+                </div>
+                <div class="account-info tab-pane modal-inner-body" id="user-profile-billing">
+                     <div class="billingInfo">
+                        <h1>Información de facturación:</h1>
+                        <p><strong>Plan actual:</strong> {{plan.name}}</p>
+                            {% if plan.price ==0 %}
+                            <a href="/es/#pricing" class="btn btn-success">Cambiar Plan</a>
+                            {% endif %}
+                    </div>  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-btns" style="text-align: center;">   
+    <button class="btn btn-sm btn-default btn-form" ng-click="cancel()">Cerrar</button>
+</div>

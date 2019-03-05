@@ -1,0 +1,889 @@
+<script type="text/ng-template" id="userProfileModal.html">
+    <div ng-keyup="hitScape($event)" class="modal-wrapper">
+        <div class="modal-header drag-handle">
+            <button type="button" class="close" ng-click="cancel()" aria-hidden="true"><span class="glyphicon glyphicon-remove"></span></button>
+            <span class="mymodal-title">[[user.profile ? 'Perfil de usuario (' + user.profile_screen + ')' : 'Información del perfil' ]]</span>
+        </div>
+        <div class="modal-body modal-body-container">
+            <div ng-show="!user.profile" style="text-align: center; padding: 20px 0;">
+                <span class="glyphicon glyphicon-refresh-gif-black"></span> Cargando
+            </div>
+            <div ng-show="user.profile">
+                <div compile-data template="[[user.profile.html]]"></div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="adjustment.html">
+<div ng-keyup="hitScape($event)" class="modal-wrapper">
+    <div class="modal-header drag-handle">
+        <button type="button" class="close" ng-click="cancel()" aria-hidden="true"><span class="glyphicon glyphicon-remove"></span></button>
+        <span class="mymodal-title">Ajustes</span>
+    </div>
+    <div class="modal-body">
+            <div ng-if="!adjustment.adjust" style="text-align: center; padding: 20px 0;">
+                <span class="glyphicon glyphicon-refresh-gif-black"></span> Cargando
+            </div>
+            <div ng-if="adjustment.adjust">
+                <div compile-data template="[[adjustment.adjust]]"></div>
+            </div>
+        <div class="clearfix"></div>    
+    </div>
+</div>
+</script>
+
+<script type="text/ng-template" id="userDataProfileModal.html">
+    <div ng-keyup="hitScape($event)" class="modal-wrapper">
+        <div class="modal-header drag-handle">
+            <button type="button" class="close" ng-click="cancel()" aria-hidden="true"><span class="glyphicon glyphicon-remove"></span></button>
+            <span class="mymodal-title">Mi cuenta</span>
+        </div>
+        <div class="modal-body modal-body-container">
+            <div ng-show="!user.profile" style="text-align: center; padding: 20px 0;">
+                <span class="glyphicon glyphicon-refresh-gif-black"></span> Cargando
+            </div>
+            <div ng-show="user.profile">
+                <div compile-data template="[[user.profile]]"></div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="addToList.html">
+    <div ng-keyup="hitScape($event)" class="modal-wrapper">
+        <div class="modal-header drag-handle">
+            <button type="button" class="close" ng-click="cancel()" aria-hidden="true"><span class="glyphicon glyphicon-remove"></span></button>
+            <span class="mymodal-title">Listas de Twitter</span>
+        </div>
+        <div class="modal-body modal-body-container">
+            <div ng-show="list_loading" style="text-align: center; padding: 20px 0;">
+                <span class="glyphicon glyphicon-refresh-gif-black"></span> Cargando
+            </div>
+            <div ng-show="!list_loading">
+                <div class="tab-pane-resalted padding10">
+                    Listas de Twitter disponibles para el usuario [[list_user.screen_name]]<br/>
+                    <select class="form-control" required="true"
+                            ng-options="list.id_str as list.name for list in lists" 
+                            ng-model="list_selected" >
+                            <option value="">Seleccione</option>
+                    </select>
+                </div>
+                <div class="modal-btns">
+                    <button class="btn btn-sm btn-default btn-form" ng-click="createListMember(list_selected);cancel()"><i class="glyphicon glyphicon-ok"></i> Agregar a lista</button>
+                    <button class="btn btn-sm btn-default btn-form" ng-click="cancel()">Cancelar</button>
+                </div>
+            </div> 
+        </div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="hashSearch.html">
+    <div ng-keyup="hitScape($event)" class="modal-wrapper">
+        <div class="modal-header drag-handle">
+            <button type="button" class="close" ng-click="cancel()" aria-hidden="true"><span class="glyphicon glyphicon-remove"></span></button>
+            <span class="mymodal-title">Resultados para : [[twitter_search.hash_name]]</span>
+        </div>
+        <div class="modal-body modal-body-container">
+            <div ng-show="twitter_search.searching" style="text-align: center; padding: 20px 0;">
+                <span class="glyphicon glyphicon-refresh-gif-black"></span> Cargando
+            </div>
+            <div ng-show="twitter_search.hash_html">
+                <div class="tab-pane-resalted">
+                    <div compile-data template="[[twitter_search.hash_html]]"></div>
+                </div>
+                <div class="modal-btns">
+                    <button class="btn btn-sm btn-default btn-form" ng-click="addColumn(getColId(twitter_search.profile_id, 'SEARCH'),twitter_search.profile_id, 'SEARCH', {'q' : twitter_search.hash_name})"><i class="glyphicon glyphicon-plus"></i> Agregar como columna</button>
+                    <button class="btn btn-sm btn-default btn-form" ng-click="cancel()">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="typeColumns.html">
+    <div ng-keyup="hitScape($event)" class="modal-wrapper">
+        <div class="modal-header drag-handle">
+            <button type="button" class="close" ng-click="cancel()" aria-hidden="true"><span class="glyphicon glyphicon-remove"></span></button>
+            <span class="mymodal-title">Añadir columna</span>
+        </div>
+        <div class="modal-body">
+            <div class="tabbable">
+                <div class="modal-left"> <!-- required for floating -->
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs tabs-left">
+                        <li ng-repeat="red in redes_copia" ng-class="{'active': $index == 0}">
+                            <a data-target="#red-[[red.id]]" data-toggle="tab"><span class="glyphicon" ng-class="red.glyphicon1"></span> [[red.name]]</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="modal-right">
+                    <div class="tab-content" ng-init="prof_selected=profiles[0].id">
+                        <div ng-repeat="red in redes_copia" class="tab-pane principal-tab" ng-class="{'active': $index == 0}" id="red-[[red.id]]" ng-init="hasProfile=networkHasProfile(red.id)">
+                            <div ng-if="hasProfile">
+                                <div class="tabbable">
+                                    <ul class="nav nav-tabs normal-tab">
+                                        <li class="active"><a data-target="#columnas-[[red.id]]" data-toggle="tab">Columnas</a></li>
+                                        <li ng-if="red.search"><a data-target="#search-[[red.id]]" data-toggle="tab">Búsqueda</a></li>
+                                        <li ng-if="red.keyword"><a data-target="#keyword-[[red.id]]" data-toggle="tab">Palabra Clave</a></li>
+                                        <li ng-if="red.list"><a data-target="#list-[[red.id]]" data-toggle="tab">Listas</a></li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="columnas-[[red.id]]">
+                                            <div class="tab-pane-resalted padding10 height300">
+                                                <div class="text-mini text-spance">Selecciona un perfil</div>
+                                                <select class="form-control" required="true" 
+                                                        ng-options="perfil.id as perfil.name for perfil in profiles" 
+                                                        ng-model="prof_selected">
+                                                </select>
+                                                <div class="text-mini text-spance">Seleccione columna para añadir a pestaña actual</div>
+                                                <div class="tipo-columna-selection">
+                                                    <div class="tipo-columna-item" ng-repeat="col in red.columns" ng-if="col.type!='SEARCH' && col.type!='LIST'">
+                                                        [[col.name]]
+                                                        <span ng-if="col.filter" glycol="[[col.id]]" class="glyphicon glyphicon1-filter2 gly-add-filter" tooltip="Filtro" tooltip-append-to-body="true"></span>
+                                                        <span ng-click="addColumn(col.id, prof_selected, col.type)" class="glyphicon glyphicon-plus-sign gly-add-col" tooltip="Agregar Columna" tooltip-append-to-body="true"></span>
+                                                    </div>   
+                                                </div>
+                                            </div>
+                                        </div>
+                                            
+                                        <div class="tab-pane" id="search-[[red.id]]" ng-if="red.search">
+                                            <div class="tab-pane-resalted padding10 height300">
+                                                <div class="text-mini text-spance">Selecciona un perfil</div>
+                                                <select class="form-control" required="true" 
+                                                        ng-options="perfil.id as perfil.name for perfil in profiles" 
+                                                        ng-model="prof_selected">
+                                                </select>
+                                                <div class="text-mini text-spance">Introduce el Término de Búsqueda</div>
+                                                <input type="text" class="form-control search-terms-input" ng-model="search_term"/>
+                                                <div class="input-help">
+                                                    <button class="btn btn-default btn-sm">Mostrar Ejemplos</button>
+                                                </div>
+                                                <div class="modal-btns">
+                                                    <button ng-show="search_term"
+                                                        ng-click="addColumn(getColId(prof_selected, 'SEARCH'), prof_selected, 'SEARCH', {'q' : search_term})"
+                                                        class="btn btn-sm btn-default btn-form btn-add-col">Añadir Columna</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                            
+                                        <div class="tab-pane" id="keyword-[[red.id]]" ng-if="red.keyword">
+                                            <div class="tab-pane-resalted padding10 height300">
+                                                <div class="text-mini text-spance">Selecciona un perfil</div>
+                                                <select class="form-control" required="true" 
+                                                        ng-options="perfil.id as perfil.name for perfil in profiles" 
+                                                        ng-model="prof_selected">
+                                                </select>
+                                                <div class="text-mini text-spance" ng-init="column_keywords = []">Introduce la palabra o frase que quieras seguir. (máx 3)</div>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control search-terms-input" 
+                                                           ng-disabled="column_keywords.length==3"
+                                                           ng-model="column_key"/>
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-primary" 
+                                                                ng-class="{'disabled' : (column_keywords.length==3 || !column_key)}" ng-disabled="column_keywords.length==3 || !column_key"
+                                                                ng-click="column_keywords.push(column_key); column_key='';"><i class="glyphicon glyphicon-plus"></i> Agregar</button>
+                                                    </span>
+                                                </div>
+                                                <div ng-repeat="key in column_keywords" style="margin: 5px 0;">
+                                                    <label class="label label-primary" style="font-size: inherit;">
+                                                        <i style="cursor: pointer; color: #333333; top:3px" 
+                                                           ng-click="column_keywords.splice($index,1)" 
+                                                           class="glyphicon glyphicon-remove"></i><span style="font-size: 13px;"> [[key]] [[column_keywords.length]]</span>
+                                                    </label>
+                                                </div>
+                                                <div class="modal-btns">
+                                                    <button ng-show="column_keywords.length"
+                                                        ng-click="addColumn(getColId(prof_selected, 'SEARCH'), prof_selected, 'SEARCH', {'q' : column_keywords.join(' OR ')})"
+                                                        class="btn btn-sm btn-default btn-form btn-add-col">Añadir Columna</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                            
+                                        <div class="tab-pane" id="list-[[red.id]]">
+                                            <div class="tab-pane-resalted padding10 height300">
+                                                <div class="text-mini text-spance">Selecciona un perfil</div>
+                                                <select class="form-control" required="true" 
+                                                        ng-change="searchListsFolCol(prof_selected_list)"
+                                                        ng-options="perfil.id as perfil.name for perfil in profiles" 
+                                                        ng-model="prof_selected_list" placeholder="adssd">
+                                                    <option value="">Seleccione un perfil</option>
+                                                </select>
+                                                <div class="tabbable" style="margin-top: 5px;" ng-show="!new_list_create">
+                                                    <ul class="nav nav-tabs normal-tab" style="background-color:transparent;">
+                                                        <li class="active"><a data-target="#list-own" data-toggle="tab">Mis Listas</a></li>
+                                                        <li><a data-target="#list-subscritions" ng-click="searchListsFolColSubscrib(prof_selected_list)" data-toggle="tab" style="border-right:0;">Listas subscritas</a></li>
+                                                    </ul>
+                                                    <div class="tab-content">
+                                                        <div class="tab-pane active" id="list-own" style="padding: 0;">
+                                                            <div class="tipo-columna-selection" style="height: 150px; margin-top: 0; padding: 3px;">
+                                                                <div class="tipo-columna-item" ng-repeat="list in getPofile(prof_selected_list).lists">
+                                                                    [[list.name]] <span style="color: gray">([[list.mode]])</span>
+                                                                    <span ng-click="addColumn(getColId(prof_selected_list, 'LIST'), prof_selected_list, 'LIST', {'list_id' : list.id_str})" class="glyphicon glyphicon-plus-sign gly-add-col" tooltip="Agregar Columna" tooltip-append-to-body="true"></span>
+                                                                </div>
+                                                                <div ng-show="!getPofile(prof_selected_list)">Mis listas</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane" id="list-subscritions" style="padding: 0;">
+                                                            <div class="tipo-columna-selection" style="height: 150px; margin-top: 0; padding: 3px;">
+                                                                <div class="tipo-columna-item" ng-repeat="list in lists_subs[prof_selected_list]">
+                                                                    [[list.name]] <span style="color: gray">([[list.mode]])</span>
+                                                                    <span ng-click="addColumn(getColId(prof_selected_list, 'LIST'), prof_selected_list, 'LIST', {'list_id' : list.id_str})" class="glyphicon glyphicon-plus-sign gly-add-col" tooltip="Agregar Columna" tooltip-append-to-body="true"></span>
+                                                                </div>
+                                                                <div ng-show="!lists_subs[prof_selected_list]">Mis listas</div>
+                                                            </div>
+                                                        </div>  
+                                                    </div> 
+                                                </div>
+                                                <div ng-show="new_list_create" style="margin-top: 10px;">
+                                                    <p>
+                                                    Nombre<br/>
+                                                    <input type="text" ng-model="getPofile(prof_selected_list).new_list.name" class="input-auto"/>
+                                                    </p>
+                                                    <p>
+                                                    Descripción<br/>
+                                                    <input type="text" ng-model="getPofile(prof_selected_list).new_list.description" class="input-auto"/>
+                                                    <span class="text-help">Máximo 100 caracteres [opcional]</span>
+                                                    </p>
+                                                    <p>
+                                                    <label><input type="radio" ng-model="getPofile(prof_selected_list).new_list.mode" value="public" />Lista Pública</label>
+                                                    <label><input type="radio" ng-model="getPofile(prof_selected_list).new_list.mode" value="private" />Lista Privada</label>
+                                                    </p>
+                                                    <button class="btn btn-sm btn-primary btn-create-list"
+                                                            ng-click="createList(getPofile(prof_selected_list))"
+                                                            ng-show="!getPofile(prof_selected_list).new_list.creating"><i class="glyphicon glyphicon-plus"></i> Crear lista</button>
+                                                    <button class="btn btn-sm btn-danger" 
+                                                            ng-click="new_list_create=false"
+                                                            ng-show="!getPofile(prof_selected_list).new_list.creating"><i class="glyphicon glyphicon-remove"></i> Cancelar</button>
+                                                    <button ng-show="getPofile(prof_selected_list).new_list.creating" class="btn btn-sm btn-default">Procesando <span class="glyphicon glyphicon-btn-loading"></span></button>        
+                                                </div>
+                                                <button class="btn btn-sm btn-primary btn-create-list" style="margin-top:5px"
+                                                        ng-show="!new_list_create" ng-click="new_list_create=true"><i class="glyphicon glyphicon-plus"></i> Crear nueva lista</button>    
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-if="!hasProfile">
+                                <div class="tab-pane-resalted margin10 padding10 height300">
+                                    <div>Todavía no tienes un perfil de [[red.name]]</div>
+                                    <button class="btn btn-sm btn-default btn-form" ng-click="openAuth(red.name,red.id)">Añadir perfil</button>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                </div> 
+            </div> 
+            <div class="clearfix"></div>    
+        </div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="imagePreview.html">
+    <div ng-keyup="hitScape($event)" class="modal-wrapper">
+        <div class="modal-header drag-handle">
+            <button type="button" class="close" ng-click="cancel()" aria-hidden="true"><span class="glyphicon glyphicon-remove"></span></button>
+            <span class="mymodal-title">Vista previa de la imagen</span>
+        </div>
+        <div class="modal-body modal-body-container">
+            <a target="_blank" ng-href="[[photo_preview.link]]" title="Ver el post original" ng-click="modalPhotoPrev.close()">
+                <img style="width: 100%" ng-src="https://graph.facebook.com/[[photo_preview.object_id]]/picture?type=normal" title=""/>
+            </a>
+        </div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="fbGroups.html">
+    <div ng-keyup="hitScape($event)" class="modal-wrapper">
+        <div class="modal-header drag-handle">
+            <button type="button" class="close" ng-click="cancel()" aria-hidden="true"><span class="glyphicon glyphicon-remove"></span></button>
+            <span class="mymodal-title">Vista previa de la imagen</span>
+        </div>
+        <div class="modal-body modal-body-container" compile-data template="[[fb_groups]]">
+        </div>
+        <div class="modal-footer">
+            <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="cancel()">Importación Finalizada</a>
+        </div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="postComments.html">
+    <div ng-keyup="hitScape($event)" class="modal-wrapper">
+        <div class="modal-header drag-handle">
+            <button type="button" class="close" ng-click="cancel()" aria-hidden="true"><span class="glyphicon glyphicon-remove"></span></button>
+            <span class="mymodal-title">Comentarios</span>
+        </div>
+        <div class="modal-body modal-body-container">
+            <div class="item-conversation-all" style="max-height: 500px; overflow-y: scroll;">
+                <div class="column-body-item item-conversation-principal">
+                    <div class="body-item-content">
+                        <div class="item-avatar">
+                            <a href="javascript:;" ng-click="userProfile(post_comments.from.id,post_comments.profile,post_comments.from.name)">
+                                <img style="width: 100%; margin: 0;" ng-src="https://graph.facebook.com/[[post_comments.from.id]]/picture?type=square" />
+                            </a>
+                        </div>
+                        <div class="item-username"><a class="username" href="javascript:;" ng-click="userProfile(post_comments.from.id,post_comments.profile,post_comments.from.name)">[[post_comments.from.name]]</a></div>
+                        <div class="item-created"><span unsafe><a target="_blank" href="[[post_comments.link]]">[[post_comments.created_time.date | facebookDate | date:'MMM d, h:mma']]</a></span></div>
+                        <div class="item-text" compile-data template="
+                             <div>
+                                <div ng-if='post_comments.message'>[[post_comments.message | linkify | linkusers:post_comments.profile]]</div>
+                                <div ng-if='post_comments.story'>[[post_comments.story | linkify | linkusers:post_comments.profile]]</div>
+                                <div class='item-row-link'>
+                                    <a ng-click='fbShowMediaPreview(post_comments)' 
+                                        ng-if='post_comments.source' 
+                                        ng-show='!post_comments.source_object'
+                                        href='javascript:;'
+                                        class='item-link-photo'>
+                                        <img ng-src='[[post_comments.picture]]'/>
+                                    </a>
+                                    <a ng-click='fbShowPhotoPreview(post_comments)' 
+                                        ng-if='post_comments.link && post_comments.picture && !post_comments.source' 
+                                        href='[[post_comments.type!='photo' ? post_comments.link : 'javascript:;']]'
+                                        class='item-link-photo'>
+                                        <img ng-src='[[post_comments.picture]]'/>
+                                    </a>
+
+                                    <div ng-if='post_comments.link && post_comments.name' class='item-link-name'>
+                                        <a class='username' target='_blank' ng-href='[[post_comments.link]]'>[[post_comments.name]]</a>
+                                    </div>
+                                    <div ng-if='post_comments.caption' class='item-link-caption'>[[post_comments.caption | linkify | linkusers:post_comments.profile]]</div>
+
+                                    <div ng-if='post_comments.source' ng-show='post_comments.source_object' class='item-link-media'>
+                                        [[post_comments.source_object]]
+                                        <button 
+                                            ng-if='post_comments.source' 
+                                            ng-show='post_comments.source_object' 
+                                            ng-click='post_comments.source_object=false'
+                                            class='btn btn-normal btn-sm'>
+                                            <i class='glyphicon glyphicon-remove'></i>
+                                        </button>
+                                    </div>
+
+                                    <div ng-if='post_comments.description && !post_comments.source' class='item-link-description'>[[post_comments.description]]</div>
+                                    <div class='clearfix'></div>
+                                </div>
+                             </div>">
+                        </div>
+                    </div>
+                </div>
+                <div ng-repeat="conv in post_comments.comments" class="column-body-item">
+                            <div class="item-avatar">
+                                <a href="javascript:;" ng-click="userProfile(conv.from.id,col.profile,conv.from.name)">
+                                    <img ng-src="https://graph.facebook.com/[[conv.from.id]]/picture?type=square" />
+                                </a>
+                            </div>
+                            <div class="body-item-content">
+                                <div class="item-username">
+                                    <a class="username" href="javascript:;" ng-click="userProfile(conv.from.name,col.profile,conv.from.name)">[[conv.from.name]]</a> 
+                                    <span compile-data template="<span>[[conv.message | linkify | linkusers:col.profile]]</span>"></span>
+                                </div>
+                                <div class="item-created"></div>
+                            </div>
+                        </div>
+                <div class="column-body-item" ng-init="fb_user=getProfile(post_comments.profile)">    
+                    <div class="body-item-content">
+                        <div class="item-avatar">
+                            <img style="width: 100%; margin: 0;" ng-src="[[fb_user.avatar]]" />
+                        </div>
+                        <div class="item-text">
+                            <div class="item-comment-add" blur ng-init="post_comments.comments.fb_writing_comment_md=false;">
+                                <textarea ng-click="post_comments.comments.fb_writing_comment_md=true" 
+                                          ng-model="post_comments.comments.fb_comment_text_md"
+                                          alt="Pulsa 'Intro' para enviar." 
+                                          title="Pulsa 'Intro' para enviar." 
+                                          ng-blur="post_comments.comments.fb_writing_comment_md=false"
+                                          ng-class="{'inactive' : !post_comments.comments.fb_writing_comment_md}"
+                                          ng-enter="fbAddComment(post_comments.profile, post_comments, 1)"
+                                          placeholder="Escribe un comentario..."></textarea>
+                                <div class="text-help">
+                                    <span style="font-size: 11px;" ng-show="post_comments.comments.fb_writing_comment_md && !post_comments.comments.adding_comment_md">Pulsa "Intro" para enviar.</span>
+                                    <div ng-show="post_comments.comments.adding_comment_md"><span class="glyphicon glyphicon-refresh-gif-black"></span> Enviando...</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>    
+                </div>    
+                
+                
+                <div ng-if="post_comments.comments.data.length" ng-repeat="conv in post_comments.comments.data" class="column-body-item">
+                    <div class="body-item-content">
+                        <div class="item-avatar">
+                            <a href="javascript:;" ng-click="userProfile(conv.from.id,post_comments.profile,conv.from.name)">
+                                <img style="width: 100%; margin: 0;" ng-src="https://graph.facebook.com/[[conv.from.id]]/picture?type=square" />
+                            </a>
+                        </div>
+                        <div class="item-username">
+                            <a class="username" href="javascript:;" ng-click="userProfile(conv.from.id,post_comments.profile,conv.from.name)">[[conv.from.name]]</a> 
+                            <span compile-data template="<span>[[conv.message | linkify | linkusers:post_comments.profile]]</span>"></span>
+                        </div>
+                        <div class="item-created">
+                            [[conv.created_time | toDate | date:'MMM d, h:mma']] 
+                            <a href="javascript:;" class="like-btn" ng-if="!conv.user_likes" ng-click="fbLikes(post_comments.profile, conv, 1)"><i class="glyphicon glyphicon-fb-like"></i> Me gusta</a>
+                            <a href="javascript:;" class="like-btn" ng-if="conv.user_likes" ng-click="fbLikes(post_comments.profile, conv, 0)"><i class="glyphicon glyphicon-fb-unlike"></i> No me gusta</a>
+                        </div>
+                    </div>
+                </div>
+                    
+                <div ng-if="!post_comments.comments.data.length" style="padding: 20px 0; text-align: center">No se han realizado comentarios</div>
+
+                    
+            </div>
+            <div class="modal-btns" style="text-align: center;">
+                <button class="btn btn-sm btn-default btn-form" ng-click="addColumn('',post_comments.profile, 'COMMENTS', {'q':post_comments.id})">Añadir como columna</button>
+                <button class="btn btn-sm btn-default btn-form" ng-click="cancel()">Cerrar</button>
+            </div>    
+            
+            <div ng-if="post_comments.comments.data.length==0" class="column-no-results column-body-item">
+                No se han encontrado resultados
+            </div>
+        </div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="instagramComments.html">
+    <div ng-keyup="hitScape($event)" class="modal-wrapper">
+        <div class="modal-header drag-handle">
+            <button type="button" class="close" ng-click="cancel()" aria-hidden="true"><span class="glyphicon glyphicon-remove"></span></button>
+            <span class="mymodal-title">Comentarios</span>
+        </div>
+        <div class="modal-body modal-body-container">
+            <div class="item-conversation-all" style="max-height: 500px; overflow-y: scroll;">
+                <div class="column-body-item item-conversation-principal">
+                    <div class="body-item-content">
+                        <div class="item-avatar">
+                            <a href="javascript:;" ng-click="userProfile(post_comments.user.id,post_comments.profile,post_comments.user.username)">
+                                <img style="width: 100%; margin: 0;" ng-src="[[post_comments.user.profile_picture]]" />
+                            </a>
+                        </div>
+                        <div class="item-username"><a class="username" href="javascript:;" ng-click="userProfile(post_comments.user.id,post_comments.profile,post_comments.user.username)">[[post_comments.user.username]]</a></div>
+                        <div class="item-created"><span unsafe><a target="_blank" href="[[post_comments.link]]">[[post_comments.created_time | instagramDate | date:'MMM d, h:mm a']]</a></span></div>
+                        <div class="item-text" compile-data template="
+                             <div>
+                                <div ng-if='post_comments.images.low_resolution'><img ng-src='[[post_comments.images.low_resolution.url]]' /></div>
+                                <div ng-if='post_comments.caption.text'>[[post_comments.caption.text]]</div>
+                                <div class='item-row-link'>                                   
+                                    <div class='clearfix'></div>
+                                </div>
+                             </div>">
+                        </div>
+                    </div>
+                </div>
+                <div ng-repeat="conv in post_comments.comments.data" class="column-body-item">
+                            <div class="item-avatar">
+                                <a href="javascript:;" ng-click="userProfile(conv.from.id,col.profile,conv.from.username)">
+                                    <img ng-src="[[conv.from.profile_picture]]" />
+                                </a>
+                            </div>
+                            <div class="body-item-content">
+                                <div class="item-username">
+                                    <a class="username" href="javascript:;" ng-click="userProfile(conv.from.username,col.profile,conv.from.username)">[[conv.from.username]]</a> 
+                                    <span compile-data template="<span>[[conv.text | linkify | linkusers:col.profile]]</span>"></span>
+                                </div>
+                                <div class="item-created"></div>
+                            </div>
+                        </div>
+                <div class="column-body-item" ng-init="fb_user=getProfile(post_comments.profile)">    
+                    <div class="body-item-content">
+                        <div class="item-avatar">
+                            <img style="width: 100%; margin: 0;" ng-src="[[fb_user.avatar]]" />
+                        </div>
+                        <div class="item-text">
+                            <div class="item-comment-add" blur ng-init="post_comments.comments.inst_writing_comment_md=false;">
+                                <textarea ng-click="post_comments.comments.inst_writing_comment_md=true" 
+                                          ng-model="post_comments.comments.inst_comment_text_md"
+                                          alt="Pulsa 'Intro' para enviar." 
+                                          title="Pulsa 'Intro' para enviar." 
+                                          ng-blur="post_comments.comments.inst_writing_comment_md=false"
+                                          ng-class="{'inactive' : !post_comments.comments.inst_writing_comment_md}"
+                                          ng-enter="instagramAddComment(post_comments.profile, post_comments, 1)"
+                                          placeholder="Escribe un comentario..."></textarea>
+                                <div class="text-help">
+                                    <span style="font-size: 11px;" ng-show="post_comments.comments.inst_writing_comment_md && !post_comments.comments.adding_comment_md">Pulsa "Intro" para enviar.</span>
+                                    <div ng-show="post_comments.comments.adding_comment_md"><span class="glyphicon glyphicon-refresh-gif-black"></span> Enviando...</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>    
+                </div>    
+                
+                
+                <div ng-if="post_comments.comments.count" ng-repeat="conv in post_comments.comments.count" class="column-body-item">
+                    <div class="body-item-content">
+                        <div class="item-avatar">
+                            <a href="javascript:;" ng-click="userProfile(conv.from.id,post_comments.profile,conv.from.username)">
+                                <img style="width: 100%; margin: 0;" ng-src="[[conv.from.profile_picture]]" />
+                            </a>
+                        </div>
+                        <div class="item-username">
+                            <a class="username" href="javascript:;" ng-click="userProfile(conv.from.id,post_comments.profile,conv.from.username)">[[conv.from.username]]</a> 
+                            <span compile-data template="<span>[[conv.text | linkify | linkusers:post_comments.profile]]</span>"></span>
+                        </div>
+                        <div class="item-created">
+                            [[conv.created_time | toDate | date:'MMM d, h:mma']] 
+                            <a href="javascript:;" class="like-btn" ng-if="!conv.user_likes" ng-click="instagramLikes(post_comments.profile, conv, 1)"><i class="glyphicon glyphicon-heart"></i> Me gusta</a>
+                            <a href="javascript:;" class="like-btn" ng-if="conv.user_likes" ng-click="instagram(post_comments.profile, conv, 0)"><i class="glyphicon glyphicon-heart"></i> No me gusta</a>
+                        </div>
+                    </div>
+                </div>
+                    
+                <div ng-if="!post_comments.comments.data.length" style="padding: 20px 0; text-align: center">No se han realizado comentarios</div>
+
+                    
+            </div>
+            <div class="modal-btns" style="text-align: center;">
+                <button class="btn btn-sm btn-default btn-form" ng-click="addColumn('',post_comments.profile, 'COMMENTS', {'q':post_comments.id})">Añadir como columna</button>
+                <button class="btn btn-sm btn-default btn-form" ng-click="cancel()">Cerrar</button>
+            </div>    
+            
+            <div ng-if="post_comments.comments.data.length==0" class="column-no-results column-body-item">
+                No se han encontrado resultados
+            </div>
+        </div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="testing.html">
+    <div>esto es una prueba</div>
+</script>
+
+<script type="text/ng-template" id="newOrganization.html">
+    <div ng-keyup="hitScape($event)" class="modal-wrapper">
+        <div class="modal-header drag-handle">
+            <button type="button" class="close" ng-click="cancel()" aria-hidden="true"><span class="glyphicon glyphicon-remove"></span></button>
+            <span class="mymodal-title">Nueva Organización</span>
+        </div>
+        <div class="modal-body" ng-controller="organizationCtrl">
+            <div class="organization-container" style="height: 67px;">
+                <form name="organizationForm" >
+                    <div class="_avatarUpdater avatarUpdater">
+                        <div class="_upload uploader" style="z-index: 2000;">
+                            <div id="uploaderOrganizationSwf"></div>
+                        </div>
+                        <div class="_avatarPreview viewer visHide">
+                            <img class="avatar" src="">
+                        </div>
+                        <span class="action">Subir</span>
+                        <div class="moxie-shim moxie-shim-html5" style="">
+                            <input type="file" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" ngf-select ng-model="organization.Photo" name="Photo" accept="image/*" ngf-max-size="25MB" ngf-multiple="false">
+                        </div>
+                    </div>
+                    <label class="title" for="orgNameInput" style="display: block;">
+                        Nombre organización
+                        <span class="t-l">(ConversationQuest Media...)</span>
+                    </label>
+                    <input class="organization-name" type="text" ng-model="organization.Name" name="organizationName" placeholder="Mi Organización">
+                    <a class="create-organization btn btn-sm btn-default btn-form" ng-click="createOrganization()">
+                        <i class="glyphicon glyphicon-ok"></i>
+                        Crear Organización
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+</script>
+<script type="text/ng-template" id="RssFeedForm.html">
+    <div ng-keyup="hitScape($event)" class="modal-wrapper">
+        <div class="modal-header drag-handle">
+            <button type="button" class="close" ng-click="cancel()" aria-hidden="true"><span class="glyphicon glyphicon-remove"></span></button>
+            <span class="mymodal-title">Añadir feed RSS/Atom</span>
+        </div>
+        <div class="modal-body modal-body-container">
+            <div>
+                <form class="form-horizontal" name="rssFeedForm" id="editRssFeedForm" method="post" formtype="input" action="">
+                    <div class="">
+                        <div class="row rss-form">
+                            <div class="form-group">
+                                <label >URL de la fuente</label>
+                                <input type="text" class="form-control" name="webFeedUrl" ng-model="rssFeed.url">
+                            </div>
+                            <div class="_multiImgSelectorContainer">
+                                <div class="form-grou">
+                                    <label >Red a la que enviar fuente /canal:</label>
+                                    <div class="message-box-left" click-draft-outside
+                                         ng-class="{expanded: draft.draft_writting}"
+                                         ng-controller="draftController"
+                                         ng-mouseover="startWriteDraft();"
+                                         ng-mouseleave="stopWriteDraft()"
+                                         ng-blur="stopWriteDraft()">
+                                        <div class="message-user-profiles">
+                                            <div class="message-selected-list">
+                                                <div class="selected-list-box">
+                                                    <span class="item-filter">
+                                                        <span ng-hide="draft.draft_writting" class="send-to-text ng-hide">Buscar perfil...</span>
+                                                        <span class="glyphicon glyphicon-search" style="margin-left: 10px; padding-top: 8px;" ng-show="draft.draft_writting"></span>
+                                                        <input ng-model="redName" ng-show="draft.draft_writting" type="text" class="profiles-filter ng-pristine ng-valid" placeholder="Buscar perfil...">
+                                                    </span>
+                                                </div>
+                                                <div class="tools-list-box">
+                                                    <span class="item-box selected-count ng-binding" ng-bind="draft.profiles_selections.length">0</span>
+                                                    <span class="item-box-btn ng-hide" ng-show="draft.profiles_selections.length" ng-click="removeAllDraftProfiles()">
+                                                        <span class="glyphicon glyphicon-remove"></span>
+                                                    </span>
+                                                    <span class="item-box-btn dropdown-toggle" data-toggle="dropdown" tabindex="-1">
+                                                        <span class="caret"></span>
+                                                    </span>
+                                                    <ul role="menu" class="dropdown-menu">
+                                                        <li><a ng-click="selectAllDraftProfiles()">Marcar Todos</a></li>
+                                                        <li><a ng-click="removeAllDraftProfiles()">Quitar todos</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="message-profiles-selection ng-hide" ng-show="draft.draft_writting">
+                                            <div class="profile-picker">
+                                                <ul style="list-style: none; margin: 0; padding: 0">
+                                                    <li
+                                                            ng-repeat="profile in profiles | filter:redName"
+                                                            ng-class="{profile_selected: isDraftProfileSelected(profile.id)}"
+                                                            itemid="[[profile.id]]">
+                                                        <div class="profile-icon" ng-click="selectDraftProfile(profile.id)" >
+                                                            <img ng-src="[[profile.avatar]]" />
+                                                            <span class="truncate">[[profile.name]]</span>
+                                                        </div>
+                                                        <div class="profile-controls">
+                                    <span ng-show="isDraftProfileDefault(profile.id)" tooltip="Quitar selección"
+                                          tooltip-append-to-body="true"
+                                          class="glyphicon glyphicon-pushpin rotate"
+                                          ng-click="unselectDraftProfileDefault(profile.id)"></span>
+                                    <span ng-show="!isDraftProfileDefault(profile.id)" tooltip="Seleccionar Siempre"
+                                          tooltip-append-to-body="true"
+                                          class="glyphicon glyphicon-pushpin"
+                                          ng-click="selectDraftProfileDefault(profile.id)"></span>
+                                                        </div>
+                                                    </li>
+                                                    <li ng-click="addDraftProfile()">
+                                                        <div class="profile-icon profile-add glyphicon glyphicon-plus"></div>
+                                                        <a class="profile-add">Agregar red social</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group"></div>
+                            <div class="form-group">
+                                <label class="title">Comprueba nuevas publicaciones de esta fuente cada </label><div class="slt"><div><select id="frequency" name="webfeed[updateFrequency]">
+                                            <option label="24 horas" value="24">24 horas</option>
+                                            <option label="12 horas" value="12">12 horas</option>
+                                            <option label="6 horas" value="6">6 horas</option>
+                                            <option label="3 horas" value="3">3 horas</option>
+                                            <option label="2 horas" value="2">2 horas</option>
+                                            <option label="hora" value="1">hora</option>
+                                        </select></div></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="title">Cuando haya nuevas entradas, publicar a la vez: </label><div class="slt"><div><select id="quantity" name="webfeed[postLimit]">
+                                            <option label="1 publicación cada vez" value="1">1 publicación cada vez</option>
+                                            <option label="2 publicaciones al mismo tiempo" value="2">2 publicaciones al mismo tiempo</option>
+                                            <option label="3 publicaciones al mismo tiempo" value="3">3 publicaciones al mismo tiempo</option>
+                                            <option label="4 publicaciones al mismo tiempo" value="4">4 publicaciones al mismo tiempo</option>
+                                            <option label="5 publicaciones a la vez" value="5">5 publicaciones a la vez</option>
+
+                                        </select></div></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>
+                                    <input class="checkbox" value="1" type="checkbox">
+                                    &nbsp;Incluir texto de la publicación en mensajes.
+                                </label>
+                                <div class="t-s" style="margin-left: 16px;">
+                                    Nota: depende de la longitud del título de la publicación.
+                                </div>
+                                <input type="hidden" id="includeDescriptionField" name="webfeed[includeDescription]" value="1">
+                            </div>
+
+                            <div class="form-group">
+                                <label>
+                                    Antepon texto a cada mensaje (100 caracteres como máximo): </label>
+                                <textarea name="webfeed[prependText]" maxlength="100" rows="3"></textarea>
+                                <p >Ejemplo: 'Nuevo artículo en blog:' o 'Noticia:'</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="title">Acortador de URL para enlaces: </label>
+                                <select id="shorturl" name="webfeed[owlyUrlId]">
+                                    <option label="ow.ly" value="http://ow.ly">ow.ly</option>
+                                    <option label="owl.li" value="http://owl.li">owl.li</option>
+                                    <option label="ht.ly" value="http://ht.ly">ht.ly</option>
+                                    <option label="htl.li" value="http://htl.li">htl.li</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="addRssFeedButtons" class="btns-right">
+                        <input type="hidden" name="webfeed[webfeedId]" value="">
+                        <a class="_cancel btn-del" href="#">Cancelar</a>
+                        <a class="_submit btn-cmt" href="#">Guardar fuente</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="newLabel.html">
+    <div ng-keyup="hitScape($event)" class="modal-wrapper">
+        <div class="modal-header drag-handle">
+            <button type="button" class="close" ng-click="cancel()" aria-hidden="true"><span class="glyphicon glyphicon-remove"></span></button>
+            <span class="mymodal-title">Nueva Etiqueta</span>
+        </div>
+        <div class="modal-body" ng-controller="tagCtrl">
+            <div class="organization-container" style="height: 67px !important;">
+                <form name="tagForm" >
+                    <label class="title" for="orgNameInput" style="display: block;">
+                        Etiqueta
+                    </label>
+                    <input class="label-name" type="text" ng-model="tag.Name" name="labelName" placeholder="Nueva etiqueta" style="width: 60%">
+                    <a class="create-label btn btn-sm btn-default btn-form" style="float:right" ng-click="createTag()">
+                        <i class="glyphicon glyphicon-ok"></i>
+                        Crear Etiqueta
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+</script>
+<script type="text/ng-template" id="editLabel.html">
+    <div ng-keyup="hitScape($event)" class="modal-wrapper">
+        <div class="modal-header drag-handle">
+            <button type="button" class="close" ng-click="cancel()" aria-hidden="true"><span class="glyphicon glyphicon-remove"></span></button>
+            <span class="mymodal-title">Editar Etiqueta</span>
+        </div>
+        <div class="modal-body" ng-controller="tagCtrl">
+            <pre>[[tag]]</pre>
+            <div class="organization-container" style="height: 67px !important;">
+                <form name="tagForm" >
+                    <label class="title" for="orgNameInput" style="display: block;">
+                        Etiqueta
+                    </label>
+                    <input class="label-name" type="text" ng-model="tag.Name" name="labelName" ng-value="tag.name" placeholder="Editar etiqueta" style="width: 60%">
+                    <a class="create-label btn btn-sm btn-default btn-form" style="float:right" ng-click="editTag(tag.id)">
+                        <i class="glyphicon glyphicon-ok"></i>
+                        Editar Etiqueta
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="ac_settings.html">
+    <div ng-keyup="hitScape($event)" class="modal-wrapper">
+        <div class="modal-header drag-handle">
+            <button type="button" class="close" ng-click="cancel()" aria-hidden="true"><span class="glyphicon glyphicon-remove"></span></button>
+            <span class="mymodal-title">Ajustes</span>
+        </div>
+        <div class="modal-body">
+            <div class="modal-left">
+                <ul class="nav nav-tabs tabs-left">
+                    <li ng-class="{active: profile.id==id_profile}"  ng-repeat="profile in profiles ">
+                        <a data-target="#red-[[profile.id]]" data-toggle="tab">
+                            <span class="[[profile.glyphicon1]]"></span> [[profile.name]]
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="modal-right">
+                <div class="tab-content">
+                    <div ng-class="{active: profile.id==id_profile}" class="tab-pane" id="red-[[profile.id]]" ng-repeat="profile in profiles">
+                        <div class="tab-pane-resalted padding10 height300">
+                            <div class="text-head">[[profile.name]]</div>
+                            <div>
+                                <p>Para que ConversationQuest pueda tener acceso a tu cuenta de Twitter, primero debes autorizarlo desde Twitter.com</p>
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</script>
+
+
+
+
+<script type="text/ng-template" id="team.html">
+    <div ng-keyup="hitScape($event)" class="modal-wrapper">
+        <div class="modal-header drag-handle">
+            <button type="button" class="close" ng-click="cancel()" aria-hidden="true"><span class="glyphicon glyphicon-remove"></span></button>
+            <span class="mymodal-title">Team</span>
+        </div>
+        <div class="modal-body">
+            <div class="modal-left">
+                <span>Nombre Equipo</span>
+                <input type="text" />
+                <a class="btn btn-default">Nuevo Equipo</a>
+                <ul class="nav nav-tabs tabs-left">
+                    <li ng-class="{active: profile.id==id_profile}"  ng-repeat="profile in profiles ">
+                        <a data-target="#red-[[profile.id]]" data-toggle="tab">
+                            <span class="[[profile.glyphicon1]]"></span> [[profile.name]]
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="modal-right">
+                <div class="tab-content">
+                    <div ng-class="{active: profile.id==id_profile}" class="tab-pane" id="red-[[profile.id]]" ng-repeat="profile in profiles">
+                        <div class="tab-pane-resalted">
+                            <div class="tab-pane principal-tab active">
+                                <div class="tabbable">
+                                    <ul class="nav nav-tabs normal-tab nav-justified">
+                                        <li class="active">
+                                            <a data-target="#team-overview" data-toggle="tab" data-toggle="tab" tooltip="Detalles" tooltip-append-to-body="true">
+                                                Detalles
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a data-target="#team_members" data-toggle="tab" tooltip="Miembros del equipo" tooltip-append-to-body="true">
+                                                Miembros del equipo
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a data-target="#team_social_networks" data-toggle="tab" tooltip="Redes Sociales" tooltip-append-to-body="true">
+                                                Redes Sociales
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a data-target="#team_configuration" data-toggle="tab" tooltip="Configuracion" tooltip-append-to-body="true">
+                                                Configuracion
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a data-target="#team_permissions" data-toggle="tab" tooltip="Permisos" tooltip-append-to-body="true">
+                                                Permisos
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content modal-max-height">
+                                        <div class="account-info tab-pane active modal-inner-body" id="team-overview">
+
+                                        </div>
+                                        <div class="account-info tab-pane modal-inner-body" id="team_members">
+
+                                        </div>
+                                        <div class="account-info tab-pane modal-inner-body" id="team_social_networks">
+
+                                        </div>
+                                        <div class="account-info tab-pane modal-inner-body" id="team_configuration">
+
+                                        </div>
+                                        <div class="account-info tab-pane modal-inner-body" id="team_permissions">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</script>

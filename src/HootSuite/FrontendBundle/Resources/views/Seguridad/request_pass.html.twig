@@ -1,0 +1,35 @@
+{% extends 'FrontendBundle::frontend.html.twig' %}
+{% block title %}{{'proyecto.title.request_pass'|trans}}{% endblock %}
+
+{% block content %}
+    <h1 style="text-align: center; margin-top: 40px;">{{'proyecto.title.request_pass' |trans}}</h1>
+    
+    {% if procesed is defined and procesed %}
+        <div class="alert alert-info">
+            {{'proyecto.text.request_taken'|trans}}
+        </div>
+    {% endif %}
+    
+    <div id="login-container" style="margin: 0 auto; width: 400px; padding: 10px 50px 0 50px; margin-bottom: 50px; border-bottom: 1px solid #bababa; ">
+        {% if error is defined and error %}
+            <div class="alert alert-error">
+                <div>{{error}}</div>
+            </div>
+        {% endif %}
+        {% if procesed is null %}
+            <form id="form-login" class="form-horizontal row-fluid" method="POST" action="{{path('usuario_request_pass')}}" style="margin-top: 40px;">                 
+                <div class="control-group">
+                    <label class="control-label" style="width: 120px;">{{'proyecto.label.login_mail' |trans}}</label>
+                    <div class="controls" style="margin-left: 130px">
+                        <input id="horizontal_form_email" class="span12" required="required" name="email" type="email">
+                    </div>
+                </div>
+                <div class="control-group center">
+                    <div class="controls" style="float: right;">
+                        <button class="btn btn-orange" type="submit"><i class="icon icon-ok icon-white"></i> {{'proyecto.label.request_pass' |trans}}</button>
+                    </div>
+                </div>
+            </form>
+        {% endif %}
+    </div>
+{% endblock %}

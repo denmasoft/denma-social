@@ -1,0 +1,36 @@
+<div class="column-body-item column-body-filtering" ng-show="col.filtering">
+    <div class="input-group">
+        <div class="input-group-btn input-group-select-first">
+            <select class="col-filter-selection" tooltip="Filtrar por" tooltip-append-to-body="true">
+                <option>Palabra clave</option>
+                <option>Otra cosa</option>
+            </select>
+        </div>    
+        <input type="text" ng-model="filtro" class="form-control" />
+        <span class="input-group-btn">
+            <button class="btn btn-primary btn-sm" ng-click="col.filtering=false; filtro=''"><i class="glyphicon glyphicon-remove"></i></button>
+        </span>
+    </div>    
+</div>
+<div ng-if="col.data.length" ng-repeat="row in col.data  | filter:filtro" class="column-body-item column-body-has-options">
+    <div class="body-item-content">
+        <div class="item-avatar">
+            <img style="width: 100%" ng-src="[[row.avatar]]" />
+        </div>
+        <div class="item-username">Creado por [[row.created_by]]</div>
+        <div class="item-created">A enviar: [[row.programed]]</div>
+        <div class="item-text" compile-data  template="<div>[[row.text | linkify | linkusers:col.profile]]</div>"></div>
+    </div>
+    <div class="col-row-options">
+        <ul>
+            <span class="glyphicon glyphicon-pencil btn-option" tooltip="Editar mensaje" tooltip-append-to-body="true"></span>
+            <span class="glyphicon glyphicon-remove btn-option" tooltip="Eliminar mensaje" tooltip-append-to-body="true"></span>
+        </ul>
+    </div>    
+</div>
+<div class="column-body-item column-body-scrolling" ng-show="col.scrolling">
+        <span class="glyphicon glyphicon-refresh-gif-black"></span> Cargando...
+</div>
+<div ng-if="col.data.length==0" class="column-no-results column-body-item">
+    No existen mensajes programados para esta red en estos momentos
+</div>

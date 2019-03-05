@@ -1,0 +1,137 @@
+<div class="tab-pane principal-tab active">
+    <div class="tabbable">
+        <ul class="nav nav-tabs normal-tab">
+            <li class="active">
+                <a data-target="#user-profile-home" data-toggle="tab" data-toggle="tab">
+                    <i class="glyphicon glyphicon-user"></i> Información
+                </a>
+            </li>
+        </ul>
+        <div class="tab-content modal-max-height">
+            <div class="tab-pane active modal-inner-body" id="user-profile-home">
+                <div class="user-profile-top">
+                    <div class="col-lg-4 col-md-4" style="padding-left: 0">
+                        <img ng-src="https://graph.facebook.com/[[user.profile.id]]/picture?type=normal" style="width: 100%" />
+                    </div>
+                    <div class="col-lg-8 col-md-8">
+                        <table class="table">
+                            <tr ng-if="user.profile.gender">
+                                <th style="width: 20%">Género</th>
+                                <td>[[user.profile.gender == 'male' ? 'Masculino' : 'Femenino']]</td>
+                            </tr>
+                            <tr ng-if="user.profile.location">
+                                <th style="width: 20%">Ubicación</th>
+                                <td>[[user.profile.location.name]]</td>
+                            </tr>
+                            <tr ng-if="user.profile.link">
+                                <td colspan="2"><a ng-href="[[user.profile.link]]">Ver Perfil en facebook</a></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="clearfix">
+                    <table class="table">
+                        <tr ng-if="user.profile.bio">
+                            <th style="width: 20%">Biografía</th>
+                            <td>[[user.profile.bio]]</td>
+                        </tr>
+                        <tr ng-if="user.profile.about">
+                            <th style="width: 20%">Acerca de</th>
+                            <td>[[user.profile.about]]</td>
+                        </tr>
+                        <tr ng-if="user.profile.category">
+                            <th style="width: 20%">Categoría</th>
+                            <td>[[user.profile.category]]</td>
+                        </tr>
+                        <tr ng-if="user.profile.description">
+                            <th style="width: 20%">Descripción</th>
+                            <td>[[user.profile.description]]</td>
+                        </tr>
+                        <tr ng-if="user.profile.birthday">
+                            <th style="width: 20%">Cumpleaños</th>
+                            <td>[[user.profile.birthday]]</td>
+                        </tr>
+                        <tr ng-if="user.profile.website">
+                            <th style="width: 20%">Sitio Web</th>
+                            <td>[[user.profile.website]]</td>
+                        </tr>
+                        <tr ng-if="user.profile.education.length">
+                            <th style="width: 20%">Formación</th>
+                            <td>
+                                <div ng-repeat="ed in user.profile.education" class="profile-data-thumbails">
+                                    <a ng-href="http://www.facebook.com/profile.php?id=[[ed.school.id]]">
+                                        <img ng-src="https://graph.facebook.com/[[ed.school.id]]/picture" />
+                                        <div class="profile-data-thumbails-text">
+                                            <div class="thumbail-name">[[ed.school.name]]</div>
+                                            <span class="thumbail-description">[[ed.type]]</span>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr ng-if="user.profile.quotes">
+                            <th style="width: 20%">Citas</th>
+                            <td>[[user.profile.quotes]]</td>
+                        </tr>
+                        <tr ng-if="user.profile.hometown">
+                            <th style="width: 20%">Procedencia</th>
+                            <td>[[user.profile.hometown.name]]</td>
+                        </tr>
+                        <tr ng-if="user.profile.work.length">
+                            <th style="width: 20%">Empleo</th>
+                            <td>
+                                <div ng-repeat="wk in user.profile.work" class="profile-data-thumbails">
+                                    <a ng-href="http://www.facebook.com/profile.php?id=[[wk.employer.id]]">
+                                        <img ng-src="https://graph.facebook.com/[[wk.employer.id]]/picture" />
+                                        <div class="profile-data-thumbails-text">
+                                            <div class="thumbail-name" ng-init="employe_name=wk.employer.name+' ('+wk.position.name+')'">[[employe_name | truncate:60]]</div>
+                                            <span class="thumbail-description">[[wk.start_date]] <span ng-if="wk.end_date"> a [[wk.end_date]]</span></span>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr ng-if="user.profile.favorite_teams.length">
+                            <th style="width: 20%">Equipos favoritos</th>
+                            <td>
+                                <div ng-repeat="team in user.profile.favorite_teams" class="profile-data-thumbails">
+                                    <a ng-href="http://www.facebook.com/profile.php?id=[[team.id]]">
+                                        <img ng-src="https://graph.facebook.com/[[team.id]]/picture" />
+                                        <div class="profile-data-thumbails-text">
+                                            <div class="thumbail-name" ng-init="team_name=team.name+' ('+team.name+')'">[[team_name | truncate:60]]</div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr ng-if="user.profile.favorite_athletes">
+                            <th style="width: 20%">Atletas favoritos</th>
+                            <td>
+                                <div ng-repeat="fa in user.profile.favorite_athletes" class="profile-data-thumbails">
+                                    <a ng-href="http://www.facebook.com/profile.php?id=[[fa.id]]">
+                                        <img ng-src="https://graph.facebook.com/[[fa.id]]/picture" />
+                                        <div class="profile-data-thumbails-text">
+                                            <div class="thumbail-name" ng-init="fa_name=fa.name+' ('+fa.name+')'">[[fa_name | truncate:60]]</div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr ng-if="user.profile.relationship_status">
+                            <th style="width: 20%">Relación</th>
+                            <td>
+                                <div ng-if="user.profile.significant_other">[[user.profile.significant_other.name]]</div>
+                                [[user.profile.relationship_status]]
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

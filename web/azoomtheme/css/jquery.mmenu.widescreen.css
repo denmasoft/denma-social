@@ -1,0 +1,98 @@
+/*
+	jQuery.mmenu widescreen extension CSS
+*/
+@media only screen and (min-width:1024px){
+body {
+  position: relative; }
+
+#mm-blocker {
+  display: none !important; }
+
+.mm-page {
+  box-shadow: none !important;
+  background: inherit;
+  box-sizing: border-box;
+  min-height: 100vh;
+  height: auto !important;
+  margin: 0 !important;
+  position: relative !important;
+  top: 0 !important;
+  z-index: 1; }
+
+.mm-slideout {
+  -webkit-transform: none !important;
+  -moz-transform: none !important;
+  -ms-transform: none !important;
+  -o-transform: none !important;
+  transform: none !important; }
+
+.mm-menu.mm-widescreen {
+  width: 30%;
+  min-width: none !important;
+  max-width: none !important;
+  z-index: 0;
+  top: 0 ;
+  right: auto !important;
+  bottom: auto !important;
+  left: 0 !important; }
+  .mm-menu:first-child, .mm-menu.mm-current {
+    display: block;
+	visibility:visible; }
+}
+
+
+
+/*
+	Edited XanderRock - Added Manually
+	jQuery.mmenu offcanvas addon CSS
+*/
+.mm-slideout {
+  -webkit-transition: -webkit-transform 0.4s ease;
+  -ms-transition: -ms-transform 0.4s ease;
+  transition: transform 0.4s ease; }
+@media all and (max-width: 175px) {
+  html.mm-opening .mm-slideout {
+    -webkit-transform: translate(140px, 0);
+    -moz-transform: translate(140px, 0);
+    -ms-transform: translate(140px, 0);
+    -o-transform: translate(140px, 0);
+    transform: translate(140px, 0); } }
+@media all and (min-width: 550px) {
+  html.mm-opening .mm-slideout {
+    -webkit-transform: translate(400px, 0);
+    -moz-transform: translate(400px, 0);
+    -ms-transform: translate(400px, 0);
+    -o-transform: translate(400px, 0);
+    transform: translate(400px, 0); } }
+	
+
+/*Edited XanderRock*/
+#rnmm .mm-navbar-top{height:auto;}
+#rnmm .mm-navbar-top .logo-container{margin:0px;/*0px -50px*/}
+#rnmm .header-top-2{border:none;}
+#rnmm .wpml-in-ht2{max-height:none;}
+#rnmm .header-top-2 .header-wpml-container{padding:0px; float:none; position:relative; top:-10px; border:none;}
+#rnmm .header-top-2 .columns{text-align:center;}
+#rnmm #lang_sel > ul > li > ul{top: auto; bottom: 100%; height: auto;}
+#rnmm .header-social-container, #rnmm .header-wpml-container{width:100%;}
+#rnmm .header-top-2 .social-icon .rock-social-icon, #rnmm .wpml-in-ht2 #lang_sel ul ul{border:none;}
+#mobile-menu-list-icon{top:15px; left:15px; margin:0px; cursor:pointer; display:none;}
+.mm-menu.mm-hasfooter > .mm-panel:after{height:0px;}
+.mm-menu .mm-navbar-bottom{height:auto; padding-top:10px}
+.mm-menu .header-top-2 .row .row > .columns:last-child{line-height:inherit;}
+.admin-bar #mobile-menu-list-icon{top:47px;}
+@media screen and (max-width: 782px){
+	.admin-bar #mobile-menu-list-icon{top:61px;}
+}
+
+@media only screen and (max-width:1023px){
+	#mobile-menu-list-icon{
+		display:block;	
+	}
+}
+
+@media all and (max-width: 549px) {
+	.mm-opened #mobile-menu-list-icon{
+		display:none;	
+	}
+}

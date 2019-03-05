@@ -1,0 +1,145 @@
+connect_twitter:
+    pattern:  /connect_twitter/{id}
+    defaults: { _controller: FrontendBundle:Autorize:twitter, _locale: "es" }
+    options: 
+        expose: true
+    
+connect_twitter_success:
+    pattern:  /twitter_success
+    defaults: { _controller: FrontendBundle:Autorize:twitterSuccess, _locale: "es" }
+    requirements: { _method: get }
+    options:
+      expose: true
+    
+social_is_authorized:
+    pattern:  /is_authorized/{red}
+    defaults: { _controller: FrontendBundle:Autorize:isAuthorized, _locale: "es" }
+    requirements: { _method: get }
+    options: 
+      expose: true  
+      
+connect_facebook:
+    pattern:  /connect_facebook/{id}
+    defaults: { _controller: FrontendBundle:Autorize:facebook, _locale: "es" }
+    options: 
+        expose: true
+    
+connect_facebook_success:
+    pattern:  /facebook_success
+    defaults: { _controller: FrontendBundle:Autorize:facebookSuccess, _locale: "es" }
+    requirements: { _method: get }
+    options:
+      expose: true
+      
+connect_google:
+    pattern:  /connect_google/{id}
+    defaults: { _controller: FrontendBundle:Autorize:google, _locale: "es" }
+    options: 
+        expose: true
+    
+connect_google_success:
+    pattern:  /google_success
+    defaults: { _controller: FrontendBundle:Autorize:googleSuccess, _locale: "es" }
+    requirements: { _method: get }
+    options:
+      expose: true
+      
+connect_linkedin:
+    pattern:  /connect_linkedin/{id}
+    defaults: { _controller: FrontendBundle:Autorize:linkedin, _locale: "es" }
+    options: 
+        expose: true
+    
+connect_linkedin_success:
+    pattern:  /linkedin_success
+    defaults: { _controller: FrontendBundle:Autorize:linkedinSuccess, _locale: "es" }
+    requirements: { _method: get }
+    options:
+      expose: true
+      
+connect_wordpress:
+    pattern:  /connect_wordpress/{id}
+    defaults: { _controller: FrontendBundle:Autorize:wordpress, _locale: "es" }
+    options: 
+        expose: true
+    
+connect_wordpress_success:
+    pattern:  /wordpress_success
+    defaults: { _controller: FrontendBundle:Autorize:wordpressSuccess, _locale: "es" }
+    requirements: { _method: get }
+    options:
+      expose: true
+    
+connect_del_profile:
+    pattern:  /del_red/{id}
+    defaults: { _controller: FrontendBundle:Autorize:delProfile, _locale: "es" }
+    options: 
+      expose: true
+
+check_facebook:
+     pattern:  /check-facebook
+     defaults: { _controller: FrontendBundle:Autorize:checkFacebookUser, _locale: "es" }
+     requirements: { _method: get }
+     options:
+      expose: true
+
+setup_facebookL:
+     pattern:  /setup-info/{id}
+     defaults: { _controller: FrontendBundle:Autorize:setupFacebookInfo, _locale: "es" }
+     requirements: { _method: get }
+     options:
+      expose: true
+
+load_facebook_groups:
+     pattern:  /load-facebook-groups
+     defaults: { _controller: FrontendBundle:Autorize:loadFacebookGroup, _locale: "es" }
+     requirements: { _method: get }
+     options:
+      expose: true
+
+check_linkedin:
+     pattern:  /check-linkedin
+     defaults: { _controller: FrontendBundle:Autorize:checkLinkedinUser, _locale: "es" }
+     requirements: { _method: get }
+     options:
+      expose: true
+
+load_linkedin_groups:
+     pattern:  /load-linkedin-groups
+     defaults: { _controller: FrontendBundle:Autorize:loadLinkedinGroup, _locale: "es" }
+     requirements: { _method: get }
+     options:
+      expose: true
+
+verify-email:
+     pattern:  /verify-email
+     defaults: { _controller: FrontendBundle:Autorize:twitterVerifyEmail, _locale: "es" }
+     requirements: { _method: get }
+     options:
+      expose: true
+
+connect_instagram_success:
+    pattern:  /instagram_success
+    defaults: { _controller: FrontendBundle:Autorize:instagramSuccess, _locale: "es" }
+    requirements: { _method: get }
+    options:
+     expose: true
+    
+connect_instagram:
+    pattern:  /connect_instagram/{id}
+    defaults: { _controller: FrontendBundle:Autorize:instagram, _locale: "es" }
+    options: 
+        expose: true
+
+connect_pinterest_success:
+    pattern:  /pinterest_success
+    defaults: { _controller: FrontendBundle:Autorize:pinterestSuccess, _locale: "es" }
+    requirements: { _method: get }
+    options:
+     expose: true
+
+connect_pinterest:
+    pattern:  /connect_pinterest/{id}
+    defaults: { _controller: FrontendBundle:Autorize:pinterest, _locale: "es" }
+    options:
+        expose: true

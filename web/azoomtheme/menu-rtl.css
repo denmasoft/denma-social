@@ -1,0 +1,55 @@
+/* CSS Document */
+.rtm-menu li a {
+	text-align: right;
+}
+ul.rtm-menu ul a:hover .main-nav-item-title,
+.rtm-menu ul ul a:hover .main-nav-item-title{
+	margin-right:10px;
+	margin-left:0px;
+}
+.rtm-menu .nav-icon{
+	margin-right:0px;
+	margin-left:5px
+}
+#nav .regularmenu ul ul{
+	left:auto;
+	right:100%;	
+}
+.megamenu .menu-item > a{
+	padding:15px 15px;
+}
+
+/*Mobile Menu RTL*/
+.rtl .mm-listview .mm-next{
+	right:auto;
+	left:0px;	
+}
+.rtl .mm-listview .mm-next:before{
+	left:auto;
+	right:0px;
+}
+.rtl .mm-next:after, .rtl .mm-arrow:after{
+	right:auto;
+	left:20px;
+}
+.rtl .mm-prev:before, .rtl .mm-next:after, .rtl .mm-arrow:after{
+    -webkit-transform: rotate(135deg);
+    -moz-transform: rotate(135deg);
+    -ms-transform: rotate(135deg);
+    -o-transform: rotate(135deg);
+    transform: rotate(135deg);
+}
+.rtl .mm-listview .mm-next + a, .rtl .mm-listview .mm-next + span{
+	margin-right:0px;
+	margin-left:50px;
+}
+.rtl #rnmm i:not(.social-icon-regular):not(.social-icon-hover){
+	margin-right: auto;
+    margin-left: 10px;
+}
+.rtl .mm-navbar .mm-btn:first-child{
+	padding-left: 0;
+	padding-right:20px;
+    left: auto;
+	right:0px;
+}

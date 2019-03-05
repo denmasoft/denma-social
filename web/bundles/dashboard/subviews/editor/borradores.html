@@ -1,0 +1,454 @@
+<style>
+    .profileSelectorWidget {
+        display: inline-block;
+        height: 30px;
+        margin-bottom: 10px;
+        margin-left: 4px;
+        position: relative;
+        vertical-align: middle;
+        width: 264px;
+    }
+    .profileSelectorWidget .profileSelectorWrapper {
+        height: 30px;
+        position: absolute;
+        top: 0;
+        width: 264px;
+        z-index: 1;
+    }
+    .profileSelectorWidget .selectedList {
+        background-color: #fff;
+        border: 1px solid #888;
+        box-shadow: 0 1px 4px #ccc inset;
+        cursor: text;
+        max-height: 300px;
+        min-height: 27px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        padding: 3px 26px 0 0;
+        position: relative;
+        white-space: nowrap;
+    }
+    .newProfileSelector .selectedList {
+        border: 1px solid #abaeb5;
+        box-shadow: none;
+        cursor: default;
+        max-height: 26px;
+        min-height: initial;
+        overflow: hidden;
+        padding: 1px 0;
+        white-space: nowrap;
+    }
+    .profileSelectorWidget .selectedList .filterItem {
+        display: inline-block;
+    }
+    .newProfileSelector .selectedList .filterItem {
+        overflow: hidden;
+        vertical-align: middle;
+        white-space: nowrap;
+    }
+    .profileSelectorWidget .selectedList .filterItem .defaultText {
+        color: #999;
+    }
+    .newProfileSelector .selectedList .filterItem .pht {
+        height: auto;
+        line-height: 26px;
+        margin-top: 1px;
+        padding-left: 10px;
+        vertical-align: middle;
+    }
+    .ui-icon, .icon-13, .icon-static-13, .icon-sn-13, .icon-16, .icon-static-16, .icon-sn-16, .favicon-16, .icon-oi-16, .icon-19, .icon-global-nav-19, .icon-static-19, .icon-sn-19, .icon-30, .icon-static-30, .icon-sn-30, .icon-66, .icon-qs, .icon-fb-list, .icon-co-13, .icon-co-16, .icon-co-19, .icon-co-90 {
+        display: inline-block;
+        outline: 0 none;
+        overflow: hidden;
+        text-align: left;
+        text-decoration: none;
+        text-indent: -999em;
+        vertical-align: middle;
+    }
+    .ui-icon, .icon-13, .icon-static-13, .icon-16, .icon-static-16, .icon-19, .icon-static-19, .icon-30, .icon-static-30 {
+        background-image: url("/images/icons.323d9c57.png");
+    }
+    .newProfileSelector .selectedList .icon-19.search {
+        display: none;
+    }
+    .icon-19, .icon-global-nav-19, .icon-static-19, .icon-sn-19, .icon-co-19 {
+        height: 19px;
+        width: 19px;
+    }
+    .icon-19.search {
+        background-position: -32px -190px;
+    }
+    .profileSelectorWidget .selectedList .filterItem input {
+        background: rgba(0, 0, 0, 0) none repeat scroll 0 center;
+        border: 0 none;
+        height: 16px;
+        padding: 0 0 0 4px;
+        position: relative;
+        width: 20px;
+        z-index: 2500;
+    }
+    .newProfileSelector .selectedList .filterItem input {
+        width: 170px;
+    }
+    .newProfileSelector .selectedList .filterItem .pht {
+        height: auto;
+        line-height: 26px;
+        margin-top: 1px;
+        padding-left: 10px;
+        vertical-align: middle;
+    }
+    .newProfileSelector .tools {
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 3;
+    }
+    .newProfileSelector .tools .inputBtn {
+        background-color: #f2f2f2;
+        border-left: 1px solid #e3e3e3;
+        border-right: 1px solid #fbfbfb;
+        cursor: pointer;
+        display: inline-block;
+        float: left;
+        line-height: 28px;
+        padding: 0 3px;
+    }
+    .newProfileSelector .tools .selectedCount {
+        background: rgba(0, 0, 0, 0) linear-gradient(to right, rgba(255, 255, 255, 0) 0px, rgba(255, 255, 255, 0.95) 50%) repeat scroll 0 0;
+        border: 0 none;
+        font-weight: 700;
+        padding: 0 6px 0 30px;
+    }
+    .icon-19.delete, .icon-19._close {
+        background-position: -51px -304px;
+        cursor: pointer;
+    }
+    .icon-btn, .close-lrg {
+        cursor: pointer;
+    }
+
+    .icon-19.moreMenu, .icon-19.collapsed, .active .icon-19.toggleArrow, .isActive .icon-19.toggleArrow, .icon-19.expand, .icon-19.expandedDown {
+        background-position: -32px -342px;
+    }
+    .noShadow {
+        box-shadow: none;
+    }
+    .profileSelectorWidget .picker {
+        background-color: #fff;
+        border: 1px solid #bcbcbc;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        margin-top: -1px;
+        position: relative;
+        width: 99.3%;
+        z-index: 5000;
+    }
+    .profileSelectorWidget .picker .snList {
+        padding: 3px 0;
+    }
+    .newProfileSelector .picker .snList {
+        padding: 0;
+    }
+    .list-drop, .auto-scroll, .list-scroll, .deck-scroll {
+        background-color: #fff;
+        border: 1px solid #8d8d8f;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) inset, 0 1px 0 0 #f7f7f8;
+        margin-bottom: 0.3em;
+        max-height: 350px;
+    }
+    .list-scroll, .deck-scroll {
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
+    .newProfileSelector .list-scroll {
+        border: 0 none;
+        box-shadow: none;
+        margin-bottom: 0;
+    }
+    .newProfileSelector .picker .list-scroll {
+        max-height: 160px;
+        min-height: 160px;
+        transition: max-height 0.4s ease 0s;
+    }
+
+    .newProfileSelector .picker .list-scroll.stretched {
+        max-height: 375px;
+    }
+    .list-scroll .listItem {
+        clear: both;
+        cursor: default;
+        display: block;
+        position: relative;
+    }
+    .newProfileSelector .list-scroll .listItem {
+        -moz-border-bottom-colors: none;
+        -moz-border-left-colors: none;
+        -moz-border-right-colors: none;
+        -moz-border-top-colors: none;
+        border-color: #fff;
+        border-image: none;
+        border-style: solid;
+        border-width: 0 1px 1px 0;
+        cursor: pointer;
+    }
+    .list-scroll .listItem > .controls, .list-scroll .listItem > .-controls {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    .newProfileSelector .view-list .list-scroll .listItem .controls {
+        right: 0;
+        top: 4px;
+        z-index: 1;
+    }
+    .icon-19.fave {
+        background-position: -32px -608px;
+    }
+    .icon-19.pin {
+        background-position: -32px -570px;
+    }
+    .profileSelectorWidget.nopin .picker .snList .row .controls .pin, .profileSelectorWidget.nopin .picker .snList .listItem .controls .pin {
+        display: none;
+    }
+    fieldset, img {
+        border: 0 none;
+    }
+    .profileSelectorWidget .avatar {
+        display: inline-block;
+        height: 20px;
+        width: 20px;
+    }
+    .profileSelectorWidget .picker .avatar {
+        margin-right: 3px;
+    }
+    .newProfileSelector .view-list .list-scroll .listItem .avatar {
+        border-left: 0 solid #1c3564;
+        height: 28px;
+        margin-right: 10px;
+        transition: margin 200ms ease 0s;
+        vertical-align: middle;
+        width: 28px;
+    }
+
+    .newProfileSelector .view-list .list-scroll .listItem strong {
+        display: inline-block;
+        font-weight: 400;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        vertical-align: middle;
+        white-space: nowrap;
+        width: 165px;
+    }
+    .newProfileSelector .view-list .list-scroll .listItem .icon-sn-13 {
+        left: 15px;
+        position: absolute;
+        top: 15px;
+        transition: left 0.2s ease 0s;
+    }
+    .icon-static-19.checkmark {
+        background-position: -13px -323px;
+    }
+    .newProfileSelector .list-scroll .listItem .checkmark {
+        display: none;
+    }
+    .newProfileSelector .view-list .list-scroll .listItem.addSocialNetwork {
+        line-height: 24px;
+    }
+    .newProfileSelector .list-scroll .listItem.addSocialNetwork .addIcon {
+        background-color: #f3f3f3;
+        border: 1px dashed #aaa;
+    }
+    .newProfileSelector .view-list .list-scroll .listItem.addSocialNetwork .addIcon {
+        margin-right: 10px;
+        padding: 5px 7px;
+    }
+
+    .ui-icon, .icon-13, .icon-static-13, .icon-sn-13, .icon-co-13 {
+        height: 13px;
+        width: 13px;
+    }
+
+    .icon-13.plus {
+        background-position: 0 -26px;
+    }
+    .newProfileSelector .view-list .list-scroll .listItem strong {
+        display: inline-block;
+        font-weight: 400;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        vertical-align: middle;
+        white-space: nowrap;
+        width: 165px;
+    }
+    .newProfileSelector .list-scroll .listItem.addSocialNetwork .addIcon {
+        background-color: #f3f3f3;
+        border: 1px dashed #aaa;
+    }
+    .newProfileSelector .view-list .list-scroll .listItem.addSocialNetwork .addIcon {
+        margin-right: 10px;
+        padding: 5px 7px;
+    }
+</style>
+<div class="message-profiles">
+    <profile-selector></profile-selector>
+    <!--<div class="profileSelectorWidget newProfileSelector nopin">
+        <div class="profileSelectorWrapper view-list">
+        <div class="selectedList _selectedList">
+            <div class="">
+                <span class="filterItem _filter">
+                <em class="_defaultText defaultText pht" style="display: inline;">Filter by profile…</em>
+                <span class="icon-19 search"></span>
+                <input class="clean pht" value="" placeholder="Find profile…" style="display: none;" type="text">
+                </span>
+            </div>
+            <div class="tools _tools">
+                <span class="inputBtn selectedCount">0</span>
+                <span class="inputBtn" style="margin-right: -27px;">
+                    <span class="icon-19 _close"></span>
+                </span>
+                <span class="inputBtn">
+                    <span class="icon-btn icon-19 moreMenu"></span>
+                </span>
+            </div>
+        </div>
+        <div class="picker noShadow" style="display: none;">
+            <div class="snList _itemList">
+                <div class="list-scroll stretched">
+                    <div class="listItem" type="TWITTER">
+                        <div class="controls">
+                            <a class="icon-19 fave " data-tooltip-selected="Unfavorite" data-tooltip-default="Move to top"></a>
+                            <a class="icon-19 pin " data-tooltip-selected="Unpin" data-tooltip-default="Always select"></a>
+                        </div>
+                        <div class="details" title="denmasoft">
+                            <img class="avatar" src="https://d1cmhiswqj5a7e.cloudfront.net/http%3A%2F%2Fabs.twimg.com%2Fsticky%2Fdefault_profile_images%2Fdefault_profile_5_normal.png" data-avatar="https://d1cmhiswqj5a7e.cloudfront.net/http%3A%2F%2Fabs.twimg.com%2Fsticky%2Fdefault_profile_images%2Fdefault_profile_5_normal.png">
+                            <strong>denmasoft</strong><span class="icon-sn-13 twitter"></span>
+                        </div>
+                        <span class="icon-static-19 checkmark"></span>
+                    </div>
+                    <div class="listItem" type="LINKEDIN">
+                    <div class="controls">
+                        <a class="icon-19 fave " data-tooltip-selected="Unfavorite" data-tooltip-default="Move to top"></a>
+                        <a class="icon-19 pin " data-tooltip-selected="Unpin" data-tooltip-default="Always select"></a>
+                    </div>
+                    <div class="details" title="Dennis Yalint">
+                        <img class="avatar" src="No media URL passed to proxify" data-avatar="No media URL passed to proxify">
+                        <strong>Dennis Yalint</strong><span class="icon-sn-13 linkedin"></span>
+                    </div>
+                    <span class="icon-static-19 checkmark"></span>
+                </div>
+                    <div class="listItem" type="INSTAGRAM">
+                        <div class="controls">
+                            <a class="icon-19 fave " data-tooltip-selected="Unfavorite" data-tooltip-default="Move to top"></a>
+                            <a class="icon-19 pin " data-tooltip-selected="Unpin" data-tooltip-default="Always select"></a>
+                        </div>
+                        <div class="details" title="yalint86">
+                            <img class="avatar" src="https://ig-s-a-a.akamaihd.net/hphotos-ak-xta1/t51.2885-19/11906329_960233084022564_1448528159_a.jpg" data-avatar="https://ig-s-a-a.akamaihd.net/hphotos-ak-xta1/t51.2885-19/11906329_960233084022564_1448528159_a.jpg">
+                            <strong>yalint86</strong><span class="icon-sn-13 instagram"></span>
+                        </div>
+                        <span class="icon-static-19 checkmark"></span>
+                    </div>
+                    <div class="listItem addSocialNetwork" title="Add social network">
+                        <div class="details">
+                            <span class="addIcon"><span class="icon-13 plus"></span></span><strong class="link">Add social network</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!--<div class="message-box-left" style="float:none !important;z-index: 10;" click-draft-outside
+         ng-class="{expanded: draft.draft_writting}"
+         ng-controller="draftController"
+         ng-mouseover="startWriteDraft();"
+         ng-mouseleave="stopWriteDraft()"
+         ng-blur="stopWriteDraft()">
+        <div class="message-user-profiles">
+            <div class="message-selected-list">
+                <div class="selected-list-box">
+                            <span class="item-filter">
+                                <span ng-hide="draft.draft_writting" class="send-to-text ng-hide">Buscar perfil...</span>
+                                <span class="glyphicon glyphicon-search" style="margin-left: 10px; padding-top: 8px;" ng-show="draft.draft_writting"></span>
+                                <input ng-model="redName" ng-show="draft.draft_writting" type="text" class="profiles-filter ng-pristine ng-valid" placeholder="Buscar perfil...">
+                            </span>
+                </div>
+                <div class="tools-list-box">
+                    <span class="item-box selected-count ng-binding" ng-bind="draft.profiles_selections.length">0</span>
+                            <span class="item-box-btn ng-hide" ng-show="draft.profiles_selections.length" ng-click="removeAllDraftProfiles()">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </span>
+                            <span class="item-box-btn dropdown-toggle" data-toggle="dropdown" tabindex="-1">
+                                <span class="caret"></span>
+                            </span>
+                    <ul role="menu" class="dropdown-menu">
+                        <li><a ng-click="selectAllDraftProfiles()">Marcar Todos</a></li>
+                        <li><a ng-click="removeAllDraftProfiles()">Quitar todos</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="message-profiles-selection ng-hide" ng-show="draft.draft_writting">
+            <div class="profile-picker">
+                <ul style="list-style: none; margin: 0; padding: 0">
+                    <li
+                            ng-repeat="profile in profiles | filter:redName"
+                            ng-class="{profile_selected: isDraftProfileSelected(profile.id)}"
+                            itemid="[[profile.id]]">
+                        <div class="profile-icon" ng-click="selectDraftProfile(profile.id)" >
+                            <img ng-src="[[profile.avatar]]" />
+                            <span class="truncate">[[profile.name]]</span>
+                        </div>
+                        <div class="profile-controls">
+                                    <span ng-show="isDraftProfileDefault(profile.id)" tooltip="Quitar selección"
+                                          tooltip-append-to-body="true"
+                                          class="glyphicon glyphicon-pushpin rotate"
+                                          ng-click="unselectDraftProfileDefault(profile.id)"></span>
+                                    <span ng-show="!isDraftProfileDefault(profile.id)" tooltip="Seleccionar Siempre"
+                                          tooltip-append-to-body="true"
+                                          class="glyphicon glyphicon-pushpin"
+                                          ng-click="selectDraftProfileDefault(profile.id)"></span>
+                        </div>
+                    </li>
+                    <li ng-click="addDraftProfile()">
+                        <div class="profile-icon profile-add glyphicon glyphicon-plus"></div>
+                        <a class="profile-add">Agregar red social</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>-->
+</div>
+<div class="messages-container" ng-controller="draftController">
+    <div>
+        <div>
+            <div class="messages-list">
+                <div class="message-item" ng-repeat="draft in drafts">
+                    <div class="message-info">
+                        <span class="message-schedule" ng-show="draft.programmed">
+                            <span class="icon-19 calendar _jsTooltip"></span>
+                        </span>
+                        <div class="message-network">
+
+                            <span class="profile" ng-show="draft.user.avatar">
+                                <span class="stack" ng-show="draft.networks.length>0"></span>
+                                <img class="avatar" src="draft.user.avatar">
+                            </span>
+                            <div class="socialNetworkLessDraft" ng-show="!draft.user.avatar">
+                            </div>
+                        </div>
+                        <div class="message">
+                            <span class="draftNotification ">Borrador:</span>
+                            [[draft.message]]
+                        </div>
+                        <div class="actions ">
+                            <a class="_edit icon-19 edit _jsTooltip"></a>
+                            <a class="_delete icon-19 delete _jsTooltip" title="Borrar"></a>
+                        </div>
+                        <div class="createdTime">
+                            creado el [[draft.createdAt.date|date:'MMM d, y h:mm:ss a']]
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

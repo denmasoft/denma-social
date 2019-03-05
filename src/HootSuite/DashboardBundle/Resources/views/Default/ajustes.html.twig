@@ -1,0 +1,312 @@
+<div class="modal-left"> 
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs tabs-left">                
+                <li ng-class="{active: navTabPanel=='1'}"><a id="tab_1" data-target="#ajustes-mi-cuenta" data-toggle="tab" ng-click="userProfileFeed()">Cuenta</a></li>
+                <li ng-class="{active: navTabPanel=='2'}"><a id="tab_2" data-target="#ajustes-preferencias" data-toggle="tab">Preferencias</a></li>
+                <li ng-class="{active: navTabPanel=='3'}"><a id="tab_3" data-target="#ajustes-archivos" data-toggle="tab">Archivos</a></li>
+                <li ng-class="{active: navTabPanel=='4'}"><a id="tab_4" data-target="#ajustes-rss-atom" data-toggle="tab">RSS/ATOM</a></li>
+                <li ng-class="{active: navTabPanel=='5'}"><a id="tab_5" data-target="#ajustes-url-personalizadas" data-toggle="tab">Urls personalizadas</a></li>
+                <li ng-class="{active: navTabPanel=='6'}"><a id="tab_6" data-target="#ajustes-notificaciones" data-toggle="tab">Notificaciones</a></li>
+                <li ng-class="{active: navTabPanel=='7'}"><a id="tab_7" data-target="#ajustes-programacion-automatica" data-toggle="tab">Programación Automática</a></li>
+            </ul>
+</div>
+<div class="modal-right">           
+    <div class="tab-content">               
+        <div class="tab-pane" ng-class="{active: navTabPanel=='1'}" id="ajustes-mi-cuenta">
+            <div class="tab-pane-resalted padding10">
+                <div ng-show="!adjustment.feed_html" style="text-align: center; padding: 20px 0;">
+                        <span class="glyphicon glyphicon-refresh-gif-black"></span> Cargando
+                    </div>
+                    <div ng-show="adjustment.feed_html" compile-data template="[[adjustment.feed_html]]">
+
+                    </div>   
+            </div>
+        </div> 
+        <div class="tab-pane" ng-class="{active: navTabPanel=='2'}" id="ajustes-preferencias">
+            <div class="tab-pane-resalted padding10">
+                <div class="_section _general general">
+
+                    <h1>General</h1>
+                    <div class="-formElement">
+                        <form name="languageSelectionForm" id="languageSelectionForm" method="get" formtype="input" action="">
+                            <label for="languageSelect" class="title">Idioma: </label>
+                            <select name="language" id="languageSelect">
+                                <option label="Arabic (العربية)" value="ar">Arabic (العربية)</option>
+                                <option label="Chinese Simplified (简体中文)" value="zh_CN">Chinese Simplified (简体中文)</option>
+                                <option label="Chinese Traditional (繁體中文)" value="zh_HK">Chinese Traditional (繁體中文)</option>
+                                <option label="Dutch (Nederlands)" value="nl">Dutch (Nederlands)</option>
+                                <option label="English" value="en">English</option>
+                                <option label="French (Français)" value="fr">French (Français)</option>
+                                <option label="German (Deutsch)" value="de">German (Deutsch)</option>
+                                <option label="Indonesian (Bahasa Indonesia)" value="id">Indonesian (Bahasa Indonesia)</option>
+                                <option label="Italian (Italiano)" value="it">Italian (Italiano)</option>
+                                <option label="Japanese (日本語)" value="ja">Japanese (日本語)</option>
+                                <option label="Korean (한국어)" value="ko">Korean (한국어)</option>
+                                <option label="Polish (Język polski)" value="pl">Polish (Język polski)</option>
+                                <option label="Português (Brasil)" value="pt_BR">Português (Brasil)</option>
+                                <option label="Russian (Русский язык)" value="ru">Russian (Русский язык)</option>
+                                <option label="Spanish (Español)" value="es" selected="selected">Spanish (Español)</option>
+                                <option label="Thai (ภาษาไทย)" value="th">Thai (ภาษาไทย)</option>
+                                <option label="Turkish (Türkçe)" value="tr">Turkish (Türkçe)</option>
+                                <option disabled="disabled">--------------------</option><option label="Croatian (Hrvatski)" value="hr">Croatian (Hrvatski)</option>
+                                <option label="Czech (Český jazyk)" value="cs">Czech (Český jazyk)</option>
+                                <option label="Danish (Dansk)" value="da">Danish (Dansk)</option>
+                                <option label="Greek (Ελληνική γλώσσα)" value="el">Greek (Ελληνική γλώσσα)</option>
+                                <option label="Hebrew (אָלֶף־בֵּית עִבְרִי‎‎)" value="he">Hebrew (אָלֶף־בֵּית עִבְרִי‎‎)</option>
+                                <option label="Hindi (हिंदी)" value="hi">Hindi (हिंदी)</option>
+                                <option label="Malay (Melayu)" value="ms">Malay (Melayu)</option>
+                                <option label="Norwegian (Norsk)" value="no">Norwegian (Norsk)</option>
+                                <option label="Persian (زبان فارسی)" value="fa">Persian (زبان فارسی)</option>
+                                <option label="Portuguese (Português)" value="pt">Portuguese (Português)</option>
+                                <option label="Romanian (Limba română)" value="ro">Romanian (Limba română)</option>
+                                <option label="Swedish (Svenska)" value="sv">Swedish (Svenska)</option>
+                                <option label="Ukrainian (українська мова)" value="uk">Ukrainian (українська мова)</option>
+                                <option label="Urdu (ﺍﺭﺩﻭ)" value="ur">Urdu (ﺍﺭﺩﻭ)</option>
+                                <option label="Vietnamese (Tiếng Việt)" value="vi">Vietnamese (Tiếng Việt)</option>
+                                <option label="Welsh (Cymraeg)" value="cy">Welsh (Cymraeg)</option>
+
+                            </select>
+                        </form>      </div>
+                    <div class="-formElement">
+                        <a class="btn btn-danger">Borrar mensajes en caché</a>
+                    </div>
+                    <p>&nbsp;</p>
+                    <hr>
+                    <p>&nbsp;</p>
+
+                    <form id="preferenceSettingForm">
+                        <div class="-formElement">
+                            <label class="title">
+                                <input class="checkbox" value="1" type="checkbox" name="isNewRetweet" checked="">
+                                Usar retuits basados en la web de Twitter
+                            </label>
+
+                            <label class="title" style="font-weight: normal;">
+                                <input class="checkbox" value="1" type="checkbox" name="isShowAds">
+                                Ocultar tuits promocionados
+                                (Funcionalidad sólo para cuenta Pro)
+                            </label>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div> 
+        <div class="tab-pane" ng-class="{active: navTabPanel=='3'}" id="ajustes-archivos">
+            <div class="tab-pane-resalted padding10">                        
+            </div>
+        </div> 
+        <div class="tab-pane" ng-class="{active: navTabPanel=='4'}" id="ajustes-rss-atom">
+            <div class="tab-pane-resalted padding10">
+                <div id="settingsContent" class="webfeed">
+                    <div ng-controller="rssFeedCtrl">
+                        <h1>Canales RSS/Atom</h1>
+                        <div class="filter">
+                            <a class="_addNewFeed btn-lite-sta btn-icon-19" ng-click="addNewRssFeed()">
+                                <span class="icon-19 bi-add"></span>
+                            </a>
+                            <div class="controls">
+                                <span class="_editSelectedFeeds btn-lite-sta btn-icon-19"><span class="icon-19 edit"></span></span>
+                                <span class="_deleteSelectedFeeds btn-lite-sta btn-icon-19"><span class="icon-19 bi-trash"></span></span>
+                            </div>
+                        </div>
+                        <input type="hidden" id="rssFeedCount" value="0">
+
+                        <div class="itemListHeader">
+                            <strong><em class="icon-13 blank"></em>&nbsp;&nbsp;Detalles</strong><span>Localizar</span><span>&nbsp;</span>
+                        </div>
+                        <div class="list-scroll advanced _webfeeds">
+
+                            <div class="emptySelectItem">
+                                <p><strong>¿Tienes un aviso de actualizaciones? </strong> Puede avisar de actualizaciones a todos tus perfiles de redes sociales a través de ConversationQuest.<br>Clic en "Añadir nueva fuente" para empezar.</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane" ng-class="{active: navTabPanel=='5'}" id="ajustes-url-personalizadas">
+            <div class="tab-pane-resalted padding10">
+                <h1>URL personalizadas</h1>
+                <p>Las URL personalizadas son una buena manera de vincular tu marca a tu dominio mientras sigues disfrutando de las estadísticas de clics y la seguridad de quest.ly. Añade tu URL personalizada a ConversationQuest contratando quest.ly Pro u quest.ly Enterprise.</p>
+            </div>
+        </div>
+        <div class="tab-pane" ng-class="{active: navTabPanel=='6'}" id="ajustes-notificaciones">
+            <div class="tab-pane-resalted padding10">
+                <div class="_section _notifications notifications">
+                    <form id="preferenceNotificationForm">
+                        <h1>General</h1>
+                        <div class="-formElement _generalNotifications generalNotifications">
+
+                            <label>
+                                <input class="checkbox _generalCb" value="0" type="checkbox">
+                                Sonido y barra de título iluminada cuando aparezcan nuevos mensajes en mis columnas
+                            </label>
+                        </div>
+
+                        <h1>Alertas y notificaciones</h1>
+
+                        <div class="-formElement _organizationNotifications">
+                            <table>
+                                <tbody><tr>
+                                    <td>
+                                        <span class="icon-19 email _jsTooltip" title="Notificación por email"></span>
+                                    </td>
+                                    <td></td>
+                                    <td>
+                                        <h2>Mensajes programados</h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><input class="checkbox" value="0" type="checkbox"></td>
+                                    <td></td>
+                                    <td><label>Cuando un mensaje programado escrito por usted falla al enviarse</label></td>
+                                </tr>
+                                </tbody></table>
+                        </div>
+                        <div class="-formElement _organizationNotifications">
+                            <table>
+                                <tbody><tr>
+                                    <td>
+                                        <span class="icon-19 email _jsTooltip"></span>
+                                    </td>
+                                    <td></td>
+                                    <td>
+                                        <h2>Organizaciones y equipos</h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><input class="checkbox" value="0" type="checkbox"></td>
+                                    <td></td>
+                                    <td><label>Cuando se cree un mensaje que requiere aprobación</label></td>
+                                </tr>
+                                <tr>
+                                    <td><input class="checkbox" value="0" type="checkbox"></td>
+                                    <td></td>
+                                    <td><label>Cuando un mensaje es rechazado en previsualización</label></td>
+                                </tr>
+                                </tbody></table>
+                        </div>
+                        <div class="-formElement">
+                            <div class="_desktopNotificationPrompt"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane" ng-class="{active: navTabPanel=='7'}" id="ajustes-programacion-automatica">
+            <div class="tab-pane-resalted padding10">
+                <h1>Programación Automática</h1>
+                <ul class="autoschedule-settings">
+                    <li>
+                        <div class="autoschedule-left">
+                            Programar hasta
+                            <select name="autoschedule-posts-per-day" id="autoschedule-posts-per-day">
+
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5" selected="">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                            mensajes/día entre <select name="autoschedule-from-time" id="autoschedule-from-time">
+                                <option value="0">12 AM</option>
+                                <option value="1">   1 AM</option>
+                                <option value="2">   2 AM</option>
+                                <option value="3">   3 AM</option>
+                                <option value="4">   4 AM</option>
+                                <option value="5">   5 AM</option>
+                                <option value="6">   6 AM</option>
+                                <option value="7">   7 AM</option>
+                                <option value="8" selected="">   8 AM</option>
+                                <option value="9">   9 AM</option>
+                                <option value="10">   10 AM</option>
+                                <option value="11">   11 AM</option>
+                                <option value="12">   12 PM</option>
+                                <option value="13">1 PM</option>
+                                <option value="14">2 PM</option>
+                                <option value="15">3 PM</option>
+                                <option value="16">4 PM</option>
+                                <option value="17">5 PM</option>
+                                <option value="18">6 PM</option>
+                                <option value="19">7 PM</option>
+                                <option value="20">8 PM</option>
+                                <option value="21">9 PM</option>
+                                <option value="22">10 PM</option>
+                                <option value="23">11 PM</option>
+                            </select> y <select name="autoschedule-to-time" id="autoschedule-to-time">
+
+                                <option value="1">   1 AM</option>
+                                <option value="2">   2 AM</option>
+                                <option value="3">   3 AM</option>
+                                <option value="4">   4 AM</option>
+                                <option value="5">   5 AM</option>
+                                <option value="6">   6 AM</option>
+                                <option value="7">   7 AM</option>
+                                <option value="8">   8 AM</option>
+                                <option value="9">   9 AM</option>
+                                <option value="10">   10 AM</option>
+                                <option value="11">   11 AM</option>
+                                <option value="12">   12 PM</option>
+                                <option value="13">1 PM</option>
+                                <option value="14">2 PM</option>
+                                <option value="15">3 PM</option>
+                                <option value="16">4 PM</option>
+                                <option value="17">5 PM</option>
+                                <option value="18">6 PM</option>
+                                <option value="19" selected="">7 PM</option>
+                                <option value="20">8 PM</option>
+                                <option value="21">9 PM</option>
+                                <option value="22">10 PM</option>
+                                <option value="23">11 PM</option>
+                                <option value="24">12 AM</option>
+
+                            </select></div>
+                    </li>
+                    <li>
+                        <div class="autoschedule-day-title">Selecciona los días en los que quieres que se programen mensajes.</div>
+
+                        <div class="autoschedule-day autoschedule-day-inactive">
+                            <div class="autoschedule-day-label">Dom</div>
+                            <div class="autoschedule-day-dot"></div>
+                        </div>
+                        <div class="autoschedule-day autoschedule-day-active">
+                            <div class="autoschedule-day-label">Lun</div>
+                            <div class="autoschedule-day-dot"></div>
+                        </div>
+                        <div class="autoschedule-day autoschedule-day-active">
+                            <div class="autoschedule-day-label">Mar</div>
+                            <div class="autoschedule-day-dot"></div>
+                        </div>
+                        <div class="autoschedule-day autoschedule-day-active">
+                            <div class="autoschedule-day-label">Mié</div>
+                            <div class="autoschedule-day-dot"></div>
+                        </div>
+                        <div class="autoschedule-day autoschedule-day-active">
+                            <div class="autoschedule-day-label">Jue</div>
+                            <div class="autoschedule-day-dot"></div>
+                        </div>
+                        <div class="autoschedule-day autoschedule-day-active">
+                            <div class="autoschedule-day-label">Vie</div>
+                            <div class="autoschedule-day-dot"></div>
+                        </div>
+                        <div class="autoschedule-day autoschedule-day-active">
+                            <div class="autoschedule-day-label">Sáb</div>
+                            <div class="autoschedule-day-dot"></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div id="saveSettingsButtons" class="btns-right">
+                <a class="btn btn-success">Guardar Preferencias</a>
+            </div>
+        </div>
+    </div>
+</div> 

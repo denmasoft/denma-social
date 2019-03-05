@@ -1,0 +1,559 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<!-- Apple devices fullscreen -->
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<!-- Apple devices fullscreen -->
+	<meta names="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+	<title>ConversationQuest Admin - Dashboard</title>
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="{{asset('bundles/Backend/css/bootstrap.min.css')}}">
+	<!-- jQuery UI -->
+	<link rel="stylesheet" href="{{asset('bundles/Backend/css/plugins/jquery-ui/smoothness/jquery-ui.css')}}">
+	<link rel="stylesheet" href="{{asset('bundles/Backend/css/plugins/jquery-ui/smoothness/jquery.ui.theme.css')}}">
+	<!-- PageGuide -->
+	<link rel="stylesheet" href="{{asset('bundles/Backend/css/plugins/pageguide/pageguide.css')}}">
+	<!-- Fullcalendar -->
+	<link rel="stylesheet" href="{{asset('bundles/Backend/css/plugins/fullcalendar/fullcalendar.css')}}">
+	<link rel="stylesheet" href="{{asset('bundles/Backend/css/plugins/fullcalendar/fullcalendar.print.css')}}" media="print">
+	<!-- chosen -->
+	<link rel="stylesheet" href="{{asset('bundles/Backend/css/plugins/chosen/chosen.css')}}">
+	<!-- select2 -->
+	<link rel="stylesheet" href="{{asset('bundles/Backend/css/plugins/select2/select2.css')}}">
+	<!-- icheck -->
+	<link rel="stylesheet" href="{{asset('bundles/Backend/css/plugins/icheck/all.css')}}">
+	<!-- Theme CSS -->
+	<link rel="stylesheet" href="{{asset('bundles/Backend/css/style.css')}}">
+	<!-- Color CSS -->
+	<link rel="stylesheet" href="{{asset('bundles/Backend/css/themes.css')}}">
+
+	<!-- jQuery -->
+	<script src="{{asset('bundles/Backend/js/jquery.min.js')}}"></script>
+
+
+	<!-- Nice Scroll -->
+	<script src="{{asset('bundles/Backend/js/plugins/nicescroll/jquery.nicescroll.min.js')}}"></script>
+	<!-- jQuery UI -->
+	<script src="{{asset('bundles/Backend/js/plugins/jquery-ui/jquery.ui.core.min.js')}}"></script>
+	<script src="{{asset('bundles/Backend/js/plugins/jquery-ui/jquery.ui.widget.min.js')}}"></script>
+	<script src="{{asset('bundles/Backend/js/plugins/jquery-ui/jquery.ui.mouse.min.js')}}"></script>
+	<script src="{{asset('bundles/Backend/js/plugins/jquery-ui/jquery.ui.draggable.min.js')}}"></script>
+	<script src="{{asset('bundles/Backend/js/plugins/jquery-ui/jquery.ui.resizable.min.js')}}"></script>
+	<script src="{{asset('bundles/Backend/js/plugins/jquery-ui/jquery.ui.sortable.min.js')}}"></script>
+	<!-- Touch enable for jquery UI -->
+	<script src="{{asset('bundles/Backend/js/plugins/touch-punch/jquery.touch-punch.min.js')}}"></script>
+	<!-- slimScroll -->
+	<script src="{{asset('bundles/Backend/js/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
+	<!-- Bootstrap -->
+	<script src="{{asset('bundles/Backend/js/bootstrap.min.js')}}"></script>
+	<!-- vmap -->
+	<script src="{{asset('bundles/Backend/js/plugins/vmap/jquery.vmap.min.js')}}"></script>
+	<script src="{{asset('bundles/Backend/js/plugins/vmap/jquery.vmap.world.js')}}"></script>
+	<script src="{{asset('bundles/Backend/js/plugins/vmap/jquery.vmap.sampledata.js')}}"></script>
+	<!-- Bootbox -->
+	<script src="{{asset('bundles/Backend/js/plugins/bootbox/jquery.bootbox.js')}}"></script>
+	<!-- Flot -->
+	<script src="{{asset('bundles/Backend/js/plugins/flot/jquery.flot.min.js')}}"></script>
+	<script src="{{asset('bundles/Backend/js/plugins/flot/jquery.flot.bar.order.min.js')}}"></script>
+	<script src="{{asset('bundles/Backend/js/plugins/flot/jquery.flot.pie.min.js')}}"></script>
+	<script src="{{asset('bundles/Backend/js/plugins/flot/jquery.flot.resize.min.js')}}"></script>
+	<!-- imagesLoaded -->
+	<script src="{{asset('bundles/Backend/js/plugins/imagesLoaded/jquery.imagesloaded.min.js')}}"></script>
+	<!-- PageGuide -->
+	<script src="{{asset('bundles/Backend/js/plugins/pageguide/jquery.pageguide.js')}}"></script>
+	<!-- FullCalendar -->
+	<script src="{{asset('bundles/Backend/js/plugins/fullcalendar/fullcalendar.min.js')}}"></script>
+	<!-- Chosen -->
+	<script src="{{asset('bundles/Backend/js/plugins/chosen/chosen.jquery.min.js')}}"></script>
+	<!-- select2 -->
+	<script src="{{asset('bundles/Backend/js/plugins/select2/select2.min.js')}}"></script>
+	<!-- icheck -->
+	<script src="{{asset('bundles/Backend/js/plugins/icheck/jquery.icheck.min.js')}}"></script>
+
+	<!-- Theme framework -->
+	<script src="{{asset('bundles/Backend/js/eakroko.min.js')}}"></script>
+	<!-- Theme scripts -->
+	<script src="{{asset('bundles/Backend/js/application.min.js')}}"></script>
+	<!-- Just for demonstration -->
+	<script src="{{asset('bundles/Backend/js/demonstration.min.js')}}"></script>
+
+	<!--[if lte IE 9]>
+		<script src="js/plugins/placeholder/jquery.placeholder.min.js"></script>
+		<script>
+			$(document).ready(function() {
+				$('input, textarea').placeholder();
+			});
+		</script>
+		<![endif]-->
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="img/favicon.ico" />
+	<!-- Apple devices Homescreen icon -->
+	<link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-precomposed.png" />
+</head>
+
+<body>	
+	<div id="modal-user" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					<h3 id="user-infos">Jane Doe</h3>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="span2">
+							<img src="img/demo/user-1.jpg" alt="">
+						</div>
+						<div class="span10">
+							<dl class="dl-horizontal" style="margin-top:0;">
+								<dt>Full name:</dt>
+								<dd>Jane Doe</dd>
+								<dt>Email:</dt>
+								<dd>jane.doe@janedoesemail.com</dd>
+								<dt>Address:</dt>
+								<dd>
+                                                                    <address>
+                                                                            <strong>John Doe, Inc.</strong>
+                                                                            <br>7195 JohnsonDoes Ave, Suite 320
+                                                                            <br>San Francisco, CA 881234
+                                                                            <br>
+                                                                            <abbr title="Phone">P:</abbr>
+                                                                            (123) 456-7890
+                                                                    </address>
+								</dd>
+								<dt>Social:</dt>
+								<dd>
+									<a href="#" class='btn'>
+										<i class="fa fa-facebook"></i>
+									</a>
+									<a href="#" class='btn'>
+										<i class="fa fa-twitter"></i>
+									</a>
+									<a href="#" class='btn'>
+										<i class="fa fa-linkedin"></i>
+									</a>
+									<a href="#" class='btn'>
+										<i class="fa fa-envelope"></i>
+									</a>
+									<a href="#" class='btn'>
+										<i class="fa fa-rss"></i>
+									</a>
+									<a href="#" class='btn'>
+										<i class="fa fa-github"></i>
+									</a>
+								</dd>
+							</dl>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+                                    <button class="btn" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="navigation">
+		<div class="container-fluid">
+			<a href="#" id="brand">ConversationQuest </a>
+			<a href="#" class="toggle-nav" rel="tooltip" data-placement="bottom" title="Toggle navigation">
+                            <i class="fa fa-bars"></i>
+			</a>
+			<ul class='main-nav'>
+                            <li class='active'>
+                                <a href="">
+                                        <span>Dashboard</span>
+                                </a>
+                            </li>
+				<li>
+                                    <a href="#" data-toggle="dropdown" class='dropdown-toggle'>
+                                            <span>Forms</span>
+                                            <span class="caret"></span>
+                                    </a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="forms-basic.html">Basic forms</a>
+						</li>
+						<li>
+							<a href="forms-extended.html">Extended forms</a>
+						</li>
+						<li>
+							<a href="forms-validation.html">Validation</a>
+						</li>
+						<li>
+							<a href="forms-wizard.html">Wizard</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="#" data-toggle="dropdown" class='dropdown-toggle'>
+                                            <span>Components</span>
+                                            <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+                                                    <a href="">Timeline</a>
+						</li>
+						<li>
+                                                    <a href="">Page statistics</a>
+						</li>
+						<li>
+                                                    <a href="">Sidebar widgets</a>
+						</li>
+						<li>
+                                                    <a href="">Messages &amp; Chat</a>
+						</li>
+						<li>
+                                                    <a href="">Gallery &amp; Thumbs</a>
+						</li>
+						<li>
+                                                    <a href="">Tiles</a>
+						</li>
+						<li>
+                                                    <a href="">Icons &amp; Buttons</a>
+						</li>
+						<li>
+                                                    <a href="">UI elements</a>
+						</li>
+						<li>
+                                                    <a href="">Typography</a>
+						</li>
+						<li>
+                                                    <a href="">Bootstrap elements</a>
+						</li>
+						<li>
+                                                    <a href="">Grid</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="#" data-toggle="dropdown" class='dropdown-toggle'>
+						<span>Tables</span>
+						<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="">Basic tables</a>
+						</li>
+						<li>
+							<a href="">Dynamic tables</a>
+						</li>
+						<li>
+							<a href="">Large tables</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="#" data-toggle="dropdown" class='dropdown-toggle'>
+						<span>Plugins</span>
+						<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="">Charts</a>
+						</li>
+						<li>
+							<a href="">Calendar</a>
+						</li>
+						<li>
+							<a href="">File manager</a>
+						</li>
+						<li>
+							<a href="">File trees</a>
+						</li>
+						<li>
+							<a href="">Editable elements</a>
+						</li>
+						<li>
+							<a href="">Maps</a>
+						</li>
+						<li>
+							<a href="">Drag &amp; Drop widgets</a>
+						</li>
+
+					</ul>
+				</li>
+				<li>
+                                    <a href="#" data-toggle="dropdown" class='dropdown-toggle'>
+                                            <span>Pages</span>
+                                            <span class="caret"></span>
+                                    </a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="">Error pages</a>
+						</li>
+						<li class='dropdown-submenu'>
+							<a href="#" data-toggle="dropdown" class='dropdown-toggle'>Shop</a>
+							<ul class="dropdown-menu">
+								<li>
+									<a href="">List view</a>
+								</li>
+								<li>
+									<a href="">Product view</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="">Pricing tables</a>
+						</li>
+						<li>
+							<a href="">FAQ</a>
+						</li>
+						<li>
+							<a href="">Invoice</a>
+						</li>
+						<li>
+							<a href="">User profile</a>
+						</li>
+						<li>
+							<a href="">Search results</a>
+						</li>
+						<li>
+							<a href="">Login</a>
+						</li>
+						<li>
+							<a href="">Lock screen</a>
+						</li>
+						<li>
+							<a href="">Email templates</a>
+						</li>
+						<li>
+							<a href="">Blank page</a>
+						</li>
+						<li class='dropdown-submenu'>
+							<a href="#" data-toggle="dropdown" class='dropdown-toggle'>Blog</a>
+							<ul class="dropdown-menu">
+								<li>
+									<a href="">List big image</a>
+								</li>
+								<li>
+									<a href="">List small image</a>
+								</li>
+								<li>
+									<a href="">Post</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="#" data-toggle="dropdown" class='dropdown-toggle'>
+						<span>Layouts</span>
+						<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="">Default hidden sidebar</a>
+						</li>
+						<li>
+							<a href="">Sidebar right side</a>
+						</li>
+						<li>
+							<a href="">Different default color</a>
+						</li>
+						<li>
+							<a href="">Fixed layout</a>
+						</li>
+						<li>
+							<a href="">Fixed topbar and sidebar</a>
+						</li>
+						<li class='dropdown-submenu'>
+							<a href="#">Mobile sidebar</a>
+							<ul class="dropdown-menu">
+								<li>
+									<a href="">Slide</a>
+								</li>
+								<li>
+									<a href="">Button</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="">Footer</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			<div class="user">
+				<ul class="icon-nav">				
+					
+					<li class='dropdown language-select'>
+						<a href="#" class='dropdown-toggle' data-toggle="dropdown">
+							<img src="img/demo/flags/us.gif" alt="">
+							<span>US</span>
+						</a>
+						<ul class="dropdown-menu pull-right">
+                                                    <li>
+                                                        <a href="#">
+                                                                <img src="img/demo/flags/es.gif" alt="">
+                                                                <span>España</span>
+                                                        </a>
+                                                    </li>							
+						</ul>
+					</li>
+				</ul>
+				<div class="dropdown">
+					<a href="#" class='dropdown-toggle' data-toggle="dropdown">John Doe
+						<img src="img/demo/user-avatar.jpg" alt="">
+					</a>
+					<ul class="dropdown-menu pull-right">
+						<li>
+							<a href="more-userprofile.html">Edit profile</a>
+						</li>
+						<li>
+							<a href="#">Account settings</a>
+						</li>
+						<li>
+							<a href="more-login.html">Sign out</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid" id="content">
+		<div id="left">			
+			<div class="subnav">
+				<div class="subnav-title">
+					<a href="#" class='toggle-subnav'>
+                                            <i class="fa fa-angle-down"></i>
+                                            <span>Content</span>
+					</a>
+				</div>
+				<ul class="subnav-menu">					
+                                    <li>
+                                        <a href="#">News</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Pages</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Comments</a>
+                                    </li>
+				</ul>
+			</div>
+			<div class="subnav">
+				<div class="subnav-title">
+					<a href="#" class='toggle-subnav'>
+						<i class="fa fa-angle-down"></i>
+						<span>Plugins</span>
+					</a>
+				</div>
+				<ul class="subnav-menu">
+                                    <li>
+                                            <a href="#">Cache manager</a>
+                                    </li>					
+                                    <li>
+                                            <a href="#">Contact form generator</a>
+                                    </li>
+                                    <li>
+                                            <a href="#">SEO optimization</a>
+                                    </li>
+				</ul>
+			</div>
+			<div class="subnav">
+				<div class="subnav-title">
+					<a href="#" class='toggle-subnav'>
+						<i class="fa fa-angle-down"></i>
+						<span>Settings</span>
+					</a>
+				</div>
+				<ul class="subnav-menu">
+					<li>
+						<a href="#">Theme settings</a>
+					</li>					
+					<li>
+						<a href="#">Security settings</a>
+					</li>
+				</ul>
+			</div>
+			<div class="subnav subnav-hidden">
+				<div class="subnav-title">
+					<a href="#" class='toggle-subnav'>
+						<i class="fa fa-angle-right"></i>
+						<span>Default hidden</span>
+					</a>
+				</div>
+				<ul class="subnav-menu">
+					<li>
+						<a href="#">Menu</a>
+					</li>					
+					<li>
+						<a href="#">Security settings</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div id="main">
+			<div class="container-fluid">
+                            <div class="page-header">
+                                    <div class="pull-left">
+                                        <h1>Dashboard</h1>
+                                    </div>
+                                    <div class="pull-right">
+                                            <ul class="minitiles">
+                                                <li class='grey'>
+                                                    <a href="#">
+                                                        <i class="fa fa-cogs"></i>
+                                                    </a>
+                                                </li>
+                                                <li class='lightgrey'>
+                                                    <a href="#">
+                                                            <i class="fa fa-globe"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <ul class="stats">							
+                                                <li class='lightred'>
+                                                    <i class="fa fa-calendar"></i>
+                                                    <div class="details">
+                                                            <span class="big">February 22, 2013</span>
+                                                            <span>Wednesday, 13:56</span>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                    </div>
+                            </div>
+                            <div class="breadcrumbs">
+                                    <ul>
+                                            <li>
+                                                    <a href="">Home</a>
+                                                    <i class="fa fa-angle-right"></i>
+                                            </li>
+                                            <li>
+                                                    <a href="">Dashboard</a>
+                                            </li>
+                                    </ul>
+                                    <div class="close-bread">
+                                            <a href="#">
+                                                    <i class="fa fa-times"></i>
+                                            </a>
+                                    </div>
+                            </div>
+                            <div class="ng-view"></div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-38620714-4']);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script');
+		ga.type = 'text/javascript';
+		ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0];
+		s.parentNode.insertBefore(ga, s);
+	})();
+	</script>
+</body>
+
+
+
+</html>

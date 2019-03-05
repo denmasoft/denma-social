@@ -1,0 +1,79 @@
+twitter_retweet:
+    pattern:  /retweet
+    defaults: { _controller: ApiBundle:Twitter:retweet }
+    requirements: { _method: post }   
+    
+twitter_spammer:
+    pattern:  /report-spam
+    defaults: { _controller: ApiBundle:Twitter:spammer }
+    requirements: { _method: post } 
+    
+twitter_favorite:
+    pattern:  /favorite
+    defaults: { _controller: ApiBundle:Twitter:favorite }
+    requirements: { _method: post } 
+    
+twitter_follow:
+    pattern:  /follow
+    defaults: { _controller: ApiBundle:Twitter:follow }
+    requirements: { _method: post } 
+    
+twitter_create_list:
+    pattern:  /create-list
+    defaults: { _controller: ApiBundle:Twitter:createList }
+    requirements: { _method: post } 
+    
+twitter_create_list_member:
+    pattern:  /create-list-member
+    defaults: { _controller: ApiBundle:Twitter:createListMember }
+    requirements: { _method: post } 
+    
+twitter_show_conversation:
+    pattern:  /show-conversation
+    defaults: { _controller: ApiBundle:Twitter:showConversation }
+    requirements: { _method: post } 
+    
+twitter_user_cronology:
+    pattern:  /cronology
+    defaults: { _controller: ApiBundle:Twitter:userCronology }
+    requirements: { _method: post }    
+    
+twitter_user_mentions:
+    pattern:  /mentions
+    defaults: { _controller: ApiBundle:Twitter:userMentions }
+    requirements: { _method: post }    
+    
+twitter_user_favorites:
+    pattern:  /favorites
+    defaults: { _controller: ApiBundle:Twitter:userFavorites }
+    requirements: { _method: post }    
+    
+twitter_retweet:
+    pattern:  /retweet
+    defaults: { _controller: ApiBundle:Twitter:retweet }
+    requirements: { _method: post }    
+    
+twitter_get_retweets:
+    pattern:  /get-retweet
+    defaults: { _controller: ApiBundle:Twitter:getRetweets }
+    requirements: { _method: post }    
+    
+twitter_hash-search:
+    pattern:  /search
+    defaults: { _controller: ApiBundle:Twitter:hashSearch }
+    requirements: { _method: post }
+
+twitter_user-search:
+    pattern:  /search-users
+    defaults: { _controller: ApiBundle:Twitter:searchUsers }
+    requirements: { _method: post }
+    
+    
+twitter_lists_subscriptions:
+    pattern:  /lists-subscriptions
+    defaults: { _controller: ApiBundle:Twitter:listsSubscriptions }
+    requirements: { _method: post }
+twitter_trend-topics:
+    pattern:  /trend-topics
+    defaults: { _controller: ApiBundle:Twitter:trendTopics }
+    requirements: { _method: post }

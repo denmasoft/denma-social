@@ -1,0 +1,105 @@
+<span ng-init="col.more_options_filter=true; col.more_options_empty=true;"></span>
+<div class="column-body-item column-body-filtering" ng-show="col.filtering">
+    <div class="input-group">
+        <div class="input-group-btn input-group-select-first">
+            <select class="col-filter-selection" tooltip="Filtrar por" tooltip-append-to-body="true">
+                <option>Palabra clave</option>
+            </select>
+        </div>    
+        <input type="text" ng-model="filtro" class="form-control" />
+        <span class="input-group-btn">
+            <button class="btn btn-primary btn-sm" ng-click="col.filtering=false; filtro=''"><i class="glyphicon glyphicon-remove"></i></button>
+        </span>
+    </div>    
+</div>
+<div ng-if="col.data.length" ng-repeat="row in col.data  | filter:filtro" class="column-body-item column-body-has-options">
+    <div class="body-item-content">
+        <div class="item-avatar">
+            <div class="avatar-more-menu">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="width: 100%;">
+                    <div style="position: absolute; top: 5px; right: 5px; left: 5px;">
+                        <img style="width: 100%;" ng-src="[[row.updateContent.person.pictureUrl]]" />
+                    </div>
+                    <br/>
+                    <span style="margin-top: 20px;" class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="javascript:;" ng-click="userProfile(row.updateContent.person.id,col.profile,(row.updateContent.person.firstName+' '+row.updateContent.person.lastName))"><span class="glyphicon glyphicon1-user"></span> Ver perfil</a></li>
+                </ul>
+            </div>
+            <img style="width: 100%" ng-src="[[row.updateContent.person.pictureUrl]]" />
+        </div>
+        <div class="item-username"><a class="username" href="javascript:;" ng-click="userProfile(row.updateContent.person.id,col.profile,(row.updateContent.person.firstName+' '+row.updateContent.person.lastName))">[[row.updateContent.person.firstName]] [[row.updateContent.person.lastName]]</a></div>
+        <div class="item-created"><span unsafe>[[row.timestamp | toDate | date:'MMM d, h:mma']]</span></div>
+        
+        
+        <div class="item-text" ng-if="row.updateType=='CONN'" compile-data template="
+             <div>
+                <div class=''><span>[[row.updateContent.person.firstName]] [[row.updateContent.person.lastName]]</span> tiene un contacto nuevo.</div>
+                <div ng-repeat='conection in row.updateContent.person.connections.values'>
+                    <img ng-src='[[conection.pictureUrl ? conection.pictureUrl : 'https://static.licdn.com/scds/common/u/img/icon/icon_no_photo_40x40.png']]' style='float:left'/>
+                    <p><a ng-href='[[conection.siteStandardProfileRequest.url]]' ng-bind='conection.firstName+ +conection.lastName'></p>
+                    <p ng-bind='conection.headline'></p>
+                    <div class='clearfix'></div>
+                </div>
+             </div>">
+        </div>
+        
+        
+        
+        <div class="item-conversation item-conversation-li" ng-show="row.updateComents._total>5">
+            <div class="item-conversation-all">
+                <div ng-repeat="conv in row.updateComents.values | limitTo:3" class="column-body-item">
+                    <div class="item-avatar">
+                        <a href="javascript:;" ng-click="userProfile(conv.person.id,col.profile,(conv.person.firsrtName+' '+conv.person.lastName))">
+                            <img style="width: 100%" ng-src="[[conv.person.pictureUrl ? conv.person.pictureUrl : 'https://static.licdn.com/scds/common/u/img/icon/icon_no_photo_40x40.png']]" />
+                        </a>
+                    </div>
+                    <div class="body-item-content">
+                        <div class="item-username">
+                            <a class="username" href="javascript:;" ng-click="userProfile(conv.updateContent.person.id,col.profile,(row.updateContent.person.firstName+' '+row.updateContent.person.lastName))">[[conv.from.name]]</a> 
+                            <span compile-data template="<span>[[conv.comment | linkify | linkusers:col.profile]]</span>"></span>
+                        </div>
+                        <div class="item-created">[[conv.created_time | toDate | date:'MMM d, h:mma']]</div>
+                    </div>
+                </div>
+                <div class="column-body-item">
+                    <div class="item-comment-add" blur ng-init="row.updateComents.li_writing_comment=false;">
+                        <textarea ng-click="row.updateComents.li_writing_comment=true" 
+                                  ng-model="row.updateComents.li_comment_text"
+                                  alt="Pulsa 'Intro' para enviar." 
+                                  title="Pulsa 'Intro' para enviar." 
+                                  ng-blur="row.updateComents.li_writing_comment=false"
+                                  ng-class="{'inactive' : !row.updateComents.li_writing_comment}"
+                                  ng-enter="fbAddComment(col.profile, row)"
+                                  placeholder="Escribe un comentario..."></textarea>
+                            <div class="text-help">
+                                <span style="font-size: 11px;" ng-show="row.updateComents.li_writing_comment && !row.updateComents.adding_comment">Pulsa "Intro" para enviar.</span>
+                                <div ng-show="row.updateComents.adding_comment"><span class="glyphicon glyphicon-refresh-gif-black"></span> Enviando...</div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-row-options">
+        <ul>
+            <span no-propage ng-click="liLikes(col.profile, row, 1)" ng-if="!row.isLiked" class="glyphicon glyphicon-fb-like btn-option" tooltip="Me gusta" tooltip-append-to-body="true"></span>
+            <span no-propage ng-click="liLikes(col.profile, row, 0)" ng-if="row.isLiked" class="glyphicon glyphicon-fb-unlike btn-option" tooltip="No me gusta" tooltip-append-to-body="true"></span>
+            <span class="dropdown btn-option">
+                <span class="dropdown-toggle" on-toggle="toggled(open)" tooltip="Más opciones" tooltip-append-to-body="true">
+                    <i class="caret"></i>
+                </span>
+                <ul class="dropdown-menu pull-right" role="menu">
+                    <li><a href="javascript:;" ng-click="sendToEmail(row.text)"><span class="glyphicon glyphicon-envelope"></span> Enviar a email</a></li>
+                </ul>
+            </span>
+        </ul>
+    </div>    
+</div>
+<div class="column-body-item column-body-scrolling" ng-show="col.scrolling">
+    <span class="glyphicon glyphicon-refresh-gif-black"></span> Cargando...
+</div>
+<div ng-if="col.data.length==0" class="column-no-results column-body-item">
+    No se han encontrado resultados
+</div>

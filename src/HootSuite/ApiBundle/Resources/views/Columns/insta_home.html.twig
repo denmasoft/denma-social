@@ -1,0 +1,118 @@
+<span ng-init="col.more_options_filter=true; col.more_options_empty=true;"></span>
+<div class="column-body-item column-body-filtering" ng-show="col.filtering">
+    <div class="input-group">
+        <div class="input-group-btn input-group-select-first">
+            <select class="col-filter-selection" tooltip="Filtrar por" tooltip-append-to-body="true">
+                <option>Palabra clave</option>
+            </select>
+        </div>    
+        <input type="text" ng-model="filtro" class="form-control" />
+        <span class="input-group-btn">
+            <button class="btn btn-primary btn-sm" ng-click="col.filtering=false"><i class="glyphicon glyphicon-remove"></i></button>
+        </span>
+    </div>    
+</div>
+<div ng-if="col.data.length" ng-repeat="row in col.data  | filter:filtro" class="column-body-item column-body-has-options">
+    <div class="body-item-content" ng-init="row.liked_it=instagramLikedIt(row)">
+        <div class="item-avatar">
+            <div class="avatar-more-menu">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="width: 100%;">
+                    <div style="position: absolute; top: 5px; right: 5px; left: 5px;">
+                        <img style="width: 100%;" ng-src="[[row.user.profile_picture]]" />
+                    </div>
+                    <br/>
+                    <span style="margin-top: 20px;" class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="javascript:;" ng-click="userProfile(row.user.id,col.profile,row.user.username)"><span class="glyphicon glyphicon1-user"></span> Ver perfil</a></li>
+                </ul>
+            </div>
+            <img style="width: 100%" ng-src="[[row.user.profile_picture]]" />
+        </div>
+        <div class="item-username"><a class="username" href="javascript:;" ng-click="">[[row.user.username]]</a></div>
+        <div class="item-created"><span unsafe><a target="_blank" href="[[row.link]]">[[row.created_time | instagramDate | date:'MMM d, h:mm a']]</a></span></div>
+        
+        <div class="item-text" compile-data template="<div>
+                <div>
+                                <div ng-if='row.images.low_resolution'><img class='instagram-img' ng-src='[[row.images.low_resolution.url]]' /></div>
+                                <div ng-if='row.caption.text'><p>[[row.caption.text]]</p></div>                                
+                             </div>
+                             ">
+        </div>
+        
+                
+        <div class="item-likes-comments">
+            <a href="javascript:;" ng-show="!row.likes.count" class="item-likes"><i class="glyphicon glyphicon-heart"></i> 0 Me gusta</a>
+            <a href="javascript:;" class="item-likes" ng-show="row.likes.count"
+                custom-popover
+                popover-placement="right"
+                popover-html="<div class='column-retuit-users'>
+                                  <div style='margin-bottom:2px' ng-repeat='us in row.likes.data'>
+                                      <a href='javascript:;' ng-click='userProfile(us.id,col.profile,us.username)'>
+                                          <imagen-fb src='us.id'></imagen-fb></imagen> <span ng-bind='us.username'></span>
+                                      </a>
+                                  </div>
+                              </div>">
+                <i class="glyphicon glyphicon-heart"></i> [[row.likes.count]] Me gusta
+            </a>
+            <a href="javascript:;" class="item-comment" ng-click="instagramShowComments(row, col.profile)"><i class="glyphicon glyphicon-comment"></i> [[row.comments.count ? row.comments.count : 0]] Comentarios</a>
+        </div>
+        <div class="item-conversation item-conversation-fb" ng-show="row.comments.data.length>0">
+            <div class="item-conversation-all">
+                <div ng-repeat="conv in row.comments.data | limitTo:3" class="column-body-item">
+                    <div class="item-avatar">
+                        <a href="javascript:;" ng-click="userProfile(conv.from.id,col.profile,conv.from.username)">
+                            <img style="width: 100%" ng-src="[[conv.from.profile_picture]]" />
+                        </a>
+                    </div>
+                    <div class="body-item-content">
+                        <div class="item-username">
+                            <a class="username" href="javascript:;" ng-click="userProfile(conv.from.username,col.profile,conv.from.username)">[[conv.from.username]]</a> 
+                            <span compile-data template="<span>[[conv.text | linkify | linkusers:col.profile]]</span>"></span>
+                        </div>
+                        <div class="item-created"></div>
+                    </div>
+                </div>
+                <div class="column-body-item">
+                    <div class="item-comment-add" blur ng-init="row.comments.inst_writing_comment=false;">
+                        <textarea ng-click="row.comments.inst_writing_comment=true" 
+                                  ng-model="row.comments.inst_comment_text"
+                                  alt="Pulsa 'Intro' para enviar." 
+                                  title="Pulsa 'Intro' para enviar." 
+                                  ng-blur="row.comments.inst_writing_comment=false"
+                                  ng-class="{'inactive' : !row.comments.inst_writing_comment}"
+                                  ng-enter="instagramAddComment(col.profile, row)"
+                                  placeholder="Escribe un comentario..."></textarea>
+                            <div class="text-help">
+                                <span style="font-size: 11px;" ng-show="row.comments.inst_writing_comment && !row.comments.adding_comment">Pulsa "Intro" para enviar.</span>
+                                <div ng-show="row.comments.adding_comment"><span class="glyphicon glyphicon-refresh-gif-black"></span> Enviando...</div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-row-options">
+        <ul>
+            <span no-propage ng-click="instagramLikes(col.profile, row, 1)" ng-if="!row.user_likes" class="glyphicon glyphicon-heart btn-option" tooltip="Me gusta" tooltip-append-to-body="true"></span>
+            <span no-propage ng-click="instagramLikes(col.profile, row, 0)" ng-if="row.user_likes" class="glyphicon glyphicon-heart-empty btn-option" tooltip="No me gusta" tooltip-append-to-body="true"></span>
+            <span class="dropdown btn-option">
+                <span class="dropdown-toggle" on-toggle="toggled(open)" tooltip="Más opciones" tooltip-append-to-body="true">
+                    <i class="caret"></i>
+                </span>
+                <ul class="dropdown-menu pull-right" role="menu">
+                    <li><a href="javascript:;" no-propage ng-click="addColumn('',col.profile, 'COMMENTS', {'q':col.id})"><span class="glyphicon glyphicon1-profile"></span> Crear columna de comentarios</a></li>
+                    <li><a href="javascript:;" ng-click="sendToEmail(row.description)"><span class="glyphicon glyphicon-envelope"></span> Enviar a email</a></li>
+                    <li><a href="javascript:;"><span class="glyphicon glyphicon1-shuffle2"></span> Asignar a...</a></li>
+                    
+                </ul>
+            </span>
+        </ul>
+    </div>    
+</div>
+<div class="column-body-item column-body-scrolling" ng-show="col.scrolling">
+    <span class="glyphicon glyphicon-refresh-gif-black"></span> Cargando...
+</div>
+<div ng-if="col.data.length==0" class="column-no-results column-body-item">
+    No se han encontrado resultados
+</div>

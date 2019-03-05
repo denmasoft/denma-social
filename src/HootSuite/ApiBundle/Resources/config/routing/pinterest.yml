@@ -1,0 +1,17 @@
+pinterest_add_comment:
+    pattern:  /add-comment
+    defaults: { _controller: ApiBundle:Pinterest:addComment }
+    requirements: { _method: post }
+    
+pinterest_likes:
+    pattern:  /likes
+    defaults: { _controller: ApiBundle:Pinterest:likes }
+    requirements: { _method: post }
+pinterest_follows:
+    pattern:  /follows
+    defaults: { _controller: ApiBundle:Pinterest:follows }
+    requirements: { _method: post }
+pinterest_user_feed:
+    pattern:  /instagram-user-feed
+    defaults: { _controller: ApiBundle:Pinterest:userFeed }
+    requirements: { _method: post } 

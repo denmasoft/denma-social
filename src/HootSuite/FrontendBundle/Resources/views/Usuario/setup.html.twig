@@ -1,0 +1,174 @@
+{% extends 'FrontendBundle::frontend.html.twig' %}
+
+{% block header %} <div class="container header-2">
+    <img src="{{asset('images/logo.png')}}" alt="ConversationQuest" />
+</div>
+    <div class="vertical-space"></div>
+{% endblock %}
+
+{% block content %}
+<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+<script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+    <div class="vertical-space"></div>
+    <div class="row"></div>
+    <div class="row">
+        <div id="primary" class="content-area large-12 columns ">
+            <div id="content" class="site-content" role="main">
+                <div class="entry-content">
+                    <div class="row">
+                        <div class="large-12 medium-12 columns">
+                            <div class="azoom-text-details">
+                                <div class="azoom-steps-wrapper">
+                                    <div class="regsteps azoom-steps jump-steps azoom-transition" data-start_steps="all" data-min-width="960" style="margin-top:160px; margin-bottom:190px; ">
+                                        <ul class="large-block-grid-3 medium-block-grid-3 small-block-grid-3"
+                                            style="background:#c5cdd1; color:#c5cdd1;">
+
+                                            <li data-step-color="#56ccc8">
+                                                <div class="step-nav">
+                                                    <i class="icomoon icomoon-icon-previous11 step-back"></i>
+                                                    <i class="icomoon icomoon-icon-next15 step-next"></i>
+                                                </div>
+                                                <div class="step-icon steps-noselect">
+                                                    <span class="number">1</span>
+					<span class="check">
+						<i class="icomoon icomoon-icon-checkmark"></i>
+					</span>
+                                                </div>
+                                                <div class="step-details-line"></div>
+                                                <div class="step-details">
+                                                    <h3>Crea tu Cuenta</h3>
+                                                    <p></p>
+                                                </div>
+                                            </li>
+
+                                            <li data-step-color="">
+                                                <!--<div class="step-nav">
+                                                    <i class="icomoon icomoon-icon-previous11 step-back"></i>
+                                                    <i class="icomoon icomoon-icon-next15 step-next"></i>
+                                                </div>-->
+                                                <div class="step-icon steps-noselect">
+                                                    <span class="number">2</span>
+					<span class="check">
+						<i class="icomoon icomoon-icon-checkmark"></i>
+					</span>
+                                                </div>
+                                                <div class="step-details-line"></div>
+                                                <div class="step-details">
+                                                    <h3>Conecta Redes Sociales</h3>
+                                                    <p></p>
+                                                </div>
+                                            </li>
+
+                                            <li data-step-color="">
+                                                <!--<div class="step-nav">
+                                                    <i class="icomoon icomoon-icon-previous11 step-back"></i>
+                                                    <i class="icomoon icomoon-icon-next15 step-next"></i>
+                                                </div>-->
+                                                <div class="step-icon steps-noselect">
+                                                    <span class="number">3</span>
+					<span class="check">
+						<i class="icomoon icomoon-icon-checkmark"></i>
+					</span>
+                                                </div>
+                                                <div class="step-details-line"></div>
+                                                <div class="step-details">
+                                                    <h3>Comienza a usar ConversationQuest</h3>
+                                                    <p></p>
+                                                </div>
+                                            </li>
+
+                                        </ul></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="large-12 medium-12 columns">
+                           <p>ConversationQuest te permite agregar múltiples redes sociales para ver, publicar y programar mensajes.</p>
+                        </div>
+                    </div>
+                    <div class="vertical-space"></div>
+                    <div class="row">
+                        <div class="large-12 medium-12 columns">
+                            <div class="azoom-heading-wrapper icon-enabled left-heading " style="text-align:left;">
+                                <div class="azoom-heading-inline">
+                                    <div class="azoom-heading-icon" style="background:#56CCC8;"></div>
+                                    <h2 class="azoom-heading" style="color:#152840; font-size:54px; margin-left:20px">
+                                        REDES  <span style="font-weight:100; color:#56CCC8;">SOCIALES</span></h2>
+                                    <div class="heading-bottom-line" style="background:#56CCC8;"></div>
+                                    <div class="heading-bottom-line-end" style="background:#56CCC8;"></div>
+                                    <p class="azoom-heading-details" style="color:#a5a7a8; margin-left:20px">
+                                        Seleccione las redes que agregará</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="large-12 medium-12 columns">
+                            <div id="rock-social-icons-2" class="social-icon icon-group-container">
+                                <div id="social">
+                                    <button class="facebookBtn smGlobalBtn" onclick="openAuth('facebook',2,this)"></button>
+                                    <button class="twitterBtn smGlobalBtn" onclick="openAuth('twitter',1,this)" ></button>
+                                    <button class="linkedinBtn smGlobalBtn" onclick="openAuth('linkedin',4,this)"></button>
+                                    <button class="googleplusBtn smGlobalBtn" onclick="openAuth('google',3,this)" ></button>
+                                    <button class="wordpressBtn smGlobalBtn" onclick="openAuth('wordpress',5,this,false)" ></button>
+                                    <button class="instagramBtn smGlobalBtn" onclick="openAuth('instagram',6,this,false)" ></button>
+                                    <button class="pinterestBtn smGlobalBtn" onclick="openAuth('pinterest',7,this,false)"  ></button>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="vertical-space"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="redes-selected space-2">
+                            {% for p in entity.profiles %}
+                                {{ include('FrontendBundle:Autorize:red_agregada.html.twig', {'profile':p}) }}
+                            {% endfor %}
+                        </div>
+                        <div class="space-1"><button id="csp" type="submit" class="btn btn-normal {{entity.profiles | length ? '' : 'disabled '}}btn-next"><i class="glyphicon glyphicon-forward"></i> Continuar</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="modal fade" id="fb-modal-groups" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal">×</button>
+                <h3>Importar desde Facebook</h3>
+            </div>
+            <div class="modal-body">
+                
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-primary btn-sm" data-dismiss="modal">Importación Finalizada</a>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="modal fade" id="li-modal-groups" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" data-dismiss="modal">×</button>
+                    <h3>Importar desde Linkedin</h3>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-primary btn-sm" data-dismiss="modal">Importación Finalizada</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block footer %}{% endblock %}
+{% block javascripts %}
+    {{parent()}}
+    <script src="{{ asset('bundles/frontend/js/setup.js') }}"></script>
+{% endblock %}

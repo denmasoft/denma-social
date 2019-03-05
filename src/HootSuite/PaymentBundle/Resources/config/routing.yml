@@ -1,0 +1,51 @@
+_payment_homepage:
+    pattern:  /payment
+    defaults: { _controller: PaymentBundle:Default:index }
+
+_payment_prepare_simple_purchase_authorize_net:
+    pattern:  /payment/simple_purchase/authorize_net/prepare
+    defaults: { _controller: PaymentBundle:SimplePurchaseAuthorizeNetAim:prepare }
+
+_payment_prepare_obtain_credit_card_authorize_net:
+    pattern:  /payment/simple_purchase/authorize_net/prepare-obtain-credit-card
+    defaults: { _controller: PaymentBundle:SimplePurchaseAuthorizeNetAim:prepareObtainCreditCard }
+    
+_payment_prepare_simple_purchase_be2bill:
+    pattern:  /payment/simple_purchase/be2bill/prepare
+    defaults: { _controller: PaymentBundle:SimplePurchaseBe2Bill:prepare }
+
+_payment_prepare_obtain_credit_card_be2bill:
+    pattern:  /payment/simple_purchase/be2bill/prepare-obtain-credit-card
+    defaults: { _controller: PaymentBundle:SimplePurchaseBe2Bill:prepareObtainCreditCard }
+
+_payment_prepare_simple_purchase_be2bill_onsite:
+    pattern:  /payment/simple_purchase/be2bill/prepare_onsite
+    defaults: { _controller: PaymentBundle:SimplePurchaseBe2Bill:prepareOnsite }
+
+_payment_prepare_simple_purchase_offline:
+    pattern:  /payment/simple_purchase/offline/prepare
+    defaults: { _controller: PaymentBundle:SimplePurchaseOffline:prepare }
+    
+_payment_prepare_simple_purchase_paypal_express_via_omnipay:
+    pattern:  /payment/simple_purchase/paypal_express_via_omnipay/prepare
+    defaults: { _controller: PaymentBundle:SimplePurchasePaypalExpressViaOmnipay:prepare }
+
+_payment_prepare_simple_purchase_stripe_via_omnipay:
+    pattern:  /payment/simple_purchase/stripe_via_omnipay/prepare
+    defaults: { _controller: PaymentBundle:SimplePurchaseStripeViaOmnipay:prepare }
+
+_payment_prepare_simple_purchase_paypal_pro:
+    pattern:  /payment/simple_purchase/paypal_express_pro/prepare
+    defaults: { _controller: PaymentBundle:SimplePurchasePaypalPro:prepare }
+
+_payment_prepare_obtain_credit_card_paypal_pro:
+    pattern:  /payment/simple_purchase/paypal_express_pro/prepare-obtain-credit-card
+    defaults: { _controller: PaymentBundle:SimplePurchasePaypalPro:prepareObtainCreditCard }
+
+_payment_details_view:
+    pattern:  /payment/details
+    defaults: { _controller: PaymentBundle:Details:view }
+    
+_payment_notifications_list:
+    pattern:  /payment/notifications/list
+    defaults: { _controller: PaymentBundle:Notifications:list }

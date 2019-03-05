@@ -1,0 +1,1578 @@
+{% extends 'FrontendBundle::frontend.html.twig' %}
+
+{% block slider %}
+    {% include 'FrontendBundle:Templates:slider.html.twig' %}
+{% endblock %} 
+
+{% block content %}
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+    <div class="row after-fullwidth-slider"></div>
+    <div
+            class="rockthemes-fullwidth-colored rockthemes-unique-grid    rsb-vertical-space down-arrow-active"
+            style="background:#ffffff;"
+
+    >
+        <div class="row">
+            <div class="large-4 medium-4 columns">
+                <div class="rock-iconictext-container row circle-box rock-icon-top"><a href="#" class="escapea">
+                        <div class="large-12 columns rockicon-container-column padding">
+                            <div class="rockicon-container rockicon-circle-box rockicon-border-only"
+                                 style="border-color:#56ccc8; color:#56ccc8;  width:110px; height:110px; line-height:110px; "
+                                 data-box-fill="border_only" data-icon-color="#56ccc8" data-icon-hover-color="#324864"
+                                 data-bg-color="#56ccc8" data-bg-hover-color="#324864"><i
+                                        class="icomoon icomoon-icon-display icon-3"></i></div>
+                        </div>
+                    </a><a href="#" class="iconic-text-link-wrap">
+                        <div class="large-12 columns">
+                            <div class="rock-iconictext-header-title"><h3>01. RESPONSIVE DESIGN</h3></div>
+                        </div>
+                    </a>
+                    <div class="large-12 columns">
+                        <div class="rock-iconictext-content"><p style="text-align: center">To adapt the layout on
+                                different resolutions we use 3 breakpoints. Resize your browser to test it</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="large-4 medium-4 columns">
+                <div class="rock-iconictext-container row circle-box rock-icon-top"><a href="#" class="escapea">
+                        <div class="large-12 columns rockicon-container-column padding">
+                            <div class="rockicon-container rockicon-circle-box"
+                                 style="background:#56ccc8; color:#f9f9f9;  width:110px; height:110px; line-height:114px; &quot;"
+                                 data-box-fill="background_only" data-icon-color="#f9f9f9"
+                                 data-icon-hover-color="#ffffff" data-bg-color="#56ccc8" data-bg-hover-color="#324864">
+                                <i class="icomoon icomoon-icon-photo icon-3"></i></div>
+                        </div>
+                    </a><a href="#" class="iconic-text-link-wrap">
+                        <div class="large-12 columns">
+                            <div class="rock-iconictext-header-title"><h3>02. DRAG AND DROP</h3></div>
+                        </div>
+                    </a>
+                    <div class="large-12 columns">
+                        <div class="rock-iconictext-content"><p style="text-align: center">Rock Page Builder uses Ajax
+                                Technology and drag and drop interface to build your site easily</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="large-4 medium-4 columns">
+                <div class="rock-iconictext-container row circle-box rock-icon-top"><a href="#" class="escapea">
+                        <div class="large-12 columns rockicon-container-column padding">
+                            <div class="rockicon-container rockicon-circle-box rockicon-border-only"
+                                 style="border-color:#56ccc8; color:#56ccc8;  width:110px; height:110px; line-height:110px; "
+                                 data-box-fill="border_only" data-icon-color="#56ccc8" data-icon-hover-color="#324864"
+                                 data-bg-color="#56ccc8" data-bg-hover-color="#324864"><i
+                                        class="icomoon icomoon-icon-params icon-3"></i></div>
+                        </div>
+                    </a><a href="#" class="iconic-text-link-wrap">
+                        <div class="large-12 columns">
+                            <div class="rock-iconictext-header-title"><h3>03. MULTI PURPOSE</h3></div>
+                        </div>
+                    </a>
+                    <div class="large-12 columns">
+                        <div class="rock-iconictext-content"><p style="text-align: center">Build your online store,
+                                start blogging or design your company website with multi-purpose layout</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="azoom-down-arrow-container" style="color:#56ccc8">
+
+            <i class="azoom-down-arrow-icon icomoon icomoon-icon-azoom-arrow-down azoom-small-text-shadow"></i>
+        </div>
+    </div>
+    <div id="productos"
+         class="rockthemes-fullwidth-colored rockthemes-unique-grid    rsb-vertical-space "
+         style="background:#ffffff;"
+
+    >
+        <div class="row">
+            <div class="large-6 medium-6 columns">
+                <div class="azoom-single-image  left-text  azoom-overflow-image  " data-overflow="83"><img
+                            src="{{ asset('azoomtheme/images/demo/demo-image-default-960x540.jpg') }}" alt="Demo Image"
+                            width="960" height="720"/></div>
+            </div>
+            <div class="large-5 large-offset-1 medium-5 medium-offset-1 columns">
+                <div class="azoom-heading-wrapper icon-enabled left-heading no-margin-bottom" style="text-align:left;">
+                    <div class="azoom-heading-inline">
+                        <div class="azoom-heading-icon" style="background:#56ccc8;"></div>
+                        <h2 class="azoom-heading" style="color:#4f4f4f; font-size:54px; margin-left:20px">PRODUCTOS</h2>
+                        <div class="heading-bottom-line" style="background:#56ccc8;"></div>
+                        <div class="heading-bottom-line-end" style="background:#56ccc8;"></div>
+
+                    </div>
+                </div>
+                <div class="vertical-space-d3"></div>
+                <div class="azoom-text-details"><p>Reach beyond the limits. You want to display more? Use our unique
+                        image overflow feature and stand out. By using Rock Page Builder, you can set this feature in
+                        special grids easily with Azoom.</p>
+                </div>
+                <div class="vertical-space"></div>
+                <div class="rock-iconictext-container row circle-box rock-icon-left">
+                    <div class="large-12 columns">
+                        <div class="rockicon-container-column left">
+                            <div class="rockicon-container rockicon-circle-box rockicon-border-only"
+                                 style="border-color:#56ccc8; color:#56ccc8;  width:68px; height:68px; line-height:24px; "
+                                 data-box-fill="border_only" data-icon-color="#56ccc8" data-icon-hover-color="#56ccc8"
+                                 data-bg-color="#56ccc8" data-bg-hover-color="#56ccc8"><i
+                                        class="icomoon icomoon-icon-eye3 animate-icon animate-to-right  icon-2"></i>
+                            </div>
+                        </div>
+                        <div style="margin-left:80px;">
+                            <div class="rock-iconictext-header-title"><strong style=" font-size:inherit;">FRESH AND
+                                    UNIQUE</strong></div>
+                            <br/>
+                            <div class="rock-iconictext-content"><p>Entirely fresh and unique design is the key of Azoom
+                                    Responsive Wordpress Theme.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="vertical-space-d3"></div>
+                <div class="rock-iconictext-container row circle-box rock-icon-left">
+                    <div class="large-12 columns">
+                        <div class="rockicon-container-column left">
+                            <div class="rockicon-container rockicon-circle-box rockicon-border-only"
+                                 style="border-color:#56ccc8; color:#56ccc8;  width:68px; height:68px; line-height:24px; "
+                                 data-box-fill="border_only" data-icon-color="#56ccc8" data-icon-hover-color="#56ccc8"
+                                 data-bg-color="#56ccc8" data-bg-hover-color="#56ccc8"><i
+                                        class="icomoon icomoon-icon-phone2 animate-icon animate-to-right  icon-2"></i>
+                            </div>
+                        </div>
+                        <div style="margin-left:80px;">
+                            <div class="rock-iconictext-header-title"><strong style=" font-size:inherit;">UNIQUE MOBILE
+                                    MENU</strong></div>
+                            <br/>
+                            <div class="rock-iconictext-content"><p>Your site, your difference. Name it easily and draw
+                                    your mark on the web with unique mobile menu.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <div
+            class="rockthemes-fullwidth-colored rockthemes-unique-grid   unique-grid-light-fonts rsb-vertical-space "
+            style="background:#ea5f5f;"
+
+    >
+        <div class="row">
+            <div class="large-4 medium-4 columns rockthemes-animate" data-animation-class="fadeIn"
+                 data-animation-delay-time="0">
+                <div class="azoom-text-details"><h2><strong>01.</strong><br/><strong>Left Menu with Drag and Drop Page
+                            Builder</strong></h2>
+                    <p>You can enable left menu features in our Theme Options. Just with one click you can turn your
+                        website to a left menu website. It is that easy with best wordpress theme features come with
+                        Azoom.</p>
+                </div>
+                <div class="vertical-space-d3"></div>
+                <div class="azoom-button-wrapper" style="text-align:left;"><a
+                            href="http://azoom-sites.rockthemes.net/allefty/" target="_blank" style=""
+                            class="escapea button azoom-transition button-">ALLEFTY DEMO <i
+                                class="icomoon icomoon-icon-redo2  animate-icon animate-to-right"></i> </a></div>
+            </div>
+            <div class="large-8 medium-8 columns rockthemes-animate" data-animation-class="fadeInRight"
+                 data-animation-delay-time="0">
+                <div class="azoom-single-image  azoom-overflow-image  azoom-snap-image  " data-overflow="150"
+                     data-snap-image="right"><img
+                            src="{{ asset('azoomtheme/images/demo/demo-image-default-960x540.jpg') }}" alt="Demo Image"
+                            width="960" height="720"/></div>
+            </div>
+        </div>
+    </div>
+    <div
+            class="rockthemes-fullwidth-colored rockthemes-unique-grid   unique-grid-light-fonts rsb-vertical-space "
+            style="background:#181f27;"
+
+    >
+        <div class="row">
+            <div class="large-8 medium-8 columns rockthemes-animate" data-animation-class="fadeInLeft"
+                 data-animation-delay-time="0">
+                <div class="azoom-single-image  azoom-overflow-image  azoom-snap-image  " data-overflow="150"
+                     data-snap-image="left"><img
+                            src="{{ asset('azoomtheme/images/demo/demo-image-default-960x540.jpg') }}" alt="Demo Image"
+                            width="960" height="720"/></div>
+            </div>
+            <div class="large-4 medium-4 columns rockthemes-animate" data-animation-class="fadeIn"
+                 data-animation-delay-time="0">
+                <div class="azoom-text-details"><h2><strong>02.</strong><br/><strong>Advanced Parallax Features and Dark
+                            Colors</strong></h2>
+                    <p>Making a parallax page or one page is very easy. Best wordpress theme features comes with azoom.
+                        You can set fixed or scroll mode for parallax easily. You can also choose parallax image
+                        size.</p>
+                </div>
+                <div class="vertical-space-d3"></div>
+                <div class="azoom-button-wrapper" style="text-align:left;"><a
+                            href="http://azoom-sites.rockthemes.net/aparallax/" target="_blank" style=""
+                            class="escapea button azoom-transition button-">APARALLAX DEMO <i
+                                class="icomoon icomoon-icon-redo2  animate-icon animate-to-right"></i> </a></div>
+            </div>
+        </div>
+    </div>
+    <div
+            class="rockthemes-fullwidth-colored rockthemes-unique-grid    rsb-vertical-space "
+            style="background:#f9f9f9;"
+
+    >
+        <div class="row">
+            <div class="large-4 medium-4 columns rockthemes-animate" data-animation-class="fadeIn"
+                 data-animation-delay-time="0">
+                <div class="azoom-text-details"><h2><strong>03.</strong><br/><strong>Unique Abboxed Demo With Fixed
+                            Background</strong></h2>
+                    <p>Demos with entirely different looks. 4 Demos are ready for you (and counting++). You can install
+                        a demo with one click and change your website look easily. Azoom demos are not just landing
+                        pages but entirely unique designs.</p>
+                </div>
+                <div class="vertical-space-d3"></div>
+                <div class="azoom-button-wrapper" style="text-align:left;"><a
+                            href="http://azoom-sites.rockthemes.net/abboxed/" target="_blank" style=""
+                            class="escapea button azoom-transition button-highlight">ABBOXED DEMO <i
+                                class="icomoon icomoon-icon-redo2  animate-icon animate-to-right"></i> </a></div>
+            </div>
+            <div class="large-8 medium-8 columns rockthemes-animate" data-animation-class="fadeInRight"
+                 data-animation-delay-time="0">
+                <div class="azoom-single-image  azoom-overflow-image  azoom-snap-image  " data-overflow="150"
+                     data-snap-image="right"><img
+                            src="{{ asset('azoomtheme/images/demo/demo-image-default-960x540.jpg') }}" alt="Demo Image"
+                            width="960" height="720"/></div>
+            </div>
+        </div>
+    </div>
+    <div id="soluciones" class="rockthemes-parallax rockthemes-unique-grid azoom-bgimage-scroll   "
+         data-parallax-model="advanced_parallax"
+         data-parallax-bg-image="{{ asset('azoomtheme/images/demo/demo-image-default-1440x810.jpg') }}"
+
+         data-parallax-mask-height="0"
+         data-parallax-padding=""
+         data-image-ratio="16_9"
+         data-image-tile="full"
+         data-overlay-color="background:rgba(0,0,0,0.4);"
+
+         style=" background-color:rgba(0,0,0,0.4); background-image:url({{ asset('azoomtheme/images/demo/demo-image-default-1440x810.jpg') }});">
+        <div class="row">
+            <div class="large-12 medium-12 columns rockthemes-animate" data-animation-class="fadeInUp"
+                 data-animation-delay-time="0">
+                <div class="vertical-space"></div>
+                <div class="azoom-heading-wrapper icon-enabled centered-heading " style="text-align:center;">
+                    <div class="azoom-heading-inline">
+                        <div class="azoom-heading-icon" style="background:#56ccc8;"></div>
+                        <h2 class="azoom-heading" style="color:#ffffff; font-size:54px; margin-left:20px">
+                            SOLUCIONES</h2>
+                        <div class="heading-bottom-line" style="background:#56ccc8;"></div>
+                        <div class="heading-bottom-line-end" style="background:#56ccc8;"></div>
+                        <p class="azoom-heading-details" style="color:#f9f9f9; margin-left:20px">It's very easy to
+                            install Azoom and build up your website. Follow these 5 steps and all done.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div
+            class="rockthemes-fullwidth-colored rockthemes-unique-grid    rsb-vertical-space "
+            style="background:#ffffff;"
+
+    >
+        <div class="row">
+            <div class="large-12 medium-12 columns">
+                <div class="azoom-steps-wrapper">
+                    <div class="azoom-steps jump-steps azoom-transition" data-start_steps="all" data-min-width="960"
+                         style="margin-top:160px; margin-bottom:190px; ">
+                        <ul class="large-block-grid-5 medium-block-grid-5 small-block-grid-5"
+                            style="background:#c5cdd1; color:#c5cdd1;">
+
+                            <li data-step-color="#56ccc8">
+                                <div class="step-nav">
+                                    <i class="icomoon icomoon-icon-previous11 step-back"></i>
+                                    <i class="icomoon icomoon-icon-next15 step-next"></i>
+                                </div>
+                                <div class="step-icon steps-noselect">
+                                    <span class="number">1</span>
+					<span class="check">
+						<i class="icomoon icomoon-icon-checkmark"></i>
+					</span>
+                                </div>
+                                <div class="step-details-line"></div>
+                                <div class="step-details">
+                                    <h3>Download The Package</h3>
+                                    <p>Go to your Downloads section and download the zip.</p>
+                                </div>
+                            </li>
+
+                            <li data-step-color="#57d176">
+                                <div class="step-nav">
+                                    <i class="icomoon icomoon-icon-previous11 step-back"></i>
+                                    <i class="icomoon icomoon-icon-next15 step-next"></i>
+                                </div>
+                                <div class="step-icon steps-noselect">
+                                    <span class="number">2</span>
+					<span class="check">
+						<i class="icomoon icomoon-icon-checkmark"></i>
+					</span>
+                                </div>
+                                <div class="step-details-line"></div>
+                                <div class="step-details">
+                                    <h3>Upload The Theme</h3>
+                                    <p>Unzip downloaded package and upload the theme.zip to your Wordpress.</p>
+                                </div>
+                            </li>
+
+                            <li data-step-color="#c2c200">
+                                <div class="step-nav">
+                                    <i class="icomoon icomoon-icon-previous11 step-back"></i>
+                                    <i class="icomoon icomoon-icon-next15 step-next"></i>
+                                </div>
+                                <div class="step-icon steps-noselect">
+                                    <span class="number">3</span>
+					<span class="check">
+						<i class="icomoon icomoon-icon-checkmark"></i>
+					</span>
+                                </div>
+                                <div class="step-details-line"></div>
+                                <div class="step-details">
+                                    <h3>Activate Theme and Plugins</h3>
+                                    <p>Go to Appearance &gt; Themes and activate theme and plugins.</p>
+                                </div>
+                            </li>
+
+                            <li data-step-color="#dd8f5a">
+                                <div class="step-nav">
+                                    <i class="icomoon icomoon-icon-previous11 step-back"></i>
+                                    <i class="icomoon icomoon-icon-next15 step-next"></i>
+                                </div>
+                                <div class="step-icon steps-noselect">
+                                    <span class="number">4</span>
+					<span class="check">
+						<i class="icomoon icomoon-icon-checkmark"></i>
+					</span>
+                                </div>
+                                <div class="step-details-line"></div>
+                                <div class="step-details">
+                                    <h3>One Click Install</h3>
+                                    <p>Go to Appearance &gt; Theme Options and start One Click Install.</p>
+                                </div>
+                            </li>
+
+                            <li data-step-color="#ea6060">
+                                <div class="step-nav">
+                                    <i class="icomoon icomoon-icon-previous11 step-back"></i>
+                                    <i class="icomoon icomoon-icon-next15 step-next"></i>
+                                </div>
+                                <div class="step-icon steps-noselect">
+                                    <span class="number">5</span>
+					<span class="check">
+						<i class="icomoon icomoon-icon-checkmark"></i>
+					</span>
+                                </div>
+                                <div class="step-details-line"></div>
+                                <div class="step-details">
+                                    <h3>All Done! :)</h3>
+                                    <p>You have finished the installation. Enjoy!</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="rockthemes-static-bg-image rockthemes-unique-grid  unique-grid-light-fonts down-arrow-active"
+         data-static-bg-image="{{ asset('azoomtheme/images/demo/demo-image-default-1440x810.jpg') }}"
+
+         data-static-mask-height="0"
+         data-padding="rsb-vertical-space"
+         data-image-ratio="16_9"
+         data-image-tile="full"
+         data-overlay-color="background:rgba(86,204,200,0.7);"
+         style=" background-color:rgba(86,204,200,0.7); background-image:url({{ asset('azoomtheme/images/demo/demo-image-default-1440x810.jpg') }});"
+    >
+        <div class="row">
+            <div class="large-5 medium-5 columns">
+                <div class="azoom-text-details"><h2>Responsive WordPress Theme</h2>
+                    <p>Use <strong>drag and drop</strong> layout builder, Rock Page Builder with Azoom Responsive
+                        WordPress Theme. It&#8217;s very easy to use and ajax based. Which means, you don&#8217;t need
+                        to refresh to edit page while designing your layout. </p>
+                </div>
+            </div>
+            <div class="large-6 large-offset-1 medium-6 medium-offset-1 columns">
+                <div class="azoom-skill" data-skill-value="45">
+                    <div class="azoom-skill-bg" style="background:#f0f0f0;"></div>
+                    <div class="azoom-skill-value-bg" style="background:#324864; width:45%;">
+                        <div class="azoom-skill-value">45%</div>
+                    </div>
+                    <div class="azoom-skill-title">CSS3</div>
+                </div>
+                <div class="azoom-skill" data-skill-value="74">
+                    <div class="azoom-skill-bg" style="background:#f0f0f0;"></div>
+                    <div class="azoom-skill-value-bg" style="background:#324864; width:74%;">
+                        <div class="azoom-skill-value">74%</div>
+                    </div>
+                    <div class="azoom-skill-title">HTML5</div>
+                </div>
+                <div class="azoom-skill" data-skill-value="97">
+                    <div class="azoom-skill-bg" style="background:#f0f0f0;"></div>
+                    <div class="azoom-skill-value-bg" style="background:#324864; width:97%;">
+                        <div class="azoom-skill-value">97%</div>
+                    </div>
+                    <div class="azoom-skill-title">PHP</div>
+                </div>
+            </div>
+        </div>
+        <div class="azoom-down-arrow-container" style="color:#f9f9f9">
+
+            <i class="azoom-down-arrow-icon icomoon icomoon-icon-azoom-arrow-down azoom-small-text-shadow"></i>
+        </div>
+    </div>
+    <div id="planes" class="rockthemes-fullwidth-colored rockthemes-unique-grid    rsb-vertical-space "
+         style="background:#f0f0f0;">
+        <div class="row">
+            <div class="large-12 medium-12 columns">
+                <div class="azoom-heading-wrapper icon-enabled centered-heading " style="text-align:center;">
+                    <div class="azoom-heading-inline">
+                        <div class="azoom-heading-icon" style="background:#56CCC8;"></div>
+                        <h2 class="azoom-heading" style="color:#152840; font-size:54px; margin-left:20px">Planes <span
+                                    style="font-weight:100; color:#56CCC8;">y Precios</span></h2>
+                        <div class="heading-bottom-line" style="background:#56CCC8;"></div>
+                        <div class="heading-bottom-line-end" style="background:#56CCC8;"></div>
+                        <p class="azoom-heading-details" style="color:#a5a7a8; margin-left:20px">Responsive Pricing
+                            Tables are very useful for displaying different models. You can also choose a different
+                            button style for pricing table</p>
+                    </div>
+                </div>
+                <div class="azoom-pt">
+                    <ul class="large-block-grid-3 medium-block-grid-1 small-block-grid-1">
+                        <li>
+                            <br>
+                            <div class="azoom-pt-columns border-with-radius  center-element full-element"
+                                 style="max-width:480px">
+                                <div class="azoom-pt-header">
+                                    <div class="azoom-pt-package-name">
+                                        <h3>Plan Gratuito</h3>
+                                    </div>
+                                    <h4 class="price-details">
+                                        <span class="currency">$</span>
+                                        <span class="price">0.00</span>
+                                    </h4>
+                                    <div class="azoom-button-wrapper" style="text-align:center;">
+                                        <a href="{{ path('usuario_create', {'plan' : 1}) }}" style=""
+                                           class="escapea button azoom-transition button-action button-border"
+                                           data-bg-disabled="true">
+                                            <i class="icomoon icomoon-icon-shopping7  animate-icon animate-to-left"></i>
+                                            Comienza Ahora</a>
+                                    </div>
+                                </div>
+                                <div class="azoom-pt-option">3 Perfiles Sociales</div>
+                                <div class="azoom-pt-option">Programación básica de mensajes</div>
+                                <div class="azoom-pt-option">Informes Analíticos básicos</div>
+                            </div>
+                            <br>
+                        </li>
+                        <li>
+                            <div class="azoom-pt-columns border-with-radius  center-element full-element"
+                                 style="max-width:480px">
+                                <div class="azoom-pt-header">
+                                    <div class="azoom-pt-featured">
+                                        <i class="icomoon icomoon-icon-star3"></i>
+                                        Recomendado!
+                                    </div>
+                                    <div class="azoom-pt-package-name">
+                                        <h3>Plan Profesional</h3>
+                                    </div>
+                                    <h4 class="price-details">
+                                        <span class="currency">$</span>
+                                        <span class="price">8.99</span>
+                                        <span class="time">/mes</span>
+                                    </h4>
+                                    <div class="azoom-button-wrapper" style="text-align:center;">
+                                        <a href="{{ path('usuario_create', {'plan' : 2}) }}"
+                                           class="escapea button azoom-transition button-action button-border"
+                                           data-bg-disabled="true">
+                                            <i class="icomoon icomoon-icon-shopping7  animate-icon animate-to-left"></i>
+                                            Comienza Ahora
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="azoom-pt-option">50 Perfiles con expanción hasta 100</div>
+                                <div class="azoom-pt-option">Programación avanzada de mensajes</div>
+                                <div class="azoom-pt-option">1 informe analítico con extensión a 10</div>
+                            </div>
+                            <br>
+                        </li>
+                        <li><br>
+                            <div class="azoom-pt-columns border-with-radius  center-element full-element"
+                                 style="max-width:480px">
+                                <div class="azoom-pt-header">
+                                    <div class="azoom-pt-package-name"><h3>Plan Enterprise</h3></div>
+                                    <h4 class="price-details">
+                                        <span class="currency">$</span>
+                                        <span class="price">49.99</span>
+                                        <span class="time">/mes</span>
+                                    </h4>
+                                    <div class="azoom-button-wrapper" style="text-align:center;">
+                                        <a href="{{ path('usuario_create', {'plan' : 3}) }}" style=""
+                                           class="escapea button azoom-transition button-action button-border"
+                                           data-bg-disabled="true">
+                                            <i class="icomoon icomoon-icon-shopping7  animate-icon animate-to-left"></i>
+                                            Comienza Ahora</a></div>
+                                </div>
+                                <div class="azoom-pt-option">Perfiles Ilimitados</div>
+                                <div class="azoom-pt-option">Programación avanzada de mensajes</div>
+                                <div class="azoom-pt-option">Informes analíticos ilimitados</div>
+                            </div>
+                            <br></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="servicios"
+         class="rockthemes-parallax rockthemes-unique-grid azoom-bgimage-scroll  unique-grid-light-fonts "
+         data-parallax-model="advanced_parallax"
+         data-parallax-bg-image="{{ asset('azoomtheme/images/demo/demo-image-default-1440x810.jpg') }}"
+
+         data-parallax-mask-height="400"
+         data-parallax-padding="rsb-vertical-space"
+         data-image-ratio="16_9"
+         data-image-tile="full"
+         data-overlay-color="background:rgba(0,0,0,0.4);"
+
+         style=" background-color:rgba(0,0,0,0.4); background-image:url({{ asset('azoomtheme/images/demo/demo-image-default-1440x810.jpg') }});">
+        <div class="row">
+            <div class="large-8 large-offset-2 medium-8 medium-offset-2 columns">
+                <div class="azoom-text-details"><h2 style="text-align: center"><strong>Servicios</strong></h2>
+                    <p style="text-align: center">You can set a different header models in Theme Options easily. You can
+                        also set your menu location to left just with one click!</p>
+                </div>
+                <div class="vertical-space-d3"></div>
+            </div>
+            <div class="large-2 medium-2 columns"></div>
+        </div>
+        <div class="row">
+            <div class="large-4 large-offset-4 medium-4 medium-offset-4 columns rockthemes-animate"
+                 data-animation-class="fadeIn" data-animation-delay-time="0">
+                <div class="azoom-button-wrapper" style="text-align:center;"><a
+                            href="http://themeforest.net/item/azoom-responsive-wordpress-theme/10591289?ref=XanderRock"
+                            target="_blank" style=""
+                            class="escapea button azoom-transition button-large button- button-border"
+                            data-bg-disabled="true"> <i
+                                class="icomoon icomoon-icon-thumbs-up  animate-icon animate-to-left"></i> BUY AZOOM</a>
+                </div>
+            </div>
+            <div class="large-4 medium-4 columns"></div>
+        </div>
+    </div>
+    <div
+            class="rockthemes-fullwidth-colored rockthemes-unique-grid    rsb-vertical-space "
+            style="background:#ffffff;"
+
+    >
+        <div class="row">
+            <div class="large-4 medium-4 columns">
+                <div class="rock-iconictext-container row  rock-icon-left">
+                    <div class="large-12 columns">
+                        <div class="rockicon-container-column left">
+                            <div class="rockicon-container " style="background:none; padding:0px; color:#606060;"
+                                 data-box-fill="background_only" data-icon-color="#606060"
+                                 data-icon-hover-color="#606060" data-bg-disabled="true"><i
+                                        class="icomoon icomoon-icon-like animate-icon animate-to-right  icon-2"></i>
+                            </div>
+                        </div>
+                        <div style="margin-left:60px;">
+                            <div class="rock-iconictext-header-title"><strong style=" font-size:inherit;">ONE CLICK
+                                    INSTALL</strong></div>
+                            <br/>
+                            <div class="rock-iconictext-content"><p>It's very easy to install and use the Azoom
+                                    WordPress Theme. You can install our demos just with one click!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="vertical-space-d3"></div>
+                <div class="rock-iconictext-container row  rock-icon-left">
+                    <div class="large-12 columns">
+                        <div class="rockicon-container-column left">
+                            <div class="rockicon-container " style="background:none; padding:0px; color:#606060;"
+                                 data-box-fill="background_only" data-icon-color="#606060"
+                                 data-icon-hover-color="#606060" data-bg-disabled="true"><i
+                                        class="icomoon icomoon-icon-banknote animate-icon animate-to-right  icon-2"></i>
+                            </div>
+                        </div>
+                        <div style="margin-left:60px;">
+                            <div class="rock-iconictext-header-title"><strong style=" font-size:inherit;">UNIQUE
+                                    CART</strong></div>
+                            <br/>
+                            <div class="rock-iconictext-content"><p>Adding an item to a cart never been this fun! You
+                                    can add a product to cart and see the action!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="vertical-space-d3"></div>
+                <div class="rock-iconictext-container row  rock-icon-left">
+                    <div class="large-12 columns">
+                        <div class="rockicon-container-column left">
+                            <div class="rockicon-container " style="background:none; padding:0px; color:#606060;"
+                                 data-box-fill="background_only" data-icon-color="#606060"
+                                 data-icon-hover-color="#606060" data-bg-disabled="true"><i
+                                        class="icomoon icomoon-icon-news animate-icon animate-to-right  icon-2"></i>
+                            </div>
+                        </div>
+                        <div style="margin-left:60px;">
+                            <div class="rock-iconictext-header-title"><strong style=" font-size:inherit;">GOOGLE WEB
+                                    FONTS</strong></div>
+                            <br/>
+                            <div class="rock-iconictext-content"><p>You can add Google Fonts to Azoom. Choose the font
+                                    you want from Google then add it to your site!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="vertical-space-d3"></div>
+                <div class="rock-iconictext-container row  rock-icon-left">
+                    <div class="large-12 columns">
+                        <div class="rockicon-container-column left">
+                            <div class="rockicon-container " style="background:none; padding:0px; color:#606060;"
+                                 data-box-fill="background_only" data-icon-color="#606060"
+                                 data-icon-hover-color="#606060" data-bg-disabled="true"><i
+                                        class="icomoon icomoon-icon-world animate-icon animate-to-right  icon-2"></i>
+                            </div>
+                        </div>
+                        <div style="margin-left:60px;">
+                            <div class="rock-iconictext-header-title"><strong style=" font-size:inherit;">MULTI LANGUAGE
+                                    READY</strong></div>
+                            <br/>
+                            <div class="rock-iconictext-content"><p>Azoom comes with translation files. You can edit our
+                                    translation file to change theme texts to your language!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="vertical-space-d3"></div>
+            </div>
+            <div class="large-4 medium-4 columns">
+                <div class="rock-iconictext-container row  rock-icon-left">
+                    <div class="large-12 columns">
+                        <div class="rockicon-container-column left">
+                            <div class="rockicon-container " style="background:none; padding:0px; color:#606060;"
+                                 data-box-fill="background_only" data-icon-color="#606060"
+                                 data-icon-hover-color="#606060" data-bg-disabled="true"><i
+                                        class="icomoon icomoon-icon-lab2 animate-icon animate-to-right  icon-2"></i>
+                            </div>
+                        </div>
+                        <div style="margin-left:60px;">
+                            <div class="rock-iconictext-header-title"><strong style=" font-size:inherit;">UNLIMITED
+                                    COLORS</strong></div>
+                            <br/>
+                            <div class="rock-iconictext-content"><p>Change theme colors easily in our Theme Options.
+                                    Rock Page Builder also gives color settings for some advanced elements!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="vertical-space-d3"></div>
+                <div class="rock-iconictext-container row  rock-icon-left">
+                    <div class="large-12 columns">
+                        <div class="rockicon-container-column left">
+                            <div class="rockicon-container " style="background:none; padding:0px; color:#606060;"
+                                 data-box-fill="background_only" data-icon-color="#606060"
+                                 data-icon-hover-color="#606060" data-bg-disabled="true"><i
+                                        class="icomoon icomoon-icon-phone2 animate-icon animate-to-right  icon-2"></i>
+                            </div>
+                        </div>
+                        <div style="margin-left:60px;">
+                            <div class="rock-iconictext-header-title"><strong style=" font-size:inherit;">ULTRA
+                                    RESPONSIVE</strong></div>
+                            <br/>
+                            <div class="rock-iconictext-content"><p>Azoom uses an advanced system for your site to look
+                                    best on different sizes. Your site will look beautiful on mobile devices. </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="vertical-space-d3"></div>
+                <div class="rock-iconictext-container row  rock-icon-left">
+                    <div class="large-12 columns">
+                        <div class="rockicon-container-column left">
+                            <div class="rockicon-container " style="background:none; padding:0px; color:#606060;"
+                                 data-box-fill="background_only" data-icon-color="#606060"
+                                 data-icon-hover-color="#606060" data-bg-disabled="true"><i
+                                        class="icomoon icomoon-icon-eye3 animate-icon animate-to-right  icon-2"></i>
+                            </div>
+                        </div>
+                        <div style="margin-left:60px;">
+                            <div class="rock-iconictext-header-title"><strong style=" font-size:inherit;">RETINA
+                                    ICONS</strong></div>
+                            <br/>
+                            <div class="rock-iconictext-content"><p>Retina ready icons. 3 different icon library are
+                                    included in Azoom. You can easily select the icon with one click!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="vertical-space-d3"></div>
+                <div class="rock-iconictext-container row  rock-icon-left">
+                    <div class="large-12 columns">
+                        <div class="rockicon-container-column left">
+                            <div class="rockicon-container " style="background:none; padding:0px; color:#606060;"
+                                 data-box-fill="background_only" data-icon-color="#606060"
+                                 data-icon-hover-color="#606060" data-bg-disabled="true"><i
+                                        class="icomoon icomoon-icon-settings2 animate-icon animate-to-right  icon-2"></i>
+                            </div>
+                        </div>
+                        <div style="margin-left:60px;">
+                            <div class="rock-iconictext-header-title"><strong style=" font-size:inherit;">ADVANCED THEME
+                                    OPTIONS</strong></div>
+                            <br/>
+                            <div class="rock-iconictext-content"><p>You can change colors, fonts, header, footer, menu
+                                    location and so much more in our Theme Options.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="vertical-space-d3"></div>
+            </div>
+            <div class="large-1 medium-1 columns rockthemes-animate" data-animation-class="fadeInRight"
+                 data-animation-delay-time="0"></div>
+            <div class="large-3 medium-3 columns rockthemes-animate" data-animation-class="fadeInRight"
+                 data-animation-delay-time="0">
+                <div class="azoom-single-image  right-text  "><img
+                            src="{{ asset('azoomtheme/images/demo/demo-image-default-540x304.jpg') }}" alt="Demo Image"
+                            width="540" height="405"/></div>
+            </div>
+        </div>
+    </div>
+    <div class="rockthemes-static-bg-image rockthemes-unique-grid   "
+         data-static-bg-image="{{ asset('azoomtheme/images/demo/demo-image-default-1440x810.jpg') }}"
+
+         data-static-mask-height="0"
+         data-padding="rsb-vertical-space"
+         data-image-ratio="16_9"
+         data-image-tile="full"
+         data-overlay-color="background:rgba(249,249,249,0.8);"
+         style=" background-color:rgba(249,249,249,0.8); background-image:url({{ asset('azoomtheme/images/demo/demo-image-default-1440x810.jpg') }});"
+    >
+        <div class="row">
+            <div class="large-3 medium-3 columns">
+                <div class="azoom-single-image  "><img
+                            src="{{ asset('azoomtheme/images/demo/demo-image-default-960x540.jpg') }}" alt="Demo Image"
+                            width="960" height="720"/></div>
+                <div class="vertical-space-d3"></div>
+            </div>
+            <div class="large-3 medium-3 columns">
+                <div class="azoom-single-image  "><img src="azoomtheme/images/demo/demo-image-default-960x540.jpg"
+                                                       alt="Demo Image" width="960" height="720"/></div>
+                <div class="vertical-space-d3"></div>
+            </div>
+            <div class="large-3 medium-3 columns">
+                <div class="azoom-single-image  "><img src="azoomtheme/images/demo/demo-image-default-960x540.jpg"
+                                                       alt="Demo Image" width="960" height="720"/></div>
+                <div class="vertical-space-d3"></div>
+            </div>
+            <div class="large-3 medium-3 columns">
+                <div class="azoom-single-image  "><img src="azoomtheme/images/demo/demo-image-default-960x540.jpg"
+                                                       alt="Demo Image" width="960" height="720"/></div>
+                <div class="vertical-space-d3"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-3 medium-3 columns">
+                <div class="azoom-single-image  "><img src="azoomtheme/images/demo/demo-image-default-960x540.jpg"
+                                                       alt="Demo Image" width="960" height="720"/></div>
+            </div>
+            <div class="large-4 large-offset-1 medium-4 medium-offset-1 columns">
+                <div class="vertical-space"></div>
+                <div class="azoom-button-wrapper" style="text-align:center;"><a href="http:///pages/header-models/"
+                                                                                target="_blank" style=""
+                                                                                class="escapea button azoom-transition button-">HEADER
+                        MODELS <i class="icomoon icomoon-icon-redo2  animate-icon animate-to-right"></i> </a></div>
+                <div class="vertical-space" style="height:15px;"></div>
+                <div class="azoom-text-details"><p style="text-align: center">For different use, different header
+                        models. You can select different header model without any code!</p>
+                </div>
+            </div>
+            <div class="large-3 large-offset-1 medium-3 medium-offset-1 columns">
+                <div class="azoom-single-image  "><img
+                            src="{{ asset('azoomtheme/images/demo/demo-image-default-960x540.jpg') }}" alt="Demo Image"
+                            width="960" height="720"/></div>
+                <div class="vertical-space-d3"></div>
+            </div>
+        </div>
+    </div>
+    <div
+            class="rockthemes-fullwidth-colored rockthemes-unique-grid    rsb-vertical-space "
+            style="background:#ffffff;"
+
+    >
+        <div class="row">
+            <div class="large-7 medium-7 columns">
+                <div class="azoom-single-image  ">
+                    <a href="https://www.youtube.com/watch?v=1WOyLuXQ0NY" target="_blank"
+
+
+                    >
+                        <div class="relative-container image-hover-enabled"><img
+                                    src="{{ asset('azoomtheme/images/demo/demo-image-default-540x304.jpg') }}"
+                                    alt="Demo Image" width="540" height="405"/>
+                            <div class="single-image-hover-bg azoom-transition-fast" style="background:#56ccc8;">
+                                <span class="single-image-hover-title azoom-transition" style="color:#FFFFFF;">WATCH VIDEO</span>
+                            </div>
+                        </div>
+                    </a></div>
+                <div class="vertical-space-d3"></div>
+            </div>
+            <div class="large-5 medium-5 columns">
+                <div class="vertical-space"></div>
+                <div class="azoom-heading-wrapper  centered-heading " style="text-align:center;">
+                    <div class="azoom-heading-inline">
+
+                        <h3 class="azoom-heading" style="color:#152840; font-size:54px; ">HD HELP <span
+                                    style="font-weight:100; color:#56ccc8;">VIDEOS</span></h3>
+                        <div class="heading-bottom-line" style="background:#56ccc8;"></div>
+                        <div class="heading-bottom-line-end" style="background:#56ccc8;"></div>
+                        <p class="azoom-heading-details" style="color:#a5a7a8; ">To use advanced features we got you
+                            covered. We have HD Help Videos for you to get started. You will see more details about best
+                            wordpress theme features. You can watch our help videos to learn more tips and tricks.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="shop" class="rockthemes-parallax rockthemes-unique-grid azoom-bgimage-cover  unique-grid-light-fonts "
+         data-parallax-model="height_specific"
+         data-parallax-bg-image="{{ asset('azoomtheme/images/demo/demo-image-default-1440x810.jpg') }}"
+
+         data-parallax-mask-height="0"
+         data-parallax-padding=""
+         data-image-ratio="16_9"
+         data-image-tile="full"
+         data-overlay-color="background:rgba(86,204,200,0.7);"
+
+         style=" background-color:rgba(86,204,200,0.7); background-image:url({{ asset('azoomtheme/images/demo/demo-image-default-1440x810.jpg') }});">
+        <div class="row">
+            <div class="large-6 medium-6 columns rockthemes-animate" data-animation-class="fadeInLeft"
+                 data-animation-delay-time="0">
+                <div class="azoom-single-image  "><img
+                            src="{{ asset('azoomtheme/images/demo/demo-image-default-960x540.jpg') }}" alt="Demo Image"
+                            width="960" height="720"/></div>
+                <div class="vertical-space-d3"></div>
+            </div>
+            <div class="large-5 large-offset-1 medium-5 medium-offset-1 columns rockthemes-animate"
+                 data-animation-class="fadeInRight" data-animation-delay-time="0">
+                <div class="vertical-space-x_grid"></div>
+                <div class="azoom-text-details"><h2><span style="color: #ffffff"><strong>BUILD YOUR SHOP</strong></span>
+                    </h2>
+                    <p>You can easily build your own shop. Azoom supports WooCommerce. Best wordpress theme features are
+                        here to get you started with your online store.</p>
+                </div>
+                <div class="vertical-space-d3"></div>
+                <div class="azoom-button-wrapper" style="text-align:left;"><a href="http:///shop/" target="_blank"
+                                                                              style=""
+                                                                              class="escapea button azoom-transition button- button-border"
+                                                                              data-bg-disabled="true">GO TO SHOP <i
+                                class="icomoon icomoon-icon-cart  animate-icon animate-to-right"></i> </a></div>
+                <div class="vertical-space"></div>
+            </div>
+        </div>
+    </div>
+    <div
+            class="rockthemes-fullwidth-colored rockthemes-unique-grid    rsb-vertical-space "
+            style="background:#ffffff;"
+
+    >
+        <div class="row">
+            <div class="large-5 large-offset-1 medium-5 medium-offset-1 columns">
+                <div class="azoom-single-image  "><img
+                            src="{{ asset('azoomtheme/images/demo/demo-image-default-960x540.jpg') }}" alt="Demo Image"
+                            width="960" height="720"/></div>
+                <div class="vertical-space-d3"></div>
+            </div>
+            <div class="large-5 medium-5 columns">
+                <div class="azoom-single-image  "><img
+                            src="{{ asset('azoomtheme/images/demo/demo-image-default-960x540.jpg') }}" alt="Demo Image"
+                            width="960" height="720"/></div>
+                <div class="vertical-space-d3"></div>
+            </div>
+            <div class="large-1 medium-1 columns"></div>
+        </div>
+        <div class="row">
+            <div class="large-10 large-offset-1 medium-10 medium-offset-1 columns">
+                <div id="azoom_portfolio_2" class="azoom-portfolio-container grid din_hover    ">
+                    <div class="azoom-portfolio-body azoom-transition swiper-navigation-active "
+                         data-class-ref=" large-block-grid-3 medium-block-grid-2 small-block-grid-1 ">
+                        <div class="swiper-container">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <ul class="azoom-portfolio-body azoom-transition   large-block-grid-3 medium-block-grid-2 small-block-grid-1 "
+                                        data-masonry-elem="_0"
+                                        data-class-ref=" large-block-grid-3 medium-block-grid-2 small-block-grid-1 ">
+                                        <li itemscope itemtype="http://schema.org/Product"
+                                            class="azoom-default-item azoom-animate-queue  rockthemes-woo-elem  _0"
+                                            data-featured-big="no-image">
+                                            <div class="relative-container rockthemes-hover "><span><img
+                                                            src="http:///wp-content/plugins/woocommerce/assets/images/placeholder.png"
+                                                            alt="Marcador" width="150"
+                                                            class="woocommerce-placeholder wp-post-image" height="150"/></span>
+                                                <div class="hover-item-details-container azoom-woo-hover-container"
+                                                     style="background:rgba(86,204,200,0.8);"><h2><a
+                                                                href="http:///producto/night-dress/" class="escapea"
+                                                                itemprop="name">Night Dress</a></h2><span
+                                                            class="small-hover-elem"
+                                                            data-link_url="http:///producto/night-dress/"><i
+                                                                class="icomoon icomoon-icon-next15 animate-icon animate-to-right"></i></span>
+                                                </div>
+                                                <div class="azoom-hover-container azoom-transition woo-grid-hover">
+                                                    <div class="azoom-woo-grid-hover" style="background:#56ccc8">
+                                                        <div class="grid-price"><span
+                                                                    class="woocommerce-Price-amount amount">489,00<span
+                                                                        class="woocommerce-Price-currencySymbol">&euro;</span></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="azoom-hover-effect">
+                                                        <ul>
+
+                                                            <li class="rockthemes-hover-icon hide hover-mobile-back">
+                                                                <a>
+                                                                    <i class="icomoon icomoon-icon-undo2"></i>
+                                                                </a>
+                                                            </li>
+                                                            <li class="azoom-woo-grid-buttons">
+                                                                <div class="rockthemes-woo-buttons-container row collapse"><span
+                                                                            class="large-6 medium-6 small-6 columns rockthemes-woo-shop-buttons left-text centered-text-responsive"><a
+                                                                                rel="nofollow" href="/?add-to-cart=426"
+                                                                                data-quantity="1" data-product_id="426"
+                                                                                data-product_sku=""
+                                                                                class="button escape_button_style escapea product_type_simple add_to_cart_button escape_button_style escapea ajax_add_to_cart"><i
+                                                                                    class="icomoon icomoon-icon-shopping114"></i> <span
+                                                                                    class="text"> Add</span>
+		<span class="rt_loading woocommerce-loader">
+			<span class="rt_spinner">
+				<span class="rt_rect1"></span>
+				<span class="rt_rect2"></span>
+				<span class="rt_rect3"></span>
+				<span class="rt_rect4"></span>
+				<span class="rt_rect5"></span>
+			</span>
+		</span>
+	</a></span>
+			<span class="large-6 medium-6 small-6 columns rockthemes-woo-shop-buttons right-text centered-text-responsive"
+                  style="border-color:#56ccc8;">
+				<a class="show_details_button escape_button_style escapea" href="http:///producto/night-dress/"><i
+                            class="icomoon icomoon-icon-attachment"></i> <span class="text">Details</span></a>
+			</span>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </li>
+                                        <li itemscope itemtype="http://schema.org/Product"
+                                            class="azoom-default-item azoom-animate-queue  rockthemes-woo-elem  _0"
+                                            data-featured-big="no-image">
+                                            <div class="relative-container rockthemes-hover "><span><img
+                                                            src="http:///wp-content/plugins/woocommerce/assets/images/placeholder.png"
+                                                            alt="Marcador" width="150"
+                                                            class="woocommerce-placeholder wp-post-image" height="150"/></span>
+                                                <div class="hover-item-details-container azoom-woo-hover-container"
+                                                     style="background:rgba(86,204,200,0.8);"><h2><a
+                                                                href="http:///producto/colorful-variable-dress/"
+                                                                class="escapea" itemprop="name">Colorful Variable
+                                                            Dress</a></h2><span class="small-hover-elem"
+                                                                                data-link_url="http:///producto/colorful-variable-dress/"><i
+                                                                class="icomoon icomoon-icon-next15 animate-icon animate-to-right"></i></span>
+                                                </div>
+                                                <div class="azoom-hover-container azoom-transition woo-grid-hover">
+                                                    <div class="azoom-woo-grid-hover" style="background:#56ccc8">
+                                                        <div class="grid-price"><span
+                                                                    class="woocommerce-Price-amount amount">109,00<span
+                                                                        class="woocommerce-Price-currencySymbol">&euro;</span></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="azoom-hover-effect">
+                                                        <ul>
+
+                                                            <li class="rockthemes-hover-icon hide hover-mobile-back">
+                                                                <a>
+                                                                    <i class="icomoon icomoon-icon-undo2"></i>
+                                                                </a>
+                                                            </li>
+                                                            <li class="azoom-woo-grid-buttons">
+                                                                <div class="rockthemes-woo-buttons-container row collapse">
+		<span class="center-text large-12 medium-12 small-12 columns rockthemes-woo-shop-buttons-full">
+			<a class="escapea add_to_cart_button escape_button_style product_type_variable center-text"
+               href="http:///producto/colorful-variable-dress/"><i class="icomoon icomoon-icon-settings"></i> <span
+                        class="text">Options</span></a>
+		</span>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </li>
+                                        <li itemscope itemtype="http://schema.org/Product"
+                                            class="azoom-default-item azoom-animate-queue  rockthemes-woo-elem  _0"
+                                            data-featured-big="no-image">
+                                            <div class="relative-container rockthemes-hover "><span><img
+                                                            src="http:///wp-content/plugins/woocommerce/assets/images/placeholder.png"
+                                                            alt="Marcador" width="150"
+                                                            class="woocommerce-placeholder wp-post-image" height="150"/></span>
+                                                <div class="hover-item-details-container azoom-woo-hover-container"
+                                                     style="background:rgba(86,204,200,0.8);"><h2><a
+                                                                href="http:///producto/work-clothes/" class="escapea"
+                                                                itemprop="name">Work Clothes</a></h2><span
+                                                            class="small-hover-elem"
+                                                            data-link_url="http:///producto/work-clothes/"><i
+                                                                class="icomoon icomoon-icon-next15 animate-icon animate-to-right"></i></span>
+                                                </div>
+                                                <div class="azoom-hover-container azoom-transition woo-grid-hover">
+                                                    <div class="azoom-woo-grid-hover" style="background:#56ccc8">
+                                                        <div class="grid-price"><span
+                                                                    class="woocommerce-Price-amount amount">349,00<span
+                                                                        class="woocommerce-Price-currencySymbol">&euro;</span></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="azoom-hover-effect">
+                                                        <ul>
+
+                                                            <li class="rockthemes-hover-icon hide hover-mobile-back">
+                                                                <a>
+                                                                    <i class="icomoon icomoon-icon-undo2"></i>
+                                                                </a>
+                                                            </li>
+                                                            <li class="azoom-woo-grid-buttons">
+                                                                <div class="rockthemes-woo-buttons-container row collapse"><span
+                                                                            class="large-6 medium-6 small-6 columns rockthemes-woo-shop-buttons left-text centered-text-responsive"><a
+                                                                                rel="nofollow" href="/?add-to-cart=427"
+                                                                                data-quantity="1" data-product_id="427"
+                                                                                data-product_sku=""
+                                                                                class="button escape_button_style escapea product_type_simple add_to_cart_button escape_button_style escapea ajax_add_to_cart"><i
+                                                                                    class="icomoon icomoon-icon-shopping114"></i> <span
+                                                                                    class="text"> Add</span>
+		<span class="rt_loading woocommerce-loader">
+			<span class="rt_spinner">
+				<span class="rt_rect1"></span>
+				<span class="rt_rect2"></span>
+				<span class="rt_rect3"></span>
+				<span class="rt_rect4"></span>
+				<span class="rt_rect5"></span>
+			</span>
+		</span>
+	</a></span>
+			<span class="large-6 medium-6 small-6 columns rockthemes-woo-shop-buttons right-text centered-text-responsive"
+                  style="border-color:#56ccc8;">
+				<a class="show_details_button escape_button_style escapea" href="http:///producto/work-clothes/"><i
+                            class="icomoon icomoon-icon-attachment"></i> <span class="text">Details</span></a>
+			</span>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="swiper-slide">
+                                    <ul class="azoom-portfolio-body azoom-transition   large-block-grid-3 medium-block-grid-2 small-block-grid-1 "
+                                        data-masonry-elem="_1"
+                                        data-class-ref=" large-block-grid-3 medium-block-grid-2 small-block-grid-1 ">
+                                        <li itemscope itemtype="http://schema.org/Product"
+                                            class="azoom-default-item azoom-animate-queue  rockthemes-woo-elem  _1"
+                                            data-featured-big="no-image">
+                                            <div class="relative-container rockthemes-hover "><span><img
+                                                            src="http:///wp-content/plugins/woocommerce/assets/images/placeholder.png"
+                                                            alt="Marcador" width="150"
+                                                            class="woocommerce-placeholder wp-post-image" height="150"/></span>
+                                                <div class="hover-item-details-container azoom-woo-hover-container"
+                                                     style="background:rgba(86,204,200,0.8);"><h2><a
+                                                                href="http:///producto/short-dress/" class="escapea"
+                                                                itemprop="name">Short Dress</a></h2><span
+                                                            class="small-hover-elem"
+                                                            data-link_url="http:///producto/short-dress/"><i
+                                                                class="icomoon icomoon-icon-next15 animate-icon animate-to-right"></i></span>
+                                                </div>
+                                                <div class="azoom-hover-container azoom-transition woo-grid-hover">
+                                                    <div class="azoom-woo-grid-hover" style="background:#56ccc8">
+                                                        <div class="grid-price"><span
+                                                                    class="woocommerce-Price-amount amount">349,00<span
+                                                                        class="woocommerce-Price-currencySymbol">&euro;</span></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="azoom-hover-effect">
+                                                        <ul>
+
+                                                            <li class="rockthemes-hover-icon hide hover-mobile-back">
+                                                                <a>
+                                                                    <i class="icomoon icomoon-icon-undo2"></i>
+                                                                </a>
+                                                            </li>
+                                                            <li class="azoom-woo-grid-buttons">
+                                                                <div class="rockthemes-woo-buttons-container row collapse"><span
+                                                                            class="large-6 medium-6 small-6 columns rockthemes-woo-shop-buttons left-text centered-text-responsive"><a
+                                                                                rel="nofollow" href="/?add-to-cart=430"
+                                                                                data-quantity="1" data-product_id="430"
+                                                                                data-product_sku=""
+                                                                                class="button escape_button_style escapea product_type_simple add_to_cart_button escape_button_style escapea ajax_add_to_cart"><i
+                                                                                    class="icomoon icomoon-icon-shopping114"></i> <span
+                                                                                    class="text"> Add</span>
+		<span class="rt_loading woocommerce-loader">
+			<span class="rt_spinner">
+				<span class="rt_rect1"></span>
+				<span class="rt_rect2"></span>
+				<span class="rt_rect3"></span>
+				<span class="rt_rect4"></span>
+				<span class="rt_rect5"></span>
+			</span>
+		</span>
+	</a></span>
+			<span class="large-6 medium-6 small-6 columns rockthemes-woo-shop-buttons right-text centered-text-responsive"
+                  style="border-color:#56ccc8;">
+				<a class="show_details_button escape_button_style escapea" href="http:///producto/short-dress/"><i
+                            class="icomoon icomoon-icon-attachment"></i> <span class="text">Details</span></a>
+			</span>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </li>
+                                        <li itemscope itemtype="http://schema.org/Product"
+                                            class="azoom-default-item azoom-animate-queue  rockthemes-woo-elem  _1"
+                                            data-featured-big="no-image">
+                                            <div class="relative-container rockthemes-hover "><span><img
+                                                            src="http:///wp-content/plugins/woocommerce/assets/images/placeholder.png"
+                                                            alt="Marcador" width="150"
+                                                            class="woocommerce-placeholder wp-post-image" height="150"/></span>
+                                                <div class="hover-item-details-container azoom-woo-hover-container"
+                                                     style="background:rgba(86,204,200,0.8);"><h2><a
+                                                                href="http:///producto/cotton-skirt/" class="escapea"
+                                                                itemprop="name">Cotton Skirt</a></h2><span
+                                                            class="small-hover-elem"
+                                                            data-link_url="http:///producto/cotton-skirt/"><i
+                                                                class="icomoon icomoon-icon-next15 animate-icon animate-to-right"></i></span>
+                                                </div>
+                                                <div class="azoom-hover-container azoom-transition woo-grid-hover">
+                                                    <div class="azoom-woo-grid-hover" style="background:#56ccc8">
+                                                        <div class="grid-price"><span
+                                                                    class="woocommerce-Price-amount amount">89,00<span
+                                                                        class="woocommerce-Price-currencySymbol">&euro;</span></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="azoom-hover-effect">
+                                                        <ul>
+
+                                                            <li class="rockthemes-hover-icon hide hover-mobile-back">
+                                                                <a>
+                                                                    <i class="icomoon icomoon-icon-undo2"></i>
+                                                                </a>
+                                                            </li>
+                                                            <li class="azoom-woo-grid-buttons">
+                                                                <div class="rockthemes-woo-buttons-container row collapse"><span
+                                                                            class="large-6 medium-6 small-6 columns rockthemes-woo-shop-buttons left-text centered-text-responsive"><a
+                                                                                rel="nofollow" href="/?add-to-cart=424"
+                                                                                data-quantity="1" data-product_id="424"
+                                                                                data-product_sku=""
+                                                                                class="button escape_button_style escapea product_type_simple add_to_cart_button escape_button_style escapea ajax_add_to_cart"><i
+                                                                                    class="icomoon icomoon-icon-shopping114"></i> <span
+                                                                                    class="text"> Add</span>
+		<span class="rt_loading woocommerce-loader">
+			<span class="rt_spinner">
+				<span class="rt_rect1"></span>
+				<span class="rt_rect2"></span>
+				<span class="rt_rect3"></span>
+				<span class="rt_rect4"></span>
+				<span class="rt_rect5"></span>
+			</span>
+		</span>
+	</a></span>
+			<span class="large-6 medium-6 small-6 columns rockthemes-woo-shop-buttons right-text centered-text-responsive"
+                  style="border-color:#56ccc8;">
+				<a class="show_details_button escape_button_style escapea" href="http:///producto/cotton-skirt/"><i
+                            class="icomoon icomoon-icon-attachment"></i> <span class="text">Details</span></a>
+			</span>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </li>
+                                        <li itemscope itemtype="http://schema.org/Product"
+                                            class="azoom-default-item azoom-animate-queue  rockthemes-woo-elem  _1"
+                                            data-featured-big="no-image">
+                                            <div class="relative-container rockthemes-hover "><span><img
+                                                            src="http:///wp-content/plugins/woocommerce/assets/images/placeholder.png"
+                                                            alt="Marcador" width="150"
+                                                            class="woocommerce-placeholder wp-post-image" height="150"/></span>
+                                                <div class="hover-item-details-container azoom-woo-hover-container"
+                                                     style="background:rgba(86,204,200,0.8);"><h2><a
+                                                                href="http:///producto/white-shirt/" class="escapea"
+                                                                itemprop="name">White Shirt</a></h2><span
+                                                            class="small-hover-elem"
+                                                            data-link_url="http:///producto/white-shirt/"><i
+                                                                class="icomoon icomoon-icon-next15 animate-icon animate-to-right"></i></span>
+                                                </div>
+                                                <div class="azoom-hover-container azoom-transition woo-grid-hover">
+                                                    <div class="azoom-woo-grid-hover" style="background:#56ccc8">
+                                                        <div class="grid-price">
+                                                            <del>
+                                                                <span class="woocommerce-Price-amount amount">99,00<span
+                                                                            class="woocommerce-Price-currencySymbol">&euro;</span></span>
+                                                            </del>
+                                                            <ins>
+                                                                <span class="woocommerce-Price-amount amount">79,00<span
+                                                                            class="woocommerce-Price-currencySymbol">&euro;</span></span>
+                                                            </ins>
+                                                        </div>
+                                                    </div>
+                                                    <div class="azoom-hover-effect">
+                                                        <ul>
+
+                                                            <li class="rockthemes-hover-icon hide hover-mobile-back">
+                                                                <a>
+                                                                    <i class="icomoon icomoon-icon-undo2"></i>
+                                                                </a>
+                                                            </li>
+                                                            <li class="azoom-woo-grid-buttons">
+                                                                <div class="rockthemes-woo-buttons-container row collapse"><span
+                                                                            class="large-6 medium-6 small-6 columns rockthemes-woo-shop-buttons left-text centered-text-responsive"><a
+                                                                                rel="nofollow" href="/?add-to-cart=429"
+                                                                                data-quantity="1" data-product_id="429"
+                                                                                data-product_sku=""
+                                                                                class="button escape_button_style escapea product_type_simple add_to_cart_button escape_button_style escapea ajax_add_to_cart"><i
+                                                                                    class="icomoon icomoon-icon-shopping114"></i> <span
+                                                                                    class="text"> Add</span>
+		<span class="rt_loading woocommerce-loader">
+			<span class="rt_spinner">
+				<span class="rt_rect1"></span>
+				<span class="rt_rect2"></span>
+				<span class="rt_rect3"></span>
+				<span class="rt_rect4"></span>
+				<span class="rt_rect5"></span>
+			</span>
+		</span>
+	</a></span>
+			<span class="large-6 medium-6 small-6 columns rockthemes-woo-shop-buttons right-text centered-text-responsive"
+                  style="border-color:#56ccc8;">
+				<a class="show_details_button escape_button_style escapea" href="http:///producto/white-shirt/"><i
+                            class="icomoon icomoon-icon-attachment"></i> <span class="text">Details</span></a>
+			</span>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="swiper-slide">
+                                    <ul class="azoom-portfolio-body azoom-transition   large-block-grid-3 medium-block-grid-2 small-block-grid-1 "
+                                        data-masonry-elem="_2"
+                                        data-class-ref=" large-block-grid-3 medium-block-grid-2 small-block-grid-1 ">
+                                        <li itemscope itemtype="http://schema.org/Product"
+                                            class="azoom-default-item azoom-animate-queue  rockthemes-woo-elem  _2"
+                                            data-featured-big="no-image">
+                                            <div class="relative-container rockthemes-hover "><span><img
+                                                            src="http:///wp-content/plugins/woocommerce/assets/images/placeholder.png"
+                                                            alt="Marcador" width="150"
+                                                            class="woocommerce-placeholder wp-post-image" height="150"/></span>
+                                                <div class="hover-item-details-container azoom-woo-hover-container"
+                                                     style="background:rgba(86,204,200,0.8);"><h2><a
+                                                                href="http:///producto/fur-fashion/" class="escapea"
+                                                                itemprop="name">Fur Fashion</a></h2><span
+                                                            class="small-hover-elem"
+                                                            data-link_url="http:///producto/fur-fashion/"><i
+                                                                class="icomoon icomoon-icon-next15 animate-icon animate-to-right"></i></span>
+                                                </div>
+                                                <div class="azoom-hover-container azoom-transition woo-grid-hover">
+                                                    <div class="azoom-woo-grid-hover" style="background:#56ccc8">
+                                                        <div class="grid-price">
+                                                            <del>
+                                                                <span class="woocommerce-Price-amount amount">849,00<span
+                                                                            class="woocommerce-Price-currencySymbol">&euro;</span></span>
+                                                            </del>
+                                                            <ins>
+                                                                <span class="woocommerce-Price-amount amount">799,00<span
+                                                                            class="woocommerce-Price-currencySymbol">&euro;</span></span>
+                                                            </ins>
+                                                        </div>
+                                                    </div>
+                                                    <div class="azoom-hover-effect">
+                                                        <ul>
+
+                                                            <li class="rockthemes-hover-icon hide hover-mobile-back">
+                                                                <a>
+                                                                    <i class="icomoon icomoon-icon-undo2"></i>
+                                                                </a>
+                                                            </li>
+                                                            <li class="azoom-woo-grid-buttons">
+                                                                <div class="rockthemes-woo-buttons-container row collapse"><span
+                                                                            class="large-6 medium-6 small-6 columns rockthemes-woo-shop-buttons left-text centered-text-responsive"><a
+                                                                                rel="nofollow" href="/?add-to-cart=428"
+                                                                                data-quantity="1" data-product_id="428"
+                                                                                data-product_sku=""
+                                                                                class="button escape_button_style escapea product_type_simple add_to_cart_button escape_button_style escapea ajax_add_to_cart"><i
+                                                                                    class="icomoon icomoon-icon-shopping114"></i> <span
+                                                                                    class="text"> Add</span>
+		<span class="rt_loading woocommerce-loader">
+			<span class="rt_spinner">
+				<span class="rt_rect1"></span>
+				<span class="rt_rect2"></span>
+				<span class="rt_rect3"></span>
+				<span class="rt_rect4"></span>
+				<span class="rt_rect5"></span>
+			</span>
+		</span>
+	</a></span>
+			<span class="large-6 medium-6 small-6 columns rockthemes-woo-shop-buttons right-text centered-text-responsive"
+                  style="border-color:#56ccc8;">
+				<a class="show_details_button escape_button_style escapea" href="http:///producto/fur-fashion/"><i
+                            class="icomoon icomoon-icon-attachment"></i> <span class="text">Details</span></a>
+			</span>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div><!--End Swiper-->
+                        <div class="swiper-pagination-holder">
+                            <div class="swiper-arrow-left azoom-transition"><i
+                                        class="icomoon icomoon-icon-arrow-left4"></i></div>
+                            <div class="swiper-pagination"></div>
+                            <div class="swiper-arrow-right azoom-transition"><i
+                                        class="icomoon icomoon-icon-arrow-right4"></i></div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="large-1 medium-1 columns"></div>
+        </div>
+    </div>
+    <div id="shop" class="rockthemes-parallax rockthemes-unique-grid azoom-bgimage-scroll  unique-grid-light-fonts "
+         data-parallax-model="height_specific"
+         data-parallax-bg-image="{{ asset('azoomtheme/images/demo/demo-image-default-1440x810.jpg') }}"
+
+         data-parallax-mask-height="0"
+         data-parallax-padding="rsb-vertical-space"
+         data-image-ratio="16_9"
+         data-image-tile="full"
+         data-overlay-color="background:rgba(0,0,0,0.4);"
+
+         style=" background-color:rgba(0,0,0,0.4); background-image:url({{ asset('azoomtheme/images/demo/demo-image-default-1440x810.jpg') }});">
+        <div class="row">
+            <div class="large-4 medium-4 columns">
+                <div id="rockthemes-achievement-0" class="rock-achievement left-text icon-active" data-mode="static"
+                     data-value="1846" style="color:#56CCC8;">
+                    <div class="achievement-icon" style="background:#56CCC8; color:#ffffff;"><i
+                                class="icomoon icomoon-icon-support animate-icon animate-to-right"></i></div>
+                    <div class="achievement-content">
+                        <div id="rockthemes-achievement-0_number" class="achievement-number">0</div>
+                        <p style="color:#ffffff;">Questions Answered</p>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="large-4 medium-4 columns">
+                <div id="rockthemes-achievement-1" class="rock-achievement left-text icon-active" data-mode="static"
+                     data-value="14548" style="color:#56ccc8;">
+                    <div class="achievement-icon" style="background:#56ccc8; color:#ffffff;"><i
+                                class="icomoon icomoon-icon-download4 animate-icon animate-to-right"></i></div>
+                    <div class="achievement-content">
+                        <div id="rockthemes-achievement-1_number" class="achievement-number">0</div>
+                        <p style="color:#ffffff;">Times Downloaded</p>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="large-4 medium-4 columns">
+                <div id="rockthemes-achievement-2" class="rock-achievement left-text icon-active" data-mode="static"
+                     data-value="34689" style="color:#56ccc8;">
+                    <div class="achievement-icon" style="background:#56ccc8; color:#ffffff;"><i
+                                class="icomoon icomoon-icon-heart animate-icon animate-to-right"></i></div>
+                    <div class="achievement-content">
+                        <div id="rockthemes-achievement-2_number" class="achievement-number">0</div>
+                        <p style="color:#ffffff;">Hearts Given</p>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="testimonials"
+         class="rockthemes-fullwidth-colored rockthemes-unique-grid    rsb-vertical-space "
+         style="background:#ffffff;"
+
+    >
+        <div class="row">
+            <div class="large-12 medium-12 columns">
+                <div id="rock-testimonialsbuilder-1" class="testimonials-builder-container">
+                    <div class="rock-testimonials-content azoom-swiperslider swiper-single-element"
+                         data-use-pagination="true" data-auto-play="false" data-auto-play-time="5000">
+                        <div class="swiper-container">
+                            <div class="swiper-wrapper">
+                                <div class="rock-testimonials-single swiper-slide testimonials-quotes">
+                                    <div class="testimonials-content">Using it, Loving it. Azoom Responsive Wordpress
+                                        Theme is lorem ipsum dolor sit amet, consectetur adipiscing elit, uisque mattis.
+                                    </div>
+                                    <div class="testimonials-details"><span class="testimonial-image"><img
+                                                    src="{{ asset('azoomtheme/images/demo/demo-image-default-100x100.jpg') }}"
+                                                    alt="Demo Image" width="100" height="100"/></span><span
+                                                class="name-company"><strong> Jane Doe</strong><br/><span
+                                                    class="testimonials-soft-color">Doe Inc.</span></span></div>
+                                </div>
+                                <div class="rock-testimonials-single swiper-slide testimonials-quotes">
+                                    <div class="testimonials-content">Fits best for my website. Azoom Responsive
+                                        Wordpress Theme is lorem ipsum dolor sit amet, consectetur adipiscing elit
+                                        quisque mattis.
+                                    </div>
+                                    <div class="testimonials-details"><span class="testimonial-image"><img
+                                                    src="{{ asset('azoomtheme/images/demo/demo-image-default-100x100.jpg') }}"
+                                                    alt="Demo Image" width="100" height="100"/></span><span
+                                                class="name-company"><strong> John Doe</strong><br/><span
+                                                    class="testimonials-soft-color">Doe Inc.</span></span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination pagination1"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="rockthemes-parallax rockthemes-unique-grid azoom-bgimage-scroll  unique-grid-light-fonts "
+         data-parallax-model="height_specific"
+         data-parallax-bg-image="{{ asset('azoomtheme/images/demo/demo-image-default-1440x810.jpg') }}"
+
+         data-parallax-mask-height="0"
+         data-parallax-padding="rsb-vertical-space"
+         data-image-ratio="16_9"
+         data-image-tile="full"
+         data-overlay-color="background:rgba(0,0,0,0.4);"
+
+         style=" background-color:rgba(0,0,0,0.4); background-image:url({{ asset('azoomtheme/images/demo/demo-image-default-1440x810.jpg') }});">
+        <div class="row">
+            <div class="large-8 large-offset-2 medium-8 medium-offset-2 columns">
+                <div class="azoom-text-details"><h2 style="text-align: center">Build Your Website Easily Today</h2>
+                    <p style="text-align: center">You can start to build your websit. Use <strong>Azoom Responsive
+                            WordPress Theme </strong>and design your layout. You can also install our demo layouts
+                        easily</p>
+                </div>
+                <div class="vertical-space-d3"></div>
+            </div>
+            <div class="large-2 medium-2 columns"></div>
+        </div>
+        <div class="row">
+            <div class="large-4 large-offset-2 medium-4 medium-offset-2 columns rockthemes-animate"
+                 data-animation-class="fadeInUp" data-animation-delay-time="0">
+                <div class="azoom-button-wrapper" style="text-align:right;"><a
+                            href="http://themeforest.net/item/azoom-responsive-wordpress-theme/10591289?ref=XanderRock"
+                            target="_blank" style="" class="escapea button azoom-transition button- button-border"
+                            data-bg-disabled="true"> <i
+                                class="icomoon icomoon-icon-thumbs-up  animate-icon animate-to-left"></i> BUY AZOOM</a>
+                </div>
+            </div>
+            <div class="large-4 medium-4 columns rockthemes-animate" data-animation-class="fadeInUp"
+                 data-animation-delay-time="180">
+                <div class="azoom-button-wrapper" style="text-align:left;"><a href="http:///demos/" target="_blank"
+                                                                              style=""
+                                                                              class="escapea button azoom-transition button- button-border"
+                                                                              data-bg-disabled="true"> <i
+                                class="icomoon icomoon-icon-redo2  animate-icon animate-to-left"></i> MORE DEMO</a>
+                </div>
+            </div>
+            <div class="large-2 medium-2 columns"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div id="primary" class="content-area large-12 columns ">
+            <div id="content" class="site-content" role="main">
+
+
+                <div id="post-4325">
+
+                    <div class="entry-content">
+                    </div><!-- .entry-content -->
+
+                </div><!-- #post -->
+
+
+            </div><!-- #content -->
+        </div><!-- #primary -->
+        <div class="clear"></div>
+        <div></div>
+    </div>
+    <div>
+        <div class="row">
+            <div id="rockthemes-inline-nav">
+                <ul>
+                    <li id="rin-welcome" class="rockthemes-inline-nav-elem azoom-transition-fast deactive">
+                        <span class="rin-title azoom-transition-fast">Inicio</span>
+                        <span class="rin-handler"></span>
+                    </li>
+                    <li id="rin-productos" class="rockthemes-inline-nav-elem azoom-transition-fast deactive">
+                        <span class="rin-title azoom-transition-fast">Productos</span>
+                        <span class="rin-handler"></span>
+                    </li>
+                    <li id="rin-soluciones" class="rockthemes-inline-nav-elem azoom-transition-fast deactive">
+                        <span class="rin-title azoom-transition-fast">Soluciones</span>
+                        <span class="rin-handler"></span>
+                    </li>
+                    <li id="rin-planes" class="rockthemes-inline-nav-elem azoom-transition-fast deactive">
+                        <span class="rin-title azoom-transition-fast">Planes</span>
+                        <span class="rin-handler"></span>
+                    </li>
+                    <li id="rin-servicios" class="rockthemes-inline-nav-elem azoom-transition-fast deactive">
+                        <span class="rin-title azoom-transition-fast">Servicios</span>
+                        <span class="rin-handler"></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="clear"></div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/frontend/js/components.js') }}"></script>
+    <script src="{{ asset('bundles/frontend/js/setup.js') }}"></script>
+{% endblock %}

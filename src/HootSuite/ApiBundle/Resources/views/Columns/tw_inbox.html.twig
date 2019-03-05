@@ -1,0 +1,63 @@
+<span ng-init="col.more_options_filter=true; col.more_options_empty=true;"></span>
+<div class="column-body-item column-body-filtering" ng-show="col.filtering">
+    <div class="input-group">
+        <div class="input-group-btn input-group-select-first">
+            <select class="col-filter-selection" tooltip="Filtrar por" tooltip-append-to-body="true">
+                <option>Palabra clave</option>
+                <option>Otra cosa</option>
+            </select>
+        </div>    
+        <input type="text" ng-model="filtro" class="form-control" />
+        <span class="input-group-btn">
+            <button class="btn btn-primary btn-sm" ng-click="col.filtering=false"><i class="glyphicon glyphicon-remove"></i></button>
+        </span>
+    </div>    
+</div>
+<div ng-if="col.data.length" ng-repeat="row in col.data  | filter:filtro" class="column-body-item column-body-has-options">
+    <div class="body-item-content">
+        <div class="item-avatar">
+            <div class="avatar-more-menu">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="width: 100%;">
+                    <div style="position: absolute; top: 5px; right: 5px; left: 5px;">
+                        <img style="width: 100%;" ng-src="[[row.sender.profile_image_url]]" />
+                    </div>
+                    <br/>
+                    <span style="margin-top: 20px;" class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="javascript:;" ng-click="userProfile(row.sender.screen_name,col.profile)"><span class="glyphicon glyphicon1-user"></span> Ver perfil</a></li>
+                    <li><a href="javascript:;" ng-if="!row.sender.following" ng-click="follow(col.profile, row.sender.id_str, 1)"><span class="glyphicon glyphicon1-user-add"></span> Seguir</a></li>
+                    <li><a href="javascript:;" ng-if="row.sender.following" ng-click="follow(col.profile, row.sender.id_str, 0)"><span class="glyphicon glyphicon1-erase"></span> Dejar de seguir</a></li>
+                    <li><a href="javascript:;" ng-click="addToList(row.sender,col.profile)"><span class="glyphicon glyphicon-list"></span> Añadir a la lista</a></li>
+                    <li><a href="javascript:;" ng-click="spammer(col.profile, row.sender.id_str)"><span class="glyphicon glyphicon1-spam"></span> Denunciar spammer</a></li>
+                </ul>
+            </div>
+            <img style="width: 100%" ng-src="[[row.sender.profile_image_url]]" />
+        </div>
+        <div class="item-username"><a class="username" href="javascript:;" ng-click="userProfile(row.sender.screen_name,col.profile)">[[row.sender.screen_name]]</a></div>
+        <div class="item-created"><span unsafe><a target="_blank" href="http://twitter.com/[[row.sender.screen_name]]/status/[[row.id_str]]">[[row.created_at | toDate | date:'MMM d, h:mma']]</a></span></div>
+        <div class="item-text" compile-data  template="<div>[[row.text | linkify | linkusers:col.profile]]</div>"></div>
+    </div>
+    <div class="col-row-options">
+        <ul>
+            <span no-propage ng-click="prepareMessage(col.profile, row.sender, 'DIRECT')" class="glyphicon glyphicon1-chat btn-option" tooltip="Mensaje directo" tooltip-append-to-body="true"></span>
+            <span no-propage ng-click="delStream(col, row.id_str, col.profile, 'MD')" class="glyphicon glyphicon-trash btn-option" tooltip="Eliminar" tooltip-append-to-body="true"></span>
+            <span class="dropdown btn-option">
+                <span class="dropdown-toggle" on-toggle="toggled(open)" tooltip="Más opciones" tooltip-append-to-body="true">
+                    <i class="caret"></i>
+                </span>
+                <ul class="dropdown-menu pull-right" role="menu">
+                    <li><a href="javascript:;" ng-click="sendToEmail(row.text)"><span class="glyphicon glyphicon-envelope"></span> Enviar a email</a></li>
+                    <li><a href="javascript:;"><span class="glyphicon glyphicon1-shuffle2"></span> Asignar a...</a></li>
+                    <li><a href="javascript:;"><span class="glyphicon glyphicon1-bubble"></span> Enviar a conversación</a></li>
+                </ul>
+            </span>
+        </ul>
+    </div>    
+</div>
+<div class="column-body-item column-body-scrolling" ng-show="col.scrolling">
+    <span class="glyphicon glyphicon-refresh-gif-black"></span> Cargando...
+</div>
+<div ng-if="col.data.length==0" class="column-no-results column-body-item">
+    No se han encontrado resultados
+</div>

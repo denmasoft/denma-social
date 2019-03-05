@@ -1,0 +1,56 @@
+<span ng-init="col.more_options_filter=true; col.more_options_empty=true;"></span>
+<div class="column-body-item column-body-filtering" ng-show="col.filtering">
+    <div class="input-group">
+        <div class="input-group-btn input-group-select-first">
+            <select class="col-filter-selection" tooltip="Filtrar por" tooltip-append-to-body="true">
+                <option>Palabra clave</option>
+            </select>
+        </div>    
+        <input type="text" ng-model="filtro" class="form-control" />
+        <span class="input-group-btn">
+            <button class="btn btn-primary btn-sm" ng-click="col.filtering=false"><i class="glyphicon glyphicon-remove"></i></button>
+        </span>
+    </div>    
+</div>
+<div ng-if="col.data.length" ng-repeat="row in col.data  | filter:filtro" class="column-body-item column-body-has-options">
+    <div class="body-item-content">
+        <div class="item-avatar">
+            
+            <img style="width: 100%" ng-src=[[row.picture]] />
+        </div>
+        <div class="item-username">
+            <a class="username" href="javascript:;" ng-click="">[[row.what]]</a>
+        </div>        
+        
+        <div class="item-created-by">
+            <span unsafe="">
+                <a class="ev_ow ng-binding" target="_blank" href="[[row.owner_link]]">
+                    Por: [[row.owner]]
+                </a>
+            </span>
+        </div> 
+        
+        <div class="item-when">
+            <span unsafe="">
+                <a class="ng-binding" target="_blank" href="">
+                    Cuando: [[row.when]]
+                </a>
+            </span>
+        </div>
+        <div class="item-when">
+            <span unsafe="">
+                <a class="btn btn-default" target="_blank" href=[[row.event_link]]>
+                    [[row.event]]
+                </a>
+            </span>
+        </div>
+              
+        
+    </div>    
+</div>
+<div class="column-body-item column-body-scrolling" ng-show="col.scrolling">
+    <span class="glyphicon glyphicon-refresh-gif-black"></span> Cargando...
+</div>
+<div ng-if="col.data.length==0" class="column-no-results column-body-item">
+    No se han encontrado resultados
+</div>

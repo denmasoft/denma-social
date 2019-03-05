@@ -1,0 +1,7 @@
+fos_facebook:
+    alias:  facebook
+    app_id: ''
+    secret: ''
+    cookie: true
+    permissions: [email, publish_actions, user_about_me, user_birthday, user_education_history, user_events, user_groups, user_hometown, user_likes, user_location, user_photos, user_relationship_details, user_relationships, user_religion_politics, user_status, user_tagged_places,user_videos, user_website, user_work_history]
+    

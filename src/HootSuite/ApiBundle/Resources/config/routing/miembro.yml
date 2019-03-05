@@ -1,0 +1,13 @@
+miembro_data:
+    pattern:  /load
+    defaults: { _controller: ApiBundle:Miembro:load }
+remove_profile:
+    path: /remove/profile
+    defaults: {_controller: ApiBundle:Profiles:remove}
+profile_synchronize:
+    path: /synchronize/profile
+    defaults: {_controller: ApiBundle:Miembro:synchronize}
+
+member_update:
+    path: /update/member
+    defaults: {_controller: ApiBundle:Miembro:update}

@@ -1,0 +1,457 @@
+{% extends 'FrontendBundle::frontend.html.twig' %}
+{% block slider %}
+    <div class="azoom-title-breadcrumbs azoom-transition    full-width-title-breadcrumbs  rockthemes-parallax rockthemes-unique-grid"
+         data-parallax-model="height_specific"
+         data-parallax-bg-image="http://azoom.curvyslider.com/wp-content/uploads/2014/11/breadcrumbs-parallax-background-page.jpg"
+         data-image-ratio="1920_1280">
+        <div class="parallax-mask-class height_specific"
+             style="background-image:url(http://azoom.curvyslider.com/wp-content/uploads/2014/11/breadcrumbs-parallax-background-page.jpg) ; "
+             data-image-main-width="1920" data-image-main-height="1280">
+            <div class="bg-image-overlay " style="min-height: 268px;">
+                <div class="row">
+                    <div class="center-text">
+                        <h1 class="page-title post-title  centered-text-responsive-small" itemprop="headline">
+                            REGISTRATE
+                        </h1>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block content %}
+    <div class="vertical-space"></div>
+    <div class="row"></div>
+    {% if plan.price!=0 or plan.price!=0.00 %}
+        <div class="row">
+            <div id="primary" class="content-area large-12 columns ">
+                <div id="content" class="site-content" role="main">
+
+
+                    <div id="post-2501">
+
+                        <div class="entry-content">
+                            <div class="row">
+                                <div class="large-12 medium-12 columns">
+                                    <div class="azoom-heading-wrapper icon-enabled left-heading " style="text-align:left;">
+                                        <div class="azoom-heading-inline">
+                                            <div class="azoom-heading-icon" style="background:#56ccc8;"></div>
+                                            <h2 class="azoom-heading"
+                                                style="color:#152840; font-size:54px; margin-left:20px">PLAN <span
+                                                        style="font-weight:100; color:#56ccc8;">{{ plan.name }}</span></h2>
+                                            <div class="heading-bottom-line" style="background:#56ccc8;"></div>
+                                            <div class="heading-bottom-line-end" style="background:#56ccc8;"></div>
+
+                                        </div>
+                                    </div>
+                                    <div class="azoom-text-details">
+                                        <div class="azoom-steps-wrapper">
+                                            <div class="regsteps azoom-steps jump-steps azoom-transition" data-start_steps="all" data-min-width="960" style="margin-top:160px; margin-bottom:190px; ">
+                                                <ul class="large-block-grid-4 medium-block-grid-4 small-block-grid-4"
+                                                    style="background:#c5cdd1; color:#c5cdd1;">
+
+                                                    <li data-step-color="#56ccc8">
+                                                        <div class="step-nav">
+                                                            <i class="icomoon icomoon-icon-previous11 step-back"></i>
+                                                            <i class="icomoon icomoon-icon-next15 step-next"></i>
+                                                        </div>
+                                                        <div class="step-icon steps-noselect">
+                                                            <span class="number">1</span>
+					<span class="check">
+						<i class="icomoon icomoon-icon-checkmark"></i>
+					</span>
+                                                        </div>
+                                                        <div class="step-details-line"></div>
+                                                        <div class="step-details">
+                                                            <h3>Crea tu Cuenta</h3>
+                                                            <p></p>
+                                                        </div>
+                                                    </li>
+
+                                                    <li class="regtwo" data-step-color="">
+                                                        <!--<div class="step-nav">
+                                                            <i class="icomoon icomoon-icon-previous11 step-back"></i>
+                                                            <i class="icomoon icomoon-icon-next15 step-next"></i>
+                                                        </div>-->
+                                                        <div class="step-icon steps-noselect">
+                                                            <span class="number">2</span>
+					<span class="check">
+						<i class="icomoon icomoon-icon-checkmark"></i>
+					</span>
+                                                        </div>
+                                                        <div class="step-details-line"></div>
+                                                        <div class="step-details">
+                                                            <h3>Informacion de pago</h3>
+                                                            <p></p>
+                                                        </div>
+                                                    </li>
+
+                                                    <li class="regtwo" data-step-color="">
+                                                        <!--<div class="step-nav">
+                                                            <i class="icomoon icomoon-icon-previous11 step-back"></i>
+                                                            <i class="icomoon icomoon-icon-next15 step-next"></i>
+                                                        </div>-->
+                                                        <div class="step-icon steps-noselect">
+                                                            <span class="number">3</span>
+					<span class="check">
+						<i class="icomoon icomoon-icon-checkmark"></i>
+					</span>
+                                                        </div>
+                                                        <div class="step-details-line"></div>
+                                                        <div class="step-details">
+                                                            <h3>Conecta Redes Sociales</h3>
+                                                            <p></p>
+                                                        </div>
+                                                    </li>
+
+                                                    <li data-step-color="">
+                                                        <!--<div class="step-nav">
+                                                            <i class="icomoon icomoon-icon-previous11 step-back"></i>
+                                                            <i class="icomoon icomoon-icon-next15 step-next"></i>
+                                                        </div>-->
+                                                        <div class="step-icon steps-noselect">
+                                                            <span class="number">4</span>
+					<span class="check">
+						<i class="icomoon icomoon-icon-checkmark"></i>
+					</span>
+                                                        </div>
+                                                        <div class="step-details-line"></div>
+                                                        <div class="step-details">
+                                                            <h3>Comienza a usar ConversationQuest</h3>
+                                                            <p></p>
+                                                        </div>
+                                                    </li>
+
+                                                </ul></div></div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div><!-- .entry-content -->
+
+                    </div><!-- #post -->
+
+
+                </div><!-- #content -->
+            </div><!-- #primary -->
+
+            <div class="clear"></div>
+            <div class="vertical-space"></div>
+            <div></div>
+        </div>
+        <div class="row">
+            <div class="content-area large-8 columns">
+
+                <form ng-controller="userCtrl" name="userForm" id="form-login" role="form" ng-submit="createUser({{ plan.id }})"
+                      class="rockthemes-form-builder checkbox-supported rockthemes-active"
+                      data-form-ref="1">
+                    <div class='row'>
+                        <div class="large-6 columns" ng-class="{ 'has-error' : userForm.userEmail.$invalid && (userForm.userEmail.$dirty || submitted)}">
+                            <div class="rockthemes_fb_element_container">
+                            <span class="block input-icon input-icon-right">
+                                <input style="width:100%" type="email" placeholder="correo electrónico..."
+                                       class="rockthemes-fb-element input-element" name="userEmail"
+                                       ng-model="user.userEmail" ng-required="true" id="userEmail">
+                                <p ng-show="userForm.userEmail.$error.required && (userForm.userEmail.$dirty || submitted)"
+                                   class="help-block">el correo electrónico es requerido.</p>
+                                <p ng-show="userForm.userEmail.$error.email && (userForm.userEmail.$dirty || submitted)"
+                                   class="help-block">por favor, introduzca un correo electrónico válido.</p>
+
+                            </span>
+                            </div>
+                        </div>
+                        <div class="large-6 columns" ng-class="{ 'has-error' : userForm.fullName.$invalid && (userForm.fullName.$dirty || submitted)}">
+                            <div class="rockthemes_fb_element_container">
+                            <span class="block input-icon input-icon-right">
+                                <input style="width:100%" type="text" placeholder="nombre..." class="rockthemes-fb-element input-element"
+                                       name="fullName" ng-model="user.fullName" ng-required="true" id="fullName">
+                                <p ng-show="userForm.fullName.$error.required && (userForm.fullName.$dirty || submitted)"
+                                   class="help-block">Debe introducir su nombre.</p>
+                            </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <div class="large-6 columns" ng-class="{ 'has-error' : userForm.password.$invalid && (userForm.password.$dirty || submitted)}">
+                            <div class="rockthemes_fb_element_container">
+                            <span class="block input-icon input-icon-right">
+                                <input style="width: 100%;" style="width:100%" type="password" placeholder="contraseña..."
+                                       class="rockthemes-fb-element input-element" name="password"
+                                       ng-model="user.password" ng-required="true" id="password">
+                                <p ng-show="userForm.password.$error.required && (userForm.password.$dirty || submitted)"
+                                   class="help-block">La contraseña es requerida.</p>
+
+                            </span>
+                            </div>
+                        </div>
+                        <div class="large-6 columns" ng-class="{ 'has-error' : userForm.confirmPassword.$invalid && (userForm.confirmPassword.$dirty || submitted)}">
+                            <div class="rockthemes_fb_element_container">
+                            <span class="block input-icon input-icon-right">
+                                <input style="width: 100%;" type="password" placeholder="repeat password..."
+                                       class="rockthemes-fb-element input-element" name="confirmPassword"
+                                       ng-model="user.confirmPassword" ng-compare="password" ng-required="true"
+                                       id="confirmPassword">
+                                <p ng-show="userForm.confirmPassword.$error.required && (userForm.confirmPassword.$dirty || submitted)"
+                                   class="help-block">por favor, confirme su contraseña.</p>
+                                <p ng-show="userForm.confirmPassword.$error.compare  && (userForm.confirmPassword.$dirty || submitted)"
+                                   class="help-block">Las contraseñas no coiciden.</p>
+
+                            </span>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <input type="hidden" id="user_create_token" name="user_create_token"
+                               ng-model="userForm.token" ng-init="userForm.token={{ user_create_token }}"
+                               value="{{ user_create_token }}" class="">
+                        <div>
+                            <a class="btn btn-primary" ng-click="createUser({{ plan.id }})"><i
+                                        class="glyphicon glyphicon-ok"></i> Continuar</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="sidebar-area large-4 column">
+                <div class="right-sidebar-padding">
+                    <div class="row">
+                        <div class="large-12 medium-12 columns">
+                            <div class="azoom-text-details"><h2>¿Qué te ofrece ConversationQuest?</h2>
+                                <div class="rockthemes-list">
+                                    <ul>
+                                        <li>
+                                            <i class="icomoon icomoon-icon-checkmark"></i>
+                                            <span>3 Redes Sociales.</span>
+                                        </li>
+                                        <li>
+                                            <i class="icomoon icomoon-icon-checkmark"></i>
+                                            <span>Programacion de Mensajes.</span>
+                                        </li>
+                                        <li>
+                                            <i class="icomoon icomoon-icon-checkmark"></i>
+                                            <span>Generacion de informes rapidos.</span>
+                                        </li>
+                                        <li>
+                                            <i class="icomoon icomoon-icon-checkmark"></i>
+                                            <span>Busqueda de Facebook y Twitter.</span>
+                                        </li>
+                                    </ul>
+                                    <p></p>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                            <div class="vertical-space"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="row">
+            <div id="primary" class="content-area large-12 columns ">
+                <div id="content" class="site-content" role="main">
+
+
+                    <div id="post-2501">
+
+                        <div class="entry-content">
+                            <div class="row">
+                                <div class="large-12 medium-12 columns">
+                                    <div class="azoom-heading-wrapper icon-enabled left-heading " style="text-align:left;">
+                                        <div class="azoom-heading-inline">
+                                            <div class="azoom-heading-icon" style="background:#56ccc8;"></div>
+                                            <h2 class="azoom-heading"
+                                                style="color:#152840; font-size:54px; margin-left:20px">PLAN <span
+                                                        style="font-weight:100; color:#56ccc8;">GRATUITO</span></h2>
+                                            <div class="heading-bottom-line" style="background:#56ccc8;"></div>
+                                            <div class="heading-bottom-line-end" style="background:#56ccc8;"></div>
+
+                                        </div>
+                                    </div>
+                                    <div class="azoom-text-details">
+                                        <div class="azoom-steps-wrapper">
+                                            <div class="regsteps azoom-steps jump-steps azoom-transition" data-start_steps="all" data-min-width="960" style="margin-top:160px; margin-bottom:190px; ">
+                                                <ul class="large-block-grid-3 medium-block-grid-3 small-block-grid-3"
+                                                    style="background:#c5cdd1; color:#c5cdd1;">
+
+                                                    <li data-step-color="#56ccc8">
+                                                        <div class="step-nav">
+                                                            <i class="icomoon icomoon-icon-previous11 step-back"></i>
+                                                            <i class="icomoon icomoon-icon-next15 step-next"></i>
+                                                        </div>
+                                                        <div class="step-icon steps-noselect">
+                                                            <span class="number">1</span>
+					<span class="check">
+						<i class="icomoon icomoon-icon-checkmark"></i>
+					</span>
+                                                        </div>
+                                                        <div class="step-details-line"></div>
+                                                        <div class="step-details">
+                                                            <h3>Crea tu Cuenta</h3>
+                                                            <p></p>
+                                                        </div>
+                                                    </li>
+
+                                                    <li id="regtwo" data-step-color="">
+                                                        <!--<div class="step-nav">
+                                                            <i class="icomoon icomoon-icon-previous11 step-back"></i>
+                                                            <i class="icomoon icomoon-icon-next15 step-next"></i>
+                                                        </div>-->
+                                                        <div class="step-icon steps-noselect">
+                                                            <span class="number">2</span>
+					<span class="check">
+						<i class="icomoon icomoon-icon-checkmark"></i>
+					</span>
+                                                        </div>
+                                                        <div class="step-details-line"></div>
+                                                        <div class="step-details">
+                                                            <h3>Conecta Redes Sociales</h3>
+                                                            <p></p>
+                                                        </div>
+                                                    </li>
+
+                                                    <li data-step-color="">
+                                                        <!--<div class="step-nav">
+                                                            <i class="icomoon icomoon-icon-previous11 step-back"></i>
+                                                            <i class="icomoon icomoon-icon-next15 step-next"></i>
+                                                        </div>-->
+                                                        <div class="step-icon steps-noselect">
+                                                            <span class="number">3</span>
+					<span class="check">
+						<i class="icomoon icomoon-icon-checkmark"></i>
+					</span>
+                                                        </div>
+                                                        <div class="step-details-line"></div>
+                                                        <div class="step-details">
+                                                            <h3>Comienza a usar ConversationQuest</h3>
+                                                            <p></p>
+                                                        </div>
+                                                    </li>
+
+                                                </ul></div></div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div><!-- .entry-content -->
+
+                    </div><!-- #post -->
+
+
+                </div><!-- #content -->
+            </div><!-- #primary -->
+
+            <div class="clear"></div>
+            <div class="vertical-space"></div>
+            <div></div>
+        </div>
+        <div class="row">
+            <div class="content-area large-8 columns">
+
+                <form ng-controller="userCtrl" name="userForm" id="form-login" role="form" ng-submit="createUser({{ plan.id }})"
+                      class="rockthemes-form-builder checkbox-supported rockthemes-active"
+                      data-form-ref="1">
+                    <div class='row'>
+                        <div class="large-6 columns" ng-class="{ 'has-error' : userForm.userEmail.$invalid && (userForm.userEmail.$dirty || submitted)}">
+                            <div class="rockthemes_fb_element_container">
+                            <span class="block input-icon input-icon-right">
+                                <input style="width:100%" type="email" placeholder="correo electrónico..."
+                                       class="rockthemes-fb-element input-element" name="userEmail"
+                                       ng-model="user.userEmail" ng-required="true" id="userEmail">
+                                <p ng-show="userForm.userEmail.$error.required && (userForm.userEmail.$dirty || submitted)"
+                                   class="help-block">el correo electrónico es requerido.</p>
+                                <p ng-show="userForm.userEmail.$error.email && (userForm.userEmail.$dirty || submitted)"
+                                   class="help-block">por favor, introduzca un correo electrónico válido.</p>
+
+                            </span>
+                            </div>
+                        </div>
+                        <div class="large-6 columns" ng-class="{ 'has-error' : userForm.fullName.$invalid && (userForm.fullName.$dirty || submitted)}">
+                            <div class="rockthemes_fb_element_container">
+                            <span class="block input-icon input-icon-right">
+                                <input style="width:100%" type="text" placeholder="nombre..." class="rockthemes-fb-element input-element"
+                                       name="fullName" ng-model="user.fullName" ng-required="true" id="fullName">
+                                <p ng-show="userForm.fullName.$error.required && (userForm.fullName.$dirty || submitted)"
+                                   class="help-block">Debe introducir su nombre.</p>
+                            </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <div class="large-6 columns" ng-class="{ 'has-error' : userForm.password.$invalid && (userForm.password.$dirty || submitted)}">
+                            <div class="rockthemes_fb_element_container">
+                            <span class="block input-icon input-icon-right">
+                                <input style="width: 100%;" style="width:100%" type="password" placeholder="contraseña..."
+                                       class="rockthemes-fb-element input-element" name="password"
+                                       ng-model="user.password" ng-required="true" id="password">
+                                <p ng-show="userForm.password.$error.required && (userForm.password.$dirty || submitted)"
+                                   class="help-block">La contraseña es requerida.</p>
+
+                            </span>
+                            </div>
+                        </div>
+                        <div class="large-6 columns" ng-class="{ 'has-error' : userForm.confirmPassword.$invalid && (userForm.confirmPassword.$dirty || submitted)}">
+                            <div class="rockthemes_fb_element_container">
+                            <span class="block input-icon input-icon-right">
+                                <input style="width: 100%;" type="password" placeholder="repeat password..."
+                                       class="rockthemes-fb-element input-element" name="confirmPassword"
+                                       ng-model="user.confirmPassword" ng-compare="password" ng-required="true"
+                                       id="confirmPassword">
+                                <p ng-show="userForm.confirmPassword.$error.required && (userForm.confirmPassword.$dirty || submitted)"
+                                   class="help-block">por favor, confirme su contraseña.</p>
+                                <p ng-show="userForm.confirmPassword.$error.compare  && (userForm.confirmPassword.$dirty || submitted)"
+                                   class="help-block">Las contraseñas no coiciden.</p>
+
+                            </span>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <input type="hidden" id="user_create_token" name="user_create_token"
+                               ng-model="userForm.token" ng-init="userForm.token={{ user_create_token }}"
+                               value="{{ user_create_token }}" class="">
+                        <div>
+                            <a class="btn btn-primary" ng-click="createUser({{ plan.id }})"><i
+                                        class="glyphicon glyphicon-ok"></i> Continuar</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="sidebar-area large-4 column">
+                <div class="right-sidebar-padding">
+                    <div class="row">
+                        <div class="large-12 medium-12 columns">
+                            <div class="azoom-text-details"><h2>¿Qué te ofrece ConversationQuest?</h2>
+                                <div class="rockthemes-list">
+                                    <ul>
+                                        <li>
+                                            <i class="icomoon icomoon-icon-checkmark"></i>
+                                            <span>3 Redes Sociales.</span>
+                                        </li>
+                                        <li>
+                                            <i class="icomoon icomoon-icon-checkmark"></i>
+                                            <span>Programacion de Mensajes.</span>
+                                        </li>
+                                        <li>
+                                            <i class="icomoon icomoon-icon-checkmark"></i>
+                                            <span>Generacion de informes rapidos.</span>
+                                        </li>
+                                        <li>
+                                            <i class="icomoon icomoon-icon-checkmark"></i>
+                                            <span>Busqueda de Facebook y Twitter.</span>
+                                        </li>
+                                    </ul>
+                                    <p></p>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                            <div class="vertical-space"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

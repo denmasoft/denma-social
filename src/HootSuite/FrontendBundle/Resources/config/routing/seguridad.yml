@@ -1,0 +1,5 @@
+usuario_login:
+    pattern:  /login
+    defaults: { _controller: "FrontendBundle:Seguridad:login",_locale:"es" }
+    options:
+       expose: true

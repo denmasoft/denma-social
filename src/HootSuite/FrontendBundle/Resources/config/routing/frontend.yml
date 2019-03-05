@@ -1,0 +1,16 @@
+termino_servicio:
+    pattern:  /termino-servicio
+    defaults: { _controller: "FrontendBundle:Frontend:terminosServicios",_locale:"es" }
+    options:
+       expose: true
+
+privacidad:
+    pattern:  /privacidad
+    defaults: { _controller: "FrontendBundle:Frontend:privacidad",_locale:"es" }
+    options:
+       expose: true
+copyright:
+    pattern:  /copyright
+    defaults: { _controller: "FrontendBundle:Frontend:copyright",_locale:"es" }
+    options:
+       expose: true

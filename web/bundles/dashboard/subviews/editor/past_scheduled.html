@@ -1,0 +1,229 @@
+<style>
+    .selectMessagesHeader {
+        background-color: #e3e3e3;
+        border-color: #ccc;
+        border-style: solid;
+        border-width: 1px 0 0;
+        padding: 6px 8px;
+        position: relative;
+        z-index: 1;
+    }
+    .messageCb {
+        float: left;
+        margin-top: 7px;
+    }
+    .selectMessagesHeader .allMessagesCb {
+        margin-left: 12px;
+        margin-right: 23px;
+    }
+    .btn-dropdown {
+        background-color: #ebebeb;
+        background-image: linear-gradient(to top, #e6e6e6 0px, #f2f2f2 100%);
+        border: 1px solid #bbb;
+        border-radius: 2px;
+        box-shadow: 0 1px #fff inset;
+        color: #333;
+        cursor: pointer;
+        display: inline-block;
+        line-height: 24px;
+        min-width: 140px;
+        overflow: hidden;
+        padding: 0 25px 0 10px;
+        position: relative;
+        text-overflow: ellipsis;
+        text-shadow: 0 1px 0 #fff;
+        vertical-align: middle;
+        white-space: nowrap;
+    }
+     .btn-dropdown.mute, .btn-dropdown.mute:hover, .btn-dropdown.mute:active {
+         background-color: #eee;
+         background-image: none;
+         border: 1px solid #ddd;
+         border-radius: 0;
+         box-shadow: none;
+         cursor: default;
+     }
+     .btn-lite-sta.disabled, .btn-lite-sta.isDisabled, .btn-lite-sta.inactive, .btn-dropdown.dbl, .btn-dropdown.disabled, .btn-dropdown.isDisabled {
+         background-color: #eee;
+         border: 1px solid #ccc;
+         box-shadow: none;
+         color: #a3a3a3 !important;
+         cursor: default;
+         text-shadow: none;
+     }
+     .btn-lite-sta.disabled, .btn-lite-sta.isDisabled, .btn-lite-sta.inactive, .btn-dropdown.dbl, .btn-dropdown.disabled, .btn-dropdown.isDisabled {
+         color: #a3a3a3 !important;
+         cursor: default;
+         text-shadow: none;
+     }
+     .ui-icon, .icon-13, .icon-static-13, .icon-sn-13, .icon-16, .icon-static-16, .icon-sn-16, .favicon-16, .icon-oi-16, .icon-19, .icon-global-nav-19, .icon-static-19, .icon-sn-19, .icon-30, .icon-static-30, .icon-sn-30, .icon-66, .icon-qs, .icon-fb-list, .icon-co-13, .icon-co-16, .icon-co-19, .icon-co-90 {
+         display: inline-block;
+         outline: 0 none;
+         overflow: hidden;
+         text-align: left;
+         text-decoration: none;
+         text-indent: -999em;
+         vertical-align: middle;
+     }
+     .ui-icon, .icon-13, .icon-static-13, .icon-16, .icon-static-16, .icon-19, .icon-static-19, .icon-30, .icon-static-30 {
+         background-image: url("/images/icons.323d9c57.png");
+     }
+     .ui-icon, .icon-13, .icon-static-13, .icon-sn-13, .icon-co-13 {
+         height: 13px;
+         width: 13px;
+     }
+     .btn-dropdown .icon-13 {
+         margin-left: 8px;
+         position: absolute;
+         right: 10px;
+         top: 5px;
+     }
+     .icon-13.expanded, .icon-13.arrowDown {
+         background-position: 0 -351px;
+     }
+    .btn-dropdown.mute .icon-13 {
+        display: none;
+    }
+    .btn-lite-sta.disabled .icon-13, .btn-lite-sta.isDisabled .icon-13, .btn-lite-sta.inactive .icon-13, .btn-dropdown.dbl .icon-13, .btn-dropdown.disabled .icon-13, .btn-dropdown.isDisabled .icon-13, .btn-lite-sta.disabled .icon-19, .btn-lite-sta.isDisabled .icon-19, .btn-lite-sta.inactive .icon-19, .btn-dropdown.dbl .icon-19, .btn-dropdown.disabled .icon-19, .btn-dropdown.isDisabled .icon-19 {
+        opacity: 0.35;
+    }
+    .messagesActionBtn {
+        min-width: 80px;
+    }
+</style>
+<div class="tabs-right-header programmed_profile">
+    <div class="tabs-right-header-content">
+        <div class="message-box-left" style="margin-top: -8px;" click-draft-outside
+             ng-class="{expanded: draft.draft_writting}"
+             ng-controller="draftController"
+             ng-mouseover="startWriteDraft();"
+             ng-mouseleave="stopWriteDraft()"
+             ng-blur="stopWriteDraft()">
+            <div class="message-user-profiles">
+                <div class="message-selected-list">
+                    <div class="selected-list-box">
+                            <span class="item-filter">
+                                <span ng-hide="draft.draft_writting" class="send-to-text ng-hide">Buscar perfil...</span>
+                                <span class="glyphicon glyphicon-search" style="margin-left: 10px; padding-top: 8px;" ng-show="draft.draft_writting"></span>
+                                <input ng-model="redName" ng-show="draft.draft_writting" type="text" class="profiles-filter ng-pristine ng-valid" placeholder="Buscar perfil...">
+                            </span>
+                    </div>
+                    <div class="tools-list-box">
+                        <span class="item-box selected-count ng-binding" ng-bind="draft.profiles_selections.length">0</span>
+                            <span class="item-box-btn ng-hide" ng-show="draft.profiles_selections.length" ng-click="removeAllDraftProfiles()">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </span>
+                            <span class="item-box-btn dropdown-toggle" data-toggle="dropdown" tabindex="-1">
+                                <span class="caret"></span>
+                            </span>
+                        <ul role="menu" class="dropdown-menu">
+                            <li><a ng-click="selectAllDraftProfiles()">Marcar Todos</a></li>
+                            <li><a ng-click="removeAllDraftProfiles()">Quitar todos</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="message-profiles-selection ng-hide" ng-show="draft.draft_writting">
+                <div class="profile-picker">
+                    <ul style="list-style: none; margin: 0; padding: 0">
+                        <li
+                                ng-repeat="profile in profiles | filter:redName"
+                                ng-class="{profile_selected: isDraftProfileSelected(profile.id)}"
+                                itemid="[[profile.id]]">
+                            <div class="profile-icon" ng-click="selectDraftProfile(profile.id)" >
+                                <img ng-src="[[profile.avatar]]" />
+                                <span class="truncate">[[profile.name]]</span>
+                            </div>
+                            <div class="profile-controls">
+                                    <span ng-show="isDraftProfileDefault(profile.id)" tooltip="Quitar selección"
+                                          tooltip-append-to-body="true"
+                                          class="glyphicon glyphicon-pushpin rotate"
+                                          ng-click="unselectDraftProfileDefault(profile.id)"></span>
+                                    <span ng-show="!isDraftProfileDefault(profile.id)" tooltip="Seleccionar Siempre"
+                                          tooltip-append-to-body="true"
+                                          class="glyphicon glyphicon-pushpin"
+                                          ng-click="selectDraftProfileDefault(profile.id)"></span>
+                            </div>
+                        </li>
+                        <li ng-click="addDraftProfile()">
+                            <div class="profile-icon profile-add glyphicon glyphicon-plus"></div>
+                            <a class="profile-add">Agregar red social</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tabs-right-header-btns">
+        <a class="btn btn-default btn-sm"><span class="glyphicon glyphicon-refresh"></span></a>
+        <a class="btn btn-default btn-sm" ng-click="_scheduler=false">Lista</a>
+        <a class="btn btn-default btn-sm" ng-click="_scheduler=true;changeView('agendaDay', 'pastScheduler')">Día</a>
+        <a class="btn btn-default btn-sm" ng-click="_scheduler=true;changeView('agendaWeek', 'pastScheduler')">Semana</a>
+        <a class="btn btn-default btn-sm" ng-click="_scheduler=true;changeView('month', 'pastScheduler')">Mes</a>
+    </div>
+</div>
+<div ng-if="!_scheduler" class="selectMessagesHeader" style="display: block;">
+    <input export class="messageCb allMessagesCb" id="selectAllMessagesCb" type="checkbox">
+    <div class="messagesActionBtn btn-dropdown disabled mute" >
+        <span class="">Exportar a...</span>
+        <span class="icon-13 expanded"></span>
+    </div>
+    <ul class="dropdown-menu">
+        <li><a>Exportar a CSV (mm/dd/yyyy)</a></li>
+        <li><a>Exportar a CSV (dd/mm/yyyy)</a></li>
+        <li><a>Exportar a Google CSV (mm/dd/yyyy)</a></li>
+        <li><a>Exportar a Google CSV (dd/mm/yyyy)</a></li>
+    </ul>
+</div>
+<!--<div class="programmed_options">
+    <input type="checkbox" class="selectall" id="selectall">
+    <a class="btn-icon-19 btn-lite-sta disabled" id="deleteMessagesBtn" href="#">
+        <span class="icon-19 bi-trash"></span>
+    </a>
+    <div class="_messagesActionBtn messagesActionBtn btn-dropdown _hsddbtn disabled mute">
+        <span class="_dropdownbtntext">Export to...</span>
+        <span class="icon-13 expanded"></span>
+    </div>
+</div>-->
+<div class="">
+    <div  ng-if="!_scheduler" class="pro-container">
+        <h3 class="pro-day">Thursday, Sep 29</h3>
+        <div class="">
+            <div class="message-item">
+                <div class="message-info">
+                    <input type="checkbox" class="checkm">
+		            <span class="postTime">
+                      <span class="icon-19 blank"></span>
+				        6:25pm
+                    </span>
+                    <div class="message-network">
+                        <span class="profile">
+                            <span class="stack"></span>
+                            <img class="avatar" src="https://abs.twimg.com/sticky/default_profile_images/default_profile_0_normal.png">
+                            <span class="network icon-sn-13 twitter"></span>
+                        </span>
+                        <span class="_profileCount profileCount rb-a-8 _jsTooltip " title="View all profiles">3</span>
+                    </div>
+                    <div class="message">
+                        dfdsfsdfdsfsdf
+                    </div>
+                    <div class="createdTime">
+                        by hola
+                        <span class="time">on Wednesday, Sep 28 2016 at 6:14pm</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12" ng-if="_scheduler">
+        <section id="directives-calendar" ng-controller="schedulerCtrl">
+            <div>
+                <div>
+                    <div>
+                        <div class="calendar" ng-model="eventSources" calendar="pastScheduler" ui-calendar="uiConfig.calendar"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

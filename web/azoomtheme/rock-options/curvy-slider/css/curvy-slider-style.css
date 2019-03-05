@@ -1,0 +1,360 @@
+/* CSS Document */
+#wpcontent .portlet { margin-bottom:20px; padding:10px; float: left; height:140px; background:#CCC; position:relative; display:inline;}
+#wpcontent .portlet-header { padding-bottom: 4px; padding-left: 0.2em; }
+#wpcontent .portlet-header .ui-icon { float: right; }
+#wpcontent .portlet-content { padding: 0.4em; }
+#wpcontent .ui-sortable-placeholder { border: 1px dotted black; visibility: visible !important; height: 50px !important; }
+#wpcontent .ui-sortable-placeholder * { visibility: hidden; }
+
+
+#wpcontent .gridster .grid-content .settings-btn{cursor:pointer;}
+
+#wpcontent .columns-remove-btn, .columns-edit-btn{cursor:pointer;}
+
+#wpcontent .builder-menu{width:180px; float:left; margin-left:10px;}
+
+#TB_window{z-index:3000 !important;}
+
+#experiment-holder{position:relative;}
+#experiment-canvas{position:absolute; display:block; top:10px; left:0px;}
+#experiment-canvas-bg{position:absolute; display:block; top:10px; left:0px;}
+
+#scenes-holder .handlediv{
+	text-align:center;	
+	cursor:pointer;
+}
+#scenes-holder .handlediv:before{
+	font-family:'FontAwesome';
+	content:"\f0d7";
+	display: inline-block;
+	font-family: FontAwesome;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 36px;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+
+
+#wpcontent table.actor-element thead{cursor:pointer;}
+
+/*Container of Elements*/
+#wpcontent .elementHolder{
+	position:relative;
+	height:100%;
+	/*
+	max-height:380px;
+	overflow:hidden;
+	overflow-y:auto;	
+	*/
+	margin-bottom:40px;
+}
+
+/*Wordpress jQuery UI Draggable Placeholder*/
+.sortable-placeholder { height: 30px; }
+
+/*Wordpress UI Table*/
+.widefat td{padding:4px 14px 2px !important; border:none;}
+
+/*Wordpress Color Picker*/
+.wp-color-result:after {line-height:20px !important;}
+
+/*Curvy Slider Frontend Container*/
+.rockthemes-curvy-slider{
+	position:relative;
+	max-width:100%;	
+}
+.rockthemes-curvy-slider .curvy-slider{
+	position:relative;
+	max-width:100%;
+	overflow:hidden;
+}
+.rockthemes-curvy-slider canvas{
+	position:relative;
+	display:block;	
+}
+/*Width and Height values breaking the resizing. Remove those values after Curvy Slider loaded*/
+.rockthemes-curvy-slider canvas{
+	/*Extra Style when Curvy Slider fully loaded*/
+}
+.rockthemes-curvy-slider .loader-container{
+	position:absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -15px;
+	margin-left: -25px;
+}
+
+/*Scenes Navigation Style*/
+#scenes-navigation ul li{float:left; padding:10px 15px; margin:0px; border-bottom:none !important; cursor:pointer; background:#F9F9F9; border:1px solid #DFDFDF; color:#555; font-weight:bold; font-size:14px;}
+#scenes-navigation ul li:first-child{ border-top-left-radius:5px;}
+#scenes-navigation ul li:last-child{border-top-right-radius:5px;}
+#scenes-navigation ul li:hover, #scenes-navigation ul li.active{background:#ffffff;}
+
+
+#scenes-navigation ul li.add-new-scene-btn{background:#0C0; color:#fff; border-color:#0C3;}
+#scenes-navigation ul li.add-new-scene-btn:hover{background:#00E100; border-color:#0C3;}
+
+/*CURVY Slidere Entrance (Slider References List)*/
+#curvy-slider-list{margin-right:15px !important;}
+#curvy-slider-list .list-header{padding:10px; font-weight:bold;}
+#curvy-slider-list .list-inside{padding:10px; border-bottom:1px solid #DFDFDF;}
+
+
+/*Curvy Slider Fontend Navigation*/
+.curvy-slider-nav-container{
+	width:100%; 
+	text-align:center; 
+	display:block; 
+	position:relative; 
+	margin-top:15px;
+	opacity:0;
+	transition:all .4s;
+	-moz-transition:all .4s;
+	-webkit-transition:all .4s;
+}
+.rockthemes-curvy-slider:hover .curvy-slider-nav-container{
+	opacity:0.8;	
+}
+
+.curvy-slider-nav{display:inline-block; position:relative;}
+.curvy-nav-elem{
+	float:left; 
+	width:16px; 
+	height:16px; 
+	border-radius:16px; 
+	cursor:pointer; 
+	margin-right:1px; 
+	margin-left:3px;
+	background-color: #C5CDD1;
+	border: 1px solid #F9F9F9;
+	box-shadow:inset 1px 1px 5px rgba(102, 102, 102, 0.6);
+	-moz-box-shadow:inset 1px 1px 5px rgba(102, 102, 102, 0.6);
+	-webkit-box-shadow:inset 1px 1px 5px rgba(102, 102, 102, 0.6);
+	transition:all .3s;
+	-webkit-transition:all .3s;
+	-moz-transition:all .3s;
+}
+.curvy-nav-elem:hover, .curvy-nav-elem.active{background-color:#7a7a7a; box-shadow:none; -moz-box-shadow:none; -webkit-box-shadow:none;}
+.curvy-main-nav-elem{
+	float: left;
+	margin-right: 1px;
+	margin-left: 3px;
+	cursor: pointer;
+	width: 18px;
+	height: 18px;
+	height: 10x;
+	display: block;
+	border-radius: 16px;
+	background: #787878;
+	margin-top: -1px;
+}
+.curvy-stop-button{float:right;}/* font-size:12px; margin-top:-7px; color:#7a7a7a;}*/
+.curvy-stop-button,
+.curvy-start-button{display: inline-block;
+	font-size: 10px;
+	font-weight: 100;
+	color: #F9F9F9;
+	text-align: center;
+	cursor: pointer;
+	line-height: 19px;
+}
+.curvy-replay-button.curvy-main-nav-elem{background:none;}
+.curvy-stop-button:hover, .curvy-start-button:hover{color:#333;}
+
+
+
+
+.curvy-border-margin{/*margin-top:-2px;*/}
+.curvy-slider-bottom{position:relative;}
+.curvy-border-bottom{border-bottom:1px solid #ccc;}
+
+.curvy-inline-nav .curvy-slider-nav{padding:10px; height:60px; max-height:60px; display:inline-table; border-bottom-left-radius:0px; border-bottom-right-radius:0px;}
+.curvy-inline-nav .curvy-slider-nav-container{position: relative; margin-top: -60px; /*for icomoon was -40*/}
+.curvy-slider-side-nav-container{display:none;}
+.curvy-side-nav-left, .curvy-side-nav-right{
+	background: rgba(0, 0, 0, 0.24);
+	width: 60px;
+	height: 40px;
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	opacity: 0;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 41px;
+	color: #F9F9F9;
+
+	font-size: 14px;
+	cursor: pointer;
+	transition: all .3s;
+	-webkit-transition: all .3s;
+	-moz-transition: all .3s;
+}
+.curvy-side-nav-left i, .curvy-side-nav-right i{
+	font-weight:bold;	
+}
+.curvy-side-nav-right{
+	left:auto;
+	right:0px;
+}
+.rockthemes-curvy-slider:hover .curvy-side-nav-left,
+.rockthemes-curvy-slider:hover .curvy-side-nav-right{
+	opacity:1;
+}
+.rockthemes-curvy-slider .curvy-side-nav-left:hover,
+.rockthemes-curvy-slider .curvy-side-nav-right:hover{
+	/*background:#787878;*/
+}
+
+
+
+#wpcontent .scene_action_buttons li{min-height:47px;}
+
+/*Scene Background Settings*/
+#wpcontent .background-settings{padding:10px 0; position:relative; display:block; background:#EFF7F6;}
+
+#wpcontent .background-settings strong{display:block; margin-top:5px;}
+#wpcontent .background-setting-canvas{border-radius:3px; border:1px solid #DEDEDE;}
+
+.remove-scene-container{margin-left:10px;}
+.remove-scene-container i{color:#900;}
+.remove-scene-container i:hover{color:#ff0000;}
+
+#wpcontent .a_no_link{cursor:pointer; text-decoration:none;}
+
+#wpcontent select{padding:5px; min-height:30px;
+	-webkit-appearance: icon;
+    -moz-appearance: icon;
+    appearance: icon;
+}
+
+.hide, .hidden{display:none;}
+
+
+/*Colorpicker*/
+.wp-picker-holder{position:absolute; z-index:1001;}
+.wp-picker-holder .iris-picker{box-shadow:0 1px 27px 0px rgba(0, 0, 0, 0.3);}
+
+/*GENERAL*/
+#wpcontent .no-margin{margin:0px;}
+#wpcontent .no-padding{padding:0px;}
+
+#wpcontent .nav-shadow-container{position:relative; width:100%; z-index:90;}
+.rockthemes-curvy-slider .shadow-divider-down{border:none;}
+.rockthemes-curvy-slider .curvy-slider-bottom{
+	visibility:hidden;	
+	opacity:0;
+	
+	transition:all .6s;
+	-webkit-transition:all .6s;
+	-moz-transition:all .6s;
+}
+.rockthemes-curvy-slider.curvy-loaded .curvy-slider-bottom{
+	visibility:visible;
+	opacity:1;
+}
+.curvy-slider-advanced-settings{
+	
+}
+
+.curvy-slider-advanced-settings input{
+	width:100&;
+	float:right;
+	max-width:100px;	
+}
+
+.curvy-slider-advanced-settings .curvy-single-setting{
+	display:block;
+	width:100%;	
+}
+
+.curvy-slider-advanced-settings .curvy-single-setting:after{
+	clear:both;
+	display:table;
+	content:'';	
+}
+
+
+/*Elements Backend UI*/
+.curvy-element-settings-container{}
+.curvy-element-settings-container .code-br{width:100%; display:block; height:10px;}
+.curvy-element-settings-container h3{
+	background:none !important; 
+	padding-left:0px !important; 
+	font-family:sans-serif !important;
+	border-top-color: #FFF !important;
+	-webkit-box-shadow: 0 -1px 0 #DFDFDF !important;
+	box-shadow: 0 -1px 0 #DFDFDF !important;
+	border-bottom: none !important;
+	padding-top:15px !important;
+}
+.curvy-element-settings-container input:not(.wp-color-picker):not(.button):not([type=checkbox]){padding:5px; width:100%;}
+
+.curvy-element-settings-container hr{
+	display:block;
+	height: 1px;
+	border-top: 1px solid #DFDFDF;
+	border-bottom: 1px solid #FFF;
+	border-right: none;	
+	border-left: none;	
+	margin:15px 0px;
+}
+
+.curvy-element-settings-container .link-holder{margin-top:15px;}
+.curvy-element-settings-container .element_play_save_duplicate > a,
+.curvy-element-settings-container .element_tabs_link_container > a{margin:0px 8px;}
+
+.curvy-element-settings-container .element_play_save_duplicate > a:last-child{margin-right:0px;}
+.curvy-element-settings-container .element_tabs_link_container > a:first-child{margin-left:0px;}
+
+
+
+
+#wpcontent .elementHolder .handle:hover{
+	background:#56CCC8;
+	color:#fff;
+}
+
+/*Add Element Buttons*/
+.rockthems-pb-elements-list{list-style:none; margin:0px; padding:0px;}
+.rockthems-pb-elements-list li{
+	float:left; 
+	text-align:center;
+	display:block; 
+	border:1px solid #DEDEDE; 
+	border-radius:3px;
+	padding:15px 10px; 
+	background:#FAFAFA; 
+	margin:5px;
+	font-size:11px;
+	width:100px;
+	cursor:pointer;
+	transition:all .3s;
+	-webkit-transition:all .3s;
+	-moz-transition:all .3s;
+}
+
+.rockthems-pb-elements-list li:hover, .rockthems-pb-elements-list li.selected{
+	-webkit-box-shadow: 0px 0px 4px 1px  rgba(0,170,232,0.5);	
+    -moz-box-shadow: 0px 0px 4px 1px  rgba(0,170,232,0.5);
+    box-shadow:0px 0px 4px 1px  rgba(0,170,232,0.5);
+}
+
+.rockthems-pb-elements-list li i, .rockthems-pb-elements-list li .regular-font{
+	font-size:30px;
+	line-height:30px;
+	margin-bottom:5px; 
+	display:block;
+}
+.rockthems-pb-elements-list li .regular-font{
+	font-size:38px;
+}
+
+.rockthems-pb-elements-list li:first-child{margin-left:0px;}
+
+@media only screen and (max-width: 800px){
+	.curvy-slider-nav{background:transparent;}
+	.curvy-inline-nav .curvy-slider-nav{top:8px;}
+}

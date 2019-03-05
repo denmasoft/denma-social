@@ -1,0 +1,109 @@
+<?php
+
+namespace HootSuite\BackofficeBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
+
+/**
+ * @ORM\Table(name="term")
+ * @ORM\Entity()
+ */
+class Term
+{
+  /**
+   * @var integer $id
+   * @ORM\Column(name="id", type="integer")
+   * @ORM\Id
+   * @ORM\GeneratedValue(strategy="AUTO")
+   */
+  private $id;
+  
+  /**
+    * @ORM\OneToMany(targetEntity="TabColumnTerms", mappedBy="term")
+    */
+  private $tab_columns;
+  
+    /**
+   * @var text $name
+   * @ORM\Column( type="string", length=100 )
+   * @Assert\NotBlank()
+   */
+  private $name;
+  
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->tab_columns = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Term
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Add tab_columns
+     *
+     * @param \HootSuite\BackofficeBundle\Entity\TabColumnTerms $tabColumns
+     * @return Term
+     */
+    public function addTabColumn(\HootSuite\BackofficeBundle\Entity\TabColumnTerms $tabColumns)
+    {
+        $this->tab_columns[] = $tabColumns;
+
+        return $this;
+    }
+
+    /**
+     * Remove tab_columns
+     *
+     * @param \HootSuite\BackofficeBundle\Entity\TabColumnTerms $tabColumns
+     */
+    public function removeTabColumn(\HootSuite\BackofficeBundle\Entity\TabColumnTerms $tabColumns)
+    {
+        $this->tab_columns->removeElement($tabColumns);
+    }
+
+    /**
+     * Get tab_columns
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTabColumns()
+    {
+        return $this->tab_columns;
+    }
+}

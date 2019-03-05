@@ -1,0 +1,51 @@
+{% extends 'FrontendBundle::frontend.html.twig' %}
+
+{% block header %}
+    <div class="container header-2"><img src="{{ asset('images/logo.png') }}" alt="ConversationQuest"/>
+    </div> {% endblock %}
+
+{% block content %}
+    <section id="login" class="page-block" ng-controller="recoverPassCtrl">
+        <div class="container">
+            <div class="page-header"><h2>Establezca la nueva contraseña</h2></div>
+            <div id="login-container" style="margin: 0 auto; max-width: 800px; margin-bottom: 50px; " class="gradient">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <form id="form-login" name="passForm" class="form-horizontal row-fluid" role="form">
+                            <input type="hidden" id="user_id" value="{{ user }}">
+                            <input type="hidden" id="user_token" value="{{ token }}">
+                            <div class='form-group' ng-class="{ 'has-error' : passForm.password.$invalid && (passForm.password.$dirty || submitted)}">
+                                <div class="col-sm-12">
+                                    <label class="clearfix">
+                            <span class="block input-icon input-icon-right">
+                                <input type="password" placeholder="contraseña..." class="form-control" name="password" ng-model="user.password" ng-required="true" id="password">
+                                <p ng-show="passForm.password.$error.required && (passForm.password.$dirty || submitted)" class="help-block">La contraseña es requerida.</p>
+
+                            </span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class='form-group' ng-class="{ 'has-error' : passForm.confirmPassword.$invalid && (passForm.confirmPassword.$dirty || submitted)}">
+                                <div class="col-sm-12">
+                                    <label class="clearfix">
+                            <span class="block input-icon input-icon-right">
+                                <input type="password" placeholder="repeat password..." class="form-control" name="confirmPassword" ng-model="user.confirmPassword" ng-compare="password" ng-required="true" id="confirmPassword">
+                                <p ng-show="passForm.confirmPassword.$error.required && (passForm.confirmPassword.$dirty || submitted)" class="help-block">por favor, confirme su contraseña.</p>
+                                <p ng-show="passForm.confirmPassword.$error.compare  && (passForm.confirmPassword.$dirty || submitted)" class="help-block">Las contraseñas no coiciden.</p>
+
+                            </span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-right: 0;">
+                                <a class="btn btn-primary" ng-click="newPass()"><span class="glyphicon1-ok"></span>
+                                    Enviar
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

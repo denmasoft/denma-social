@@ -1,0 +1,147 @@
+<div class="tab-pane-resalted">
+    <div class="tab-pane principal-tab active">
+        <div class="tabbable">
+            <ul class="nav nav-tabs normal-tab nav-justified">
+                <li class="active">
+                    <a data-target="#user-profile-bio" data-toggle="tab" data-toggle="tab">
+                        Biografía
+                    </a>
+                </li>
+                <li>
+                    <a data-target="#user-profile-products" data-toggle="tab">
+                        Productos
+                    </a>
+                </li>
+                <li>
+                    <a data-target="#user-profile-activity" data-toggle="tab" data-toggle="tab" ng-click="liUserUpdates(user.profile.id, user.profile_id, 'CMP')">
+                        Actividad
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content modal-max-height">
+                <div class="tab-pane active modal-inner-body" id="user-profile-bio">
+                    <div class="user-profile-top">
+                        <div class="col-lg-4 col-md-4" style="padding-left: 0">
+                            <img ng-src="[[user.profile.logoUrl]]" style="width: 100%" />
+                        </div>
+                        <div class="col-lg-8 col-md-8">
+                            <table class="table">
+                                <tr>
+                                    <th style="width: 30%">Tipo</th>
+                                    <td style="width: 70%">[[user.profile.companyType.name]]</td>
+                                </tr>
+                                <tr>
+                                    <th style="width: 30%">Industria</th>
+                                    <td style="width: 70%">
+                                        <span ng-repeat="ind in user.profile.industries.values">
+                                            [[ind.name]][[$last ? '' : ', ']]
+                                        </span> 
+                                    </td>
+                                </tr>
+                                <tr ng-if="user.profile.website">
+                                    <th style="width: 30%">Sitio Web</th>
+                                    <td style="width: 70%">
+                                        [[user.profile.websiteUrl]]
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="width: 30%">Seguidores</th>
+                                    <td style="width: 70%">
+                                        [[user.profile.numFollowers]]
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="clearfix">
+                        <table class="table">
+                            <tr>
+                                <th style="width: 20%">Descripción</th>
+                                <td>[[user.profile.description]]</td>
+                            </tr>
+                            <tr>
+                                <th style="width: 20%">Especialidades</th>
+                                <td>
+                                    <span ng-repeat="spec in user.profile.specialties">
+                                        [[spec.address.city]][[$last ? '' : ', ']]
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th style="width: 20%">Estado</th>
+                                <td>[[user.profile.status.name]]</td>
+                            </tr>
+                            <tr>
+                                <th style="width: 20%">Fundada</th>
+                                <td>[[user.profile.foundedYear]]</td>
+                            </tr>
+                            <tr>
+                                <th style="width: 20%">Cant. Empleados</th>
+                                <td>[[user.profile.employeeCountRange]]</td>
+                            </tr>
+                            <tr>
+                                <th style="width: 20%">Ubicación</th>
+                                <td>
+                                    <div ng-repeat="loc in user.profile.locations">
+                                        <div style="font-weight: bold;">[[loc.address.city]]</div>
+                                        <div style="margin-bottom: 5px">[[loc.address.street1]]</div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane modal-inner-body" id="user-profile-products">
+                    <table class="table">
+                         <tr ng-repeat="pos in user.profile.positions.values">
+                             <td style="width: 100%">
+                                 <div class="text-head">[[pos.title]]</div>
+                                 <div>[[pos.company.name]]</div>
+                                 <div>
+                                     [[pos.startDate.month|monthName]] [[pos.startDate.year]] - 
+                                     <span ng-if="pos.isCurrent">Present</span>
+                                     <span ng-if="!pos.isCurrent">
+                                         [[pos.endDate.month|monthName]] [[pos.endDate.year]]
+                                     </span>
+                                     
+                                 </div>
+                                 <div>[[pos.sumary]]</div>
+                             </td>
+                         </tr>
+                     </table>
+                </div>
+                <div class="tab-pane modal-inner-body" id="user-profile-activity">
+                    <table class="table">
+                         <tr ng-repeat="edu in user.profile.educations.values">
+                             <td style="width: 100%">
+                                 <div class="text-head">[[edu.schoolName]]</div>
+                                 <div>[[edu.degree]]</div>
+                                 <div>
+                                     [[edu.startDate.year]] - 
+                                     <span ng-if="!edu.endDate">Present</span>
+                                     <span ng-if="edu.endDate">
+                                         [[edu.endDate.year]]
+                                     </span>
+                                 </div>
+                             </td>
+                         </tr>
+                     </table>
+                </div>
+                <div class="tab-pane modal-inner-body" id="user-profile-updates">
+                    <div ng-show="!user.favorites" style="text-align: center; padding: 20px 0;">
+                        <span class="glyphicon glyphicon-refresh-gif-black"></span> Cargando
+                    </div>
+                    <div ng-show="user.favorites_html" compile-data template="[[user.favorites_html]]">
+
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-btns" style="text-align: center;">
+    <button class="btn btn-sm btn-default btn-form" ng-click="prepareMessage(col, user)()">Respuesta</button>
+    <button class="btn btn-sm btn-default btn-form" ng-click="addToList(user, user.profile_id)">Añadir a lista</button>
+    <button class="btn btn-sm btn-default btn-form" ng-click="cancel()">Cerrar</button>
+</div>

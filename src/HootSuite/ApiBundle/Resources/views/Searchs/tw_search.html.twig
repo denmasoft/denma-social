@@ -1,0 +1,58 @@
+<div class="modal-body-title">Twits encontrados</div>
+<div class="twitts-search-results">
+    <div ng-if="twitter_search.hash.length" 
+            infinite-scroll="hashSearch(col, 'min')" 
+            infinite-scroll-distance='2'
+            infinite-scroll-disabled='twitter_search.searching' 
+            ng-repeat="row in twitter_search.hash" class="column-body-item column-body-has-options">
+        <div class="body-item-content">
+            <div class="item-avatar">
+                <a href="javascript:;" ng-click="userProfile(row.user.screen_name, twitter_search.profile_id)"><img style="width: 100%" ng-src="[[row.user.profile_image_url]]" /></a>
+            </div>
+            <div class="item-username">[[row.user.screen_name]]</div>
+            <div class="item-created"><span unsafe><a target="_blank" href="http://twitter.com/[[row.user.screen_name]]/status/[[row.id_str]]">[[row.created_at | toDate | date:'MMM d, h:mma']]</a></span> vía: <span ng-bind-html="row.source | unsafe"></span></div>
+            <div class="item-text" compile-data  template="<div>[[row.text | linkify | linkusers:twitter_search.profile_id]]</div>"></div>
+            <div class="item-conversation" ng-if="row.in_reply_to_status_id_str">
+                <div ng-show="row.conversation_loading" style="text-align: center;">
+                    <span class="glyphicon glyphicon-refresh-gif-black"></span> Cargando
+                </div>
+                <a ng-show="!row.conversation_loading" href="javascript:;" ng-click="showConversation(row, twitter_search.profile_id)">
+                    <span ng-bind="row.conversation_shown ? 'Ocultar conversación' : 'Mostrar conversación'"></span>
+                </a>
+                <div class="item-conversation-all" ng-show="row.conversation && row.conversation_shown">
+                    <div ng-repeat="conv in row.conversation" class="column-body-item" ng-class="{'column-body-item-own' : conv.id_str==row.id_str}">
+                        <div class="item-avatar"><img style="width: 100%" ng-src="[[conv.user.profile_image_url]]" /></div>
+                        <div class="body-item-content">
+                            <div class="item-username">[[conv.user.screen_name]]</div>
+                            <div class="item-text" compile-data template="<div>[[conv.text | linkify | linkusers:twitter_search.profile_id]]</div>"></div>
+                            <div class="item-created">[[conv.created_at | toDate | date:'MMM d, h:mma']] <span ng-bind-html="conv.source | unsafe"></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-row-options">
+            <ul>
+                <span class="glyphicon glyphicon1-star3 btn-option" tooltip="Agregar/Quitar Favorito" tooltip-append-to-body="true" ng-click="favorite(twitter_search.profile_id, row.id_str)"></span>
+                <span no-propage ng-click="prepareMessage(twitter_search.profile_id, row.user, 'DIRECT')" class="glyphicon glyphicon1-chat btn-option" tooltip="Mensaje directo" tooltip-append-to-body="true"></span>
+                <span no-propage ng-click="prepareMessage(twitter_search.profile_id, row.user,'REPLY')" class="glyphicon glyphicon1-reply2 btn-option" tooltip="Responder" tooltip-append-to-body="true"></span>
+                <a href="javascript:;" 
+                    custom-popover
+                    popover-placement="top"
+                    popover-html='<div>¿Retuitear a tus seguidores? 
+                                            <button class="btn btn-default btn-sm" ng-click="retweet(row.id_str,twitter_search.profile_id);">Si</button> 
+                                            <button no-propage=1 class="btn btn-default btn-sm" ng-click=prepareMessage(twitter_search.profile_id,row.user,"RT",row.text);>Editar</button>  
+                                            <i style="cursor:pointer;" class="glyphicon glyphicon-remove popover-close"></i></div>'>
+                    <span class="glyphicon glyphicon1-retweet btn-option">
+                </span></a>
+                <span class="glyphicon glyphicon1-bubble btn-option" tooltip="Enviar a conversación" tooltip-append-to-body="true"></span>
+            </ul>
+        </div>    
+    </div>
+</div>
+<div class="column-body-item column-body-scrolling" ng-show="twitter_search.searching">
+    <span class="glyphicon glyphicon-refresh-gif-black"></span> Cargando...
+</div>
+<div ng-if="twitter_search.hash.length==0" class="column-no-results column-body-item">
+    No se han encontrado resultados para esta búsqueda
+</div>

@@ -1,0 +1,125 @@
+<div class="tab-pane-resalted">
+    <div class="tab-pane principal-tab active">
+        <div class="tabbable">
+            <ul class="nav nav-tabs normal-tab nav-justified">
+                <li class="active">
+                    <a data-target="#user-profile-home" data-toggle="tab" data-toggle="tab" tooltip="Biografía" tooltip-append-to-body="true">
+                        <i class="glyphicon glyphicon-user"></i>
+                    </a>
+                </li>
+                <li>
+                    <a data-target="#user-profile-crono" data-toggle="tab" tooltip="Cronología" tooltip-append-to-body="true" ng-click="userCronology(user, user.profile_id)">
+                        <i class="glyphicon glyphicon1-clock3"></i>
+                    </a>
+                </li>
+                <li>
+                    <a data-target="#user-profile-mentions" data-toggle="tab" data-toggle="tab" tooltip="Menciones" tooltip-append-to-body="true" ng-click="userMentions(user, user.profile_id)">
+                        <i class="glyphicon glyphicon1-bullhorn"></i>
+                    </a>
+                </li>
+                <li>
+                    <a data-target="#user-profile-star" data-toggle="tab" data-toggle="tab" tooltip="Favoritos" tooltip-append-to-body="true" ng-click="userFavorites(user, user.profile_id)">
+                        <i class="glyphicon glyphicon1-star3"></i>
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content modal-max-height">
+                <div class="tab-pane active modal-inner-body" id="user-profile-home">
+                    <div class="user-profile-top">
+                        <div class="col-lg-4 col-md-4" style="padding-left: 0">
+                            <img ng-src="[[user.profile.profile_image_url | replace]]" style="width: 100%" />
+                        </div>
+                        <div class="col-lg-8 col-md-8">
+                            <table class="table">
+                                <tr>
+                                    <th style="width: 30%">Seguidores</th>
+                                    <td><span class="badge ng-binding">[[user.profile.followers_count]]</span></td>
+                                </tr>
+                                <tr>
+                                    <th style="width: 30%">Siguiendo</th>
+                                    <td><span class="badge ng-binding">[[user.profile.friends_count]]</span></td>
+                                </tr>
+                                <tr>
+                                    <th style="width: 30%">Actualizaciones</th>
+                                    <td><span class="badge ng-binding">[[user.profile.statuses_count]]</span></td>
+                                </tr>
+                                <tr>
+                                    <th style="width: 30%">Klout</th>
+                                    <td><span class="badge ng-binding">??</span></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="clearfix">
+                        <table class="table">
+                            <tr ng-if="user.profile.description">
+                                <th style="width: 20%">Bio</th>
+                                <td>[[user.profile.description]]</td>
+                            </tr>
+                            <tr ng-if="user.profile.location">
+                                <th style="width: 20%">Ubicación</th>
+                                <td>[[user.profile.location]]</td>
+                            </tr>
+                            <tr>
+                                <th style="width: 20%">Twitter</th>
+                                <td><a href="http://twitter.com/[[user.profile.screen_name]]">http://twitter.com/[[user.profile.screen_name]]</td>
+                            </tr>
+                            <tr>
+                                <th style="width: 20%">Sitio Web</th>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th style="width: 20%">Relaciones</th>
+                                <td>
+                                    <span ng-if="user.profile.following">Está siguiendo a [[user.profile.screen_name]]</span>
+                                    <span ng-if="!user.profile.following">No está siguiendo a [[user.profile.screen_name]]</span>
+                                    <div style="float: right;">
+                                        <button class="btn btn-sm btn-default" href="javascript:;" ng-if="!user.profile.following" ng-click="follow(user.profile_id, user.profile.id_str, 1)"><span class="glyphicon glyphicon1-user-add"></span> Seguir</button>
+                                        <button class="btn btn-sm btn-default" href="javascript:;" ng-if="user.profile.following" ng-click="follow(user.profile_id, user.profile.id_str, 0)"><span class="glyphicon glyphicon1-erase"></span> Dejar de seguir</button>
+                                    </div>    
+                                </td>
+                            </tr>
+                            <tr>
+                                <th style="width: 20%">Se unió</th>
+                                <td>[[user.profile.created_at | toDate | date:'EEE MMM d yyyy, h:mma ']]</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><a href="javascript:;" ng-click="spammer(user.profile_id, user.profile.id_str)"><span class="glyphicon glyphicon1-spam"></span> Denunciar spammer</a></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane modal-inner-body" id="user-profile-crono">
+                    <div ng-show="!user.crono" style="text-align: center; padding: 20px 0;">
+                        <span class="glyphicon glyphicon-refresh-gif-black"></span> Cargando
+                    </div>
+                    <div ng-show="user.crono_html" compile-data template="[[user.crono_html]]">
+
+                    </div>    
+                </div>
+                <div class="tab-pane modal-inner-body" id="user-profile-mentions">
+                    <div ng-show="!user.mentions" style="text-align: center; padding: 20px 0;">
+                        <span class="glyphicon glyphicon-refresh-gif-black"></span> Cargando
+                    </div>
+                    <div ng-show="user.mentions_html" compile-data template="[[user.mentions_html]]">
+
+                    </div> 
+                </div>
+                <div class="tab-pane modal-inner-body" id="user-profile-star">
+                    <div ng-show="!user.favorites" style="text-align: center; padding: 20px 0;">
+                        <span class="glyphicon glyphicon-refresh-gif-black"></span> Cargando
+                    </div>
+                    <div ng-show="user.favorites_html" compile-data template="[[user.favorites_html]]">
+
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-btns" style="text-align: center;">
+    <button class="btn btn-sm btn-default btn-form" ng-click="prepareMessage(col, user)()">Respuesta</button>
+    <button class="btn btn-sm btn-default btn-form" ng-click="addToList(user, user.profile_id)">Añadir a lista</button>
+    <button class="btn btn-sm btn-default btn-form" ng-click="cancel()">Cerrar</button>
+</div>

@@ -1,0 +1,7 @@
+happy_r_google_api:
+    application_name: ''
+    oauth2_client_id: ''
+    oauth2_client_secret: ''
+    oauth2_redirect_uri: http://localhost/app_dev.php/es/google_success
+    developer_key: ''
+    site_name: http://localhost

@@ -1,0 +1,31 @@
+message_send:
+    pattern:  /send
+    defaults: { _controller: ApiBundle:Message:send }
+    requirements: { _method: post }
+
+message_draft:
+    pattern:  /draft
+    defaults: { _controller: ApiBundle:Message:draft }
+    requirements: { _method: post }
+
+shorten_url:
+    pattern:  /shorten-url
+    defaults: { _controller: ApiBundle:Message:shorten }
+    requirements: { _method: post }
+    
+message_del:
+    pattern:  /del
+    defaults: { _controller: ApiBundle:Message:del }
+    requirements: { _method: post }
+
+countries:
+    pattern:  /countries
+    defaults: { _controller: ApiBundle:Message:countries }
+    requirements: { _method: get }
+load_drafts:
+    pattern:  /draft-list
+    defaults: { _controller: ApiBundle:Message:loadDrafts }
+
+load_scheduled:
+    pattern:  /scheduled-list
+    defaults: { _controller: ApiBundle:Message:loadScheduled }

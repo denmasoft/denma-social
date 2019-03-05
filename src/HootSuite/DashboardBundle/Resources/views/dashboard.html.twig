@@ -1,0 +1,141 @@
+{% extends '::app.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/bootstrap/bootstrap.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/glyphicons/style.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap/bootstrap-theme.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap/bootstrap.vertical-tabs.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/jquery/jquery-ui-1.10.3.custom.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/dialogs.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.1.0/chosen.min.css">
+    <link rel="image_src" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.1.0/chosen-sprite.png">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.2.0/fullcalendar.min.css">
+    <link href="{{ asset('charts/nv.d3.min.css') }}" rel="stylesheet" type="text/css">
+
+{% endblock %} 
+    
+{% block body %}
+    
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+    
+    <div id="left-menu" ng-controller="routeController">
+        <ul>
+            <li>
+                <a href="#/miembro" ng-class="{current: active_route=='/miembro'}" ng-click="active_route='/miembro'">
+                    <span class="glyphicon glyphicon1-home3"></span>
+                    <span class="glyptext">{{app.user.name|truncate(20,true)}}</span>
+                </a>
+            </li>
+            <li>
+                <a href="#/" ng-class="{current: active_route=='/'}" ng-click="active_route='/'">
+                    <span class="glyphicon glyphicon-home"></span>
+                    <span class="glyptext">Columnas</span>
+                </a>
+            </li>
+            <li>
+                <a href="#/editor" ng-class="{current: active_route=='/editor'}" ng-click="active_route='/editor'">
+                    <span class="glyphicon glyphicon-send"></span>
+                    <span class="glyptext">Editor</span>
+                </a>
+            </li>
+            <li>
+                <a href="#/reportes" ng-class="{current: active_route=='/reportes'}" ng-click="active_route='/reportes'">
+                    <span class="glyphicon glyphicon-stats"></span>
+                    <span class="glyptext">Analítica</span>
+                </a>
+            </li>
+            <li>
+                <a href="#/asignacion" ng-class="{current: active_route=='/asignacion'}" ng-click="active_route='/asignacion'">
+                    <span class="glyphicon glyphicon-check"></span>
+                    <span class="glyptext">Asignaciones</span>
+                </a>
+            </li>
+            <li>
+                <a ng-class="{current: active_route=='/mi-cuenta'}" ng-click="userDataProfile()">
+                    <span class="glyphicon glyphicon-user"></span>
+                    <span class="glyptext">Mi cuenta</span>
+                </a>
+            </li>
+        </ul>
+        <hr />    
+        <ul>
+            <li class="dropdown-toggle submenu">
+                <a ng-class="{current: active_route=='/ajustes'}" ng-click="adjust('1')">
+                    <span class="glyphicon glyphicon-cog"></span>
+                    <span class="glyptext">Ajustes</span>
+                </a>
+                <ul class="dropdown-menu dropdown-submenu" role="menu">
+                    <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="adjust('1')">Cuenta</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="adjust('2')">Preferencias</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="adjust('3')">Archivos</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="adjust('4')">RSS/ATOM</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="adjust('5')">Urls Personalizadas</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="adjust('6')">Notificaciones</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="adjust('7')">Programación automática</a></li>
+                </ul>   
+            </li>
+            <li class="dropdown-toggle submenu">
+                <a href="aprende.conversationquest.com" target="_blank" ng-class="{current: active_route=='/herramientas'}">
+                    <span class="glyphicon glyphicon-wrench"></span>
+                    <span class="glyptext">Herramientas</span>
+                </a>
+                <ul class="dropdown-menu dropdown-submenu" role="menu">
+                    <li role="presentation"><a href="aprende.conversationquest.com" target="_blank" role="menuitem" tabindex="-1">ConversationQuest University</a></li>
+                    <li role="presentation"><a href="/socios" target="_blank" role="menuitem" tabindex="-1">Programas para partners</a></li>
+                    <li role="presentation"><a href="/moviles" target="_blank" role="menuitem" tabindex="-1">Aplicaciones móviles</a></li>
+                    <li role="presentation"><a href="/extensiones" target="_blank" role="menuitem" tabindex="-1">Complementos y Descargas</a></li>
+
+                </ul>
+            </li>
+            <li class="dropdown-toggle submenu">
+                <a href="/ayuda" target="_blank" ng-class="{current: active_route=='/ayuda'}">
+                    <span class="glyphicon glyphicon-question-sign"></span>
+                    <span class="glyptext">Ayuda</span>
+                </a>
+                <ul class="dropdown-menu dropdown-submenu" role="menu">
+                    <li role="presentation"><a href="/ayuda" target="_blank" role="menuitem" tabindex="-1" >Centro de ayuda</a></li>
+                    <li role="presentation"><a href="/comentarios" target="_blank" role="menuitem" tabindex="-1" >Comentarios</a></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="menu-footer">
+            <hr /> 
+            <ul>
+                <li>
+                    <a href="{{path('usuario_logout')}}">
+                        <span class="glyphicon glyphicon-log-out"></span>
+                        <span class="glyptext">Cerrar Sesión</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="view-container">
+        
+        {% include 'DashboardBundle:Templates:messages.html.twig' %} 
+            
+        {% block content %}
+            
+        {% endblock %}
+    </div>
+    {% block footer %}    
+    
+    {% endblock %} 
+        
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyC0RZFaATPhkTnZh-Y-Kc_x3NBCm96FihE"></script>
+    <script src="{{ asset('js/jquery/jquery-1.10.2.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/jquery/jquery-ui-1.10.3.custom.min.js') }}" type="text/javascript"></script> 
+    <script src="{{ asset('js/bootstrap/bootstrap.min.js') }}" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.1.0/chosen.jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js" type="text/javascript"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.2.0/fullcalendar.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.2.0/locale-all.js" type="text/javascript"></script>
+    <script src="{{ asset("charts/d3.min.js") }}" charset="utf-8"></script>
+    <script src="{{ asset("charts/nv.d3.min.js") }}"></script>
+{% endblock %}
+    

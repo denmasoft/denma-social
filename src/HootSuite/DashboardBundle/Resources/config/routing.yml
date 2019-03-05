@@ -1,0 +1,25 @@
+dashboard:
+    pattern:  /dashboard
+    defaults: { _controller: DashboardBundle:Dashboard:index }  
+
+#RUTAS DE MODALES
+modals_rutas:
+    resource: "@DashboardBundle/Resources/config/routing/modals.yml"
+    prefix:   /modal
+    options: 
+        expose: true
+
+#RUTAS DE USUARIOS
+usuarios_rutas:
+    resource: "@DashboardBundle/Resources/config/routing/usuario.yml"
+    prefix:   /
+organization_rutas:
+    resource: "@DashboardBundle/Resources/config/routing/organizations.yml"
+    prefix:   /organizations
+    options:
+        expose: true
+tag_rutas:
+    resource: "@DashboardBundle/Resources/config/routing/tags.yml"
+    prefix:   /tags
+    options:
+        expose: true

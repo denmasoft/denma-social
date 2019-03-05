@@ -1,0 +1,23 @@
+{% extends '::base.html.twig' %}
+{% block title %}Autorizar cuenta de Facebook{% endblock %}
+{% block content %}
+        {% if auth and profile %}
+            <script type="text/javascript" language="javascript">
+                closeWindow();
+                function closeWindow() {
+                    {% if response_type=='authenticated' %}
+                    window.opener.location.href="{{ app.request.locale }}/dashboard";
+                    self.close();
+                    {% else %}
+                        var win = window.open('','_parent','');
+                        win.close();
+                    {% endif %}
+                } 
+            </script>
+        {% else %}
+            <div class="alert alert-info" style="padding: 20px;">
+                No se ha podido realizar la autorización de su cuenta de facebook, por favor, inténtelo otra vez.
+            </div>
+        {% endif %}
+        
+{% endblock %}    

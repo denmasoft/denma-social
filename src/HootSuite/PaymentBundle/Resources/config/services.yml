@@ -1,0 +1,20 @@
+services:
+    HootSuite.payment.payum.extension.store_notification:
+        class: HootSuite\PaymentBundle\Payum\Extension\StoreNotificationExtension
+        arguments:
+            - @doctrine
+
+    HootSuite.payment.payum.action.store_notification:
+        class: HootSuite\PaymentBundle\Payum\Action\StoreNotificationAction
+        arguments:
+            - @doctrine
+
+    HootSuite.payment.payum.api.factory:
+        class: HootSuite\PaymentBundle\Payum\Api\Factory
+        arguments:
+            - @service_container
+
+    HootSuite.payment.payum.paypal_express_checkout_api:
+        class: Payum\Paypal\ExpressCheckout\Nvp\Api
+        factory_service: HootSuite.payment.payum.api.factory
+        factory_method: createPaypalExpressCheckoutApi

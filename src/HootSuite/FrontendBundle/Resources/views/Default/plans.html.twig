@@ -1,0 +1,62 @@
+{% extends 'FrontendBundle::frontend.html.twig' %}
+
+{% block content %}
+<section id="pricing">
+    <div class="container">
+        <div class="row page-header">
+            <h2>Planes y Precios</h2>
+            <span>Selecciona el plan que se ajusta a tus necesidades.</span>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <div class="pricing-plan">
+                    <div class="header">
+                        <h3>Plan Gratuito</h3>
+                        <span class="price">0.00 $</span>
+                    </div>
+                    <div class="body">
+                        <uL>
+                            <li>3 Perfiles Sociales</li>
+                            <li>Programació básica de mensajes</li>
+                            <li>Informes Analíticos básicos</li>
+                        </uL>
+                        <div class="buy-btn"><a class="btn btn-primary" href="{{path('usuario_create', {'plan' : 1})}}">Comienza Ahora</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <div class="pricing-plan highlited">
+                    <div class="header">
+                        <h3>Plan Profesional</h3>
+                        <span class="price">8.99 $/mes</span>
+                    </div>
+                    <div class="body">
+                        <uL>
+                            <li>50 Perfiles con expanción hasta 100</li>
+                            <li>Programación avanzada de mensajes</li>
+                            <li>1 informe analítico con extensión a 10</li>
+                        </uL>
+                        <div class="buy-btn"><a class="btn btn-primary" href="{{path('usuario_create', {'plan' : 2})}}">Comienza Ahora</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <div class="pricing-plan">
+                    <div class="header">
+                        <h3>Plan Enterprise</h3>
+                        <span class="price">49.99 $</span>
+                    </div>
+                    <div class="body">
+                        <uL>
+                            <li>Perfiles Ilimitados</li>
+                            <li>Programación avanzada de mensajes</li>
+                            <li>Informes analíticos ilimitados</li>
+                        </uL>
+                        <div class="buy-btn"><a class="btn btn-primary" href="{{path('usuario_create', {'plan' : 3})}}">Comienza Ahora</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

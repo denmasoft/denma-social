@@ -1,0 +1,4 @@
+usuarios_redes_profile:
+    pattern:  /profile
+    defaults: { _controller: ApiBundle:Usuario:userProfile }
+    requirements: { _method: post }

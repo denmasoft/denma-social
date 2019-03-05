@@ -1,0 +1,466 @@
+{
+    "version": "1.0",
+    "name": "symfony/symfony-app",
+    "config": {
+        "bootstrap-file": "vendor/autoload.php"
+    },
+    "packages": {
+        "abraham/twitteroauth": {
+            "install-path": "vendor/abraham/twitteroauth",
+            "installer": "composer"
+        },
+        "basho/riak": {
+            "install-path": "vendor/basho/riak",
+            "installer": "composer"
+        },
+        "beberlei/doctrineextensions": {
+            "install-path": "vendor/beberlei/DoctrineExtensions",
+            "installer": "composer"
+        },
+        "behat/transliterator": {
+            "install-path": "vendor/behat/transliterator",
+            "installer": "composer"
+        },
+        "clue/stream-filter": {
+            "install-path": "vendor/clue/stream-filter",
+            "installer": "composer"
+        },
+        "cosenary/instagram": {
+            "install-path": "vendor/cosenary/instagram",
+            "installer": "composer"
+        },
+        "dirkgroenen/pinterest-api-php": {
+            "install-path": "vendor/dirkgroenen/pinterest-api-php",
+            "installer": "composer"
+        },
+        "doctrine/annotations": {
+            "install-path": "vendor/doctrine/annotations",
+            "installer": "composer"
+        },
+        "doctrine/cache": {
+            "install-path": "vendor/doctrine/cache",
+            "installer": "composer"
+        },
+        "doctrine/collections": {
+            "install-path": "vendor/doctrine/collections",
+            "installer": "composer"
+        },
+        "doctrine/common": {
+            "install-path": "vendor/doctrine/common",
+            "installer": "composer"
+        },
+        "doctrine/data-fixtures": {
+            "install-path": "vendor/doctrine/data-fixtures",
+            "installer": "composer"
+        },
+        "doctrine/dbal": {
+            "install-path": "vendor/doctrine/dbal",
+            "installer": "composer"
+        },
+        "doctrine/doctrine-bundle": {
+            "install-path": "vendor/doctrine/doctrine-bundle",
+            "installer": "composer"
+        },
+        "doctrine/doctrine-cache-bundle": {
+            "install-path": "vendor/doctrine/doctrine-cache-bundle",
+            "installer": "composer"
+        },
+        "doctrine/doctrine-fixtures-bundle": {
+            "install-path": "vendor/doctrine/doctrine-fixtures-bundle",
+            "installer": "composer"
+        },
+        "doctrine/inflector": {
+            "install-path": "vendor/doctrine/inflector",
+            "installer": "composer"
+        },
+        "doctrine/instantiator": {
+            "install-path": "vendor/doctrine/instantiator",
+            "installer": "composer"
+        },
+        "doctrine/lexer": {
+            "install-path": "vendor/doctrine/lexer",
+            "installer": "composer"
+        },
+        "doctrine/orm": {
+            "install-path": "vendor/doctrine/orm",
+            "installer": "composer"
+        },
+        "erusev/parsedown": {
+            "install-path": "vendor/erusev/parsedown",
+            "installer": "composer"
+        },
+        "ezyang/htmlpurifier": {
+            "install-path": "vendor/ezyang/htmlpurifier",
+            "installer": "composer"
+        },
+        "facebook/php-sdk-v4": {
+            "install-path": "vendor/facebook/php-sdk-v4",
+            "installer": "composer"
+        },
+        "friendsofsymfony/jsrouting-bundle": {
+            "install-path": "vendor/friendsofsymfony/jsrouting-bundle",
+            "installer": "composer"
+        },
+        "gedmo/doctrine-extensions": {
+            "install-path": "vendor/gedmo/doctrine-extensions",
+            "installer": "composer"
+        },
+        "google/apiclient": {
+            "install-path": "vendor/google/apiclient",
+            "installer": "composer"
+        },
+        "guzzlehttp/guzzle": {
+            "install-path": "vendor/guzzlehttp/guzzle",
+            "installer": "composer"
+        },
+        "guzzlehttp/promises": {
+            "install-path": "vendor/guzzlehttp/promises",
+            "installer": "composer"
+        },
+        "guzzlehttp/psr7": {
+            "install-path": "vendor/guzzlehttp/psr7",
+            "installer": "composer"
+        },
+        "happyr/linkedin-api-client": {
+            "install-path": "vendor/happyr/linkedin-api-client",
+            "installer": "composer"
+        },
+        "incenteev/composer-parameter-handler": {
+            "install-path": "vendor/incenteev/composer-parameter-handler",
+            "installer": "composer"
+        },
+        "ircmaxell/password-compat": {
+            "install-path": "vendor/ircmaxell/password-compat",
+            "installer": "composer"
+        },
+        "jdorn/sql-formatter": {
+            "install-path": "vendor/jdorn/sql-formatter",
+            "installer": "composer"
+        },
+        "jms/aop-bundle": {
+            "install-path": "vendor/jms/aop-bundle",
+            "installer": "composer"
+        },
+        "jms/cg": {
+            "install-path": "vendor/jms/cg",
+            "installer": "composer"
+        },
+        "jms/di-extra-bundle": {
+            "install-path": "vendor/jms/di-extra-bundle",
+            "installer": "composer"
+        },
+        "jms/metadata": {
+            "install-path": "vendor/jms/metadata",
+            "installer": "composer"
+        },
+        "jms/parser-lib": {
+            "install-path": "vendor/jms/parser-lib",
+            "installer": "composer"
+        },
+        "jms/security-extra-bundle": {
+            "install-path": "vendor/jms/security-extra-bundle",
+            "installer": "composer"
+        },
+        "jms/serializer": {
+            "install-path": "vendor/jms/serializer",
+            "installer": "composer"
+        },
+        "justinrainbow/json-schema": {
+            "install-path": "vendor/justinrainbow/json-schema",
+            "installer": "composer"
+        },
+        "knplabs/gaufrette": {
+            "install-path": "vendor/knplabs/gaufrette",
+            "installer": "composer"
+        },
+        "knplabs/knp-components": {
+            "install-path": "vendor/knplabs/knp-components",
+            "installer": "composer"
+        },
+        "knplabs/knp-gaufrette-bundle": {
+            "install-path": "vendor/knplabs/knp-gaufrette-bundle",
+            "installer": "composer"
+        },
+        "knplabs/knp-paginator-bundle": {
+            "install-path": "vendor/knplabs/knp-paginator-bundle",
+            "installer": "composer"
+        },
+        "knplabs/knp-time-bundle": {
+            "install-path": "vendor/knplabs/knp-time-bundle/Knp/Bundle/TimeBundle",
+            "installer": "composer"
+        },
+        "kriswallsmith/assetic": {
+            "install-path": "vendor/kriswallsmith/assetic",
+            "installer": "composer"
+        },
+        "leafo/scssphp": {
+            "install-path": "vendor/leafo/scssphp",
+            "installer": "composer"
+        },
+        "monolog/monolog": {
+            "install-path": "vendor/monolog/monolog",
+            "installer": "composer"
+        },
+        "moontoast/math": {
+            "install-path": "vendor/moontoast/math",
+            "installer": "composer"
+        },
+        "padraic/humbug_get_contents": {
+            "install-path": "vendor/padraic/humbug_get_contents",
+            "installer": "composer"
+        },
+        "padraic/phar-updater": {
+            "install-path": "vendor/padraic/phar-updater",
+            "installer": "composer"
+        },
+        "paragonie/random_compat": {
+            "install-path": "vendor/paragonie/random_compat",
+            "installer": "composer"
+        },
+        "patchwork/jsqueeze": {
+            "install-path": "vendor/patchwork/jsqueeze",
+            "installer": "composer"
+        },
+        "php-http/discovery": {
+            "install-path": "vendor/php-http/discovery",
+            "installer": "composer"
+        },
+        "php-http/guzzle6-adapter": {
+            "install-path": "vendor/php-http/guzzle6-adapter",
+            "installer": "composer"
+        },
+        "php-http/httplug": {
+            "install-path": "vendor/php-http/httplug",
+            "installer": "composer"
+        },
+        "php-http/message": {
+            "install-path": "vendor/php-http/message",
+            "installer": "composer"
+        },
+        "php-http/message-factory": {
+            "install-path": "vendor/php-http/message-factory",
+            "installer": "composer"
+        },
+        "php-http/promise": {
+            "install-path": "vendor/php-http/promise",
+            "installer": "composer"
+        },
+        "phpcollection/phpcollection": {
+            "install-path": "vendor/phpcollection/phpcollection",
+            "installer": "composer"
+        },
+        "phpoption/phpoption": {
+            "install-path": "vendor/phpoption/phpoption",
+            "installer": "composer"
+        },
+        "predis/predis": {
+            "install-path": "vendor/predis/predis",
+            "installer": "composer"
+        },
+        "psr/http-message": {
+            "install-path": "vendor/psr/http-message",
+            "installer": "composer"
+        },
+        "psr/log": {
+            "install-path": "vendor/psr/log",
+            "installer": "composer"
+        },
+        "ptachoire/cssembed": {
+            "install-path": "vendor/ptachoire/cssembed",
+            "installer": "composer"
+        },
+        "puli/cli": {
+            "install-path": "vendor/puli/cli",
+            "installer": "composer"
+        },
+        "puli/composer-plugin": {
+            "install-path": "vendor/puli/composer-plugin",
+            "installer": "composer"
+        },
+        "puli/discovery": {
+            "install-path": "vendor/puli/discovery",
+            "installer": "composer"
+        },
+        "puli/manager": {
+            "install-path": "vendor/puli/manager",
+            "installer": "composer"
+        },
+        "puli/repository": {
+            "install-path": "vendor/puli/repository",
+            "installer": "composer"
+        },
+        "puli/symfony-bridge": {
+            "install-path": "vendor/puli/symfony-bridge",
+            "installer": "composer"
+        },
+        "puli/symfony-bundle": {
+            "install-path": "vendor/puli/symfony-bundle",
+            "installer": "composer"
+        },
+        "puli/twig-extension": {
+            "install-path": "vendor/puli/twig-extension",
+            "installer": "composer"
+        },
+        "puli/url-generator": {
+            "install-path": "vendor/puli/url-generator",
+            "installer": "composer"
+        },
+        "ramsey/uuid": {
+            "install-path": "vendor/ramsey/uuid",
+            "installer": "composer"
+        },
+        "raulfraile/ladybug": {
+            "install-path": "vendor/raulfraile/ladybug",
+            "installer": "composer"
+        },
+        "raulfraile/ladybug-bundle": {
+            "install-path": "vendor/raulfraile/ladybug-bundle/RaulFraile/Bundle/LadybugBundle",
+            "installer": "composer"
+        },
+        "raulfraile/ladybug-installer": {
+            "install-path": "vendor/raulfraile/ladybug-installer",
+            "installer": "composer"
+        },
+        "raulfraile/ladybug-plugin-extra": {
+            "install-path": "vendor/raulfraile/ladybug-themes/Ladybug/Plugin/Extra",
+            "installer": "composer"
+        },
+        "raulfraile/ladybug-plugin-symfony2": {
+            "install-path": "vendor/raulfraile/ladybug-themes/Ladybug/Plugin/Symfony2",
+            "installer": "composer"
+        },
+        "raulfraile/ladybug-theme-modern": {
+            "install-path": "vendor/raulfraile/ladybug-themes/Ladybug/Theme/Modern",
+            "installer": "composer"
+        },
+        "seld/jsonlint": {
+            "install-path": "vendor/seld/jsonlint",
+            "installer": "composer"
+        },
+        "sensio/distribution-bundle": {
+            "install-path": "vendor/sensio/distribution-bundle/Sensio/Bundle/DistributionBundle",
+            "installer": "composer"
+        },
+        "sensio/framework-extra-bundle": {
+            "install-path": "vendor/sensio/framework-extra-bundle",
+            "installer": "composer"
+        },
+        "sensio/generator-bundle": {
+            "install-path": "vendor/sensio/generator-bundle/Sensio/Bundle/GeneratorBundle",
+            "installer": "composer",
+            "env": "dev"
+        },
+        "sensiolabs/security-checker": {
+            "install-path": "vendor/sensiolabs/security-checker",
+            "installer": "composer"
+        },
+        "stof/doctrine-extensions-bundle": {
+            "install-path": "vendor/stof/doctrine-extensions-bundle",
+            "installer": "composer"
+        },
+        "swiftmailer/swiftmailer": {
+            "install-path": "vendor/swiftmailer/swiftmailer",
+            "installer": "composer"
+        },
+        "symfony/assetic-bundle": {
+            "install-path": "vendor/symfony/assetic-bundle",
+            "installer": "composer"
+        },
+        "symfony/monolog-bundle": {
+            "install-path": "vendor/symfony/monolog-bundle",
+            "installer": "composer"
+        },
+        "symfony/polyfill-apcu": {
+            "install-path": "vendor/symfony/polyfill-apcu",
+            "installer": "composer"
+        },
+        "symfony/polyfill-intl-icu": {
+            "install-path": "vendor/symfony/polyfill-intl-icu",
+            "installer": "composer"
+        },
+        "symfony/polyfill-mbstring": {
+            "install-path": "vendor/symfony/polyfill-mbstring",
+            "installer": "composer"
+        },
+        "symfony/polyfill-php54": {
+            "install-path": "vendor/symfony/polyfill-php54",
+            "installer": "composer"
+        },
+        "symfony/polyfill-php55": {
+            "install-path": "vendor/symfony/polyfill-php55",
+            "installer": "composer"
+        },
+        "symfony/polyfill-php56": {
+            "install-path": "vendor/symfony/polyfill-php56",
+            "installer": "composer"
+        },
+        "symfony/polyfill-php70": {
+            "install-path": "vendor/symfony/polyfill-php70",
+            "installer": "composer"
+        },
+        "symfony/polyfill-util": {
+            "install-path": "vendor/symfony/polyfill-util",
+            "installer": "composer"
+        },
+        "symfony/psr-http-message-bridge": {
+            "install-path": "vendor/symfony/psr-http-message-bridge",
+            "installer": "composer"
+        },
+        "symfony/security-acl": {
+            "install-path": "vendor/symfony/security-acl",
+            "installer": "composer"
+        },
+        "symfony/swiftmailer-bundle": {
+            "install-path": "vendor/symfony/swiftmailer-bundle",
+            "installer": "composer"
+        },
+        "symfony/symfony": {
+            "install-path": "vendor/symfony/symfony",
+            "installer": "composer"
+        },
+        "twig/extensions": {
+            "install-path": "vendor/twig/extensions",
+            "installer": "composer"
+        },
+        "twig/twig": {
+            "install-path": "vendor/twig/twig",
+            "installer": "composer"
+        },
+        "webmozart/assert": {
+            "install-path": "vendor/webmozart/assert",
+            "installer": "composer"
+        },
+        "webmozart/console": {
+            "install-path": "vendor/webmozart/console",
+            "installer": "composer"
+        },
+        "webmozart/expression": {
+            "install-path": "vendor/webmozart/expression",
+            "installer": "composer"
+        },
+        "webmozart/glob": {
+            "install-path": "vendor/webmozart/glob",
+            "installer": "composer"
+        },
+        "webmozart/json": {
+            "install-path": "vendor/webmozart/json",
+            "installer": "composer"
+        },
+        "webmozart/key-value-store": {
+            "install-path": "vendor/webmozart/key-value-store",
+            "installer": "composer"
+        },
+        "webmozart/path-util": {
+            "install-path": "vendor/webmozart/path-util",
+            "installer": "composer"
+        },
+        "willdurand/jsonp-callback-validator": {
+            "install-path": "vendor/willdurand/jsonp-callback-validator",
+            "installer": "composer"
+        },
+        "zendframework/zend-diactoros": {
+            "install-path": "vendor/zendframework/zend-diactoros",
+            "installer": "composer"
+        }
+    }
+}

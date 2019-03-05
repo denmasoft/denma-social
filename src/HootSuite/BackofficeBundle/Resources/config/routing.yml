@@ -1,0 +1,3 @@
+backoffice_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: BackofficeBundle:Default:index }

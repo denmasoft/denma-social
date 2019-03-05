@@ -1,0 +1,548 @@
+<?php
+
+namespace Social\ProyectoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
+
+/**
+ * @ORM\Table(name="campanna")
+ * @ORM\Entity(repositoryClass="CampannaRepository")
+ */
+class Campanna
+{
+  /**
+   * @var integer $id
+   * @ORM\Column(name="id", type="integer")
+   * @ORM\Id
+   * @ORM\GeneratedValue(strategy="AUTO")
+   */
+  private $id;
+  
+  /**
+    * @ORM\ManyToOne(targetEntity="Cuenta", inversedBy="campannas")
+    * @ORM\JoinColumn(name="cuenta_id", referencedColumnName="id")
+    */
+  private $cuenta;
+  
+  /**
+    * @ORM\OneToMany(targetEntity="Comentario", mappedBy="campanna", cascade={"persist","remove"})
+    */
+  private $comentarios;
+  
+  /**
+    * @ORM\OneToMany(targetEntity="Twit", mappedBy="campanna", cascade={"persist","remove"})
+    */
+  private $twitts;
+  
+  /**
+    * @ORM\OneToMany(targetEntity="Ubicacion", mappedBy="campanna", cascade={"persist","remove"})
+    */
+  private $ubicaciones;
+  
+  /**
+    * @ORM\OneToMany(targetEntity="Visita", mappedBy="campanna", cascade={"persist","remove"})
+    */
+  private $visitas;
+  
+  /**
+   * @var string $nombre
+   * @ORM\Column(type="string", length=255, nullable=true)
+   */
+  protected $nombre;
+  
+  /**
+   * @var string $url
+   * @ORM\Column(type="text", nullable=true)
+   * @Assert\Url()
+   */
+  protected $url;
+  
+  /**
+   * @var string $frases
+   * @ORM\Column(type="text", nullable=true)
+   */
+  protected $frases;
+  
+  /**
+   * @var string $estado
+   * @ORM\Column(type="string", length=1)
+   * A = Activa, B = Borrador, F = Finalizada
+   */
+  protected $estado;
+  
+  /**
+   * @var string $idioma
+   * @ORM\Column(type="string", length=2, nullable=true)
+   */
+  protected $idioma;
+    
+  /**
+   * @var date $fecha_creacion
+   * @ORM\Column(type="datetime", nullable=true)
+   */    
+  private $fecha_creacion; 
+    
+  /**
+   * @var date $fecha_cierre
+   * @ORM\Column(type="datetime", nullable=true)
+   */    
+  private $fecha_cierre; 
+  
+  /**
+   * @var string $twitter_max_id
+   * @ORM\Column(type="string", length=255, nullable=true)
+   */
+  protected $twitter_max_id;
+  
+  /**
+   * @var string $twitter_min_id
+   * @ORM\Column(type="string", length=255, nullable=true)
+   */
+  protected $twitter_min_id;
+    
+  /**
+   * @var string $activa
+   * @ORM\Column(type="boolean")
+   */
+  protected $activa;
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set frases
+     *
+     * @param string $frases
+     * @return Campanna
+     */
+    public function setFrases($frases)
+    {
+        $this->frases = $frases;
+    
+        return $this;
+    }
+
+    /**
+     * Get frases
+     *
+     * @return string 
+     */
+    public function getFrases()
+    {
+        return $this->frases;
+    }
+    
+    public function prepareFrases(){
+        $frases = explode("|", $this->getFrases());
+        $frases_proceced = array();
+        foreach($frases as $f){
+            if(strstr($f, " ")){
+                $frases_proceced[] = '"'.$f.'"';
+            }
+            else{
+                $frases_proceced[] = $f;
+            }
+            
+        }
+        return implode(" OR ", $frases_proceced );
+    }
+    
+    public function getFrasesArray(){
+        if( $this->frases ){
+            return explode("|", $this->frases);
+        }
+        return array();
+    }
+
+    /**
+     * Set twitter_max_id
+     *
+     * @param string $twitterMaxId
+     * @return Campanna
+     */
+    public function setTwitterMaxId($twitterMaxId)
+    {
+        $this->twitter_max_id = $twitterMaxId;
+    
+        return $this;
+    }
+
+    /**
+     * Get twitter_max_id
+     *
+     * @return string 
+     */
+    public function getTwitterMaxId()
+    {
+        return $this->twitter_max_id;
+    }
+
+    /**
+     * Set twitter_min_id
+     *
+     * @param string $twitterMinId
+     * @return Campanna
+     */
+    public function setTwitterMinId($twitterMinId)
+    {
+        $this->twitter_min_id = $twitterMinId;
+    
+        return $this;
+    }
+
+    /**
+     * Get twitter_min_id
+     *
+     * @return string 
+     */
+    public function getTwitterMinId()
+    {
+        return $this->twitter_min_id;
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->twitts = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->ubicaciones = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Set cuenta
+     *
+     * @param \Social\ProyectoBundle\Entity\Cuenta $cuenta
+     * @return Campanna
+     */
+    public function setCuenta(\Social\ProyectoBundle\Entity\Cuenta $cuenta = null)
+    {
+        $this->cuenta = $cuenta;
+    
+        return $this;
+    }
+
+    /**
+     * Get cuenta
+     *
+     * @return \Social\ProyectoBundle\Entity\Cuenta 
+     */
+    public function getCuenta()
+    {
+        return $this->cuenta;
+    }
+
+    /**
+     * Add twitts
+     *
+     * @param \Social\ProyectoBundle\Entity\Twit $twitts
+     * @return Campanna
+     */
+    public function addTwitt(\Social\ProyectoBundle\Entity\Twit $twitts)
+    {
+        $this->twitts[] = $twitts;
+    
+        return $this;
+    }
+
+    /**
+     * Remove twitts
+     *
+     * @param \Social\ProyectoBundle\Entity\Twit $twitts
+     */
+    public function removeTwitt(\Social\ProyectoBundle\Entity\Twit $twitts)
+    {
+        $this->twitts->removeElement($twitts);
+    }
+
+    /**
+     * Get twitts
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTwitts()
+    {
+        return $this->twitts;
+    }
+
+    /**
+     * Add ubicaciones
+     *
+     * @param \Social\ProyectoBundle\Entity\Ubicacion $ubicaciones
+     * @return Campanna
+     */
+    public function addUbicacione(\Social\ProyectoBundle\Entity\Ubicacion $ubicaciones)
+    {
+        $this->ubicaciones[] = $ubicaciones;
+    
+        return $this;
+    }
+
+    /**
+     * Remove ubicaciones
+     *
+     * @param \Social\ProyectoBundle\Entity\Ubicacion $ubicaciones
+     */
+    public function removeUbicacione(\Social\ProyectoBundle\Entity\Ubicacion $ubicaciones)
+    {
+        $this->ubicaciones->removeElement($ubicaciones);
+    }
+
+    /**
+     * Get ubicaciones
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUbicaciones()
+    {
+        return $this->ubicaciones;
+    }
+
+    /**
+     * Set estado
+     *
+     * @param string $estado
+     * @return Campanna
+     */
+    public function setEstado($estado)
+    {
+        $this->estado = $estado;
+    
+        return $this;
+    }
+
+    /**
+     * Get estado
+     *
+     * @return string 
+     */
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+
+    /**
+     * Set activa
+     *
+     * @param boolean $activa
+     * @return Campanna
+     */
+    public function setActiva($activa)
+    {
+        $this->activa = $activa;
+    
+        return $this;
+    }
+
+    /**
+     * Get activa
+     *
+     * @return boolean 
+     */
+    public function getActiva()
+    {
+        return $this->activa;
+    }
+
+    /**
+     * Set idioma
+     *
+     * @param string $idioma
+     * @return Campanna
+     */
+    public function setIdioma($idioma)
+    {
+        $this->idioma = $idioma;
+    
+        return $this;
+    }
+
+    /**
+     * Get idioma
+     *
+     * @return string 
+     */
+    public function getIdioma()
+    {
+        return $this->idioma;
+    }
+    
+    /**
+     * Set fecha_creacion
+     *
+     * @param \DateTime $fecha_creacion
+     * @return Usuario
+     */
+    public function setFechaCreacion($fecha_creacion = NULL)
+    {
+        $this->fecha_creacion = new \Datetime('now');
+    
+        return $this;
+    }
+    
+    /**
+     * Set fecha_cierre
+     *
+     * @param \DateTime $fecha_cierre
+     * @return Usuario
+     */
+    public function setFechaCierre($fecha_cierre = NULL)
+    {
+        $this->fecha_cierre = new \Datetime('now');
+    
+        return $this;
+    }
+
+    /**
+     * Get fecha_cierre
+     *
+     * @return \DateTime 
+     */
+    public function getFechaCierre()
+    {
+        return $this->fecha_cierre;
+    }
+    
+    public function getPaisesUbicaciones(){
+        $paises = array();
+        foreach( $this->ubicaciones as $u ){
+            if( !isset($paises[$u->getPais()->getId()]) ){
+                $paises[$u->getPais()->getId()] = $u;
+            }
+        }
+        return $paises;
+    }
+    
+    public function paisHasCities($id_pais){
+        foreach( $this->ubicaciones as $u ){
+            if( $u->getPais()->getId() == $id_pais && $u->getNombre() ){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public function getUbicacionesForTwitter(){
+        $ubis = array();
+        $soloPaises = $this->getPaisesUbicaciones();
+        foreach( $soloPaises as $u ){
+            foreach( $this->ubicaciones as $ubi ){
+                $cities = false;
+                if( $u->getPais()->getId() == $ubi->getPais()->getId() && $ubi->getNombre() ){
+                    $cities = true;
+                    $ubis[] = $ubi;
+                }
+            }
+            if( !$cities ){
+                $ubis[] = $u;
+            }
+        }
+        return $ubis;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     * @return Campanna
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+    
+        return $this;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string 
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * Get fecha_creacion
+     *
+     * @return \DateTime 
+     */
+    public function getFechaCreacion()
+    {
+        return $this->fecha_creacion;
+    }
+    
+    public function isConfigured(){
+        if( $this->nombre && $this->frases && $this->url && $this->idioma && $this->ubicaciones->count() ){
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Set url
+     *
+     * @param string $url
+     * @return Campanna
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+    
+        return $this;
+    }
+
+    /**
+     * Get url
+     *
+     * @return string 
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    /**
+     * Add visitas
+     *
+     * @param \Social\ProyectoBundle\Entity\Visita $visitas
+     * @return Campanna
+     */
+    public function addVisita(\Social\ProyectoBundle\Entity\Visita $visitas)
+    {
+        $this->visitas[] = $visitas;
+    
+        return $this;
+    }
+
+    /**
+     * Remove visitas
+     *
+     * @param \Social\ProyectoBundle\Entity\Visita $visitas
+     */
+    public function removeVisita(\Social\ProyectoBundle\Entity\Visita $visitas)
+    {
+        $this->visitas->removeElement($visitas);
+    }
+
+    /**
+     * Get visitas
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getVisitas()
+    {
+        return $this->visitas;
+    }
+}

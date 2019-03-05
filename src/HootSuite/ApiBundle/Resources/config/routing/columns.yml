@@ -1,0 +1,27 @@
+load_column:
+    pattern:  /load
+    defaults: { _controller: ApiBundle:Columns:load }
+    
+add_column:
+    pattern:  /add
+    defaults: { _controller: ApiBundle:Columns:add }
+    
+del_column:
+    pattern:  /del
+    defaults: { _controller: ApiBundle:Columns:del }
+    
+search_column:
+    pattern:  /search
+    defaults: { _controller: ApiBundle:Columns:search }
+    
+lists_column:
+    pattern:  /lists
+    defaults: { _controller: ApiBundle:Columns:lists }
+    
+facebook_pages:
+    pattern:  /facebook-pages
+    defaults: { _controller: ApiBundle:Columns:facebookPages }
+    
+instagram_hashtag:
+    pattern:  /instagram-hashtag
+    defaults: { _controller: ApiBundle:Columns:instagramHashTag }

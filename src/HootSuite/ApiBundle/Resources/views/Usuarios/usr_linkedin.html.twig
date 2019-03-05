@@ -1,0 +1,124 @@
+<div class="tab-pane-resalted">
+    <div class="tab-pane principal-tab active">
+        <div class="tabbable">
+            <ul class="nav nav-tabs normal-tab nav-justified">
+                <li class="active">
+                    <a data-target="#user-profile-bio" data-toggle="tab" data-toggle="tab">
+                        Biografía
+                    </a>
+                </li>
+                <li>
+                    <a data-target="#user-profile-experience" data-toggle="tab">
+                        Experiencia
+                    </a>
+                </li>
+                <li>
+                    <a data-target="#user-profile-formation" data-toggle="tab" data-toggle="tab">
+                        Formación
+                    </a>
+                </li>
+                <li>
+                    <a data-target="#user-profile-updates" data-toggle="tab" data-toggle="tab" ng-click="liUserUpdates(user.profile.id, user.profile_id)">
+                        Actualizaciones
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content modal-max-height">
+                <div class="tab-pane active modal-inner-body" id="user-profile-bio">
+                    <div class="user-profile-top">
+                        <div class="col-lg-4 col-md-4" style="padding-left: 0">
+                            <img ng-src="[[user.profile.pictureUrl]]" style="width: 100%" />
+                        </div>
+                        <div class="col-lg-8 col-md-8">
+                            <table class="table">
+                                <tr>
+                                    <th style="width: 30%">Nombre</th>
+                                    <td style="width: 70%">[[user.profile.formattedName]]</td>
+                                </tr>
+                                <tr>
+                                    <th style="width: 30%">Headline</th>
+                                    <td style="width: 70%">[[user.profile.headline]]</td>
+                                </tr>
+                                <tr ng-if="user.profile.dateOfBirth">
+                                    <th style="width: 30%">Cumpleaños</th>
+                                    <td style="width: 70%">
+                                        [[user.profile.dateOfBirth.day]]<span ng-if="user.profile.dateOfBirth.day && user.profile.dateOfBirth.month">/</span>[[user.profile.dateOfBirth.month]]<span ng-if="(user.profile.dateOfBirth.day || user.profile.dateOfBirth.month) && user.profile.dateOfBirth.year">/</span>[[user.profile.dateOfBirth.year]]
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="clearfix">
+                        <table class="table">
+                            <tr ng-if="user.profile.industry">
+                                <th style="width: 20%">Industria</th>
+                                <td>[[user.profile.industry]]</td>
+                            </tr>
+                            <tr ng-if="user.profile.location.name">
+                                <th style="width: 20%">Ubicación</th>
+                                <td>[[user.profile.location.name]]</td>
+                            </tr>
+                            <tr ng-if="user.profile.mainAddress">
+                                <th style="width: 20%">Dirección</th>
+                                <td>[[user.profile.mainAddress]]</td>
+                            </tr>
+                            <tr>
+                                <th style="width: 20%">Perfil</th>
+                                <td><a target="_blank" ng-href="[[user.profile.publicProfileUrl]]">Ver Perfil en LinkedIn</a></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane modal-inner-body" id="user-profile-experience">
+                    <table class="table">
+                         <tr ng-repeat="pos in user.profile.positions.values">
+                             <td style="width: 100%">
+                                 <div class="text-head">[[pos.title]]</div>
+                                 <div>[[pos.company.name]]</div>
+                                 <div>
+                                     [[pos.startDate.month|monthName]] [[pos.startDate.year]] - 
+                                     <span ng-if="pos.isCurrent">Present</span>
+                                     <span ng-if="!pos.isCurrent">
+                                         [[pos.endDate.month|monthName]] [[pos.endDate.year]]
+                                     </span>
+                                     
+                                 </div>
+                                 <div>[[pos.sumary]]</div>
+                             </td>
+                         </tr>
+                     </table>
+                </div>
+                <div class="tab-pane modal-inner-body" id="user-profile-formation">
+                    <table class="table">
+                         <tr ng-repeat="edu in user.profile.educations.values">
+                             <td style="width: 100%">
+                                 <div class="text-head">[[edu.schoolName]]</div>
+                                 <div>[[edu.degree]]</div>
+                                 <div>
+                                     [[edu.startDate.year]] - 
+                                     <span ng-if="!edu.endDate">Present</span>
+                                     <span ng-if="edu.endDate">
+                                         [[edu.endDate.year]]
+                                     </span>
+                                 </div>
+                             </td>
+                         </tr>
+                     </table>
+                </div>
+                <div class="tab-pane modal-inner-body" id="user-profile-updates">
+                    <div ng-show="!user.favorites" style="text-align: center; padding: 20px 0;">
+                        <span class="glyphicon glyphicon-refresh-gif-black"></span> Cargando
+                    </div>
+                    <div ng-show="user.favorites_html" compile-data template="[[user.favorites_html]]">
+
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-btns" style="text-align: center;">
+    <button class="btn btn-sm btn-default btn-form" ng-click="prepareMessage(col, user)()">Respuesta</button>
+    <button class="btn btn-sm btn-default btn-form" ng-click="addToList(user, user.profile_id)">Añadir a lista</button>
+    <button class="btn btn-sm btn-default btn-form" ng-click="cancel()">Cerrar</button>
+</div>

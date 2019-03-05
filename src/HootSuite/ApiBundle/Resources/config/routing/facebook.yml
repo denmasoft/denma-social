@@ -1,0 +1,14 @@
+fb_add_comment:
+    pattern:  /add-comment
+    defaults: { _controller: ApiBundle:Facebook:addComment }
+    requirements: { _method: post }
+    
+fb_likes:
+    pattern:  /likes
+    defaults: { _controller: ApiBundle:Facebook:likes }
+    requirements: { _method: post }
+    
+fb_add_group:
+    pattern:  /add-group
+    defaults: { _controller: ApiBundle:Facebook:addGroup }
+    requirements: { _method: post }

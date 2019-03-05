@@ -1,0 +1,11 @@
+modal_redes:
+    pattern:  /redes/{id}
+    defaults: { _controller: DashboardBundle:Modal:redes, id: null }
+    
+modal_type_cols:
+    pattern:  /type-columns/
+    defaults: { _controller: DashboardBundle:Modal:typeCols }
+    
+modal_col_filter:
+    pattern:  /col-filter/
+    defaults: { _controller: DashboardBundle:Modal:colFilter }

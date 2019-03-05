@@ -1,0 +1,44 @@
+<div class="tabs-left-side"> <!-- required for floating -->
+    <div class="tabs-left-header gradient1 shadow1">Editor</div>
+    <!--<button class="tabs-left-button btn btn-sm btn-default">Programar en lote</button>-->
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs tabs-left">
+        <li class="active"><a data-target="#editor-borradores" ng-click="template='borradores'" data-toggle="tab">Borradores</a></li>
+        <li class=""><a data-target="#editor-past-scheduled" ng-click="template='past-scheduled'" data-toggle="tab">Programados Antiguos</a></li>
+        <li class=""><a data-target="#editor-programados" ng-click="template='programados'" data-toggle="tab">Programados</a></li>
+        <li><a data-target="#editor-aprobacion" data-toggle="tab" ng-click="template='aprobacion'">Necesitan Aprobación</a></li>
+        <li><a data-target="#editor-publicados" data-toggle="tab" ng-click="template='publicados'">Programados ya publicados</a></li>
+        <li><a data-target="#editor-rejected" data-toggle="tab" ng-click="template='rejected'">Rechazados</a></li>
+        <hr/>
+        <li><a data-target="#editor-canales-rss" data-toggle="tab" ng-click="template='canalRSS'">Canales RSS</a></li>
+        <li><a data-target="#editor-bulk-messages" data-toggle="tab">Subir Mensajes en Lote</a></li>
+    </ul>
+</div>
+
+<div class="tabs-right-side">
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div class="active tab-pane tabs-right-content" id="editor-borradores">
+            <ng-include src="'../../bundles/dashboard/subviews/editor/borradores.html'"></ng-include>
+        </div>
+        <div class="tab-pane tabs-right-content" id="editor-programados">
+            <ng-include src="'../../bundles/dashboard/subviews/editor/programados.html'"></ng-include>
+        </div>
+        <div class="tab-pane tabs-right-content" id="editor-past-scheduled">
+            <ng-include src="'../../bundles/dashboard/subviews/editor/past_scheduled.html'"></ng-include>
+        </div>
+        <div class="tab-pane tabs-right-content" id="editor-aprobacion">
+            <ng-include src="'../../bundles/dashboard/subviews/editor/aprobacion.html'"></ng-include>
+        </div>
+        <div class="tab-pane tabs-right-content" id="editor-publicados">
+            <ng-include src="'../../bundles/dashboard/subviews/editor/publicados.html'"></ng-include>
+        </div>
+        <div class="tab-pane tabs-right-content" id="editor-rejected">
+            <ng-include src="'../../bundles/dashboard/subviews/editor/rejected.html'"></ng-include>
+        </div>
+        <div class="tab-pane tabs-right-content" id="editor-canales-rss">
+            <ng-include ng-if="template=='canalRSS'" src="'../../bundles/dashboard/subviews/editor/canalesRSS.html'"></ng-include>
+        </div>
+    </div>
+</div> 
+<div class="clearfix"></div> 

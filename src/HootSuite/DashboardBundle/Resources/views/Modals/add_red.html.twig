@@ -1,0 +1,43 @@
+<div ng-keyup="hitScape($event)" class="modal-wrapper">
+    <div class="modal-header drag-handle">
+        <button type="button" class="close" ng-click="cancel()" aria-hidden="true"><span class="glyphicon glyphicon-remove"></span></button>
+        <span class="mymodal-title">Añadir red social</span>
+    </div>
+    <div class="modal-body">
+        <div class="modal-left"> 
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs tabs-left">
+                {% for red in redes %}
+                    {% if loop.index == 1 and not id %}
+                        <li class="active"><a data-target="#red-{{red.id}}" data-toggle="tab"><span class="{{red.glyphicon1}}"></span> {{red.name}}</a></li>
+                    {% else %}
+                        <li class="{{id == red.id ? 'active' : ''}}"><a data-target="#red-{{red.id}}" data-toggle="tab"><span class="{{red.glyphicon1}}"></span> {{red.name}}</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="modal-right">
+            <!-- Tab panes -->
+            <div class="tab-content">
+                {% for red in redes %}
+                    {% if loop.index == 1 and id is null %}
+                        <div class="tab-pane active" id="red-{{red.id}}">
+                            <div class="tab-pane-resalted padding10 height300">
+                                {% include 'DashboardBundle:Templates:RedesLogin/'~red.uniquename | lower~'.html.twig' %}
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="tab-pane {{id == red.id ? 'active' : ''}}" id="red-{{red.id}}">
+                            <div class="tab-pane-resalted padding10 height300">
+                                {% include 'DashboardBundle:Templates:RedesLogin/'~red.uniquename | lower~'.html.twig' %}
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div> 
+        <div class="clearfix"></div>    
+    </div>
+</div>
+

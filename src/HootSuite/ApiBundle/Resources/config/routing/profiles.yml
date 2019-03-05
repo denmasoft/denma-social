@@ -1,0 +1,4 @@
+load_profiles:
+    pattern:  /load
+    defaults: { _controller: ApiBundle:Profiles:load }
+    

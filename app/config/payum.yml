@@ -1,0 +1,64 @@
+payum:
+    storages:
+        HootSuite\PaymentBundle\Entity\PaymentDetails:
+            doctrine: orm        
+
+        HootSuite\PaymentBundle\Entity\AgreementDetails:
+            doctrine: orm
+
+        HootSuite\PaymentBundle\Entity\RecurringPaymentDetails:           
+            doctrine: orm
+
+        HootSuite\PaymentBundle\Model\AgreementDetails:            
+            filesystem:
+                storage_dir: %kernel.root_dir%/Resources/payments
+                id_property: id
+
+        HootSuite\PaymentBundle\Model\PaymentDetails:
+            filesystem:
+                storage_dir: %kernel.root_dir%/Resources/payments
+                id_property: id
+
+    security:
+        token_storage:
+            HootSuite\PaymentBundle\Entity\PaymentSecurityToken:
+                doctrine: orm
+    gateways:
+        paypal_express_checkout_and_doctrine_orm:
+            paypal_express_checkout_nvp:
+                username: '%paypal.express_checkout.username%'
+                password: '%paypal.express_checkout.password%'
+                signature: '%paypal.express_checkout.signature%'
+                sandbox: true
+
+        paypal_express_checkout_and_doctrine_mongo_odm:
+            paypal_express_checkout_nvp:
+                username: '%paypal.express_checkout.username%'
+                password: '%paypal.express_checkout.password%'
+                signature: '%paypal.express_checkout.signature%'
+                sandbox: true
+
+        paypal_express_checkout_recurring_payment_and_doctrine_orm:
+            paypal_express_checkout_nvp:
+                username: '%paypal.express_checkout.username%'
+                password: '%paypal.express_checkout.password%'
+                signature: '%paypal.express_checkout.signature%'
+                sandbox: true
+
+        paypal_express_checkout_with_ipn_enabled:
+            paypal_express_checkout_nvp:
+                username: '%paypal.express_checkout.username%'
+                password: '%paypal.express_checkout.password%'
+                signature: '%paypal.express_checkout.signature%'
+                sandbox: true
+                actions:
+                    - HootSuite.payment.payum.action.store_notification
+
+        paypal_express_checkout_and_custom_api:
+            paypal_express_checkout_nvp:
+                username: '%paypal.express_checkout.username%'
+                password: '%paypal.express_checkout.password%'
+                signature: '%paypal.express_checkout.signature%'
+                sandbox: true
+                apis:
+                    - HootSuite.payment.payum.paypal_express_checkout_api

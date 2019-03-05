@@ -1,0 +1,252 @@
+<?php
+
+namespace Social\ProyectoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
+
+/**
+ * @ORM\Table(name="cliente")
+ * @ORM\Entity(repositoryClass="ClienteRepository")
+ */
+class Cliente
+{
+  /**
+   * @var integer $id
+   * @ORM\Column(name="id", type="integer")
+   * @ORM\Id
+   * @ORM\GeneratedValue(strategy="AUTO")
+   */
+  private $id;
+  
+  /**
+    * @ORM\ManyToOne(targetEntity="Comentario", inversedBy="clientes", cascade={"persist","remove"})
+    * @ORM\JoinColumn(name="comentario_id", referencedColumnName="id")
+    */
+  private $comentario;
+  
+  /**
+   * @var string $nombre
+   * @ORM\Column(type="string", length=40)
+   * @Assert\NotBlank()
+   */
+  protected $nombre;
+  
+  /**
+   * @var string $apellidos
+   * @ORM\Column(type="string", length=100)
+   * @Assert\NotBlank()
+   */
+  protected $apellidos;
+  
+  /**
+   * @var string $email
+   * @ORM\Column( type="string", length=50)
+   * @Assert\Email()
+   * @Assert\NotBlank()
+   */
+  protected $email;
+  
+  /**
+   * @var string $ciudad
+   * @ORM\Column(type="string", length=100, nullable=true)
+   */
+  protected $ciudad;
+  
+  /**
+   * @var date $fecha_registro
+   * @ORM\Column(type="datetime")
+   */   
+  private $fecha_registro; 
+  
+  /**
+   * @var string $twitter_followers
+   * @ORM\Column(type="integer", nullable=true)
+   */
+  private $twitter_followers;
+  
+  /**
+   * @var string $twitter_image
+   * @ORM\Column(type="string", length=255, nullable=true)
+   */
+  private $twitter_image;
+  
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     * @return Cliente
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+    
+        return $this;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string 
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * Set ciudad
+     *
+     * @param string $ciudad
+     * @return Cliente
+     */
+    public function setCiudad($ciudad)
+    {
+        $this->ciudad = $ciudad;
+    
+        return $this;
+    }
+
+    /**
+     * Get ciudad
+     *
+     * @return string 
+     */
+    public function getCiudad()
+    {
+        return $this->ciudad;
+    }
+
+    /**
+     * Set fecha_registro
+     *
+     * @param \DateTime $fechaRegistro
+     * @return Cliente
+     */
+    public function setFechaRegistro($fechaRegistro = NULL)
+    {
+        $this->fecha_registro = new \Datetime('now');
+    
+        return $this;
+    }
+
+    /**
+     * Get fecha_registro
+     *
+     * @return \DateTime 
+     */
+    public function getFechaRegistro()
+    {
+        return $this->fecha_registro;
+    }
+
+    /**
+     * Set twitter_followers
+     *
+     * @param integer $twitterFollowers
+     * @return Cliente
+     */
+    public function setTwitterFollowers($twitterFollowers)
+    {
+        $this->twitter_followers = $twitterFollowers;
+    
+        return $this;
+    }
+
+    /**
+     * Get twitter_followers
+     *
+     * @return integer 
+     */
+    public function getTwitterFollowers()
+    {
+        return $this->twitter_followers;
+    }
+
+    
+    /**
+     * Set apellidos
+     *
+     * @param string $apellidos
+     * @return Cliente
+     */
+    public function setApellidos($apellidos)
+    {
+        $this->apellidos = $apellidos;
+    
+        return $this;
+    }
+
+    /**
+     * Get apellidos
+     *
+     * @return string 
+     */
+    public function getApellidos()
+    {
+        return $this->apellidos;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return Cliente
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string 
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    public function __toString() {
+        return $this->nombre;
+    }
+
+    /**
+     * Set twitter_image
+     *
+     * @param string $twitterImage
+     * @return Cliente
+     */
+    public function setTwitterImage($twitterImage)
+    {
+        $this->twitter_image = $twitterImage;
+    
+        return $this;
+    }
+
+    /**
+     * Get twitter_image
+     *
+     * @return string 
+     */
+    public function getTwitterImage()
+    {
+        return $this->twitter_image;
+    }
+}

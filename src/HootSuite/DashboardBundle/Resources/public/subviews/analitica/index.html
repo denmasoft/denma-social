@@ -1,0 +1,1400 @@
+<div class="analitycs-left tabs-left-side"> <!-- required for floating -->
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs tabs-left">
+        <div class="tabs-left-header gradient1 shadow1">Plantillas</div>
+        <li><a data-target="#editor-vista-general-twitter" ng-click="template='programados'" data-toggle="tab">Vista general de perfile de Twitter</a></li>
+        <li><a data-target="#editor-engangement-twitter-resumen" data-toggle="tab" ng-click="template='aprobacion'">Engangement de Twitter Resumen</a></li>
+        <li><a data-target="#editor-engangement-twitter-detalle" data-toggle="tab" ng-click="template='publicados'">Engangement de Twitter Detalle</a></li>
+        <li><a data-target="#editor-generales-twitter" data-toggle="tab" ng-click="template='canalRSS'">Valores Totales de Twitter</a></li>
+        <li><a data-target="#editor-perfil-facebook" data-toggle="tab" ng-click="template='canalRSS'">Perfil Página de Facebook</a></li>
+        <li><a data-target="#editor-insight-facebook" data-toggle="tab" ng-click="template='canalRSS'">Facebook Insights</a></li>
+        <li><a data-target="#editor-totales-facebook" data-toggle="tab" ng-click="template='canalRSS'">Valores totales de Facebook</a></li>
+        <li><a data-target="#editor-insights-linkedin" data-toggle="tab" ng-click="template='canalRSS'">Insights de página LinkedIn</a></li>
+        <li><a data-target="#editor-google-analitics" data-toggle="tab" ng-click="template='canalRSS'">Google Analitics</a></li>
+        <li><a data-target="#editor-click-owly" data-toggle="tab" ng-click="template='canalRSS'">Resumen de clicks Ow.ly</a></li>
+        <li><a data-target="#editor-estatisticas-owly" data-toggle="tab" ng-click="template='canalRSS'">Estadísticas de clicks de URLs Ow.ly</a></li>
+
+        <div class="tabs-left-header gradient1 shadow1">Informes</div>
+        <li class="active"><a data-target="#editor-informes" ng-click="template='programados'" data-toggle="tab">Todos los Informes</a></li>
+        <li><a data-target="#editor-borradores" ng-click="template='programados'" data-toggle="tab">Borradores</a></li>
+
+        <div class="tabs-left-header gradient1 shadow1">Personalizar</div>
+        <button class="tabs-left-button btn btn-sm btn-default">Crear informe personalizado</button>
+
+        <div class="tabs-left-header gradient1 shadow1">
+            Etiquetas
+            <a class="tabs-left-header-btn" ng-click="createNewTag()"><span class="glyphicon glyphicon-plus"></span> Añadir etiqueta</a>
+        </div>
+        <div class="labels" ng-show="tags.length">
+            <div class="miembro-profiles-item gradient" ng-repeat="tag in tags" style="padding: 10px !important;">
+                <span class="miembro-profiles-name ng-binding">[[tag.name]]</span>
+                <div class="miembro-profiles-config btn-group">
+                    <button data-toggle="dropdown" type="button" class="btn btn-sm btn-default dropdown-toggle">
+                        <span class="glyphicon glyphicon1-cog"></span>
+                    </button>
+                    <ul role="menu" class="dropdown-menu">
+                        <li role="presentation"><a tabindex="-1" ng-click="updateTag(tag)" role="menuitem">Editar</a></li>
+                        <li class="divider" role="presentation"></li>
+                        <li role="presentation"><a tabindex="-1" ng-click="deleteTag(tag)" role="menuitem">Eliminar</a></li>
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div ng-show="!tags.length" class="no-data">No existen etiquetas creadas</div>
+    </ul>
+</div>
+<div class="analitycs-right tabs-right-side">
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div class="templateView tab-pane tabs-right-content" id="editor-vista-general-twitter">
+            <div class="documentView next">
+                <div class="page">
+                    <div class="document">
+                        <div class="_reportPreview template-report">
+                            <div class="_levelBanner level-banner" style="display: none;"></div>
+                            <div class="documentHeader">
+                                <h1 class="documentTitle">Vista general de perfil de Twitter</h1>
+                            </div>
+                            <div class="documentContent">
+
+
+                                <div class="content-full _type9 _free">
+                                    <h5 class="modulePreviewTitle">Profile Summary</h5>
+
+                                    <div class="_previewWrap">
+                                        <img src="https://d2l6uygi1pgnys.cloudfront.net/v2/images/analytics/modules/TWITTER_PROFILE_SUMMARY.c6e7729b.png" title="Profile Summary">
+                                    </div>
+                                </div>
+
+
+                                <div class="content-full _type31 _free">
+                                    <h5 class="modulePreviewTitle">Follower Growth</h5>
+
+                                    <div class="_previewWrap">
+                                        <img src="https://d3uq0lxah0gw68.cloudfront.net/v2/images/analytics/modules/TWITTER_FOLLOWER_GROWTH.857e3dc7.png" title="Follower Growth">
+                                    </div>
+                                </div>
+
+
+                                <div class="content-full _type4 _free">
+                                    <h5 class="modulePreviewTitle">Most Popular Links</h5>
+
+                                    <div class="_previewWrap">
+                                        <img src="https://d3uq0lxah0gw68.cloudfront.net/v2/images/analytics/modules/OWLY_AGGREGATED_POPULAR.e361df1e.png" title="Most Popular Links">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="oneClickTemplateInfo">
+                            <h1 class="-title">Vista general de perfil de Twitter</h1>
+
+                            <div class="-description">
+                                <p>Proporciona una visión general de tu cuenta de Twitter. Incluye crecimiento de seguidores en el tiempo, menciones de palabras clave y links questly más populares.</p>
+                            </div>
+
+                            <div class="_reportOwners"><div class="_reportOwnerSelSection">
+                                <label>Selecciona un propietario aquí: </label>
+                                <span class="">
+	<select class="_reportOwnerDropdown" name="ownerMemberId">
+        <option value="">Selecciona un propietario del informe</option>
+        <option ng-repeat="profile in profiles" value="[[profile.id]]" fullname="[[profile.name]]">[[profile.name]]</option>
+    </select>
+    </span>
+                            </div></div>
+
+                            <div class="_paramHandlers"><div class="paramHandler _paramHandler"><h3>Perfil de Twitter</h3>
+
+                                <div class="_profileSelectorWidget profileSelectorWidget nopin shownames" wid="1" style="z-index: 1;">
+                                    <div class="profileSelectorWrapper">
+                                        <div class="selectedList _selectedList rb-a-2">
+      <span class="btn-lite-cmt profileSelect _profileSelect" style="display: none;">
+        <span class="icon-19 account"></span>
+      </span>
+                                            <span class="item _selectItem _remove" itemid="103851428" type="TWITTER"><img class="avatar" src="https://abs.twimg.com/sticky/default_profile_images/default_profile_5_normal.png" title="Eliminar dennis_margelys"><strong>dennis_margelys</strong><span class="icon-sn-13 twitter"></span></span><span class="filterItem _filter"><em class="_defaultText defaultText" style="display: none;">Haz clic para seleccionar una red social</em><input class="_filterName clean _collapsable" type="text" value="" style="min-width: 50px; width: 66px; display: none;"></span>
+                                            <span class="btn-lite-sta listCollapsed _listCollapsed" style="display: block;">
+        <span class="icon-19 collapsed"></span>
+      </span>
+                                        </div>
+                                        <div class="picker _picker _collapsable noShadow" style="display: none;">
+                                            <div class="snList _itemList">
+                                                <div class="stream-scroll _itemListBody">
+
+                                                    <div class="row _row selected" itemid="103851428" type="TWITTER">
+                                                        <div class="controls">
+                                                            <a class="_action _fav _jsTooltip icon-19 fave " title="Mover al principio"></a>
+                                                            <a class="_action _pin  _jsTooltip icon-19 pin " title="Seleccionar siempre"></a>
+                                                            <span class="networkIcon icon-sn-13 twitter"></span>
+                                                        </div>
+                                                        <div class="details" title="dennis_margelys">
+                                                            <img class="avatar" src="https://abs.twimg.com/sticky/default_profile_images/default_profile_5_normal.png">&nbsp;
+                                                            <strong>dennis_margelys</strong>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="footer _tools">
+                                                <div style="float: right;">
+                                                    <select class="_showOnly">
+                                                        <option value="">Mostrar todos</option>
+                                                        <option value="fav">Favoritos</option>
+                                                        <!--<option value="pin">Marcado</option>-->
+                                                    </select>
+                                                    <!--<a class="btn-lite-cmt btn-mini" href="#">Restablecer</a>-->
+                                                </div>
+
+                                                <span class="btn-lite-sta btn-sml _clear">Borrar</span>
+                                                &nbsp;|&nbsp;
+                                                <span class="btn-lite-sta btn-sml btn-icon-13 _jsTooltip addNetwork _addSocialNetwork" title="Añadir red social">
+          <span class="icon-13 plus"></span>
+        </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div></div></div>
+
+                            <a class="btn btn-success">Crear informe</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="templateView tab-pane tabs-right-content" id="editor-engangement-twitter-resumen">
+            <div class="documentView next">
+                <div class="page">
+                    <div class="document">
+                        <div class="_reportPreview template-report">
+                            <div class="_levelBanner level-banner" style="display: none;"></div>
+                            <div class="documentHeader">
+                                <h1 class="documentTitle">Engagement de Twitter. Resumen.</h1>
+                            </div>
+                            <div class="documentContent">
+
+
+                                <div class="content-full _type9 _free">
+                                    <h5 class="modulePreviewTitle">Follower Growth - Count</h5>
+
+                                    <div class="_previewWrap">
+                                        <img src="https://d3uq0lxah0gw68.cloudfront.net/v2/images/analytics/modules/TWITTER_FOLLOWERS_COUNT.a8ced13f.png" title="Follower Growth - Count" class="level-up">
+                                    </div>
+                                </div>
+
+
+                                <div class="content-full _type31 _free">
+                                    <h5 class="modulePreviewTitle">Mentions - Count</h5>
+
+                                    <div class="_previewWrap">
+                                        <img src="https://d12qyuqyvqjkw5.cloudfront.net/v2/images/analytics/modules/TWITTER_MENTIONS_COUNT.6aebe018.png" title="Mentions - Count">
+                                    </div>
+                                </div>
+
+
+                                <div class="content-full _type4 _free">
+                                    <h5 class="modulePreviewTitle">Retweets - Count</h5>
+
+                                    <div class="_previewWrap">
+                                        <img src="https://d12qyuqyvqjkw5.cloudfront.net/v2/images/analytics/modules/TWITTER_RETWEETS_COUNT.59a14045.png" title="Retweets - Count" class="level-up">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="oneClickTemplateInfo">
+                            <h1 class="-title">Vista general de perfil de Twitter</h1>
+
+                            <div class="-description">
+                                <p>¿Qué atractivo tiene tu perfil de Twitter para tu audiencia? Esta plantilla incluye estadísticas del crecimiento de seguidores, menciones de Twitter y retuits.</p>
+                            </div>
+
+                            <div class="_reportOwners"><div class="_reportOwnerSelSection">
+                                <label>Selecciona un propietario aquí: </label>
+                                <span class="">
+	<select class="_reportOwnerDropdown" name="ownerMemberId">
+        <option value="" credits="0">Selecciona un propietario del informe</option>
+        <option value="10193430" credits="0" fullname="Dennis Piedra">Dennis Piedra</option>
+    </select>
+    </span>
+                            </div></div>
+
+                            <div class="_paramHandlers"><div class="paramHandler _paramHandler"><h3>Perfil de Twitter</h3>
+
+                                <div class="_profileSelectorWidget profileSelectorWidget nopin shownames" wid="1" style="z-index: 1;">
+                                    <div class="profileSelectorWrapper">
+                                        <div class="selectedList _selectedList rb-a-2">
+      <span class="btn-lite-cmt profileSelect _profileSelect" style="display: none;">
+        <span class="icon-19 account"></span>
+      </span>
+                                            <span class="item _selectItem _remove" itemid="103851428" type="TWITTER"><img class="avatar" src="https://abs.twimg.com/sticky/default_profile_images/default_profile_5_normal.png" title="Eliminar dennis_margelys"><strong>dennis_margelys</strong><span class="icon-sn-13 twitter"></span></span><span class="filterItem _filter"><em class="_defaultText defaultText" style="display: none;">Haz clic para seleccionar una red social</em><input class="_filterName clean _collapsable" type="text" value="" style="min-width: 50px; width: 66px; display: none;"></span>
+                                            <span class="btn-lite-sta listCollapsed _listCollapsed" style="display: block;">
+        <span class="icon-19 collapsed"></span>
+      </span>
+                                        </div>
+                                        <div class="picker _picker _collapsable noShadow" style="display: none;">
+                                            <div class="snList _itemList">
+                                                <div class="stream-scroll _itemListBody">
+
+                                                    <div class="row _row selected" itemid="103851428" type="TWITTER">
+                                                        <div class="controls">
+                                                            <a class="_action _fav _jsTooltip icon-19 fave " title="Mover al principio"></a>
+                                                            <a class="_action _pin  _jsTooltip icon-19 pin " title="Seleccionar siempre"></a>
+                                                            <span class="networkIcon icon-sn-13 twitter"></span>
+                                                        </div>
+                                                        <div class="details" title="dennis_margelys">
+                                                            <img class="avatar" src="https://abs.twimg.com/sticky/default_profile_images/default_profile_5_normal.png">&nbsp;
+                                                            <strong>dennis_margelys</strong>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="footer _tools">
+                                                <div style="float: right;">
+                                                    <select class="_showOnly">
+                                                        <option value="">Mostrar todos</option>
+                                                        <option value="fav">Favoritos</option>
+                                                        <!--<option value="pin">Marcado</option>-->
+                                                    </select>
+                                                    <!--<a class="btn-lite-cmt btn-mini" href="#">Restablecer</a>-->
+                                                </div>
+
+                                                <span class="btn-lite-sta btn-sml _clear">Borrar</span>
+                                                &nbsp;|&nbsp;
+                                                <span class="btn-lite-sta btn-sml btn-icon-13 _jsTooltip addNetwork _addSocialNetwork" title="Añadir red social">
+          <span class="icon-13 plus"></span>
+        </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div></div></div>
+
+                            <a class="btn btn-success">Crear informe</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="templateView tab-pane tabs-right-content" id="editor-engangement-twitter-detalle">
+            <div class="documentView next">
+                <div class="page">
+                    <div class="document">
+                        <div class="_reportPreview template-report">
+                            <div class="_levelBanner level-banner" style="display: none;"></div>
+                            <div class="documentHeader">
+                                <h1 class="documentTitle">Engagement de Twitter. En detalle</h1>
+                            </div>
+                            <div class="documentContent">
+
+
+                                <div class="content-full _type70 _pro">
+                                    <h5 class="modulePreviewTitle">Follower Growth - Count</h5>
+
+                                    <div class="_previewWrap">
+                                        <img src="https://d3uq0lxah0gw68.cloudfront.net/v2/images/analytics/modules/TWITTER_FOLLOWERS_COUNT.a8ced13f.png" title="Follower Growth - Count" class="level-up">
+                                    </div>
+                                </div>
+
+
+                                <div class="content-full _type74 _pro">
+                                    <h5 class="modulePreviewTitle">Mentions - Detailed</h5>
+
+                                    <div class="_previewWrap">
+                                        <img src="https://d12qyuqyvqjkw5.cloudfront.net/v2/images/analytics/modules/TWITTER_MENTIONS_DETAILED.73a7d9af.png" title="Mentions - Detailed" class="level-up">
+                                    </div>
+                                </div>
+
+
+                                <div class="content-full _type73 _pro">
+                                    <h5 class="modulePreviewTitle">Retweets - Detailed</h5>
+
+                                    <div class="_previewWrap">
+                                        <img src="https://d2l6uygi1pgnys.cloudfront.net/v2/images/analytics/modules/TWITTER_RETWEETS_DETAILED.cfca0f3c.png" title="Retweets - Detailed" class="level-up">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="oneClickTemplateInfo">
+                            <h1 class="-title">Vista general de perfil de Twitter</h1>
+
+                            <div class="-description">
+                                <p>¿Qué interés tiene tu perfil de Twitter para tu audiencia? Esta plantilla incluye estadísticas detalladas del crecimiento de seguidores, menciones de Twitter y retuits.</p>
+                            </div>
+
+                            <div class="_reportOwners"><div class="_reportOwnerSelSection">
+                                <label>Selecciona un propietario aquí: </label>
+                                <span class="">
+	<select class="_reportOwnerDropdown" name="ownerMemberId">
+        <option value="" credits="0">Selecciona un propietario del informe</option>
+        <option value="10193430" credits="0" fullname="Dennis Piedra">Dennis Piedra</option>
+    </select>
+    </span>
+                            </div></div>
+
+                            <div class="_paramHandlers"><div class="paramHandler _paramHandler"><h3>Perfil de Twitter</h3>
+
+                                <div class="_profileSelectorWidget profileSelectorWidget nopin shownames" wid="1" style="z-index: 1;">
+                                    <div class="profileSelectorWrapper">
+                                        <div class="selectedList _selectedList rb-a-2">
+      <span class="btn-lite-cmt profileSelect _profileSelect" style="display: none;">
+        <span class="icon-19 account"></span>
+      </span>
+                                            <span class="item _selectItem _remove" itemid="103851428" type="TWITTER"><img class="avatar" src="https://abs.twimg.com/sticky/default_profile_images/default_profile_5_normal.png" title="Eliminar dennis_margelys"><strong>dennis_margelys</strong><span class="icon-sn-13 twitter"></span></span><span class="filterItem _filter"><em class="_defaultText defaultText" style="display: none;">Haz clic para seleccionar una red social</em><input class="_filterName clean _collapsable" type="text" value="" style="min-width: 50px; width: 66px; display: none;"></span>
+                                            <span class="btn-lite-sta listCollapsed _listCollapsed" style="display: block;">
+        <span class="icon-19 collapsed"></span>
+      </span>
+                                        </div>
+                                        <div class="picker _picker _collapsable noShadow" style="display: none;">
+                                            <div class="snList _itemList">
+                                                <div class="stream-scroll _itemListBody">
+
+                                                    <div class="row _row selected" itemid="103851428" type="TWITTER">
+                                                        <div class="controls">
+                                                            <a class="_action _fav _jsTooltip icon-19 fave " title="Mover al principio"></a>
+                                                            <a class="_action _pin  _jsTooltip icon-19 pin " title="Seleccionar siempre"></a>
+                                                            <span class="networkIcon icon-sn-13 twitter"></span>
+                                                        </div>
+                                                        <div class="details" title="dennis_margelys">
+                                                            <img class="avatar" src="https://abs.twimg.com/sticky/default_profile_images/default_profile_5_normal.png">&nbsp;
+                                                            <strong>dennis_margelys</strong>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="footer _tools">
+                                                <div style="float: right;">
+                                                    <select class="_showOnly">
+                                                        <option value="">Mostrar todos</option>
+                                                        <option value="fav">Favoritos</option>
+                                                        <!--<option value="pin">Marcado</option>-->
+                                                    </select>
+                                                    <!--<a class="btn-lite-cmt btn-mini" href="#">Restablecer</a>-->
+                                                </div>
+
+                                                <span class="btn-lite-sta btn-sml _clear">Borrar</span>
+                                                &nbsp;|&nbsp;
+                                                <span class="btn-lite-sta btn-sml btn-icon-13 _jsTooltip addNetwork _addSocialNetwork" title="Añadir red social">
+          <span class="icon-13 plus"></span>
+        </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div></div></div>
+
+                            <a class="btn btn-success">Crear informe</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="templateView tab-pane tabs-right-content" id="editor-generales-twitter">
+            <div class="documentView next">
+                <div class="page">
+                    <div class="document">
+                        <div class="_reportPreview template-report">
+                            <div class="_levelBanner level-banner" style="display: none;"></div>
+                            <div class="documentHeader">
+                                <h1 class="documentTitle">Valores totales de Twitter</h1>
+                            </div>
+                            <div class="documentContent">
+
+
+                                <div class="content-full _type70 _pro">
+                                    <h5 class="modulePreviewTitle">Follower Growth - Aggregate</h5>
+
+                                    <div class="_previewWrap">
+                                        <img src="https://d3uq0lxah0gw68.cloudfront.net/v2/images/analytics/modules/TWITTER_FOLLOWERS_COUNT.a8ced13f.png" title="Follower Growth - Count" class="level-up">
+                                    </div>
+                                </div>
+
+
+                                <div class="content-full _type74 _pro">
+                                    <h5 class="modulePreviewTitle">Mentions - Aggregate</h5>
+
+                                    <div class="_previewWrap">
+                                        <img src="https://d12qyuqyvqjkw5.cloudfront.net/v2/images/analytics/modules/TWITTER_MENTIONS_DETAILED.73a7d9af.png" title="Mentions - Detailed" class="level-up">
+                                    </div>
+                                </div>
+
+
+                                <div class="content-full _type73 _pro">
+                                    <h5 class="modulePreviewTitle">Retweets - Aggregate</h5>
+
+                                    <div class="_previewWrap">
+                                        <img src="https://d2l6uygi1pgnys.cloudfront.net/v2/images/analytics/modules/TWITTER_RETWEETS_DETAILED.cfca0f3c.png" title="Retweets - Detailed" class="level-up">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="oneClickTemplateInfo">
+                            <h1 class="-title">Vista general de perfil de Twitter</h1>
+
+                            <div class="-description">
+                                <p>¿Qué interés tiene tu perfil de Twitter en la audiencia? Esta plantilla compara cuentas de Twitter y muestra el número total de retuits, menciones y seguidores en diversas cuentas.</p>
+                            </div>
+
+                            <div class="_reportOwners"><div class="_reportOwnerSelSection">
+                                <label>Selecciona un propietario aquí: </label>
+                                <span class="">
+	<select class="_reportOwnerDropdown" name="ownerMemberId">
+        <option value="" credits="0">Selecciona un propietario del informe</option>
+        <option value="10193430" credits="0" fullname="Dennis Piedra">Dennis Piedra</option>
+    </select>
+    </span>
+                            </div></div>
+
+                            <div class="_paramHandlers"><div class="paramHandler _paramHandler"><h3>Perfil de Twitter</h3>
+
+                                <div class="_profileSelectorWidget profileSelectorWidget nopin shownames" wid="1" style="z-index: 1;">
+                                    <div class="profileSelectorWrapper">
+                                        <div class="selectedList _selectedList rb-a-2">
+      <span class="btn-lite-cmt profileSelect _profileSelect" style="display: none;">
+        <span class="icon-19 account"></span>
+      </span>
+                                            <span class="item _selectItem _remove" itemid="103851428" type="TWITTER"><img class="avatar" src="https://abs.twimg.com/sticky/default_profile_images/default_profile_5_normal.png" title="Eliminar dennis_margelys"><strong>dennis_margelys</strong><span class="icon-sn-13 twitter"></span></span><span class="filterItem _filter"><em class="_defaultText defaultText" style="display: none;">Haz clic para seleccionar una red social</em><input class="_filterName clean _collapsable" type="text" value="" style="min-width: 50px; width: 66px; display: none;"></span>
+                                            <span class="btn-lite-sta listCollapsed _listCollapsed" style="display: block;">
+        <span class="icon-19 collapsed"></span>
+      </span>
+                                        </div>
+                                        <div class="picker _picker _collapsable noShadow" style="display: none;">
+                                            <div class="snList _itemList">
+                                                <div class="stream-scroll _itemListBody">
+
+                                                    <div class="row _row selected" itemid="103851428" type="TWITTER">
+                                                        <div class="controls">
+                                                            <a class="_action _fav _jsTooltip icon-19 fave " title="Mover al principio"></a>
+                                                            <a class="_action _pin  _jsTooltip icon-19 pin " title="Seleccionar siempre"></a>
+                                                            <span class="networkIcon icon-sn-13 twitter"></span>
+                                                        </div>
+                                                        <div class="details" title="dennis_margelys">
+                                                            <img class="avatar" src="https://abs.twimg.com/sticky/default_profile_images/default_profile_5_normal.png">&nbsp;
+                                                            <strong>dennis_margelys</strong>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="footer _tools">
+                                                <div style="float: right;">
+                                                    <select class="_showOnly">
+                                                        <option value="">Mostrar todos</option>
+                                                        <option value="fav">Favoritos</option>
+                                                        <!--<option value="pin">Marcado</option>-->
+                                                    </select>
+                                                    <!--<a class="btn-lite-cmt btn-mini" href="#">Restablecer</a>-->
+                                                </div>
+
+                                                <span class="btn-lite-sta btn-sml _clear">Borrar</span>
+                                                &nbsp;|&nbsp;
+                                                <span class="btn-lite-sta btn-sml btn-icon-13 _jsTooltip addNetwork _addSocialNetwork" title="Añadir red social">
+          <span class="icon-13 plus"></span>
+        </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div></div></div>
+
+                            <a class="btn btn-success">Crear informe</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="templateView tab-pane tabs-right-content" id="editor-perfil-facebook">
+            <div class="documentView next">
+                <div class="page">
+                    <div class="document">
+                        <div class="_reportPreview template-report">
+                            <div class="_levelBanner level-banner" style="display: none;"></div>
+                            <div class="documentHeader">
+                                <h1 class="documentTitle">Perfil página de Facebook</h1>
+                            </div>
+                            <div class="documentContent">
+
+
+                                <div class="content-full _type70 _pro">
+                                    <h5 class="modulePreviewTitle">Snapshot</h5>
+
+                                    <div class="_previewWrap">
+                                        <img src="https://d3uq0lxah0gw68.cloudfront.net/v2/images/analytics/modules/FB_INSIGHT_USERS_SUMMARY.adbf3d8c.png" title="Snapshot">
+                                    </div>
+                                </div>
+
+
+                                <div class="content-full _type74 _pro">
+                                    <h5 class="modulePreviewTitle">Daily Likes</h5>
+
+                                    <div class="_previewWrap">
+                                        <img src="https://d12qyuqyvqjkw5.cloudfront.net/v2/images/analytics/modules/FB_INSIGHT_USERS_LIKES.74c50f10.png" title="Daily Likes">
+                                    </div>
+                                </div>
+
+
+                                <div class="content-full _type73 _pro">
+                                    <h5 class="modulePreviewTitle">Daily Post Feedback</h5>
+
+                                    <div class="_previewWrap">
+                                        <img src="https://d2l6uygi1pgnys.cloudfront.net/v2/images/analytics/modules/FB_INSIGHT_INTERACTIONS_DAILY_POST_FEEDBACK.ef62fa84.png" title="Daily Post Feedback">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="oneClickTemplateInfo">
+                            <h1 class="-title">Perfil página de Facebook</h1>
+
+                            <div class="-description">
+                                <p>Proporciona una visión general de tu cuenta de Twitter. Incluye visión general, "me gusta" diarios y comentarios diarios del artículo.</p>
+                            </div>
+
+                            <div class="_reportOwners"><div class="_reportOwnerSelSection">
+                                <label>Selecciona un propietario aquí: </label>
+                                <span class="">
+	<select class="_reportOwnerDropdown" name="ownerMemberId">
+        <option value="" credits="0">Selecciona un propietario del informe</option>
+        <option value="10193430" credits="0" fullname="Dennis Piedra">Dennis Piedra</option>
+    </select>
+    </span>
+                            </div></div>
+
+                            <div class="_paramHandlers"><div class="paramHandler _paramHandler"><h3>Perfil de Twitter</h3>
+
+                                <div class="_profileSelectorWidget profileSelectorWidget nopin shownames" wid="1" style="z-index: 1;">
+                                    <div class="profileSelectorWrapper">
+                                        <div class="selectedList _selectedList rb-a-2">
+      <span class="btn-lite-cmt profileSelect _profileSelect" style="display: none;">
+        <span class="icon-19 account"></span>
+      </span>
+                                            <span class="item _selectItem _remove" itemid="103851428" type="TWITTER"><img class="avatar" src="https://abs.twimg.com/sticky/default_profile_images/default_profile_5_normal.png" title="Eliminar dennis_margelys"><strong>dennis_margelys</strong><span class="icon-sn-13 twitter"></span></span><span class="filterItem _filter"><em class="_defaultText defaultText" style="display: none;">Haz clic para seleccionar una red social</em><input class="_filterName clean _collapsable" type="text" value="" style="min-width: 50px; width: 66px; display: none;"></span>
+                                            <span class="btn-lite-sta listCollapsed _listCollapsed" style="display: block;">
+        <span class="icon-19 collapsed"></span>
+      </span>
+                                        </div>
+                                        <div class="picker _picker _collapsable noShadow" style="display: none;">
+                                            <div class="snList _itemList">
+                                                <div class="stream-scroll _itemListBody">
+
+                                                    <div class="row _row selected" itemid="103851428" type="TWITTER">
+                                                        <div class="controls">
+                                                            <a class="_action _fav _jsTooltip icon-19 fave " title="Mover al principio"></a>
+                                                            <a class="_action _pin  _jsTooltip icon-19 pin " title="Seleccionar siempre"></a>
+                                                            <span class="networkIcon icon-sn-13 twitter"></span>
+                                                        </div>
+                                                        <div class="details" title="dennis_margelys">
+                                                            <img class="avatar" src="https://abs.twimg.com/sticky/default_profile_images/default_profile_5_normal.png">&nbsp;
+                                                            <strong>dennis_margelys</strong>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="footer _tools">
+                                                <div style="float: right;">
+                                                    <select class="_showOnly">
+                                                        <option value="">Mostrar todos</option>
+                                                        <option value="fav">Favoritos</option>
+                                                        <!--<option value="pin">Marcado</option>-->
+                                                    </select>
+                                                    <!--<a class="btn-lite-cmt btn-mini" href="#">Restablecer</a>-->
+                                                </div>
+
+                                                <span class="btn-lite-sta btn-sml _clear">Borrar</span>
+                                                &nbsp;|&nbsp;
+                                                <span class="btn-lite-sta btn-sml btn-icon-13 _jsTooltip addNetwork _addSocialNetwork" title="Añadir red social">
+          <span class="icon-13 plus"></span>
+        </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div></div></div>
+
+                            <a class="btn btn-success">Crear informe</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="templateView tab-pane tabs-right-content" id="editor-insight-facebook">
+            <div class="documentView next">
+                <div class="page">
+                    <aside class="_messageBanner message-banner" style="display: none;">
+                        <span class="_messageContent">Este informe requiere 30 puntos. Tienes 0 puntos disponibles. <a href="#" class="_upgradePro">Actualiza a Pro</a> para utilizar este informe.</span>
+                        <i class="icon-13 close _messageCloseBtn"></i>
+                    </aside>
+                    <div class="document">
+                        <div class="_reportPreview template-report">
+                            <div class="_levelBanner level-banner pro" style=""></div>
+                            <div class="documentHeader">
+                                <h1 class="documentTitle">Facebook Insights</h1>
+                            </div>
+                            <div class="documentContent">
+
+
+                                <div class="content-full _type14 _free">
+                                    <h5 class="modulePreviewTitle">Snapshot</h5>
+
+                                    <div class="_previewWrap">
+                                        <img src="https://d3uq0lxah0gw68.cloudfront.net/v2/images/analytics/modules/FB_INSIGHT_USERS_SUMMARY.adbf3d8c.png" title="Snapshot">
+                                    </div>
+                                </div>
+
+
+                                <div class="content-full _type18 _free">
+                                    <h5 class="modulePreviewTitle">Daily Post Feedback</h5>
+
+                                    <div class="_previewWrap">
+                                        <img src="https://d2l6uygi1pgnys.cloudfront.net/v2/images/analytics/modules/FB_INSIGHT_INTERACTIONS_DAILY_POST_FEEDBACK.ef62fa84.png" title="Daily Post Feedback">
+                                    </div>
+                                </div>
+
+
+                                <div class="content-full _type48 _pro">
+                                    <h5 class="modulePreviewTitle">Per-Post Metrics Top 10</h5>
+
+                                    <div class="_previewWrap">
+                                        <img src="https://d3uq0lxah0gw68.cloudfront.net/v2/images/analytics/modules/FB_INSIGHT_PER_POST_METRICS_TOP.2d516654.png" title="Per-Post Metrics Top 10" class="level-up">
+                                    </div>
+                                </div>
+
+
+                                <div class="box-wrapper">
+
+                                    <div class="box-half _type17 _pro">
+                                        <h5 class="modulePreviewTitle">Likes by Region</h5>
+
+                                        <div class="_previewWrap">
+                                            <img src="https://d12qyuqyvqjkw5.cloudfront.net/v2/images/analytics/modules/FB_INSIGHT_USERS_TOP_CONTRIES.1e4643d1.png" title="Likes by Region" class="level-up">
+                                        </div>
+                                    </div>
+
+                                    <div class="box-half _type16 _pro">
+                                        <h5 class="modulePreviewTitle">Likes by Demographic - Graphical</h5>
+
+                                        <div class="_previewWrap">
+                                            <img src="https://d3uq0lxah0gw68.cloudfront.net/v2/images/analytics/modules/FB_INSIGHT_USERS_GENDER_AGE_GRAPH.27c6cf4d.png" title="Likes by Demographic - Graphical" class="level-up">
+                                        </div>
+                                    </div>
+
+                                    <div class="box-half _type24 _pro">
+                                        <h5 class="modulePreviewTitle">Likes by Demographic - Tabular</h5>
+
+                                        <div class="_previewWrap">
+                                            <img src="https://d12qyuqyvqjkw5.cloudfront.net/v2/images/analytics/modules/FB_INSIGHT_USERS_GENDER_AGE_TABLE.597a987d.png" title="Likes by Demographic - Tabular" class="level-up">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="content-full _type15 _free">
+                                    <h5 class="modulePreviewTitle">Daily Likes</h5>
+
+                                    <div class="_previewWrap">
+                                        <img src="https://d12qyuqyvqjkw5.cloudfront.net/v2/images/analytics/modules/FB_INSIGHT_USERS_LIKES.74c50f10.png" title="Daily Likes">
+                                    </div>
+                                </div>
+
+
+                                <div class="box-wrapper">
+
+                                    <div class="box-half _type49 _pro">
+                                        <h5 class="modulePreviewTitle">Likes by Language</h5>
+
+                                        <div class="_previewWrap">
+                                            <img src="https://d2l6uygi1pgnys.cloudfront.net/v2/images/analytics/modules/FB_INSIGHT_LIKES_BY_LANGUAGE.65203efd.png" title="Likes by Language" class="level-up">
+                                        </div>
+                                    </div>
+
+                                    <div class="box-half _type47 _pro">
+                                        <h5 class="modulePreviewTitle">Likes by Source</h5>
+
+                                        <div class="_previewWrap">
+                                            <img src="https://d12qyuqyvqjkw5.cloudfront.net/v2/images/analytics/modules/FB_INSIGHT_LIKE_SOURCES.41a974ab.png" title="Likes by Source" class="level-up">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="oneClickTemplateInfo">
+                            <h1 class="-title">Facebook Insights</h1>
+
+                            <div class="-description">
+                                <p>¿Qué publicación de Facebook es más atractiva? ¿Cómo va tu página? Esta plantilla incluye un resumen de tu página, tus 10 publicaciones más populares, demografía de tus fans, etc.</p>
+                            </div>
+
+                            <div class="_reportOwners"><div class="_reportOwnerSelSection">
+                                <label>Selecciona un propietario aquí: </label>
+                                <span class="">
+	<select class="_reportOwnerDropdown" name="ownerMemberId">
+        <option value="" credits="0">Selecciona un propietario del informe</option>
+        <option value="10193430" credits="0" fullname="Dennis Piedra">Dennis Piedra</option>
+    </select>
+    </span>
+                            </div></div>
+
+                            <div class="_paramHandlers"><div class="paramHandler _paramHandler"><h3>Página de Facebook</h3>
+
+                                <div class="_profileSelectorWidget profileSelectorWidget nopin shownames" wid="5" style="z-index: 1;">
+                                    <div class="profileSelectorWrapper">
+                                        <div class="selectedList _selectedList rb-a-2">
+      <span class="btn-lite-cmt profileSelect _profileSelect">
+        <span class="icon-19 account"></span>
+      </span>
+                                            <span class="filterItem _filter"><em class="_defaultText defaultText" style="display: inline;">Haz clic para seleccionar una red social</em><input class="_filterName clean _collapsable" type="text" value="" style="display: none;"></span>
+                                            <span class="btn-lite-sta listCollapsed _listCollapsed">
+        <span class="icon-19 collapsed"></span>
+      </span>
+                                        </div>
+                                        <div class="picker _picker _collapsable" style="display: none;">
+                                            <div class="snList _itemList">
+                                                <div class="stream-scroll _itemListBody">
+
+
+                                                    <div class="row">Todavía no tienes redes sociales para seleccionar</div>
+
+                                                </div>
+                                            </div>
+                                            <div class="footer _tools">
+                                                <div style="float: right;">
+                                                    <select class="_showOnly">
+                                                        <option value="">Mostrar todos</option>
+                                                        <option value="fav">Favoritos</option>
+                                                        <!--<option value="pin">Marcado</option>-->
+                                                    </select>
+                                                    <!--<a class="btn-lite-cmt btn-mini" href="#">Restablecer</a>-->
+                                                </div>
+
+                                                <span class="btn-lite-sta btn-sml _clear">Borrar</span>
+                                                &nbsp;|&nbsp;
+                                                <span class="btn-lite-sta btn-sml btn-icon-13 _jsTooltip addNetwork _addSocialNetwork" title="Añadir red social">
+          <span class="icon-13 plus"></span>
+        </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div></div></div>
+
+                            <a class="btn btn-success">Crear informe</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="templateView tab-pane tabs-right-content" id="editor-totales-facebook">
+            <div class="documentView next">
+                <div class="page">
+                    <aside class="_messageBanner message-banner" style="display: none;">
+                        <span class="_messageContent">Este informe requiere 30 puntos. Tienes 0 puntos disponibles. <a href="#" class="_upgradePro">Actualiza a Pro</a> para utilizar este informe.</span>
+                        <i class="icon-13 close _messageCloseBtn"></i>
+                    </aside>
+                    <div class="document">
+                        <div class="_reportPreview template-report">
+                            <div class="_levelBanner level-banner pro" style=""></div>
+                            <div class="documentHeader">
+                                <h1 class="documentTitle">Valores totales de Facebook</h1>
+                            </div>
+                            <div class="documentContent">
+
+
+                                <div class="content-full _type14 _free">
+                                    <h5 class="modulePreviewTitle">Likes - Aggregate</h5>
+
+                                    <div class="_previewWrap">
+                                        <img src="https://d3uq0lxah0gw68.cloudfront.net/v2/images/analytics/modules/FB_INSIGHT_USERS_SUMMARY.adbf3d8c.png" title="Snapshot">
+                                    </div>
+                                </div>
+
+
+                                <div class="content-full _type18 _free">
+                                    <h5 class="modulePreviewTitle">Compare Public Pages</h5>
+
+                                    <div class="_previewWrap">
+                                        <img src="https://d2l6uygi1pgnys.cloudfront.net/v2/images/analytics/modules/FB_INSIGHT_INTERACTIONS_DAILY_POST_FEEDBACK.ef62fa84.png" title="Daily Post Feedback">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="oneClickTemplateInfo">
+                            <h1 class="-title">Valores totales de Facebook</h1>
+
+                            <div class="-description">
+                                <p>¿Cuál página de Facebook es más atractiva?</p>
+                            </div>
+
+                            <div class="_reportOwners"><div class="_reportOwnerSelSection">
+                                <label>Selecciona un propietario aquí: </label>
+                                <span class="">
+	<select class="_reportOwnerDropdown" name="ownerMemberId">
+        <option value="" credits="0">Selecciona un propietario del informe</option>
+        <option value="10193430" credits="0" fullname="Dennis Piedra">Dennis Piedra</option>
+    </select>
+    </span>
+                            </div></div>
+
+                            <div class="_paramHandlers"><div class="paramHandler _paramHandler"><h3>Página de Facebook</h3>
+
+                                <div class="_profileSelectorWidget profileSelectorWidget nopin shownames" wid="5" style="z-index: 1;">
+                                    <div class="profileSelectorWrapper">
+                                        <div class="selectedList _selectedList rb-a-2">
+      <span class="btn-lite-cmt profileSelect _profileSelect">
+        <span class="icon-19 account"></span>
+      </span>
+                                            <span class="filterItem _filter"><em class="_defaultText defaultText" style="display: inline;">Haz clic para seleccionar una red social</em><input class="_filterName clean _collapsable" type="text" value="" style="display: none;"></span>
+                                            <span class="btn-lite-sta listCollapsed _listCollapsed">
+        <span class="icon-19 collapsed"></span>
+      </span>
+                                        </div>
+                                        <div class="picker _picker _collapsable" style="display: none;">
+                                            <div class="snList _itemList">
+                                                <div class="stream-scroll _itemListBody">
+
+
+                                                    <div class="row">Todavía no tienes redes sociales para seleccionar</div>
+
+                                                </div>
+                                            </div>
+                                            <div class="footer _tools">
+                                                <div style="float: right;">
+                                                    <select class="_showOnly">
+                                                        <option value="">Mostrar todos</option>
+                                                        <option value="fav">Favoritos</option>
+                                                        <!--<option value="pin">Marcado</option>-->
+                                                    </select>
+                                                    <!--<a class="btn-lite-cmt btn-mini" href="#">Restablecer</a>-->
+                                                </div>
+
+                                                <span class="btn-lite-sta btn-sml _clear">Borrar</span>
+                                                &nbsp;|&nbsp;
+                                                <span class="btn-lite-sta btn-sml btn-icon-13 _jsTooltip addNetwork _addSocialNetwork" title="Añadir red social">
+          <span class="icon-13 plus"></span>
+        </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div></div></div>
+
+                            <a class="btn btn-success">Crear informe</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="templateView tab-pane tabs-right-content" id="editor-insights-linkedin">
+            <div class="documentView next">
+                <div class="page">
+                    <aside class="_messageBanner message-banner" style="">
+                        <span class="_messageContent">Este informe requiere 20 puntos. Tienes 0 puntos disponibles. <a href="#" class="_upgradePro">Actualiza a Pro</a> para utilizar este informe.</span>
+                        <i class="icon-13 close _messageCloseBtn"></i>
+                    </aside>
+                    <div class="document">
+                        <div class="_reportPreview template-report">
+                            <div class="_levelBanner level-banner pro" style=""></div>
+                            <div class="documentHeader">
+                                <h1 class="documentTitle">Insights de página de LinkedIn</h1>
+                            </div>
+                            <div class="documentContent">
+
+
+                                <div class="content-full _type65 _pro">
+                                    <h5 class="modulePreviewTitle">Snapshot</h5>
+
+                                    <div class="_previewWrap">
+                                        <img src="https://d12qyuqyvqjkw5.cloudfront.net/v2/images/analytics/modules/LINKEDIN_COMPANY_SNAPSHOT.a9f2cbdd.png" title="Snapshot" class="level-up">
+                                    </div>
+                                </div>
+
+
+                                <div class="content-full _type69 _pro">
+                                    <h5 class="modulePreviewTitle">Company Update Engagement</h5>
+
+                                    <div class="_previewWrap">
+                                        <img src="https://d3uq0lxah0gw68.cloudfront.net/v2/images/analytics/modules/LINKEDIN_COMPANY_UPDATES.d6c989cf.png" title="Company Update Engagement" class="level-up">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="oneClickTemplateInfo">
+                            <h1 class="-title">Insights de página de LinkedIn</h1>
+
+                            <div class="-description">
+                                <p>¿Qué resultados está teniendo la página de LinkedIn de tu empresa? ¿Qué actualización de estado está teniendo más éxito? Esta plantilla incluye un resumen gráfico del mes más reciente (seguidores, impresiones y participación) y participación en actualizaciones.</p>
+                            </div>
+
+                            <div class="_reportOwners"><div class="_reportOwnerSelSection">
+                                <label>Selecciona un propietario aquí: </label>
+                                <span class="">
+	<select class="_reportOwnerDropdown" name="ownerMemberId">
+        <option value="" credits="0">Selecciona un propietario del informe</option>
+        <option value="10193430" credits="0" fullname="Dennis Piedra">Dennis Piedra</option>
+    </select>
+    </span>
+                            </div></div>
+
+                            <div class="_paramHandlers"><div class="paramHandler _paramHandler"><h3>Páginas de Empresa en LinkedIn</h3>
+
+                                <div class="_profileSelectorWidget profileSelectorWidget nopin shownames" wid="9" style="z-index: 1;">
+                                    <div class="profileSelectorWrapper">
+                                        <div class="selectedList _selectedList rb-a-2">
+      <span class="btn-lite-cmt profileSelect _profileSelect">
+        <span class="icon-19 account"></span>
+      </span>
+                                            <span class="filterItem _filter"><em class="_defaultText defaultText" style="">Haz clic para seleccionar una red social</em><input class="_filterName clean _collapsable" type="text" value="" style="display: none;"></span>
+                                            <span class="btn-lite-sta listCollapsed _listCollapsed">
+        <span class="icon-19 collapsed"></span>
+      </span>
+                                        </div>
+                                        <div class="picker _picker _collapsable" style="display: none;">
+                                            <div class="snList _itemList">
+                                                <div class="stream-scroll _itemListBody">
+
+
+                                                    <div class="row">Todavía no tienes redes sociales para seleccionar</div>
+
+                                                </div>
+                                            </div>
+                                            <div class="footer _tools">
+                                                <div style="float: right;">
+                                                    <select class="_showOnly">
+                                                        <option value="">Mostrar todos</option>
+                                                        <option value="fav">Favoritos</option>
+                                                        <!--<option value="pin">Marcado</option>-->
+                                                    </select>
+                                                    <!--<a class="btn-lite-cmt btn-mini" href="#">Restablecer</a>-->
+                                                </div>
+
+                                                <span class="btn-lite-sta btn-sml _clear">Borrar</span>
+                                                &nbsp;|&nbsp;
+                                                <span class="btn-lite-sta btn-sml btn-icon-13 _jsTooltip addNetwork _addSocialNetwork" title="Añadir red social">
+          <span class="icon-13 plus"></span>
+        </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div></div></div>
+
+                            <a class="btn btn-success">Crear informe</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="templateView tab-pane tabs-right-content" id="editor-google-analitics">
+            <div class="documentView next">
+                <div class="page">
+                    <aside class="_messageBanner message-banner" style="">
+                        <span class="_messageContent">Este informe requiere 50 puntos. Tienes 0 puntos disponibles. <a href="#" class="_upgradePro">Actualiza a Pro</a> para utilizar este informe.</span>
+                        <i class="icon-13 close _messageCloseBtn"></i>
+                    </aside>
+                    <div class="document">
+                        <div class="_reportPreview template-report">
+                            <div class="_levelBanner level-banner pro" style=""></div>
+                            <div class="documentHeader">
+                                <h1 class="documentTitle">Google Analytics</h1>
+                            </div>
+                            <div class="documentContent">
+
+
+                                <div class="content-full _type10 _pro">
+                                    <h5 class="modulePreviewTitle">Site Visitors Overview</h5>
+
+                                    <div class="_previewWrap">
+                                        <img src="https://d2l6uygi1pgnys.cloudfront.net/v2/images/analytics/modules/GA_TRAFFIC.2b57ba4b.png" title="Site Visitors Overview" class="level-up">
+                                    </div>
+                                </div>
+
+
+                                <div class="content-full _type25 _pro">
+                                    <h5 class="modulePreviewTitle">Sparklines</h5>
+
+                                    <div class="_previewWrap">
+                                        <img src="https://d12qyuqyvqjkw5.cloudfront.net/v2/images/analytics/modules/GA_SPARKLINES.cff6cf14.png" title="Sparklines" class="level-up">
+                                    </div>
+                                </div>
+
+
+                                <div class="content-full _type11 _pro">
+                                    <h5 class="modulePreviewTitle">Regional Site Traffic - Map Overlay</h5>
+
+                                    <div class="_previewWrap">
+                                        <img src="https://d12qyuqyvqjkw5.cloudfront.net/v2/images/analytics/modules/GA_REGION.808d4ced.png" title="Regional Site Traffic - Map Overlay" class="level-up">
+                                    </div>
+                                </div>
+
+
+                                <div class="content-full _type13 _pro">
+                                    <h5 class="modulePreviewTitle">Top Content</h5>
+
+                                    <div class="_previewWrap">
+                                        <img src="https://d2l6uygi1pgnys.cloudfront.net/v2/images/analytics/modules/GA_TOP_PAGE_VIEW.62c95238.png" title="Top Content" class="level-up">
+                                    </div>
+                                </div>
+
+
+                                <div class="box-wrapper">
+
+                                    <div class="box-half _type12 _pro">
+                                        <h5 class="modulePreviewTitle">Traffic Sources</h5>
+
+                                        <div class="_previewWrap">
+                                            <img src="https://d3uq0lxah0gw68.cloudfront.net/v2/images/analytics/modules/GA_TRAFFIC_SOURCE.aabaa7d4.png" title="Traffic Sources" class="level-up">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="oneClickTemplateInfo">
+                            <h1 class="-title">Google Analytics</h1>
+
+                            <div class="-description">
+                                <p>Visualiza la actividad web de un perfil de Google Analytics.</p>
+                            </div>
+
+                            <div class="_reportOwners"><div class="_reportOwnerSelSection">
+                                <label>Selecciona un propietario aquí: </label>
+                                <span class="">
+	<select class="_reportOwnerDropdown" name="ownerMemberId">
+        <option value="" credits="0">Selecciona un propietario del informe</option>
+        <option value="10193430" credits="0" fullname="Dennis Piedra">Dennis Piedra</option>
+    </select>
+    </span>
+                            </div></div>
+
+                            <div class="_paramHandlers"><div class="paramHandler _paramHandler"><h3>Google Analytics</h3>
+
+
+                                <button class="_addGAProfile btn-sta">Añadir cuenta de Google</button>
+
+                            </div><div class="paramHandler _paramHandler"><h3>Perfil de Twitter</h3>
+
+                                <div class="_profileSelectorWidget profileSelectorWidget nopin shownames" wid="10" style="z-index: 1;">
+                                    <div class="profileSelectorWrapper">
+                                        <div class="selectedList _selectedList rb-a-2">
+      <span class="btn-lite-cmt profileSelect _profileSelect" style="display: none;">
+        <span class="icon-19 account"></span>
+      </span>
+                                            <span class="item _selectItem _remove" itemid="103851428" type="TWITTER"><img class="avatar" src="https://abs.twimg.com/sticky/default_profile_images/default_profile_5_normal.png" title="Eliminar dennis_margelys"><strong>dennis_margelys</strong><span class="icon-sn-13 twitter"></span></span><span class="filterItem _filter"><em class="_defaultText defaultText" style="display: none;">Haz clic para seleccionar una red social</em><input class="_filterName clean _collapsable" type="text" value="" style="display: none;"></span>
+                                            <span class="btn-lite-sta listCollapsed _listCollapsed">
+        <span class="icon-19 collapsed"></span>
+      </span>
+                                        </div>
+                                        <div class="picker _picker _collapsable" style="display: none;">
+                                            <div class="snList _itemList">
+                                                <div class="stream-scroll _itemListBody">
+
+                                                    <div class="row _row selected" itemid="103851428" type="TWITTER">
+                                                        <div class="controls">
+                                                            <a class="_action _fav _jsTooltip icon-19 fave " title="Mover al principio"></a>
+                                                            <a class="_action _pin  _jsTooltip icon-19 pin " title="Seleccionar siempre"></a>
+                                                            <span class="networkIcon icon-sn-13 twitter"></span>
+                                                        </div>
+                                                        <div class="details" title="dennis_margelys">
+                                                            <img class="avatar" src="https://abs.twimg.com/sticky/default_profile_images/default_profile_5_normal.png">&nbsp;
+                                                            <strong>dennis_margelys</strong>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="footer _tools">
+                                                <div style="float: right;">
+                                                    <select class="_showOnly">
+                                                        <option value="">Mostrar todos</option>
+                                                        <option value="fav">Favoritos</option>
+                                                        <!--<option value="pin">Marcado</option>-->
+                                                    </select>
+                                                    <!--<a class="btn-lite-cmt btn-mini" href="#">Restablecer</a>-->
+                                                </div>
+
+                                                <span class="btn-lite-sta btn-sml _clear">Borrar</span>
+                                                &nbsp;|&nbsp;
+                                                <span class="btn-lite-sta btn-sml btn-icon-13 _jsTooltip addNetwork _addSocialNetwork" title="Añadir red social">
+          <span class="icon-13 plus"></span>
+        </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div></div></div>
+
+                            <a class="btn btn-success">Crear informe</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="templateView tab-pane tabs-right-content" id="editor-click-owly">
+            <div id="templateView" class="documentView next">
+                <div class="page">
+                    <aside class="_messageBanner message-banner" style="display: none;">
+                        <span class="_messageContent"></span>
+                        <i class="icon-13 close _messageCloseBtn"></i>
+                    </aside>
+                    <div class="document">
+                        <div class="_reportPreview template-report">
+                            <div class="_levelBanner level-banner" style="display: none;"></div>
+                            <div class="documentHeader">
+                                <h1 class="documentTitle">Resumen de clics Ow.ly</h1>
+                            </div>
+                            <div class="documentContent">
+
+
+                                <div class="content-full _type1 _free">
+                                    <h5 class="modulePreviewTitle">Summary Stats</h5>
+
+                                    <div class="_previewWrap">
+                                        <img src="https://d3uq0lxah0gw68.cloudfront.net/v2/images/analytics/modules/OWLY_AGGREGATED_CLICKS.1aee5860.png" title="Summary Stats">
+                                    </div>
+                                </div>
+
+
+                                <div class="box-wrapper">
+
+                                    <div class="box-half _type2 _free">
+                                        <h5 class="modulePreviewTitle">Clicks by Region</h5>
+
+                                        <div class="_previewWrap">
+                                            <img src="https://d12qyuqyvqjkw5.cloudfront.net/v2/images/analytics/modules/OWLY_AGGREGATED_REGION.d008633b.png" title="Clicks by Region">
+                                        </div>
+                                    </div>
+
+                                    <div class="box-half _type3 _free">
+                                        <h5 class="modulePreviewTitle">Top Referrers</h5>
+
+                                        <div class="_previewWrap">
+                                            <img src="https://d3uq0lxah0gw68.cloudfront.net/v2/images/analytics/modules/OWLY_AGGREGATED_REFERRER.365dbba2.png" title="Top Referrers">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="content-full _type4 _free">
+                                    <h5 class="modulePreviewTitle">Most Popular Links</h5>
+
+                                    <div class="_previewWrap">
+                                        <img src="https://d3uq0lxah0gw68.cloudfront.net/v2/images/analytics/modules/OWLY_AGGREGATED_POPULAR.e361df1e.png" title="Most Popular Links">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="oneClickTemplateInfo">
+                            <h1 class="-title">Resumen de clics Ow.ly</h1>
+
+                            <div class="-description">
+                                <p>Ver las estadísticas de clics de todos tus enlaces Ow.ly de Twitter. Esto incluye total de clics por día, clics por región y clics más populares.</p>
+                            </div>
+
+                            <div class="_reportOwners"><div class="_reportOwnerSelSection">
+                                <label>Selecciona un propietario aquí: </label>
+                                <span class="">
+	<select class="_reportOwnerDropdown" name="ownerMemberId">
+        <option value="" credits="0">Selecciona un propietario del informe</option>
+        <option value="10193430" credits="0" fullname="Dennis Piedra">Dennis Piedra</option>
+    </select>
+    </span>
+                            </div></div>
+
+                            <div class="_paramHandlers"><div class="paramHandler _paramHandler"><h3>Perfil de Twitter</h3>
+
+                                <div class="_profileSelectorWidget profileSelectorWidget nopin shownames" wid="11" style="z-index: 1;">
+                                    <div class="profileSelectorWrapper">
+                                        <div class="selectedList _selectedList rb-a-2">
+      <span class="btn-lite-cmt profileSelect _profileSelect" style="display: none;">
+        <span class="icon-19 account"></span>
+      </span>
+                                            <span class="item _selectItem _remove" itemid="103851428" type="TWITTER"><img class="avatar" src="https://abs.twimg.com/sticky/default_profile_images/default_profile_5_normal.png" title="Eliminar dennis_margelys"><strong>dennis_margelys</strong><span class="icon-sn-13 twitter"></span></span><span class="filterItem _filter"><em class="_defaultText defaultText" style="display: none;">Haz clic para seleccionar una red social</em><input class="_filterName clean _collapsable" type="text" value="" style="display: none;"></span>
+                                            <span class="btn-lite-sta listCollapsed _listCollapsed">
+        <span class="icon-19 collapsed"></span>
+      </span>
+                                        </div>
+                                        <div class="picker _picker _collapsable" style="display: none;">
+                                            <div class="snList _itemList">
+                                                <div class="stream-scroll _itemListBody">
+
+                                                    <div class="row _row selected" itemid="103851428" type="TWITTER">
+                                                        <div class="controls">
+                                                            <a class="_action _fav _jsTooltip icon-19 fave " title="Mover al principio"></a>
+                                                            <a class="_action _pin  _jsTooltip icon-19 pin " title="Seleccionar siempre"></a>
+                                                            <span class="networkIcon icon-sn-13 twitter"></span>
+                                                        </div>
+                                                        <div class="details" title="dennis_margelys">
+                                                            <img class="avatar" src="https://abs.twimg.com/sticky/default_profile_images/default_profile_5_normal.png">&nbsp;
+                                                            <strong>dennis_margelys</strong>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="footer _tools">
+                                                <div style="float: right;">
+                                                    <select class="_showOnly">
+                                                        <option value="">Mostrar todos</option>
+                                                        <option value="fav">Favoritos</option>
+                                                        <!--<option value="pin">Marcado</option>-->
+                                                    </select>
+                                                    <!--<a class="btn-lite-cmt btn-mini" href="#">Restablecer</a>-->
+                                                </div>
+
+                                                <span class="btn-lite-sta btn-sml _clear">Borrar</span>
+                                                &nbsp;|&nbsp;
+                                                <span class="btn-lite-sta btn-sml btn-icon-13 _jsTooltip addNetwork _addSocialNetwork" title="Añadir red social">
+          <span class="icon-13 plus"></span>
+        </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div></div></div>
+
+                            <a class="btn btn-success">Crear informe</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane tabs-right-content" id="editor-estatisticas-owly">
+            <div id="presetView" class="documentView" presetid="2">
+                <div class="page report">
+                    <div class="analyticsSectionHeader">
+                        <div class="controls _controls" style="padding-top: 8px;">
+                            <a class="btn-lite-cmt _exportPdf disabled" href="#">Exportar PDF</a>
+                            <a class="btn-lite-cmt _exportCsv disabled" href="#">Exportar CSV</a>
+                            <a class="btn-lite-cmt _print disabled" href="#">Imprimir</a>
+                            <a class="btn btn-success" style="margin-left:20px;" href="#">Personalizar</a>
+                        </div>
+                        <h2>URL Click Stats - Ow.ly</h2>
+                    </div>
+                    <div class="section-title"><h3>&nbsp;</h3></div>
+                    <div class="document">
+                        <div class="preset-report ui-form">
+                            <div class="_filter presetFilter">
+                                <table class="filters" cellpadding="0" cellspacing="0" border="0">
+                                    <tbody><tr>
+                                        <td>
+                                            <div class="filter">
+                                                <label class="-formElement">
+                                                    <span class="title">Introduce una url Ow.ly/Ht.ly o tu propia url personalizada</span>
+                                                    <input class="form-control" type="text" name="searchTerms[owlyHashes][]">
+                                                </label>
+                                                <div class="btns">
+                                                    <a class="btn btn-default" href="#">Aplicar</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="filter">
+                                                <label class="-formElement">
+                                                    <span class="title">O puedes buscar una url ow.ly desde tu cuenta de Twitter</span>
+                                                    <select class="form-control">
+                                                        <option value="0">Selecciona una cuenta de Twitter</option>
+                                                        <option label="@dennis_margelys" value="dennis_margelys">@dennis_margelys</option>
+
+                                                    </select>
+                                                </label>
+
+                                                <div class="_results stream list-scroll rb-a-3" style="display:none;"></div>
+
+                                                <div class="_memberOwlyUrls" style="display:none;">
+                                                    <input type="hidden" value="http://ow.ly">
+                                                    <input type="hidden" value="http://owl.li">
+                                                    <input type="hidden" value="http://ht.ly">
+                                                    <input type="hidden" value="http://htl.li">
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody></table>
+                            </div>
+                            <div class="documentContent _content">
+                            </div>
+                        </div>    </div>
+                </div>
+            </div>
+        </div>
+        <div class="active tab-pane tabs-right-content" id="editor-informes">
+            <div id="analyticsContent" class="tabs-content-wrapper">
+                <div id="reportList">
+                    <div class="page">
+                        <div class="page-list">
+                            <div class="analyticsSectionHeader">
+                                <div class="controls _controls">
+                                    <a class="btn-lite-sta _jsTooltip _share disabled" href="#"><i class="icon-19 sharing"></i></a>
+                                    <a class="btn-lite-sta btn-l _jsTooltip _exportPdf disabled" data-tracking-origin="web.dashboard.analytics" data-tracking-action="web.dashboard.analytics.export-pdf" href="#"><i class="icon-19 download"></i><span>PDF</span>
+                                    </a><a class="btn-lite-sta btn-r _jsTooltip _exportCsv disabled" data-tracking-origin="web.dashboard.analytics" data-tracking-action="web.dashboard.analytics.export-csv" href="#"><i class="icon-19 download"></i><span>CSV</span></a>
+                                    <a class="btn-lite-sta _jsTooltip _print disabled" href="#"><i class="icon-19 print"></i></a>
+                                    <a class="btn-lite-sta btn-l _jsTooltip _copy disabled" href="#"><i class="icon-19 bi-duplicate"></i>
+                                    </a><a class="btn-lite-sta btn-m _jsTooltip _edit disabled" href="#"><i class="icon-19 edit"></i>
+                                </a><a class="btn-lite-sta btn-r _jsTooltip _delete disabled" href="#"><i class="icon-19 bi-trash"></i></a>
+                                </div>        <h2>Todos los Informes</h2>
+                            </div>
+                            <div class="section-title">
+                                <h3>&nbsp;</h3>
+                            </div>
+                            <div class="section-list _reportItems">
+                                <div class="emptyContentMessage bgCreateReport rb-a-5">
+                                    <h2>No has creado ningún informe todavía</h2>
+                                    <p>Sigue el éxito de tu trabajo en las redes sociales con informes imprimibles que puedes compartir con otros usuarios de Hootsuite. Selecciona entre más de 30 módulos de analítica para personalizar tu informe interactivo.</p>
+                                    <a class="btn btn-success" href="#">Crea uno ahora</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane tabs-right-content" id="editor-borradores">
+            <div id="analyticsContent" class="tabs-content-wrapper">
+                <div id="reportList">
+                    <div class="page">
+                        <div class="page-list">
+                            <div class="analyticsSectionHeader">
+                                <div class="controls _controls">
+                                    <a class="btn-lite-sta _jsTooltip _share disabled" href="#"><i class="icon-19 sharing"></i></a>
+                                    <a class="btn-lite-sta btn-l _jsTooltip _exportPdf disabled" data-tracking-origin="web.dashboard.analytics" data-tracking-action="web.dashboard.analytics.export-pdf" href="#"><i class="icon-19 download"></i><span>PDF</span>
+                                    </a><a class="btn-lite-sta btn-r _jsTooltip _exportCsv disabled" data-tracking-origin="web.dashboard.analytics" data-tracking-action="web.dashboard.analytics.export-csv" href="#"><i class="icon-19 download"></i><span>CSV</span></a>
+                                    <a class="btn-lite-sta _jsTooltip _print disabled" href="#"><i class="icon-19 print"></i></a>
+                                    <a class="btn-lite-sta btn-l _jsTooltip _copy disabled" href="#"><i class="icon-19 bi-duplicate"></i>
+                                    </a><a class="btn-lite-sta btn-m _jsTooltip _edit disabled" href="#"><i class="icon-19 edit"></i>
+                                </a><a class="btn-lite-sta btn-r _jsTooltip _delete disabled" href="#"><i class="icon-19 bi-trash"></i></a>
+                                </div>        <h2>Borradores de Informes</h2>
+                            </div>
+                            <div class="section-title">
+                                <h3>&nbsp;</h3>
+                            </div>
+                            <div class="section-list _reportItems">
+                                <div class="emptyContentMessage bgCreateReport rb-a-5">
+                                    <h2>No tienes ningún borrador</h2>
+                                    <p>Los borradores te permiten guardar tus informes antes de que los hayas finalizado. Tómate tu tiempo sin preocuparte por perder tu trabajo o utilizar puntos antes de estar preparado/a.</p>
+                                    <a class="btn btn-success" href="#">Crea uno ahora</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="clearfix"></div>

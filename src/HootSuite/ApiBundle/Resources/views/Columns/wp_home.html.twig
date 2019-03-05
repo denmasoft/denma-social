@@ -1,0 +1,26 @@
+<div ng-if="col.data.length" ng-repeat="row in col.data" class="column-body-item column-body-has-options">
+    <div class="body-item-content">
+        <div class="item-avatar">
+            <a href="javascript:;" ng-click="userProfile(row.author.id,col.profile,row.author.name)">
+                <img style="width: 100%" ng-src="[[row.author.avatar_URL]]" />
+            </a>
+        </div>
+        <div class="item-username"><a class="username" href="javascript:;" ng-click="userProfile(row.author.URL,col.profile,row.author,'WP')">[[row.author.URL]]</a></div>
+        <div class="item-created"><span unsafe><a target="_blank" ng-href="row.guid">[[row.date | toDate | date:'MMM d, h:mma']]</a></span></div>
+        <div class="item-text" compile-data template="<div>
+             [[row.title]]: [[row.content | linkify ]] <a ng-href='row.short_URL'>[[row.short_URL]]</a></div>">
+        </div>
+    </div>
+    <div class="col-row-options">
+        <ul>
+            <span no-propage ng-click="prepareMessage(col.profile, row.author)" class="glyphicon glyphicon1-retweet btn-option" tooltip="Volver a publicar" tooltip-append-to-body="true"></span>
+            <span ng-click="sendToEmail(row.content)"><span class="glyphicon glyphicon-envelope btn-option" tooltip="Enviar a correo"></span></span>
+        </ul>
+    </div>    
+</div>
+<div class="column-body-item column-body-scrolling" ng-show="col.scrolling">
+    <span class="glyphicon glyphicon-refresh-gif-black"></span> Cargando...
+</div>
+<div ng-if="col.data.length==0" class="column-no-results column-body-item">
+    No se han encontrado resultados
+</div>

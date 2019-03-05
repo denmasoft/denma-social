@@ -1,0 +1,27 @@
+_homepage:
+    pattern: /
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: homepage
+        permanent: true
+homepage:
+    pattern:  /{_locale}/
+    defaults: { _controller: FrontendBundle:Default:index }
+    requirements:
+            _locale: es|en
+plans:
+    pattern:  /plans
+    defaults: { _controller: FrontendBundle:Default:plans }
+
+#RUTAS DE SEGURIDAD
+seguridad_rutas:
+    resource: "@FrontendBundle/Resources/config/routing/seguridad.yml"
+    prefix:   /  
+
+#RUTAS DE AUTORIZE REDES SOCIALES
+autorize_rutas:
+    resource: "@FrontendBundle/Resources/config/routing/autorize.yml"
+    prefix:   /
+frontend_rutas:
+    resource: "@FrontendBundle/Resources/config/routing/frontend.yml"
+    prefix:   /

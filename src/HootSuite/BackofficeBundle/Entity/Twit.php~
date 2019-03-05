@@ -1,0 +1,419 @@
+<?php
+
+namespace Social\ProyectoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
+
+/**
+ * @ORM\Table(name="twit")
+ * @ORM\Entity
+ */
+class Twit
+{
+  /** 
+   * @var integer $id
+   * @ORM\Column(name="id", type="integer")
+   * @ORM\Id
+   * @ORM\GeneratedValue(strategy="AUTO")
+   */
+  protected $id;
+  
+  /** 
+   * @var string $twitter_id
+   * @ORM\Column(type="string", length=255)
+   */
+  protected $twitter_id;
+  
+  /** 
+   * @var string $twitter_id
+   * @ORM\Column(type="string", length=140)
+   */
+  protected $twitter_text;
+  
+  /** 
+   * @var string $twitter_user_id
+   * @ORM\Column(type="string", length=255)
+   */
+  protected $twitter_user_id;
+  
+  /** 
+   * @var string $twitter_user_screname
+   * @ORM\Column(type="string", length=255)
+   */
+  protected $twitter_user_screname;
+  
+  /** 
+   * @var string $twitter_user_name
+   * @ORM\Column(type="string", length=255)
+   */
+  protected $twitter_user_name;
+  
+  /** 
+   * @var string $twitter_user_image_url
+   * @ORM\Column(type="text", nullable=true)
+   */
+  protected $twitter_user_image_url;
+    
+  /**
+   * @var date $twitter_created_at
+   * @ORM\Column(type="datetime")
+   */    
+  private $twitter_created_at; 
+    
+  /** 
+   * @var string $twitter_place
+   * @ORM\Column(type="string", length=255, nullable=true)
+   */
+  protected $twitter_place;
+    
+  /** 
+   * @var string $twitter_place_full
+   * @ORM\Column(type="string", length=255, nullable=true)
+   */
+  protected $twitter_place_full;
+    
+  /**
+   * @var date $retweeted
+   * @ORM\Column(type="boolean")
+   */    
+  private $retweeted; 
+    
+  /**
+   * @var date $favorited
+   * @ORM\Column(type="boolean")
+   */    
+  private $favorited; 
+    
+  /**
+   * @var date $followed
+   * @ORM\Column(type="boolean")
+   */    
+  private $followed; 
+
+  /**
+    * @ORM\ManyToOne(targetEntity="Campanna", inversedBy="twitts"))
+    * @ORM\JoinColumn(name="campanna_id", referencedColumnName="id")
+    */
+  private $campanna;
+  
+    
+  /**
+    * @ORM\ManyToOne(targetEntity="Ubicacion", inversedBy="twit")
+    * @ORM\JoinColumn(name="ubicacion_id", referencedColumnName="id")
+    */
+  protected $ubicacion;
+ 
+
+    /**
+     * Set twitter_id
+     *
+     * @param string $twitterId
+     * @return Twit
+     */
+    public function setTwitterId($twitterId)
+    {
+        $this->twitter_id = $twitterId;
+    
+        return $this;
+    }
+
+    /**
+     * Get twitter_id
+     *
+     * @return string 
+     */
+    public function getTwitterId()
+    {
+        return $this->twitter_id;
+    }
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set twitter_text
+     *
+     * @param string $twitterText
+     * @return Twit
+     */
+    public function setTwitterText($twitterText)
+    {
+        $this->twitter_text = $twitterText;
+    
+        return $this;
+    }
+
+    /**
+     * Get twitter_text
+     *
+     * @return string 
+     */
+    public function getTwitterText()
+    {
+        return $this->twitter_text;
+    }
+
+    /**
+     * Set twitter_user_id
+     *
+     * @param string $twitterUserId
+     * @return Twit
+     */
+    public function setTwitterUserId($twitterUserId)
+    {
+        $this->twitter_user_id = $twitterUserId;
+    
+        return $this;
+    }
+
+    /**
+     * Get twitter_user_id
+     *
+     * @return string 
+     */
+    public function getTwitterUserId()
+    {
+        return $this->twitter_user_id;
+    }
+
+    /**
+     * Set twitter_user_screname
+     *
+     * @param string $twitterUserScrename
+     * @return Twit
+     */
+    public function setTwitterUserScrename($twitterUserScrename)
+    {
+        $this->twitter_user_screname = $twitterUserScrename;
+    
+        return $this;
+    }
+
+    /**
+     * Get twitter_user_screname
+     *
+     * @return string 
+     */
+    public function getTwitterUserScrename()
+    {
+        return $this->twitter_user_screname;
+    }
+
+    /**
+     * Set twitter_user_name
+     *
+     * @param string $twitterUserName
+     * @return Twit
+     */
+    public function setTwitterUserName($twitterUserName)
+    {
+        $this->twitter_user_name = $twitterUserName;
+    
+        return $this;
+    }
+
+    /**
+     * Get twitter_user_name
+     *
+     * @return string 
+     */
+    public function getTwitterUserName()
+    {
+        return $this->twitter_user_name;
+    }
+
+    /**
+     * Set twitter_user_image_url
+     *
+     * @param string $twitterUserImageUrl
+     * @return Twit
+     */
+    public function setTwitterUserImageUrl($twitterUserImageUrl)
+    {
+        $this->twitter_user_image_url = $twitterUserImageUrl;
+    
+        return $this;
+    }
+
+    /**
+     * Get twitter_user_image_url
+     *
+     * @return string 
+     */
+    public function getTwitterUserImageUrl()
+    {
+        return $this->twitter_user_image_url;
+    }
+
+    /**
+     * Set twitter_created_at
+     *
+     * @param \DateTime $twitterCreatedAt
+     * @return Twit
+     */
+    public function setTwitterCreatedAt($twitterCreatedAt)
+    {
+        $this->twitter_created_at = $twitterCreatedAt;
+    
+        return $this;
+    }
+
+    /**
+     * Get twitter_created_at
+     *
+     * @return \DateTime 
+     */
+    public function getTwitterCreatedAt()
+    {
+        return $this->twitter_created_at;
+    }
+
+    /**
+     * Set twitter_place
+     *
+     * @param string $twitterPlace
+     * @return Twit
+     */
+    public function setTwitterPlace($twitterPlace)
+    {
+        $this->twitter_place = $twitterPlace;
+    
+        return $this;
+    }
+
+    /**
+     * Get twitter_place
+     *
+     * @return string 
+     */
+    public function getTwitterPlace()
+    {
+        return $this->twitter_place;
+    }
+
+    /**
+     * Set twitter_place_full
+     *
+     * @param string $twitterPlaceFull
+     * @return Twit
+     */
+    public function setTwitterPlaceFull($twitterPlaceFull)
+    {
+        $this->twitter_place_full = $twitterPlaceFull;
+    
+        return $this;
+    }
+
+    /**
+     * Get twitter_place_full
+     *
+     * @return string 
+     */
+    public function getTwitterPlaceFull()
+    {
+        return $this->twitter_place_full;
+    }
+
+    /**
+     * Set retwitted
+     *
+     * @param boolean $retweeted
+     * @return Twit
+     */
+    public function setRetweeted($retwitted)
+    {
+        $this->retweeted = $retwitted;
+    
+        return $this;
+    }
+
+    /**
+     * Get retwitted
+     *
+     * @return boolean 
+     */
+    public function getRetweeted()
+    {
+        return $this->retweeted;
+    }
+
+    /**
+     * Set favorited
+     *
+     * @param boolean $favorited
+     * @return Twit
+     */
+    public function setFavorited($favorited)
+    {
+        $this->favorited = $favorited;
+    
+        return $this;
+    }
+
+    /**
+     * Get favorited
+     *
+     * @return boolean 
+     */
+    public function getFavorited()
+    {
+        return $this->favorited;
+    }
+
+    /**
+     * Set followed
+     *
+     * @param boolean $followed
+     * @return Twit
+     */
+    public function setFollowed($followed)
+    {
+        $this->followed = $followed;
+    
+        return $this;
+    }
+
+    /**
+     * Get followed
+     *
+     * @return boolean 
+     */
+    public function getFollowed()
+    {
+        return $this->followed;
+    }
+
+    /**
+     * Set ubicacion
+     *
+     * @param \Social\ProyectoBundle\Entity\Ubicacion $ubicacion
+     * @return Twit
+     */
+    public function setUbicacion(\Social\ProyectoBundle\Entity\Ubicacion $ubicacion = null)
+    {
+        $this->ubicacion = $ubicacion;
+    
+        return $this;
+    }
+
+    /**
+     * Get ubicacion
+     *
+     * @return \Social\ProyectoBundle\Entity\Ubicacion 
+     */
+    public function getUbicacion()
+    {
+        return $this->ubicacion;
+    }
+}

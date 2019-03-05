@@ -1,0 +1,261 @@
+<span ng-init="col.more_options_filter=true; col.more_options_empty=true;"></span>
+<div class="column-body-item column-body-filtering" ng-show="col.filtering">
+    <div class="input-group">
+        <div class="input-group-btn input-group-select-first">
+            <select class="col-filter-selection" tooltip="Filtrar por" tooltip-append-to-body="true">
+                <option>Palabra clave</option>
+            </select>
+        </div>    
+        <input type="text" ng-model="filtro" class="form-control" />
+        <span class="input-group-btn">
+            <button class="btn btn-primary btn-sm" ng-click="col.filtering=false; filtro=''"><i class="glyphicon glyphicon-remove"></i></button>
+        </span>
+    </div>    
+</div>
+<div ng-if="col.data.length" ng-repeat="row in col.data  | filter:filtro" class="column-body-item column-body-has-options">
+    <div class="body-item-content">
+        <div class="item-avatar">
+            <div class="avatar-more-menu">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="width: 100%;">
+                    <div style="position: absolute; top: 5px; right: 5px; left: 5px;">
+                        <img ng-if="row.updateContent.person" style="width: 100%;" ng-src="[[row.updateContent.person.pictureUrl]]" />
+                        <img ng-if="row.updateContent.company" style="width: 100%;" src="https://static.licdn.com/scds/common/u/img/icon/icon_no_photo_30x30.png" />
+                    </div>
+                    <br/>
+                    <span style="margin-top: 20px;" class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a ng-if="row.updateContent.person" href="javascript:;" ng-click="userProfile(row.updateContent.person.id,col.profile,(row.updateContent.person.firstName+' '+row.updateContent.person.lastName),'LI')"><span class="glyphicon glyphicon1-user"></span> Ver perfil</a>
+                        <a ng-if="row.updateContent.company" href="javascript:;" ng-click="userProfile(row.updateContent.company.id,col.profile,row.updateContent.company.name,'LI','','CMP')"><span class="glyphicon glyphicon1-user"></span> Ver perfil</a>
+                    </li>
+                </ul>
+            </div>
+            <img ng-if="row.updateContent.person" style="width: 100%" ng-src="[[row.updateContent.person.pictureUrl]]" />
+            <img ng-if="row.updateContent.company" style="width: 100%" src="https://static.licdn.com/scds/common/u/img/icon/icon_no_photo_30x30.png" />
+        </div>
+        <div class="item-username">
+            <a ng-if="row.updateContent.person" class="username" href="javascript:;" ng-click="userProfile(row.updateContent.person.id,col.profile,(row.updateContent.person.firstName+' '+row.updateContent.person.lastName),'LI')">[[row.updateContent.person.firstName]] [[row.updateContent.person.lastName]]</a>
+            <a ng-if="row.updateContent.company" class="username" href="javascript:;" ng-click="userProfile(row.updateContent.company.id,col.profile,row.updateContent.company.name,'LI','','CMP')">[[row.updateContent.company.name]]</a>
+        </div>
+        <div class="item-created"><span unsafe>[[row.timestamp | toDate | date:'MMM d, h:mma']]</span></div>
+        
+        
+        <div class="item-text" ng-if="row.updateType=='CONN'" compile-data template="
+             <div ng-init='row_updateComents=[]'>
+                <div>
+                    <a ng-href='[[row.updateContent.person.siteStandardProfileRequest.url]]' ng-click='userProfile(row.updateContent.person.id,col.profile,row.updateContent.person,4,$event)'>
+                        [[row.updateContent.person|userNameLi]]
+                    </a> tiene un contacto nuevo.
+                </div>
+                <div ng-init='conection=row.updateContent.person.connections.values[0]' class='li-update-wrapper item-row-link'>
+                    <a ng-href='[[conection.siteStandardProfileRequest.url]]' ng-click='userProfile(conection.id,col.profile,conection,4,$event)'>
+                        <img class='li-update-img' ng-if='conection.pictureUrl' ng-src='[[conection.pictureUrl]]' />
+                        <img class='li-update-img' ng-if='!conection.pictureUrl' src='https://static.licdn.com/scds/common/u/img/icon/icon_no_photo_80x80.png' />
+                    </a>
+                    <div class='item-username'>
+                        <a ng-href='[[conection.siteStandardProfileRequest.url]]' ng-click='userProfile(conection.id,col.profile,conection,4,$event)'>[[conection.firstName]] [[conection.lastName]]</a>
+                    </div>
+                    <span>[[conection.headline]]</span>
+                    <div class='clearfix'></div>
+                </div>
+             </div>">
+        </div>
+        
+        <div class="item-text" ng-if="row.updateType=='SHAR'" compile-data template="
+             <div ng-init='row_updateComents=row.updateComents'>
+                <div>
+                    [[row.updateContent.person.currentShare.comment]]
+                </div>
+                <div class='li-update-wrapper item-row-link'>
+                    <div>
+                        <a ng-if='row.updateContent.person.currentShare.content.submittedImageUrl' ng-href='[[row.updateContent.person.currentShare.content.submittedUrl]]'>
+                            <img class='li-update-img' ng-src='[[row.updateContent.person.currentShare.content.submittedImageUrl]]' />
+                        </a>
+                        <div class='item-username'>
+                            <a ng-href='[[row.updateContent.person.currentShare.content.submittedUrl]]'>
+                                [[row.updateContent.person.currentShare.content.title]]
+                            </a>
+                        </div>
+                        <div>
+                            [[row.updateContent.person.currentShare.content.description]]
+                        </div>
+                    </div>
+                </div>
+             </div>">
+        </div>
+        
+        <div class="item-text" ng-if="row.updateType=='PROF'" compile-data template="
+            <div ng-init='row_updateComents=row.updateComents'>
+                <a ng-href='[[row.updateContent.person.siteStandardProfileRequest.url]]' ng-click='userProfile(row.updateContent.person.id,col.profile,row.updateContent.person,4,$event)'>
+                    [[row.updateContent.person|userNameLi]]
+                </a> actualizó su perfil.
+            </div>">
+        </div>
+        
+        <div class="item-text" ng-if="row.updateType=='PICU'" compile-data template="
+             <div ng-init='row_updateComents=row.updateComents'>
+                <div>
+                    <a ng-href='[[row.updateContent.person.siteStandardProfileRequest.url]]' ng-click='userProfile(row.updateContent.person.id,col.profile,row.updateContent.person,4,$event)'>
+                        [[row.updateContent.person|userNameLi]]
+                    </a> actualizó su imagen de perfil.
+                </div>
+                <div class='li-update-wrapper item-row-link'>
+                    <a ng-href='[[row.updateContent.person.siteStandardProfileRequest.url]]' ng-click='userProfile(row.updateContent.person.id,col.profile,row.updateContent.person,4,$event)'>
+                        <img ng-src='[[row.updateContent.person.pictureUrl]]' />
+                    </a>
+                    <div class='clearfix'></div>
+                </div>
+             </div>">
+        </div>
+        
+        <div class="item-text" ng-if="row.updateType=='VIRL'" compile-data template="
+             <div>
+                <div>
+                    <a ng-href='[[row.updateContent.person.siteStandardProfileRequest.url]]' ng-click='userProfile(row.updateContent.person.id,col.profile,row.updateContent.person,4,$event)'>
+                        [[row.updateContent.person|userNameLi]]
+                    </a> 
+                    <span ng-if=row.updateContent.updateAction.action.code=='LIKE'>gustó</span>
+                    <span>una actualización de</span> 
+                    <a ng-if='row.updateContent.updateAction.originalUpdate.updateContent.company' 
+                        target='_blank'
+                        ng-href='https://www.linkedin.com/company/[[row.updateContent.updateAction.originalUpdate.updateContent.company.id]]' 
+                        ng-click=userProfile(row.updateContent.updateAction.originalUpdate.updateContent.company.id,col.profile,row.updateContent.updateAction.originalUpdate.updateContent.company.name)>
+                        [[row.updateContent.updateAction.originalUpdate.updateContent.company.name]]</a>
+                    <a ng-if='row.updateContent.updateAction.originalUpdate.updateContent.person' 
+                        target='_blank'
+                        ng-href='[[row.updateContent.updateAction.originalUpdate.updateContent.person.siteStandardProfileRequest.url]]' 
+                        ng-click=userProfile(row.updateContent.updateAction.originalUpdate.updateContent.person.id,col.profile,row.updateContent.updateAction.originalUpdate.updateContent.person.name)>
+                        [[row.updateContent.updateAction.originalUpdate.updateContent.person.firstName]] [[row.updateContent.updateAction.originalUpdate.updateContent.person.lastName]]</a>.
+                </div>
+                
+                <div class='li-update-wrapper item-row-link' ng-if='row.updateContent.updateAction.originalUpdate.updateContent.companyStatusUpdate'
+                    ng-init='row_updateComents=row.updateContent.updateAction.originalUpdate.updateComents'>
+                    <div>[[row.updateContent.updateAction.originalUpdate.updateContent.companyStatusUpdate.share.comment]]</div>
+                    <div>
+                        <a 
+                            ng-if='row.updateContent.updateAction.originalUpdate.updateContent.companyStatusUpdate.share.content.submittedImageUrl'
+                            ng-href='[[row.updateContent.updateAction.originalUpdate.updateContent.companyStatusUpdate.share.content.submittedUrl]]'>
+                            <img class='li-update-img' ng-src='[[row.updateContent.updateAction.originalUpdate.updateContent.companyStatusUpdate.share.content.submittedImageUrl]]' />
+                        </a>
+                        <div class='item-username'>
+                            <a ng-href='[[row.updateContent.updateAction.originalUpdate.updateContent.companyStatusUpdate.share.content.submittedUrl]]'>
+                                [[row.updateContent.updateAction.originalUpdate.updateContent.companyStatusUpdate.share.content.title]]
+                            </a>
+                        </div>
+                        <div>
+                            [[row.updateContent.updateAction.originalUpdate.updateContent.companyStatusUpdate.share.content.description]]
+                        </div>
+                    </div>
+                    <div class='clearfix'></div>
+                </div>
+                <div class='li-update-wrapper item-row-link' ng-if='row.updateContent.updateAction.originalUpdate.updateContent.person'
+                    ng-init='row_updateComents=row.updateContent.updateAction.originalUpdate.updateComents'>
+                    <div>
+                        <strong> 
+                        [[row.updateContent.updateAction.originalUpdate.updateContent.person.firstName]]
+                        [[row.updateContent.updateAction.originalUpdate.updateContent.person.lastName]]</strong>
+                        <span ng-if='row.updateContent.updateAction.originalUpdate.updateContent.person.currentShare.comment'>
+                            <strong> : </strong>[[row.updateContent.updateAction.originalUpdate.updateContent.person.currentShare.comment]]
+                        </span>
+                    </div>
+                    <div>
+                        <a ng-href='[[row.updateContent.updateAction.originalUpdate.updateContent.person.currentShare.content.shortenedUrl]]'>
+                            <img class='li-update-img' ng-src='[[row.updateContent.updateAction.originalUpdate.updateContent.person.currentShare.content.submittedImageUrl]]' />
+                        </a>
+                        <div class='item-username'>
+                            <a ng-href='[[row.updateContent.updateAction.originalUpdate.updateContent.person.currentSharecontent.submittedUrl]]'>
+                                [[row.updateContent.updateAction.originalUpdate.updateContent.person.currentShare.content.title]]
+                            </a>
+                        </div>
+                        <div>
+                            [[row.updateContent.updateAction.originalUpdate.updateContent.person.currentShare.content.description]]
+                        </div>
+                    </div>
+                    <div class='clearfix'></div>
+                </div>
+                
+             </div>">
+        </div>
+        
+        <div class="item-text" ng-if="row.updateType=='CMPY'" compile-data template="
+             <div ng-init='row_updateComents=row.updateComents'>
+                <div>
+                    [[row.updateContent.companyStatusUpdate.share.comment]]
+                </div>
+                <div class='li-update-wrapper item-row-link' ng-if='row.updateContent.companyStatusUpdate'>
+                    <a ng-href='[[row.updateContent.companyStatusUpdate.share.content.shortenedUrl]]' target='_blank'>
+                        <img class='li-update-img' ng-src='[[row.updateContent.companyStatusUpdate.share.content.thumbnailUrl]]' />
+                    </a>
+                    <div class='item-username'>
+                        <a target='_blank' ng-href='[[row.updateContent.companyStatusUpdate.share.content.shortenedUrl]]'>[[row.updateContent.companyStatusUpdate.share.content.title]]</a>
+                    </div>
+                    <span>[[row.updateContent.companyStatusUpdate.share.content.description]]</span>
+                    <div class='clearfix'></div>
+                </div>
+                <div class='li-update-wrapper item-row-link' ng-if='row.updateContent.companyJobUpdate'>
+                    <div class='item-username'>
+                        <a target='_blank' ng-href='[[row.updateContent.companyJobUpdate.job.siteJobRequest.url]]'>[[row.updateContent.companyJobUpdate.job.position.title]]</a>
+                    </div>
+                    <span>[[row.updateContent.companyJobUpdate.job.description]]</span>
+                    <div class='clearfix'></div>
+                </div>
+             </div>">
+        </div>
+        
+        <div class="item-conversation item-conversation-li" ng-show="row_updateComents._total>0">
+            <div class="item-conversation-all">
+                <div ng-repeat="conv in row_updateComents.values" class="column-body-item">
+                    <div class="item-avatar">
+                        <a ng-href="" target="_blank">
+                            <img style="width: 100%" ng-src="[[conv.person.pictureUrl ? conv.person.pictureUrl : 'https://static.licdn.com/scds/common/u/img/icon/icon_no_photo_40x40.png']]" />
+                        </a>
+                    </div>
+                    <div class="body-item-content">
+                        <div class="item-username">
+                            <a class="username" href="javascript:;" ng-click="userProfile(conv.person.id,col.profile,(conv.person.firstName+' '+conv.person.lastName),'LI')">[[conv.person|userNameLi]]</a> 
+                            <span compile-data template="<span>[[conv.comment | linkify | linkusers:col.profile]]</span>"></span>
+                        </div>
+                        <div class="item-created">[[conv.created_time | toDate | date:'MMM d, h:mma']]</div>
+                    </div>
+                </div>
+                <div class="column-body-item">
+                    <div class="item-comment-add" blur ng-init="row.updateComents.li_writing_comment=false;">
+                        <textarea ng-click="row.updateComents.li_writing_comment=true" 
+                                  ng-model="row.updateComents.li_comment_text"
+                                  alt="Pulsa 'Intro' para enviar." 
+                                  title="Pulsa 'Intro' para enviar." 
+                                  ng-blur="row.updateComents.li_writing_comment=false"
+                                  ng-class="{'inactive' : !row.updateComents.li_writing_comment}"
+                                  ng-enter="liAddComment(col.profile, row, row_updateComents)"
+                                  placeholder="Escribe un comentario..."></textarea>
+                            <div class="text-help">
+                                <span style="font-size: 11px;" ng-show="row.updateComents.li_writing_comment && !row.updateComents.adding_comment">Pulsa "Intro" para enviar.</span>
+                                <div ng-show="row.updateComents.adding_comment"><span class="glyphicon glyphicon-refresh-gif-black"></span> Enviando...</div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-row-options">
+        <ul>
+            <span no-propage ng-click="liLikes(col.profile, row, 1)" ng-if="!row.isLiked" class="glyphicon glyphicon-fb-like btn-option" tooltip="Me gusta" tooltip-append-to-body="true"></span>
+            <span no-propage ng-click="liLikes(col.profile, row, 0)" ng-if="row.isLiked" class="glyphicon glyphicon-fb-unlike btn-option" tooltip="No me gusta" tooltip-append-to-body="true"></span>
+            <span class="dropdown btn-option">
+                <span class="dropdown-toggle" on-toggle="toggled(open)" tooltip="Más opciones" tooltip-append-to-body="true">
+                    <i class="caret"></i>
+                </span>
+                <ul class="dropdown-menu pull-right" role="menu">
+                    <li><a href="javascript:;" ng-click="sendToEmail(row.text)"><span class="glyphicon glyphicon-envelope"></span> Enviar a email</a></li>
+                </ul>
+            </span>
+        </ul>
+    </div>    
+</div>
+<div class="column-body-item column-body-scrolling" ng-show="col.scrolling">
+    <span class="glyphicon glyphicon-refresh-gif-black"></span> Cargando...
+</div>
+<div ng-if="col.data.length==0" class="column-no-results column-body-item">
+    No se han encontrado resultados
+</div>

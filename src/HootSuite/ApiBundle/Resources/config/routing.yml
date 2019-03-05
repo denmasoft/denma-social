@@ -1,0 +1,83 @@
+#RUTAS DE REDES
+redes_rutas:
+    resource: "@ApiBundle/Resources/config/routing/redes.yml"
+    prefix:   /redes
+    options: 
+        expose: true
+        
+#RUTAS DE TABS
+tabs_rutas:
+    resource: "@ApiBundle/Resources/config/routing/tabs.yml"
+    prefix:   /tabs
+    options: 
+        expose: true
+        
+#RUTAS DE COLUMNAS
+cols_rutas:
+    resource: "@ApiBundle/Resources/config/routing/columns.yml"
+    prefix:   /column
+    options: 
+        expose: true
+        
+#RUTAS DE PROFILES
+profiles_rutas:
+    resource: "@ApiBundle/Resources/config/routing/profiles.yml"
+    prefix:   /profile
+    options: 
+        expose: true
+
+#RUTAS DE USUARIO
+miembro_rutas:
+    resource: "@ApiBundle/Resources/config/routing/miembro.yml"
+    prefix:   /miembro
+    options: 
+        expose: true
+
+#RUTAS DE CONTROLADOR DE MENSAJES
+message_rutas:
+    resource: "@ApiBundle/Resources/config/routing/message.yml"
+    prefix:   /message
+    options: 
+        expose: true
+
+#RUTAS DE TWITTER
+twitter_rutas:
+    resource: "@ApiBundle/Resources/config/routing/twitter.yml"
+    prefix:   /twitter
+    options: 
+        expose: true
+
+#RUTAS DE FACEBOOK
+facebook_rutas:
+    resource: "@ApiBundle/Resources/config/routing/facebook.yml"
+    prefix:   /facebook
+    options: 
+        expose: true
+
+#RUTAS DE LINKEDIN
+linkedin_rutas:
+    resource: "@ApiBundle/Resources/config/routing/linkedin.yml"
+    prefix:   /linkedin
+    options: 
+        expose: true
+        
+#RUTAS DE INSTAGRAM
+instagram_rutas:
+    resource: "@ApiBundle/Resources/config/routing/instagram.yml"
+    prefix:   /instagram
+    options: 
+        expose: true
+
+#RUTAS DE PINTEREST
+instagram_rutas:
+    resource: "@ApiBundle/Resources/config/routing/pinterest.yml"
+    prefix:   /pinterest
+    options:
+        expose: true
+
+#RUTAS DE USUARIO DE REDES SOCIALES
+usuarios_rutas:
+    resource: "@ApiBundle/Resources/config/routing/usuarios.yml"
+    prefix:   /users
+    options: 
+        expose: true

@@ -1,0 +1,109 @@
+<div class="vista-miembro" ng-if="miembro">
+    <div class="miembro-top gradient1 shadow1">
+        <img class="avatar" ng-src="[[miembro.avatar]]" />
+        <div class="miembro-data">
+            <div class="miembro-data-name">[[miembro.name]]</div>
+            <div class="miembro-data-email">[[miembro.email]]</div>
+            <div><a ng-click="adjust('1')" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-pencil"></span> Editar Perfil</a></div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="miembro-profiles-organizaciones">
+        <h3 style="margin-left:22px;" class="rc-SmallSectionHeader">Organizaciones a las que pertenezco:</h3>
+        <div class="emptyContentMessage rb-a-5" ng-show="!miembro.organizations">
+            <h2 >No eres parte de ninguna organización</h2>
+            <p >Foma equipos y colabora con otros.</p>
+            <div class="icons" >
+                <div class="icon-box">
+                    <span class="icon invite"></span>
+                    <h3 >Invitar Miembros</h3>
+                </div>
+                <div class="icon-box">
+                    <span class="icon create"></span>
+                    <h3>Crear equipos</h3>
+                </div>
+                <div class="icon-box">
+                    <span class="icon collaborate"></span>
+                    <h3>Empieza a colaborar!</h3>
+                </div>
+            </div>
+            <a class="btn btn-info" ng-click="createNewOrganization()">
+                <span >Comienza a colaborar con otros</span>
+                <span></span>
+            </a>
+        </div>
+        <div class="miembro-profiles-area" ng-show="miembro.organizations">
+            <div ng-repeat="org in miembro.organizations" class="orgs miembro-profiles-item gradient1" style="float:left;width: 25%">
+                <img ng-src="/web/uploads/Organizations/[[org.name]]"/>
+                <span class="miembro-profiles-name">[[org.name]]</span>
+
+                <div class="emrs">
+                    <a class="btn btn-default" ng-click="showTeam(org.id)">Equipos</a>
+                    <a class="btn btn-default">Miembros</a>
+                    <a class="btn btn-default">Redes Sociales</a>
+                </div>
+
+                <div class="org-delete miembro-profiles-config btn-group">
+                    <button class="btn btn-sm btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                        <span class="glyphicon glyphicon1-cog"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li role="presentation"><a role="menuitem" tabindex="-1">Administrar</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1">Eliminar Organización</a></li>
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <a ng-if="miembro.organizations" class="create-org btn btn-default" ng-click="createNewOrganization()">
+            <span >Crear Organizacion</span>
+            <span></span>
+        </a>
+    </div>
+    <div class="miembro-profiles" style="float: left; width: 100%">
+        <div class="miembro-profiles-head">
+            <div class="text-head">Mis Redes sociales</div>
+            <div class="miembro-change-view">
+                <button class="btn btn-default btn-sm" type="button" ng-model="type"
+                        ng-click="changeView('lv')" 
+                        tooltip="Lista" 
+                        tooltip-append-to-body="true" 
+                        ng-class="{activated: type=='lv'}"><span class="glyphicon1-list2"></span></button>
+                <button class="btn btn-default btn-sm" 
+                        ng-click="changeView('cv')" tooltip="Compacto" 
+                        tooltip-append-to-body="true" 
+                        ng-class="{activated: type=='cv'}"><span class="glyphicon1-flickr"></span></button>
+                <button class="btn btn-default btn-sm" 
+                        ng-click="changeView('mv')" tooltip="Mosaico" 
+                        tooltip-append-to-body="true" 
+                        ng-class="{activated: type=='mv'}"><span class="glyphicon1-stop"></span></button>
+            </div>
+        </div>
+        <div class="miembro-profiles-area" ng-class="{list_view: type=='lv',comp_view: type=='cv', 'mosa_view': type=='mv'}">
+            <div class="miembro-profiles-item miembro-profiles-add" ng-click="addProfile()">
+                <span class="glyphicon glyphicon-plus-sign"></span> Añadir red social
+            </div>
+            <div ng-repeat="profile in profiles" class="miembro-profiles-item gradient1">
+                <img ng-src="[[profile.avatar]]"/>
+                <span class="miembro-profiles-name">[[profile.name]]</span>
+                <span class="miembro-profiles-red">[[profile.red]]</span>
+                
+                <div class="miembro-profiles-config btn-group">
+                    <button class="btn btn-sm btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                        <span class="glyphicon glyphicon1-cog"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li role="presentation"><a role="menuitem" ng-click="showSettings([[profile.id]])" tabindex="-1">Ajustes</a></li>
+                        <li role="presentation"><a role="menuitem" ng-click="synchronize(profile.id)" tabindex="-1">Sincronizar avatar</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1">Transferir a</a></li>
+                        <li role="presentation" class="divider"></li>
+                        <li role="presentation"><a ng-click="removeProfile(profile.id)" role="menuitem" tabindex="-1">Eliminar de ConversationQuest</a></li>
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+

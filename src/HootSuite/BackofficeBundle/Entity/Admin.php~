@@ -1,0 +1,389 @@
+<?php
+
+namespace HootSuite\BackofficeBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
+
+/**
+ * @ORM\Table(name="admin")
+ * @ORM\Entity()
+ * @DoctrineAssert\UniqueEntity("email")
+ */
+class Admin implements AdvancedUserInterface, \Serializable
+{
+  /**
+   * @var integer $id
+   * @ORM\Column(name="id", type="integer")
+   * @ORM\Id
+   * @ORM\GeneratedValue(strategy="AUTO")
+   */
+  private $id;
+  
+  /**
+   * @var string $name
+   * @ORM\Column( type="string", length=50)
+   * @Assert\NotBlank()
+   */
+  private $name;
+  
+  /**
+   * @var string $lastname
+   * @ORM\Column( type="string", length=100)
+   * @Assert\NotBlank()
+   */
+  private $lastname;
+
+  /**
+   * @var string $email
+   * @ORM\Column( type="string", length=100, unique=true)
+   * @Assert\Email()
+   * @Assert\NotBlank()
+   */
+  private $email;
+  
+  /**
+   * @var date $created_at
+   * @ORM\Column(type="datetime")
+   */    
+  private $created_at; 
+    
+  /**
+   * @var date $active
+   * @ORM\Column(type="boolean")
+   */    
+  private $active;
+  
+  /**
+   * @var string $password
+   * @ORM\Column(type="string", length=255)
+   * @Assert\Length(min = "8")
+   */
+  
+  private $password;
+  
+  /**
+   * @var string $salt
+   * @ORM\Column(type="string", length=255, nullable=true)
+   */
+  private $salt; 
+
+   /**
+    * Random string sent to the user email address in order to verify it
+    * @ORM\Column(type="string", length=255, nullable=true) 
+    */
+  protected $confirmation_token;
+
+   /**
+    * @ORM\Column(type="datetime", nullable=true) 
+    */
+  protected $password_requested_at;
+  
+  /**
+   * Set password
+   * @param string $password
+   * @return Asociations
+   */
+  public function setPassword($password)
+  {
+      $this->password = $password;
+
+      return $this;
+  }
+
+  /**
+   * Get password
+   * @return string 
+   */
+  public function getPassword()
+  {
+      return $this->password;
+  }
+
+  /**
+   * Set salt
+   * @param string $salt
+   * @return Asociations
+   */
+  public function setSalt($saltp=null)
+  {
+    if($saltp==null)
+    {
+      $time = new \DateTime('now');
+      $seg = (string)$time->format('s');
+      $this->salt = md5(uniqid().$seg);    
+      return $this;
+    }
+    else
+    {
+      $this->salt = $saltp;
+      return $this;
+    }
+  }
+
+  /**
+   * Get salt
+   * @return string 
+   */
+  public function getSalt()
+  {
+      return $this->salt;
+  }  
+  
+  //Métodos que implementa UserInterface    
+  public function eraseCredentials()
+  {
+
+  }  
+  
+  public function getRoles()
+  {
+      return array("ROLE_USUARIO");
+  }
+  
+  public function getUsername()
+  {
+      return $this->email;
+  } 
+  
+  public function equals(AdvancedUserInterface $user)
+  {
+      return $this->getEmail()==$user->getUsername();
+  } 
+
+  public function isAccountNonExpired()
+  {
+      return true;
+  }
+
+  public function isAccountNonLocked()
+  {
+      return true;
+  }
+
+  public function isCredentialsNonExpired()
+  {
+      return true;
+  }
+
+  public function isEnabled()
+  {
+      if( !$this->activo ){
+          return false;
+      }
+      if($this->trial && $this->getDiasTrial() <=0 ){
+          return false;
+      }
+      return $this->activo;
+  }
+  
+  /*--------------------------------*/
+ 
+  public function __toString()
+  {
+      return (string)$this->email;
+  }  
+  
+       /**
+   * @see \Serializable::serialize()
+   */
+  public function serialize()
+  {
+      return serialize(array(
+          $this->id,
+      ));
+  }
+
+  /**
+   * @see \Serializable::unserialize()
+   */
+  public function unserialize($serialized)
+  {
+      list (
+          $this->id,
+      ) = unserialize($serialized);
+  }
+ 
+
+    /**
+     * Set fecha_registro
+     *
+     * @param \DateTime $fechaRegistro
+     * @return Usuario
+     */
+    public function setCreatedAt($fechaRegistro = NULL)
+    {
+        $this->created_at = new \Datetime('now');
+    
+        return $this;
+    }
+
+    /**
+     * Get fecha_registro
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->created_at;
+    }
+
+    /**
+     * Set confirmation_token
+     *
+     * @param string $confirmation_token
+     * @return Customer
+     */
+    public function setConfirmationToken($confirmation_token = null)
+    {
+        if( $confirmation_token === null )
+        {
+          $time = new \DateTime('now');
+          $seg = (string)$time->format('s');
+          $this->confirmation_token = md5(uniqid().$seg);
+        }
+        else
+        {
+          $this->confirmation_token = $confirmation_token;
+        }
+        return $this;
+    }
+
+    /**
+     * Get confirmation_token
+     *
+     * @return string 
+     */
+    public function getConfirmationToken()
+    {
+        return $this->confirmation_token;
+    }
+        
+    /**
+     * Get password_requested_at
+     *
+     * @return \DateTime 
+     */
+    public function getPasswordRequestedAt()
+    {
+        return $this->password_requested_at;
+    }
+
+    /**
+     * Set password_requested_at
+     *
+     * @param \DateTime $password_requested_at
+     * @return Customer
+     */
+    public function setPasswordRequestedAt()
+    {
+        $this->password_requested_at = new \Datetime('now');
+    
+        return $this;
+    }
+ 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Admin
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set lastname
+     *
+     * @param string $lastname
+     * @return Admin
+     */
+    public function setLastname($lastname)
+    {
+        $this->lastname = $lastname;
+
+        return $this;
+    }
+
+    /**
+     * Get lastname
+     *
+     * @return string 
+     */
+    public function getLastname()
+    {
+        return $this->lastname;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return Admin
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string 
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set active
+     *
+     * @param boolean $active
+     * @return Admin
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * Get active
+     *
+     * @return boolean 
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+}

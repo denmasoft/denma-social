@@ -1,0 +1,18 @@
+li_add_comment:
+    pattern:  /add-comment
+    defaults: { _controller: ApiBundle:Linkedin:addComment }
+    requirements: { _method: post }
+    
+li_likes:
+    pattern:  /likes
+    defaults: { _controller: ApiBundle:Linkedin:likes }
+    requirements: { _method: post }
+    
+li_likes:
+    pattern:  /user-updates
+    defaults: { _controller: ApiBundle:Linkedin:updates }
+    requirements: { _method: post }
+li_add_group:
+    pattern:  /add-group
+    defaults: { _controller: ApiBundle:Linkedin:addGroup }
+    requirements: { _method: post }

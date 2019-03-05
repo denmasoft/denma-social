@@ -1,0 +1,1175 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Azoom 1.0\n"
+"POT-Creation-Date: 2016-04-19 13:06+0300\n"
+"PO-Revision-Date: 2016-04-19 13:08+0300\n"
+"Last-Translator: XanderRock <xanderrock@yahoo.com>\n"
+"Language-Team: Rockthemes\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e;esc_html__;esc_html_e\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../404.php:26
+msgid "404 : PAGE NOT FOUND"
+msgstr ""
+
+#: ../404.php:27
+msgid "Sorry, we couldn't find that page."
+msgstr ""
+
+#: ../404.php:34
+msgid ""
+"The page you are looking for might have been removed, had its name changed, "
+"or is temporarily unavailable."
+msgstr ""
+
+#: ../404.php:34
+msgid "Please try the following:"
+msgstr ""
+
+#: ../404.php:36
+msgid ""
+"Make sure that the Web site address displayed in the address bar of your "
+"browser is spelled and formatted correctly"
+msgstr ""
+
+#: ../404.php:37
+msgid ""
+"If you reached this page by clicking a link, contact us to alert us that the "
+"link is incorrectly formatted"
+msgstr ""
+
+#: ../404.php:38
+msgid "Forget that this ever happened, and go to our "
+msgstr ""
+
+#: ../404.php:38
+msgid "home page"
+msgstr ""
+
+#: ../author-bio.php:16
+#, php-format
+msgid "About %s"
+msgstr ""
+
+#: ../author-bio.php:20
+#, php-format
+msgid "View all posts by %s <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: ../bbpress/form-search.php:15 ../functions-core.php:927
+msgid "Search for:"
+msgstr ""
+
+#: ../bbpress/loop-search-forum.php:16
+#, php-format
+msgid "Last updated %s"
+msgstr ""
+
+#: ../bbpress/loop-search-forum.php:26
+msgid "Forum: "
+msgstr ""
+
+#: ../bbpress/loop-search-reply.php:24
+msgid "In reply to: "
+msgstr ""
+
+#: ../bbpress/loop-search-topic.php:26
+msgid "Topic: "
+msgstr ""
+
+#: ../bbpress/loop-search-topic.php:33
+msgid "in group forum "
+msgstr ""
+
+#: ../bbpress/loop-search-topic.php:37
+msgid "in forum "
+msgstr ""
+
+#: ../bbpress/loop-single-reply.php:21
+msgid "in reply to: "
+msgstr ""
+
+#: ../bbpress/loop-single-topic.php:70
+#, php-format
+msgid "in: <a href=\"%1$s\">%2$s</a>"
+msgstr ""
+
+#: ../bbpress/loop-single-topic.php:81
+msgid "Latest Reply : "
+msgstr ""
+
+#: ../comments.php:43
+msgid " Older Comments"
+msgstr ""
+
+#: ../comments.php:46
+msgid "Newer Comments "
+msgstr ""
+
+#: ../comments.php:52
+msgid "Comments are closed."
+msgstr ""
+
+#: ../content-none.php:12
+msgid "Nothing Found"
+msgstr ""
+
+#: ../content-none.php:18
+msgid "Ready to publish your first post?"
+msgstr ""
+
+#: ../content-none.php:18
+msgid " Get started here"
+msgstr ""
+
+#: ../content-none.php:22
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with "
+"different keywords."
+msgstr ""
+
+#: ../content-none.php:27
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+
+#: ../functions-core.php:63
+msgid "Navigation Menu"
+msgstr ""
+
+#: ../functions-core.php:167 ../header-models.php:40
+msgid "Loading"
+msgstr ""
+
+#: ../functions-core.php:190
+msgid "Menu"
+msgstr ""
+
+#: ../functions-core.php:191
+msgid "Back"
+msgstr ""
+
+#: ../functions-core.php:854
+msgid "Nothing Found..."
+msgstr ""
+
+#: ../functions-core.php:1205 ../functions.php:101
+msgid "Name :"
+msgstr ""
+
+#: ../functions-core.php:1206 ../functions.php:102
+msgid "Email :"
+msgstr ""
+
+#: ../functions-core.php:1207 ../functions.php:103
+msgid "Website :"
+msgstr ""
+
+#: ../functions-core.php:1210 ../functions.php:106
+msgid "Leave a Comment"
+msgstr ""
+
+#: ../functions-core.php:1213 ../functions.php:109
+msgid "Your Message :"
+msgstr ""
+
+#: ../functions-core.php:1415 ../functions-core.php:1437
+#: ../functions-core.php:1450 ../functions-core.php:3958
+msgid "Page"
+msgstr ""
+
+#: ../functions-core.php:1435
+msgid "Search Results for: "
+msgstr ""
+
+#: ../functions-core.php:1443
+msgid "Not Found"
+msgstr ""
+
+#: ../functions-core.php:1813
+msgid "Log Out"
+msgstr ""
+
+#: ../functions-core.php:1831 ../functions-core.php:1842 ../shortcodes.php:4227
+#: ../shortcodes.php:4236
+msgid ", "
+msgstr ""
+
+#: ../functions-core.php:1861
+#, php-format
+msgid "View all posts by %s"
+msgstr ""
+
+#: ../functions-core.php:1889
+#, php-format
+msgid "Permalink to %s"
+msgstr ""
+
+#: ../functions-core.php:1947
+msgid "Previous Article"
+msgstr ""
+
+#: ../functions-core.php:2005
+msgid "Next Article"
+msgstr ""
+
+#: ../functions-core.php:2140 ../functions-core.php:2152
+#: ../functions-core.php:2187 ../functions-core.php:2217
+msgid "Previous"
+msgstr ""
+
+#: ../functions-core.php:2141 ../functions-core.php:2153
+#: ../functions-core.php:2188 ../functions-core.php:2218
+msgid "Next"
+msgstr ""
+
+#: ../functions-core.php:2398 ../image.php:48
+msgid "Edit"
+msgstr ""
+
+#: ../functions-core.php:2522 ../functions-core.php:2566
+#, php-format
+msgid "All posts by %s"
+msgstr ""
+
+#: ../functions-core.php:2524 ../rpb_woo-archive.php:101
+#: ../taxonomy-defaultitem_cat.php:100
+#, php-format
+msgid "Category Archives: %s"
+msgstr ""
+
+#: ../functions-core.php:2526 ../rpb_woo-archive.php:103
+#: ../taxonomy-defaultitem_cat.php:102
+#, php-format
+msgid "Tag Archives: %s"
+msgstr ""
+
+#: ../functions-core.php:2538
+msgid "Default Items :"
+msgstr ""
+
+#: ../functions-core.php:2541 ../rpb_woo-archive.php:107
+#: ../taxonomy-defaultitem_cat.php:106
+#, php-format
+msgid ": %s"
+msgstr ""
+
+#: ../functions-core.php:2546 ../rpb_woo-archive.php:110
+#: ../taxonomy-defaultitem_cat.php:109
+#, php-format
+msgid "Daily Archives: %s"
+msgstr ""
+
+#: ../functions-core.php:2548 ../rpb_woo-archive.php:112
+#: ../taxonomy-defaultitem_cat.php:111
+#, php-format
+msgid "Monthly Archives: %s"
+msgstr ""
+
+#: ../functions-core.php:2550 ../rpb_woo-archive.php:114
+#: ../taxonomy-defaultitem_cat.php:113
+#, php-format
+msgid "Yearly Archives: %s"
+msgstr ""
+
+#: ../functions-core.php:2560 ../rpb_woo-archive.php:116
+#: ../taxonomy-defaultitem_cat.php:115
+msgid "Archives"
+msgstr ""
+
+#: ../functions-core.php:2564
+#, php-format
+msgid "Search Results For: %s"
+msgstr ""
+
+#: ../functions-core.php:2579
+msgid "Portfolio"
+msgstr ""
+
+#: ../functions-core.php:2593 ../functions-core.php:2603
+#: ../functions-core.php:2610
+msgid "Blog"
+msgstr ""
+
+#: ../functions-core.php:2741 ../functions-core.php:2743
+msgid "Read More"
+msgstr ""
+
+#: ../functions-core.php:2803
+msgid "read more"
+msgstr ""
+
+#: ../functions-core.php:2831
+msgid "Leave a comment"
+msgstr ""
+
+#: ../functions-core.php:2831
+msgid "One comment so far"
+msgstr ""
+
+#: ../functions-core.php:2831
+#, php-format
+msgid "View all % comments"
+msgstr ""
+
+#: ../functions-core.php:2877
+msgid " View"
+msgstr ""
+
+#: ../functions-core.php:3706
+msgid "AUTHOR"
+msgstr ""
+
+#: ../functions-core.php:3723
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: ../functions-core.php:3731
+#, php-format
+msgid "<cite class=\"fn\">%s</cite>"
+msgstr ""
+
+#: ../functions-core.php:3736
+#, php-format
+msgid "%1$s at %2$s"
+msgstr ""
+
+#: ../functions-core.php:3736
+msgid "(Edit)"
+msgstr ""
+
+#: ../functions-core.php:3776
+msgid "Home"
+msgstr ""
+
+#: ../functions-core.php:3936
+msgid "Search Results For : "
+msgstr ""
+
+#: ../header-models.php:45 ../header-models.php:58
+msgid "Type To Search.."
+msgstr ""
+
+#: ../header-models.php:102
+msgid "Search Results"
+msgstr ""
+
+#: ../image.php:25
+#, php-format
+msgid ""
+"<span class=\"attachment-meta\">Published on <time class=\"entry-date\" "
+"datetime=\"%1$s\">%2$s</time> in <a href=\"%3$s\" title=\"Return to %4$s\" "
+"rel=\"gallery\">%5$s</a></span>"
+msgstr ""
+
+#: ../image.php:43
+msgid "Full resolution"
+msgstr ""
+
+#: ../image.php:55
+msgid " Previous"
+msgstr ""
+
+#: ../image.php:56
+msgid "Next "
+msgstr ""
+
+#: ../image.php:74 ../single-defaultitems.php:54
+msgid "Pages:"
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:305
+msgid "Install Required Plugins"
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:306
+msgid "Install Plugins"
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:307
+#, php-format
+msgid "Installing Plugin: %s"
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:308
+msgid "Something went wrong with the plugin API."
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:370
+msgid "Return to Required Plugins Installer"
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:371
+msgid "Return to the dashboard"
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:372
+#: ../libs/class-tgm-plugin-activation.php:3082
+msgid "Plugin activated successfully."
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:373
+msgid "The following plugin was activated successfully:"
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:374
+#, php-format
+msgid "No action taken. Plugin %1$s was already active."
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:375
+#, php-format
+msgid ""
+"Plugin not activated. A higher version of %s is needed for this theme. "
+"Please update the plugin."
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:376
+#, php-format
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:377
+msgid "Dismiss this notice"
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:378
+msgid "Please contact the administrator of this site for help."
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:497
+msgid "Update Required"
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:614
+msgid "Set the parent_slug config variable instead."
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:813
+#: ../libs/class-tgm-plugin-activation.php:3500
+msgid "Return to the Dashboard"
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:928
+msgid ""
+"The remote plugin package does not contain a folder with the desired slug "
+"and renaming did not work."
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:928
+#: ../libs/class-tgm-plugin-activation.php:932
+msgid ""
+"Please contact the plugin provider and ask them to package their plugin "
+"according to the WordPress guidelines."
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:932
+msgid ""
+"The remote plugin package consists of more than one file, but the files are "
+"not packaged in a folder."
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:2220
+msgid "Required"
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:2223
+msgid "Recommended"
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:2240
+msgid "WordPress Repository"
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:2244
+msgid "External Source"
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:2248
+msgid "Pre-Packaged"
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:2267
+msgid "Not Installed"
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:2271
+msgid "Installed But Not Activated"
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:2273
+msgid "Active"
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:2279
+msgid "Required Update not Available"
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:2282
+msgid "Requires Update"
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:2285
+msgid "Update recommended"
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:2455
+msgid "Installed version:"
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:2463
+msgid "Minimum required version:"
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:2475
+msgid "Available version:"
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:2499
+#, php-format
+msgid ""
+"No plugins to install, update or activate. <a href=\"%1$s\">Return to the "
+"Dashboard</a>"
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:2515
+msgid "Plugin"
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:2516
+msgid "Source"
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:2517
+msgid "Type"
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:2521
+msgid "Version"
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:2522
+msgid "Status"
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:2641
+msgid "Upgrade message from the plugin author:"
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:2674
+msgid "Install"
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:2680
+msgid "Update"
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:2683
+msgid "Activate"
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:2715
+msgid "No plugins were selected to be installed. No action taken."
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:2717
+msgid "No plugins were selected to be updated. No action taken."
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:2753
+msgid "No plugins are available to be installed at this time."
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:2755
+msgid "No plugins are available to be updated at this time."
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:2859
+msgid "No plugins were selected to be activated. No action taken."
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:2884
+msgid "No plugins are available to be activated at this time."
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:3081
+msgid "Plugin activation failed."
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:3420
+#, php-format
+msgid "Updating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:3424
+#, php-format
+msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:3425
+#, php-format
+msgid "The installation of %1$s failed."
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:3429
+msgid ""
+"The installation and activation process is starting. This process may take a "
+"while on some hosts, so please be patient."
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:3430
+#, php-format
+msgid "%1$s installed and activated successfully."
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:3430
+#: ../libs/class-tgm-plugin-activation.php:3437
+msgid "Show Details"
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:3430
+#: ../libs/class-tgm-plugin-activation.php:3437
+msgid "Hide Details"
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:3431
+msgid "All installations and activations have been completed."
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:3432
+#, php-format
+msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:3436
+msgid ""
+"The installation process is starting. This process may take a while on some "
+"hosts, so please be patient."
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:3437
+#, php-format
+msgid "%1$s installed successfully."
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:3438
+msgid "All installations have been completed."
+msgstr ""
+
+#: ../libs/class-tgm-plugin-activation.php:3439
+#, php-format
+msgid "Installing Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: ../libs/global-functions.php:159
+msgid "Demo Image"
+msgstr ""
+
+#: ../rock-options/envato-wordpress-toolkit-library/class-envato-protected-api.php:67
+msgid "Please enter your Envato Marketplace Username."
+msgstr ""
+
+#: ../rock-options/envato-wordpress-toolkit-library/class-envato-protected-api.php:71
+msgid "Please enter your Envato Marketplace API Key."
+msgstr ""
+
+#: ../rock-options/envato-wordpress-toolkit-library/class-envato-protected-api.php:96
+msgid "The API \"set\" is a required parameter."
+msgstr ""
+
+#: ../rock-options/envato-wordpress-toolkit-library/class-envato-protected-api.php:167
+msgid "The Envato Marketplace \"item ID\" is a required parameter."
+msgstr ""
+
+#: ../rock-options/envato-wordpress-toolkit-library/class-envato-wordpress-theme-upgrader.php:288
+msgid "Downloading upgrade package from the Envato API&#8230;"
+msgstr ""
+
+#: ../rock-options/envato-wordpress-toolkit-library/class-envato-wordpress-theme-upgrader.php:299
+msgid "Downloading install package from the Envato API&#8230;"
+msgstr ""
+
+#: ../rock-options/libs/parsers.php:42 ../rock-options/libs/parsers.php:72
+#: ../rock-options/libs/parsers.php:80
+msgid "There was an error when reading this WXR file"
+msgstr ""
+
+#: ../rock-options/libs/parsers.php:43
+msgid ""
+"Details are shown above. The importer will now try again with a different "
+"parser..."
+msgstr ""
+
+#: ../rock-options/libs/parsers.php:84 ../rock-options/libs/parsers.php:89
+#: ../rock-options/libs/parsers.php:279 ../rock-options/libs/parsers.php:468
+msgid ""
+"This does not appear to be a WXR file, missing/invalid WXR version number"
+msgstr ""
+
+#: ../rock-options/libs/rock-installation-helper.php:327
+msgid "Welcome to Azoom"
+msgstr ""
+
+#: ../rock-options/libs/rock-installation-helper.php:328
+msgid ""
+"<p>You have successfully installed Azoom. This helper will guide you through "
+"<strong>Installing Plugins</strong> and <strong>demo data</strong>. If you "
+"already know how to do the rest, you can dismiss this helper</p><p>To get "
+"started click on the <strong>Install / Activate Plugins</strong> link above</"
+"p>"
+msgstr ""
+
+#: ../rock-options/libs/rock-installation-helper.php:339
+msgid "Install and Activate Plugins"
+msgstr ""
+
+#: ../rock-options/libs/rock-installation-helper.php:340
+msgid ""
+"<p>To install plugins, select all of these plugins. Then in the action "
+"selector choose <strong>Install Plugins</strong> and click on <strong>Apply</"
+"strong> button.</p><p>After you click on \"Apply\" button and it has "
+"finished the installing plugins, click on blue <strong>Return to Required "
+"Plugins Installer</strong> link to continue. And select all plugins again "
+"but this time choose <strong>Activate</strong></p><p>Then you can click Ok</"
+"p>"
+msgstr ""
+
+#: ../rock-options/libs/rock-installation-helper.php:355
+msgid "Load Demo"
+msgstr ""
+
+#: ../rock-options/libs/rock-installation-helper.php:356
+msgid ""
+"<p>You can now use our one click demo installer button to start installing "
+"demo data. Keep in mind demo data should be loaded before starting to edit "
+"your site.</p><p><strong>IMPORTANT :</strong> If you see an error or unable "
+"to complete loading demo datas contact to your hosting provider and demand "
+"them to <strong>Increase Maximum PHP Execution Time and make sure your "
+"server allows \".txt\" file read</strong></p>"
+msgstr ""
+
+#: ../rock-options/libs/wordpress-importer.php:134
+#: ../rock-options/libs/wordpress-importer.php:143
+#: ../rock-options/libs/wordpress-importer.php:194
+#: ../rock-options/libs/wordpress-importer.php:198
+#: ../rock-options/libs/wordpress-importer.php:207
+msgid "Sorry, there has been an error."
+msgstr ""
+
+#: ../rock-options/libs/wordpress-importer.php:135
+msgid "The file does not exist, please try again."
+msgstr ""
+
+#: ../rock-options/libs/wordpress-importer.php:178
+msgid "All done."
+msgstr ""
+
+#: ../rock-options/libs/wordpress-importer.php:178
+msgid "Have fun!"
+msgstr ""
+
+#: ../rock-options/libs/wordpress-importer.php:179
+msgid "Remember to update the passwords and roles of imported users."
+msgstr ""
+
+#: ../rock-options/libs/wordpress-importer.php:199
+#, php-format
+msgid ""
+"The export file could not be found at <code>%s</code>. It is likely that "
+"this was caused by a permissions problem."
+msgstr ""
+
+#: ../rock-options/libs/wordpress-importer.php:215
+#, php-format
+msgid ""
+"This WXR file (version %s) may not be supported by this version of the "
+"importer. Please consider updating."
+msgstr ""
+
+#: ../rock-options/libs/wordpress-importer.php:240
+#, php-format
+msgid ""
+"Failed to import author %s. Their posts will be attributed to the current "
+"user."
+msgstr ""
+
+#: ../rock-options/libs/wordpress-importer.php:266
+msgid "Assign Authors"
+msgstr ""
+
+#: ../rock-options/libs/wordpress-importer.php:267
+msgid ""
+"To make it easier for you to edit and save the imported content, you may "
+"want to reassign the author of the imported item to an existing user of this "
+"site. For example, you may want to import all the entries as <code>admin</"
+"code>s entries."
+msgstr ""
+
+#: ../rock-options/libs/wordpress-importer.php:269
+#, php-format
+msgid ""
+"If a new user is created by WordPress, a new password will be randomly "
+"generated and the new user&#8217;s role will be set as %s. Manually changing "
+"the new user&#8217;s details will be necessary."
+msgstr ""
+
+#: ../rock-options/libs/wordpress-importer.php:279
+msgid "Import Attachments"
+msgstr ""
+
+#: ../rock-options/libs/wordpress-importer.php:282
+msgid "Download and import file attachments"
+msgstr ""
+
+#: ../rock-options/libs/wordpress-importer.php:299
+msgid "Import author:"
+msgstr ""
+
+#: ../rock-options/libs/wordpress-importer.php:310
+msgid "or create new user with login name:"
+msgstr ""
+
+#: ../rock-options/libs/wordpress-importer.php:313
+msgid "as a new user:"
+msgstr ""
+
+#: ../rock-options/libs/wordpress-importer.php:321
+msgid "assign posts to an existing user:"
+msgstr ""
+
+#: ../rock-options/libs/wordpress-importer.php:323
+msgid "or assign posts to an existing user:"
+msgstr ""
+
+#: ../rock-options/libs/wordpress-importer.php:324
+msgid "- Select -"
+msgstr ""
+
+#: ../rock-options/libs/wordpress-importer.php:374
+#, php-format
+msgid ""
+"Failed to create new user for %s. Their posts will be attributed to the "
+"current user."
+msgstr ""
+
+#: ../rock-options/libs/wordpress-importer.php:425
+#, php-format
+msgid "Failed to import category %s"
+msgstr ""
+
+#: ../rock-options/libs/wordpress-importer.php:465
+#, php-format
+msgid "Failed to import post tag %s"
+msgstr ""
+
+#: ../rock-options/libs/wordpress-importer.php:511
+#: ../rock-options/libs/wordpress-importer.php:652
+#, php-format
+msgid "Failed to import %s %s"
+msgstr ""
+
+#: ../rock-options/libs/wordpress-importer.php:537
+#, php-format
+msgid "Failed to import &#8220;%s&#8221;: Invalid post type %s"
+msgstr ""
+
+#: ../rock-options/libs/wordpress-importer.php:559
+#, php-format
+msgid "%s &#8220;%s&#8221; already exists."
+msgstr ""
+
+#: ../rock-options/libs/wordpress-importer.php:618
+#, php-format
+msgid "Failed to import %s &#8220;%s&#8221;"
+msgstr ""
+
+#: ../rock-options/libs/wordpress-importer.php:783
+#: ../rock-widgets/mega-menu/rockthemes-mega-menu.php:98
+msgid "Menu item skipped due to missing menu slug"
+msgstr ""
+
+#: ../rock-options/libs/wordpress-importer.php:790
+#: ../rock-widgets/mega-menu/rockthemes-mega-menu.php:105
+#, php-format
+msgid "Menu item skipped due to invalid menu slug: %s"
+msgstr ""
+
+#: ../rock-options/libs/wordpress-importer.php:891
+msgid "Fetching attachments is not enabled"
+msgstr ""
+
+#: ../rock-options/libs/wordpress-importer.php:904
+msgid "Invalid file type"
+msgstr ""
+
+#: ../rock-options/libs/wordpress-importer.php:948
+msgid "Remote server did not respond"
+msgstr ""
+
+#: ../rock-options/libs/wordpress-importer.php:954
+#, php-format
+msgid "Remote server returned error response %1$d %2$s"
+msgstr ""
+
+#: ../rock-options/libs/wordpress-importer.php:961
+msgid "Remote file is incorrect size"
+msgstr ""
+
+#: ../rock-options/libs/wordpress-importer.php:966
+msgid "Zero size file downloaded"
+msgstr ""
+
+#: ../rock-options/libs/wordpress-importer.php:972
+#, php-format
+msgid "Remote file is too large, limit is %s"
+msgstr ""
+
+#: ../rock-options/libs/wordpress-importer.php:1071
+msgid "Import WordPress"
+msgstr ""
+
+#: ../rock-options/libs/wordpress-importer.php:1078
+#, php-format
+msgid ""
+"A new version of this importer is available. Please update to version %s to "
+"ensure compatibility with newer export files."
+msgstr ""
+
+#: ../rock-options/libs/wordpress-importer.php:1093
+msgid ""
+"Howdy! Upload your WordPress eXtended RSS (WXR) file and we&#8217;ll import "
+"the posts, pages, comments, custom fields, categories, and tags into this "
+"site."
+msgstr ""
+
+#: ../rock-options/libs/wordpress-importer.php:1094
+msgid "Choose a WXR (.xml) file to upload, then click Upload file and import."
+msgstr ""
+
+#: ../rock-options/libs/wordpress-importer.php:1169
+msgid ""
+"Import <strong>posts, pages, comments, custom fields, categories, and tags</"
+"strong> from a WordPress export file."
+msgstr ""
+
+#: ../rock-widgets/load_widgets.php:161
+msgid "Add New Sidebar"
+msgstr ""
+
+#: ../rock-widgets/load_widgets.php:356 ../rock-widgets/load_widgets.php:358
+msgid "No Sidebar"
+msgstr ""
+
+#: ../rock-widgets/mega-menu/rockthemes-mega-menu.php:270
+msgid "Mega Menu"
+msgstr ""
+
+#: ../rock-widgets/mega-menu/rockthemes-mm-admin-ui.php:29
+msgid "SAVE"
+msgstr ""
+
+#: ../rock-widgets/mega-menu/rockthemes-mm-functions.php:142
+msgid "Image Align"
+msgstr ""
+
+#: ../rock-widgets/mega-menu/rockthemes-mm-functions.php:155
+#: ../rock-widgets/mega-menu/rockthemes-mm-functions.php:227
+msgid "Upload Image"
+msgstr ""
+
+#: ../rock-widgets/mega-menu/rockthemes-mm-functions.php:156
+#: ../rock-widgets/mega-menu/rockthemes-mm-functions.php:228
+msgid "Delete Image"
+msgstr ""
+
+#: ../rock-widgets/mega-menu/rockthemes-mm-functions.php:159
+#: ../rock-widgets/mega-menu/rockthemes-mm-functions.php:231
+msgid "Extra Details"
+msgstr ""
+
+#: ../rock-widgets/mega-menu/rockthemes-mm-functions.php:161
+msgid "Select Image Size"
+msgstr ""
+
+#: ../rock-widgets/mega-menu/rockthemes-mm-functions.php:193
+msgid "Vertical Align"
+msgstr ""
+
+#: ../rock-widgets/mega-menu/rockthemes-mm-functions.php:201
+msgid "Horizontal Align"
+msgstr ""
+
+#: ../rock-widgets/mega-menu/rockthemes-mm-functions.php:208
+msgid "Image Repeat"
+msgstr ""
+
+#: ../rock-widgets/mega-menu/rockthemes-mm-functions.php:235
+msgid "Image Width (For Retina)"
+msgstr ""
+
+#: ../rock-widgets/mega-menu/rockthemes-mm-functions.php:236
+msgid "Enter the image width"
+msgstr ""
+
+#: ../rock-widgets/mega-menu/rockthemes-mm-functions.php:237
+msgid "Image Height (For Retina)"
+msgstr ""
+
+#: ../rock-widgets/mega-menu/rockthemes-mm-functions.php:238
+msgid "Enter the image height"
+msgstr ""
+
+#: ../rock-widgets/mega-menu/rockthemes-mm-functions.php:239
+msgid "Select Background Image Size"
+msgstr ""
+
+#: ../rock-widgets/mega-menu/rockthemes-mm-functions.php:368
+msgid "Choose Icon"
+msgstr ""
+
+#: ../rock-widgets/mega-menu/rockthemes-mm-functions.php:369
+msgid "Delete Icon"
+msgstr ""
+
+#: ../rock-widgets/wp-widgets/image.php:14
+msgid "Rockthemes Image Widget"
+msgstr ""
+
+#: ../rock-widgets/wp-widgets/image.php:112
+#: ../rock-widgets/wp-widgets/rockthemes_twitter_widget.php:130
+msgid "Title:"
+msgstr ""
+
+#: ../rock-widgets/wp-widgets/image.php:116
+msgid "Image URL:"
+msgstr ""
+
+#: ../rock-widgets/wp-widgets/image.php:121
+msgid "Image Alt Tag:"
+msgstr ""
+
+#: ../rock-widgets/wp-widgets/image.php:125
+msgid "Link URL:"
+msgstr ""
+
+#: ../rock-widgets/wp-widgets/image.php:129
+msgid "Link Target:"
+msgstr ""
+
+#: ../rock-widgets/wp-widgets/payment_icons.php:14
+msgid "Rockthemes Payment Icons"
+msgstr ""
+
+#: ../rock-widgets/wp-widgets/rockthemes_twitter_widget.php:14
+msgid "Rockthemes Twitter Widget"
+msgstr ""
+
+#: ../rock-widgets/wp-widgets/rockthemes_twitter_widget.php:103
+msgid "New title"
+msgstr ""
+
+#: ../rock-widgets/wp-widgets/rockthemes_twitter_widget.php:134
+msgid "Username:"
+msgstr ""
+
+#: ../rock-widgets/wp-widgets/rockthemes_twitter_widget.php:138
+msgid "Twitter Widget ID:"
+msgstr ""
+
+#: ../rock-widgets/wp-widgets/rockthemes_twitter_widget.php:142
+msgid "Total Tweets:"
+msgstr ""
+
+#: ../rock-widgets/wp-widgets/rockthemes_twitter_widget.php:147
+msgid " Check this for light version"
+msgstr ""
+
+#: ../rock-widgets/wp-widgets/tabs.php:14
+msgid "Rockthemes Tabs Widget"
+msgstr ""
+
+#: ../rock-widgets/wp-widgets/tabs.php:160 ../shortcodes.php:1347
+msgid "Latest"
+msgstr ""
+
+#: ../rock-widgets/wp-widgets/tabs.php:164
+msgid "Like"
+msgstr ""
+
+#: ../rock-widgets/wp-widgets/tabs.php:169
+msgid "Popular"
+msgstr ""
+
+#: ../rock-widgets/wp-widgets/tabs.php:175
+msgid "Products"
+msgstr ""
+
+#: ../rock-widgets/wp-widgets/tabs.php:181
+msgid "Price"
+msgstr ""
+
+#: ../rock-widgets/wp-widgets/tabs.php:187
+msgid "Sale"
+msgstr ""
+
+#: ../rock-widgets/wp-widgets/tabs.php:193
+msgid "Comments"
+msgstr ""
+
+#: ../search.php:33
+msgid "Nothing matched for : "
+msgstr ""
+
+#: ../shortcodes.php:1732
+msgid "No data found!"
+msgstr ""
+
+#: ../shortcodes.php:1746
+msgid "Load More"
+msgstr ""
+
+#: ../shortcodes.php:2300 ../woocommerce-settings.php:325
+#: ../woocommerce-settings.php:333
+msgid "Details"
+msgstr ""
+
+#: ../woocommerce-settings.php:317
+msgid "Options"
+msgstr ""
+
+#: ../woocommerce-settings.php:357
+msgid "Add"
+msgstr ""
+
+#: ../woocommerce-settings.php:522 ../woocommerce-settings.php:555
+msgid "Item"
+msgstr ""
+
+#: ../woocommerce-settings.php:769
+msgid "View Cart"
+msgstr ""
+
+#: ../woocommerce-settings.php:772
+msgid "Checkout"
+msgstr ""
+
+#: ../woocommerce-settings.php:806
+msgid "Search For Products"
+msgstr ""
+
+#: ../woocommerce/single-product/meta.php:23
+msgid "SKU:"
+msgstr ""
+
+#: ../woocommerce/single-product/meta.php:23
+msgid "N/A"
+msgstr ""
